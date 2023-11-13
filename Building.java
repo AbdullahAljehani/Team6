@@ -1,7 +1,7 @@
 public class Building {
     private static int lastBuildingNumber = 0;
     private int buildingNumber;
-
+//1
     public Building() {
         lastBuildingNumber++;
         this.buildingNumber = lastBuildingNumber;
