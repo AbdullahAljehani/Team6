@@ -1,20 +1,20 @@
 /*public class CustomerWithContact extends Customer implements Reachable {
-    private final int CUSTOMER_NUMBER;
+    private final int customerNumber;
 
     // Constructor
     public CustomerWithContact(int ID, Building building1, int customerNumber) {
         super(ID, building1); 
-        this.CUSTOMER_NUMBER = customerNumber;
+        this.customerNumber = customerNumber;
     }
 
     @Override
     public int getPhoneNumber() {
 
-        return CUSTOMER_NUMBER;
+        return customerNumber;
     }
 
-    public int getCustomer() {
-        return CUSTOMER_NUMBER;
+    public int getCustomerNumber() {
+        return customerNumber;
     }
 }
 */
