@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class DeliveryRoute {
-    public ArrayList<Substreet> substreets;
+    private ArrayList<Substreet> substreets;
     private int estimatedArrivalTime; 
 
     public DeliveryRoute(ArrayList<Substreet> substreets, int estimatedArrivalTime) {
@@ -11,6 +11,9 @@ public class DeliveryRoute {
 
     public int getEstimatedArrivalTime() {
         return estimatedArrivalTime;
+    }
+    public ArrayList<Substreet> getSubstreets(){
+        return new ArrayList<>(substreets);
     }
 
     /*public Substreet getCurrentStreet() {

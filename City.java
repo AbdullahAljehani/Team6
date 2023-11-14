@@ -1,14 +1,17 @@
 import java.util.ArrayList;
 
 public class City {
-    public ArrayList<Neighborhood> neighborhood1;
+    private ArrayList<Neighborhood> neighborhoods;
 
     public City() {
-        this.neighborhood1 = new ArrayList<>();
+        this.neighborhoods = new ArrayList<>();
     }
 
     public void addNeighborhood(Neighborhood neighborhood) {
-        neighborhood1.add(neighborhood);
+        neighborhoods.add(neighborhood);
     }
+    public ArrayList<Neighborhood> getNeighborhoods() {
+        return new ArrayList<>(neighborhoods);
 
+}
 }

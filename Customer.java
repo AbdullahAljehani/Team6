@@ -1,10 +1,13 @@
 public class Customer {
     private int ID;
-    public Building building1;
+    private Building building;
 
-    public Customer(int ID, Building building1) {
+    public Customer(int ID, Building building) {
         this.ID = ID;
-        this.building1 = building1;
+        this.building = building;
+    }
+    public Building getBuilding(){
+        return this.building;
     }
 
     public int getID() {

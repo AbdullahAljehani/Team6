@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 public class Substreet {
-    public ArrayList<Building> buildingRight;
-    public ArrayList<Building> buildingLeft;
+    private ArrayList<Building> buildingRight;
+    private ArrayList<Building> buildingLeft;
     private char streetName;
-    public double distance;
+    private double distance;
     private int speedLimit;
-    public int delay;
-    public Substreet firstEnd;
-    public Substreet secondEnd;
+    private int delay;
+    private Substreet firstEnd;
+    private Substreet secondEnd;
 
     public Substreet(char streetName, double distance, int speedLimit, int delay, Substreet firstEnd, Substreet secondEnd) {
         this.buildingRight = new ArrayList<>();
@@ -28,11 +28,36 @@ public class Substreet {
     public void addBuildingLeft(Building building) {
         buildingLeft.add(building);
     }
-    public char getStreetName(){
+
+    public char getStreetName() {
         return this.streetName;
     }
-    public int getSpeedLimit(){
+
+    public double getDistance() {
+        return this.distance;
+    }
+
+    public int getSpeedLimit() {
         return this.speedLimit;
     }
 
+    public int getDelay() {
+        return this.delay;
+    }
+
+    public Substreet getFirstEnd() {
+        return this.firstEnd;
+    }
+
+    public Substreet getSecondEnd() {
+        return this.secondEnd;
+    }
+
+    public ArrayList<Building> getBuildingRight() {
+        return new ArrayList<>(buildingRight);
+    }
+
+    public ArrayList<Building> getBuildingLeft() {
+        return new ArrayList<>(buildingLeft);
+    }
 }

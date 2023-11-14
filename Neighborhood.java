@@ -2,19 +2,22 @@ import java.util.ArrayList;
 
 public class Neighborhood {
     private char neighborhoodName;
-    public ArrayList<Substreet> substreet1;
+    private ArrayList<Substreet> substreets;
 
     public Neighborhood(char neighborhoodName) {
         this.neighborhoodName = neighborhoodName;
-        this.substreet1 = new ArrayList<>();
+        this.substreets = new ArrayList<>();
     }
+
     public void addSubstreet(Substreet substreet) {
-        substreet1.add(substreet);
+        substreets.add(substreet);
     }
+
     public char getNeighborhoodName() {
         return neighborhoodName;
     }
 
+    public ArrayList<Substreet> getSubstreets() {
+        return new ArrayList<>(substreets); 
+    }
 }
-
-
