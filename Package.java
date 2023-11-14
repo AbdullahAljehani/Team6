@@ -1,8 +1,8 @@
 public abstract class Package {
     private Customer customer1;
     private Building building1;
-    private boolean isAssignedToDriver;
-    private boolean isDelivered;
+    public boolean isAssignedToDriver;
+    public boolean isDelivered;
     private int packageId;
 
     public Package(Customer customer1, Building building1, int packageId) {
@@ -27,11 +27,5 @@ public abstract class Package {
         return building1;
     }
 
-    public boolean isAssignedToDriver() {
-        return isAssignedToDriver;
-    }
-
-    public boolean isDelivered() {
-        return isDelivered;
-    }
+    
 }

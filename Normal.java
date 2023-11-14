@@ -7,5 +7,6 @@ public class Normal extends Package {
 
     @Override
     public void typeOfPackage() {
+        System.out.println("Place the package at the door of the building.");
     }
 }

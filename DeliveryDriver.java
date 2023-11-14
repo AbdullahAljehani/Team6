@@ -23,7 +23,7 @@ public class DeliveryDriver {
 
     }
 
-    /*public boolean isPackageDelivered() {
-      
-    }*/
+    public boolean isPackageDelivered(Package aPackage) {
+        return aPackage.isDelivered;
+    }
 }
