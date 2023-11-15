@@ -16,7 +16,8 @@ public class DeliveryRoute {
         return new ArrayList<>(substreets);
     }
 
-    /*public Substreet getCurrentStreet() {
+    /* next substreet()
+    public Substreet getCurrentStreet() {
         if (substreets != null && !substreets.isEmpty()) {
             return substreets.get(0);
         } else {
@@ -33,14 +34,6 @@ public class DeliveryRoute {
         return totalDistance;
     }
 
-    public double getTotalDurationTrip() {
-        double totalDuration = 0.0;
-        if (substreets != null) {
-            for (Substreet substreet : substreets) {
-                totalDuration += substreet.getDuration();
-            }
-        }
-        return totalDuration;
-    }
+
     */
 }
