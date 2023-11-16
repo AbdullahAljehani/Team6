@@ -77,7 +77,7 @@ public class FadingRectangle extends Application {
 
         // Add the rectangle to a group and create a scene
         Group root = new Group(rect1 ,rect2 , rect3 , rect4 , car  );
-        Scene scene = new Scene(root , 300, 300,Color.WHITE);
+        Scene scene = new Scene(root , 500, 500,Color.WHITE);
 
         // Set the stage title and show the scene
         primaryStage.setTitle("Fading Rectangle");
