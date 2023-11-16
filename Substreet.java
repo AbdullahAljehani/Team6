@@ -20,7 +20,7 @@ public class Substreet {
         this.firstEnd = firstEnd;
         this.secondEnd = secondEnd;
     }
-
+    // aa
     public void addBuildingRight(Building building) {
         buildingRight.add(building);
     }
