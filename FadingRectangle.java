@@ -1,6 +1,4 @@
-import javafx.animation.FadeTransition;
 import javafx.animation.PathTransition;
-import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
