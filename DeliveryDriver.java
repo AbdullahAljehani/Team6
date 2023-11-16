@@ -7,6 +7,10 @@ public class DeliveryDriver {
     private int currentY;
     private double currentDistanceOnRoute;
     private int currentSubstreetIndex; 
+    private static final int MAX_X = 100;
+    private static final int MIN_X = 0;
+    private static final int MAX_Y = 100;
+    private static final int MIN_Y = 0;
 
     private enum Direction {
         FORWARD,
@@ -21,6 +25,7 @@ public class DeliveryDriver {
         this.currentY = 0;
         this.currentDistanceOnRoute = 0;
     }
+Substreet currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
 
     public void addPackage(Package aPackage) {
         packages.add(aPackage);
@@ -32,9 +37,9 @@ public class DeliveryDriver {
 
     public void setCurrentRoute(DeliveryRoute route) {
         this.currentRoute = route;
-        this.currentX = 0; // Reset X-coordinate when a new route is set
-        this.currentY = 0; // Reset Y-coordinate when a new route is set
-        this.currentDistanceOnRoute = 0; // Reset distance on the current route
+        this.currentX = 0; 
+        this.currentY = 0; 
+        this.currentDistanceOnRoute = 0; 
     }
 
     public DeliveryRoute getCurrentRoute() {
@@ -49,8 +54,9 @@ public class DeliveryDriver {
         if (currentRoute != null) {
             if (currentRoute.getSubstreets() != null && !currentRoute.getSubstreets().isEmpty()) {
                 updateDistanceOnRoute(distance);
-                
-                double remainingDistanceOnSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex).getDistance() - currentDistanceOnRoute;
+               
+
+                double remainingDistanceOnSubstreet = currentSubstreet.getDistance() - currentDistanceOnRoute;
     
                 if (remainingDistanceOnSubstreet <= 0) {
                     moveToNextSubstreet();
@@ -68,21 +74,36 @@ public class DeliveryDriver {
     
 
     private void updateDriverPosition(int distance, Direction direction) {
-        // Add logic to update the driver's position based on the distance and direction.
-        // You might want to consider the direction of the driver.
         System.out.println("Driver moved by " + distance + " units in direction: " + direction);
+    
         switch (direction) {
             case FORWARD:
                 currentY += distance;
+                if (currentY > MAX_Y) {
+                    System.out.println("Warning: Driver reached the maximum Y coordinate.");
+                    currentY = MAX_Y; 
+                }
                 break;
             case BACKWARD:
                 currentY -= distance;
+                if (currentY < MIN_Y) {
+                    System.out.println("Warning: Driver reached the minimum Y coordinate.");
+                    currentY = MIN_Y; 
+                }
                 break;
             case LEFT:
                 currentX -= distance;
+                if (currentX < MIN_X) {
+                    System.out.println("Warning: Driver reached the minimum X coordinate.");
+                    currentX = MIN_X; 
+                }
                 break;
             case RIGHT:
                 currentX += distance;
+                if (currentX > MAX_X) {
+                    System.out.println("Warning: Driver reached the maximum X coordinate.");
+                    currentX = MAX_X; 
+                }
                 break;
             default:
                 System.out.println("Invalid direction");
@@ -93,33 +114,47 @@ public class DeliveryDriver {
         currentDistanceOnRoute += distance;
     }
 
+    public int calculateTripDelay() {
+        if (currentSubstreet != null) {
+            return currentSubstreet.getDelay();
+        } else {
+            return 0;
+        }
+    }
     public void deliverPackage() {
         if (currentRoute != null) {
             for (int i = 0; i < getPackages().size(); i++) {
-               
                 Package aPackage = getPackages().get(i);
     
                 if (aPackage.isAssignedToDriver && !aPackage.isDelivered) {
-                    System.out.println("Package delivered along the route.");
-    
-                    aPackage.isDelivered = true;
-                    aPackage.isAssignedToDriver = false;
-    
-    
-                    int nextPackageIndex = i + 1;
-    
-                    if (nextPackageIndex < getPackages().size()) {
-                        Package nextPackage = getPackages().get(nextPackageIndex);
-                        
-                        nextPackage.isDelivered = false;
-                        nextPackage.isAssignedToDriver = true;
-    
-                        System.out.println("Driver assigned to the next package with ID: " + nextPackage.getPackageId());
-                    } else {
-                        System.out.println("No more packages assigned to the driver at the current position.");
+                    if (aPackage instanceof Offical_paper && currentSubstreet != null) {
+                        int substreetDelay = currentSubstreet.getDelay();
+                        System.out.println("Official package detected. Introducing a delay of " + substreetDelay + " minutes on Substreet " + currentSubstreet.getStreetName());
+                        try {
+                            Thread.sleep(substreetDelay * 1000 * 60); 
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
     
-                    return;
+                    Building destinationBuilding = aPackage.getCustomer().getBuilding();
+    
+                   
+                    if (destinationBuilding.getSubstreet() == currentSubstreet) {
+                        moveToBuilding(destinationBuilding);
+    
+                        System.out.println("Package delivered at building " + destinationBuilding.getBuildingNumber());
+    
+                        aPackage.isDelivered = true;
+                        aPackage.isAssignedToDriver = false;
+    
+                        moveToNextPackage();
+    
+                        return;
+                    } else {
+        
+                        //moveToSubstreet(destinationBuilding.getSubstreet());
+                    }
                 }
             }
     
@@ -128,19 +163,75 @@ public class DeliveryDriver {
             System.out.println("No route set for the driver.");
         }
     }
-    public void moveToNextSubstreet() {
-        if (currentRoute != null && currentRoute.getSubstreets() != null) {
-            if (currentSubstreetIndex < currentRoute.getSubstreets().size() - 1) {
-                currentSubstreetIndex++;
-                Substreet nextSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
-                System.out.println("Driver moved to the next street. Next substreet: " + nextSubstreet.getStreetName());
-            } else {
-                System.out.println("No more substreets in the route.");
-            }
-        } else {
-            System.out.println("No route or substreets set for the driver.");
-        }
+    
+    public void moveToBuilding(Building destinationBuilding) {
+        double distanceToDestination = calculateDistanceToBuilding(destinationBuilding.getXCoordinate(), destinationBuilding.getYCoordinate());
+    
+        moveDriver((int) distanceToDestination, Direction.FORWARD);
     }
     
+   
+    
+    
+    public void moveToNextSubstreet() {
+    if (currentRoute != null && currentRoute.getSubstreets() != null) {
+        int tripDelay = calculateTripDelay();
+        System.out.println("Introducing a delay of " + tripDelay + " minutes for the entire trip.");
+
+        
+        try {
+            Thread.sleep(tripDelay * 1000 * 60); 
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if (currentSubstreetIndex < currentRoute.getSubstreets().size() - 1) {
+            currentSubstreetIndex++;
+            Substreet nextSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
+            System.out.println("Driver moved to the next street. Next substreet: " + nextSubstreet.getStreetName());
+        } else {
+            System.out.println("No more substreets in the route.");
+        }
+    } else {
+        System.out.println("No route or substreets set for the driver.");
     }
+}
+public double calculateDistanceToBuilding(double destinationX, double destinationY) {
+    
+    double deltaX = destinationX - currentX;
+    double deltaY = destinationY - currentY;
+    return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+
+}
+private void moveToNextPackage() {
+    for (int i = 0; i < getPackages().size(); i++) {
+        Package aPackage = getPackages().get(i);
+
+        if (aPackage.isAssignedToDriver && !aPackage.isDelivered) {
+            aPackage.isDelivered = true;
+            aPackage.isAssignedToDriver = false;
+
+            int nextPackageIndex = i + 1;
+
+            if (nextPackageIndex < getPackages().size()) {
+                Package nextPackage = getPackages().get(nextPackageIndex);
+
+                nextPackage.isDelivered = false;
+                nextPackage.isAssignedToDriver = true;
+
+                System.out.println("Driver assigned to the next package with ID: " + nextPackage.getPackageId());
+            } else {
+                System.out.println("No more packages assigned to the driver at the current position.");
+            }
+
+            return;
+        }
+    }
+
+    System.out.println("No more packages assigned to the driver at the current position.");
+}
+}
+
+
 
