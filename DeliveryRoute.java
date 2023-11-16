@@ -16,14 +16,7 @@ public class DeliveryRoute {
         return new ArrayList<>(substreets);
     }
 
-    /* next substreet()
-    public Substreet getCurrentStreet() {
-        if (substreets != null && !substreets.isEmpty()) {
-            return substreets.get(0);
-        } else {
-            return null;
-        }
-    }
+
     public double getTotalDistanceTrip() {
            double totalDistance = 0.0;
         if (substreets != null) {
@@ -33,7 +26,26 @@ public class DeliveryRoute {
         }
         return totalDistance;
     }
+    public double calculateFailureCost(double costPerDistanceUnit, double costPerDelay) {
+        double totalDistance = getTotalDistanceTrip();
+        int totalDelay = getTotalDelay();
+
+        double distanceCost = costPerDistanceUnit * totalDistance;
+        double delayCost = costPerDelay * totalDelay;
+
+        return distanceCost + delayCost;
+    }
+
+    private int getTotalDelay() {
+        int totalDelay = 0;
+        if (substreets != null) {
+            for (Substreet substreet : substreets) {
+                totalDelay += substreet.getDelay();
+            }
+        }
+        return totalDelay;
+    }
 
 
-    */
+
 }
