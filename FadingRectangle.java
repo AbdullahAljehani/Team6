@@ -27,7 +27,7 @@ public class FadingRectangle extends Application {
     public void start(Stage primaryStage) {
         // ------------ Neighbourhoods ------------------------
         
-        // Neighbourhood 1 : from ( rect 1 to rect 52 ) , with 16 blocks
+        // Neighbourhood 1 : from ( Building 1 to Building 52 ) , with 16 blocks
         Text Neighbourhood_1 = new Text(1090, 230, "Alhamdaniya");
         Font font = new Font("Times New Roman",25);
         Neighbourhood_1.setFont(font);
@@ -35,296 +35,296 @@ public class FadingRectangle extends Application {
         Neighbourhood_1.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 1
-        Rectangle rect1 = new Rectangle(50, 20, 35, 35);
-        rect1.setArcHeight(20);
-        rect1.setArcWidth(20);
-        rect1.setFill(Color.GREY);
+        Rectangle Building1 = new Rectangle(50, 20, 35, 35);
+        Building1.setArcHeight(20);
+        Building1.setArcWidth(20);
+        Building1.setFill(Color.GREY);
         
-        Rectangle rect2 = new Rectangle(160, 20, 35, 35);
-        rect2.setArcHeight(20);
-        rect2.setArcWidth(20);
-        rect2.setFill(Color.GREY);
+        Rectangle Building2 = new Rectangle(160, 20, 35, 35);
+        Building2.setArcHeight(20);
+        Building2.setArcWidth(20);
+        Building2.setFill(Color.GREY);
         
-        Rectangle rect3 = new Rectangle(270, 20, 35, 35);
-        rect3.setArcHeight(20);
-        rect3.setArcWidth(20);
-        rect3.setFill(Color.GREY);
+        Rectangle Building3 = new Rectangle(270, 20, 35, 35);
+        Building3.setArcHeight(20);
+        Building3.setArcWidth(20);
+        Building3.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 2
-        Rectangle rect4 = new Rectangle(350, 20, 35, 35);
-        rect4.setArcHeight(25);
-        rect4.setArcWidth(25);
-        rect4.setFill(Color.GREY);
+        Rectangle Building4 = new Rectangle(350, 20, 35, 35);
+        Building4.setArcHeight(25);
+        Building4.setArcWidth(25);
+        Building4.setFill(Color.GREY);
         
-        Rectangle rect5 = new Rectangle(425, 20, 35, 35);
-        rect5.setArcHeight(25);
-        rect5.setArcWidth(25);
-        rect5.setFill(Color.GREY);
+        Rectangle Building5 = new Rectangle(425, 20, 35, 35);
+        Building5.setArcHeight(25);
+        Building5.setArcWidth(25);
+        Building5.setFill(Color.GREY);
         
-        Rectangle rect6 = new Rectangle(490, 20, 35, 35);
-        rect6.setArcHeight(25);
-        rect6.setArcWidth(25);
-        rect6.setFill(Color.GREY);
+        Rectangle Building6 = new Rectangle(490, 20, 35, 35);
+        Building6.setArcHeight(25);
+        Building6.setArcWidth(25);
+        Building6.setFill(Color.GREY);
         
-        Rectangle rect7 = new Rectangle(550, 20, 35, 35);
-        rect7.setArcHeight(25);
-        rect7.setArcWidth(25);
-        rect7.setFill(Color.GREY);
+        Rectangle Building7 = new Rectangle(550, 20, 35, 35);
+        Building7.setArcHeight(25);
+        Building7.setArcWidth(25);
+        Building7.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 3
-        Rectangle rect8 = new Rectangle(640, 20, 35, 35);
-        rect8.setArcHeight(25);
-        rect8.setArcWidth(25);
-        rect8.setFill(Color.GREY);
+        Rectangle Building8 = new Rectangle(640, 20, 35, 35);
+        Building8.setArcHeight(25);
+        Building8.setArcWidth(25);
+        Building8.setFill(Color.GREY);
         
-        Rectangle rect9 = new Rectangle(710, 20, 35, 35);
-        rect9.setArcHeight(25);
-        rect9.setArcWidth(25);
-        rect9.setFill(Color.GREY);
+        Rectangle Building9 = new Rectangle(710, 20, 35, 35);
+        Building9.setArcHeight(25);
+        Building9.setArcWidth(25);
+        Building9.setFill(Color.GREY);
         
-        Rectangle rect10 = new Rectangle(790, 20, 35, 35);
-        rect10.setArcHeight(25);
-        rect10.setArcWidth(25);
-        rect10.setFill(Color.GREY);
+        Rectangle Building10 = new Rectangle(790, 20, 35, 35);
+        Building10.setArcHeight(25);
+        Building10.setArcWidth(25);
+        Building10.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 4
-        Rectangle rect11 = new Rectangle(880, 20, 35, 35);
-        rect11.setArcHeight(25);
-        rect11.setArcWidth(25);
-        rect11.setHeight(35);
-        rect11.setWidth(70);
-        rect11.setFill(Color.GREY);
+        Rectangle Building11 = new Rectangle(880, 20, 35, 35);
+        Building11.setArcHeight(25);
+        Building11.setArcWidth(25);
+        Building11.setHeight(35);
+        Building11.setWidth(70);
+        Building11.setFill(Color.GREY);
         
-        Rectangle rect12 = new Rectangle(970, 20, 35, 35);
-        rect12.setArcHeight(25);
-        rect12.setArcWidth(25);
-        rect12.setHeight(35);
-        rect12.setWidth(70);
-        rect12.setFill(Color.GREY);
+        Rectangle Building12 = new Rectangle(970, 20, 35, 35);
+        Building12.setArcHeight(25);
+        Building12.setArcWidth(25);
+        Building12.setHeight(35);
+        Building12.setWidth(70);
+        Building12.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 5
-        Rectangle rect13 = new Rectangle(50, 80, 35, 35);
-        rect13.setArcHeight(25);
-        rect13.setArcWidth(25);
-        rect13.setFill(Color.GREY);
+        Rectangle Building13 = new Rectangle(50, 80, 35, 35);
+        Building13.setArcHeight(25);
+        Building13.setArcWidth(25);
+        Building13.setFill(Color.GREY);
         
-        Rectangle rect14 = new Rectangle(125, 80, 35, 35);
-        rect14.setArcHeight(25);
-        rect14.setArcWidth(25);
-        rect14.setFill(Color.GREY);
+        Rectangle Building14 = new Rectangle(125, 80, 35, 35);
+        Building14.setArcHeight(25);
+        Building14.setArcWidth(25);
+        Building14.setFill(Color.GREY);
         
-        Rectangle rect15 = new Rectangle(200, 80, 35, 35);
-        rect15.setArcHeight(25);
-        rect15.setArcWidth(25);
-        rect15.setFill(Color.GREY);
+        Rectangle Building15 = new Rectangle(200, 80, 35, 35);
+        Building15.setArcHeight(25);
+        Building15.setArcWidth(25);
+        Building15.setFill(Color.GREY);
         
-        Rectangle rect16 = new Rectangle(270, 80, 35, 35);
-        rect16.setArcHeight(25);
-        rect16.setArcWidth(25);
-        rect16.setFill(Color.GREY);
+        Rectangle Building16 = new Rectangle(270, 80, 35, 35);
+        Building16.setArcHeight(25);
+        Building16.setArcWidth(25);
+        Building16.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 6
         
-        Rectangle rect17 = new Rectangle(350, 80, 35, 35);
-        rect17.setArcHeight(25);
-        rect17.setArcWidth(25);
-        rect17.setFill(Color.GREY);
+        Rectangle Building17 = new Rectangle(350, 80, 35, 35);
+        Building17.setArcHeight(25);
+        Building17.setArcWidth(25);
+        Building17.setFill(Color.GREY);
         
-        Rectangle rect18 = new Rectangle(460, 80, 35, 35);
-        rect18.setArcHeight(25);
-        rect18.setArcWidth(25);
-        rect18.setFill(Color.GREY);
+        Rectangle Building18 = new Rectangle(460, 80, 35, 35);
+        Building18.setArcHeight(25);
+        Building18.setArcWidth(25);
+        Building18.setFill(Color.GREY);
         
-        Rectangle rect19 = new Rectangle(550, 80, 35, 35);
-        rect19.setArcHeight(25);
-        rect19.setArcWidth(25);
-        rect19.setFill(Color.GREY);
+        Rectangle Building19 = new Rectangle(550, 80, 35, 35);
+        Building19.setArcHeight(25);
+        Building19.setArcWidth(25);
+        Building19.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 7
-        Rectangle rect20 = new Rectangle(625, 80, 35, 35);
-        rect20.setArcHeight(25);
-        rect20.setArcWidth(25);
-        rect20.setFill(Color.GREY);
+        Rectangle Building20 = new Rectangle(625, 80, 35, 35);
+        Building20.setArcHeight(25);
+        Building20.setArcWidth(25);
+        Building20.setFill(Color.GREY);
         
-        Rectangle rect21 = new Rectangle(680, 80, 35, 35);
-        rect21.setArcHeight(25);
-        rect21.setArcWidth(25);
-        rect21.setFill(Color.GREY);
+        Rectangle Building21 = new Rectangle(680, 80, 35, 35);
+        Building21.setArcHeight(25);
+        Building21.setArcWidth(25);
+        Building21.setFill(Color.GREY);
         
-        Rectangle rect22 = new Rectangle(740, 80, 35, 35);
-        rect22.setArcHeight(25);
-        rect22.setArcWidth(25);
-        rect22.setFill(Color.GREY);
+        Rectangle Building22 = new Rectangle(740, 80, 35, 35);
+        Building22.setArcHeight(25);
+        Building22.setArcWidth(25);
+        Building22.setFill(Color.GREY);
         
-        Rectangle rect23 = new Rectangle(800, 80, 35, 35);
-        rect23.setArcHeight(25);
-        rect23.setArcWidth(25);
-        rect23.setFill(Color.GREY);
+        Rectangle Building23 = new Rectangle(800, 80, 35, 35);
+        Building23.setArcHeight(25);
+        Building23.setArcWidth(25);
+        Building23.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 8
-        Rectangle rect24 = new Rectangle(875, 80, 35, 35);
-        rect24.setArcHeight(25);
-        rect24.setArcWidth(25);
-        rect24.setFill(Color.GREY);
+        Rectangle Building24 = new Rectangle(875, 80, 35, 35);
+        Building24.setArcHeight(25);
+        Building24.setArcWidth(25);
+        Building24.setFill(Color.GREY);
         
-        Rectangle rect25 = new Rectangle(950, 80, 35, 35);
-        rect25.setArcHeight(25);
-        rect25.setArcWidth(25);
-        rect25.setFill(Color.GREY);
+        Rectangle Building25 = new Rectangle(950, 80, 35, 35);
+        Building25.setArcHeight(25);
+        Building25.setArcWidth(25);
+        Building25.setFill(Color.GREY);
         
-        Rectangle rect26 = new Rectangle(1020, 80, 35, 35);
-        rect26.setArcHeight(25);
-        rect26.setArcWidth(25);
-        rect26.setFill(Color.GREY);
+        Rectangle Building26 = new Rectangle(1020, 80, 35, 35);
+        Building26.setArcHeight(25);
+        Building26.setArcWidth(25);
+        Building26.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 9
-        Rectangle rect27 = new Rectangle(50, 150, 35, 35);
-        rect27.setArcHeight(25);
-        rect27.setArcWidth(25);
-        rect27.setFill(Color.GREY);
+        Rectangle Building27 = new Rectangle(50, 150, 35, 35);
+        Building27.setArcHeight(25);
+        Building27.setArcWidth(25);
+        Building27.setFill(Color.GREY);
         
-        Rectangle rect28 = new Rectangle(160, 150, 35, 35);
-        rect28.setArcHeight(25);
-        rect28.setArcWidth(25);
-        rect28.setFill(Color.GREY);
+        Rectangle Building28 = new Rectangle(160, 150, 35, 35);
+        Building28.setArcHeight(25);
+        Building28.setArcWidth(25);
+        Building28.setFill(Color.GREY);
         
-        Rectangle rect29 = new Rectangle(270, 150, 35, 35);
-        rect29.setArcHeight(25);
-        rect29.setArcWidth(25);
-        rect29.setFill(Color.GREY);
+        Rectangle Building29 = new Rectangle(270, 150, 35, 35);
+        Building29.setArcHeight(25);
+        Building29.setArcWidth(25);
+        Building29.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 10
         
-        Rectangle rect30 = new Rectangle(350, 150, 35, 35);
-        rect30.setArcHeight(25);
-        rect30.setArcWidth(25);
-        rect30.setFill(Color.GREY);
+        Rectangle Building30 = new Rectangle(350, 150, 35, 35);
+        Building30.setArcHeight(25);
+        Building30.setArcWidth(25);
+        Building30.setFill(Color.GREY);
         
-        Rectangle rect31 = new Rectangle(425, 150, 35, 35);
-        rect31.setArcHeight(25);
-        rect31.setArcWidth(25);
-        rect31.setFill(Color.GREY);
+        Rectangle Building31 = new Rectangle(425, 150, 35, 35);
+        Building31.setArcHeight(25);
+        Building31.setArcWidth(25);
+        Building31.setFill(Color.GREY);
         
-        Rectangle rect32 = new Rectangle(490, 150, 35, 35);
-        rect32.setArcHeight(25);
-        rect32.setArcWidth(25);
-        rect32.setFill(Color.GREY);
+        Rectangle Building32 = new Rectangle(490, 150, 35, 35);
+        Building32.setArcHeight(25);
+        Building32.setArcWidth(25);
+        Building32.setFill(Color.GREY);
         
-        Rectangle rect33 = new Rectangle(550, 150, 35, 35);
-        rect33.setArcHeight(25);
-        rect33.setArcWidth(25);
-        rect33.setFill(Color.GREY);
+        Rectangle Building33 = new Rectangle(550, 150, 35, 35);
+        Building33.setArcHeight(25);
+        Building33.setArcWidth(25);
+        Building33.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 11
         
-        Rectangle rect34 = new Rectangle(630, 150, 35, 35);
-        rect34.setArcHeight(25);
-        rect34.setArcWidth(25);
-        rect34.setFill(Color.GREY);
+        Rectangle Building34 = new Rectangle(630, 150, 35, 35);
+        Building34.setArcHeight(25);
+        Building34.setArcWidth(25);
+        Building34.setFill(Color.GREY);
         
-        Rectangle rect35 = new Rectangle(710, 150, 35, 35);
-        rect35.setArcHeight(25);
-        rect35.setArcWidth(25);
-        rect35.setFill(Color.GREY);
+        Rectangle Building35 = new Rectangle(710, 150, 35, 35);
+        Building35.setArcHeight(25);
+        Building35.setArcWidth(25);
+        Building35.setFill(Color.GREY);
         
-        Rectangle rect36 = new Rectangle(790, 150, 35, 35);
-        rect36.setArcHeight(25);
-        rect36.setArcWidth(25);
-        rect36.setFill(Color.GREY);
+        Rectangle Building36 = new Rectangle(790, 150, 35, 35);
+        Building36.setArcHeight(25);
+        Building36.setArcWidth(25);
+        Building36.setFill(Color.GREY);
           
        // Neighbourhood_1 : BLOCK 12
        
-        Rectangle rect37 = new Rectangle(870, 150, 35, 35);
-        rect37.setArcHeight(25);
-        rect37.setArcWidth(25);
-        rect37.setFill(Color.GREY);
+        Rectangle Building37 = new Rectangle(870, 150, 35, 35);
+        Building37.setArcHeight(25);
+        Building37.setArcWidth(25);
+        Building37.setFill(Color.GREY);
         
-        Rectangle rect38 = new Rectangle(920, 150, 35, 35);
-        rect38.setArcHeight(25);
-        rect38.setArcWidth(25);
-        rect38.setFill(Color.GREY);
+        Rectangle Building38 = new Rectangle(920, 150, 35, 35);
+        Building38.setArcHeight(25);
+        Building38.setArcWidth(25);
+        Building38.setFill(Color.GREY);
         
-        Rectangle rect39 = new Rectangle(970, 150, 35, 35);
-        rect39.setArcHeight(25);
-        rect39.setArcWidth(25);
-        rect39.setFill(Color.GREY);
+        Rectangle Building39 = new Rectangle(970, 150, 35, 35);
+        Building39.setArcHeight(25);
+        Building39.setArcWidth(25);
+        Building39.setFill(Color.GREY);
         
-        Rectangle rect40 = new Rectangle(1020, 150, 35, 35);
-        rect40.setArcHeight(25);
-        rect40.setArcWidth(25);
-        rect40.setFill(Color.GREY);
+        Rectangle Building40 = new Rectangle(1020, 150, 35, 35);
+        Building40.setArcHeight(25);
+        Building40.setArcWidth(25);
+        Building40.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 13 
         
-        Rectangle rect41 = new Rectangle(50, 215, 35, 35);
-        rect41.setArcHeight(25);
-        rect41.setArcWidth(25);
-        rect41.setFill(Color.GREY);
+        Rectangle Building41 = new Rectangle(50, 215, 35, 35);
+        Building41.setArcHeight(25);
+        Building41.setArcWidth(25);
+        Building41.setFill(Color.GREY);
         
-        Rectangle rect42 = new Rectangle(165, 215, 35, 35);
-        rect42.setArcHeight(25);
-        rect42.setArcWidth(25);
-        rect42.setFill(Color.GREY);
+        Rectangle Building42 = new Rectangle(165, 215, 35, 35);
+        Building42.setArcHeight(25);
+        Building42.setArcWidth(25);
+        Building42.setFill(Color.GREY);
         
-        Rectangle rect43 = new Rectangle(270, 215, 35, 35);
-        rect43.setArcHeight(25);
-        rect43.setArcWidth(25);
-        rect43.setFill(Color.GREY);
+        Rectangle Building43 = new Rectangle(270, 215, 35, 35);
+        Building43.setArcHeight(25);
+        Building43.setArcWidth(25);
+        Building43.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 14 
         
-        Rectangle rect44 = new Rectangle(360, 215, 35, 35);
-        rect44.setArcHeight(25);
-        rect44.setArcWidth(25);
-        rect44.setHeight(35);
-        rect44.setWidth(80);
-        rect44.setFill(Color.GREY);
+        Rectangle Building44 = new Rectangle(360, 215, 35, 35);
+        Building44.setArcHeight(25);
+        Building44.setArcWidth(25);
+        Building44.setHeight(35);
+        Building44.setWidth(80);
+        Building44.setFill(Color.GREY);
         
-        Rectangle rect45 = new Rectangle(495, 215, 35, 35);
-        rect45.setArcHeight(25);
-        rect45.setArcWidth(25);
-        rect45.setHeight(35);
-        rect45.setWidth(80);
-        rect45.setFill(Color.GREY);
+        Rectangle Building45 = new Rectangle(495, 215, 35, 35);
+        Building45.setArcHeight(25);
+        Building45.setArcWidth(25);
+        Building45.setHeight(35);
+        Building45.setWidth(80);
+        Building45.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 15 
-        Rectangle rect46 = new Rectangle(620, 215, 35, 35);
-        rect46 .setArcHeight(25);
-        rect46.setArcWidth(25);
-        rect46.setFill(Color.GREY);
+        Rectangle Building46 = new Rectangle(620, 215, 35, 35);
+        Building46 .setArcHeight(25);
+        Building46.setArcWidth(25);
+        Building46.setFill(Color.GREY);
         
-        Rectangle rect47 = new Rectangle(680, 215, 35, 35);
-        rect47.setArcHeight(25);
-        rect47.setArcWidth(25);
-        rect47.setFill(Color.GREY);
+        Rectangle Building47 = new Rectangle(680, 215, 35, 35);
+        Building47.setArcHeight(25);
+        Building47.setArcWidth(25);
+        Building47.setFill(Color.GREY);
         
-        Rectangle rect48 = new Rectangle(740, 215, 35, 35);
-        rect48.setArcHeight(25);
-        rect48.setArcWidth(25);
-        rect48.setFill(Color.GREY);
+        Rectangle Building48 = new Rectangle(740, 215, 35, 35);
+        Building48.setArcHeight(25);
+        Building48.setArcWidth(25);
+        Building48.setFill(Color.GREY);
         
-        Rectangle rect49 = new Rectangle(800, 215, 35, 35);
-        rect49.setArcHeight(25);
-        rect49.setArcWidth(25);
-        rect49.setFill(Color.GREY);
+        Rectangle Building49 = new Rectangle(800, 215, 35, 35);
+        Building49.setArcHeight(25);
+        Building49.setArcWidth(25);
+        Building49.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 16
-        Rectangle rect50 = new Rectangle(880, 215, 35, 35);
-        rect50.setArcHeight(25);
-        rect50.setArcWidth(25);
-        rect50.setFill(Color.GREY);
+        Rectangle Building50 = new Rectangle(880, 215, 35, 35);
+        Building50.setArcHeight(25);
+        Building50.setArcWidth(25);
+        Building50.setFill(Color.GREY);
         
-        Rectangle rect51 = new Rectangle(950, 215, 35, 35);
-        rect51.setArcHeight(25);
-        rect51.setArcWidth(25);
-        rect51.setFill(Color.GREY);
+        Rectangle Building51 = new Rectangle(950, 215, 35, 35);
+        Building51.setArcHeight(25);
+        Building51.setArcWidth(25);
+        Building51.setFill(Color.GREY);
         
-        Rectangle rect52 = new Rectangle(1010, 215, 35, 35);
-        rect52.setArcHeight(25);
-        rect52.setArcWidth(25);
-        rect52.setFill(Color.GREY);
+        Rectangle Building52 = new Rectangle(1010, 215, 35, 35);
+        Building52.setArcHeight(25);
+        Building52.setArcWidth(25);
+        Building52.setFill(Color.GREY);
         
-        // Neighbourhood 2 ( from rect 53 to rect 91 ) with 12 blocks :
+        // Neighbourhood 2 ( from Building 53 to Building 91 ) with 12 blocks :
         
         Text Neighbourhood_2 = new Text(1120, 400, "Almanar");
         Neighbourhood_2.setFont(font);
@@ -332,382 +332,382 @@ public class FadingRectangle extends Application {
         Neighbourhood_2.setFill(Color.BLUE);
         
         // Neighbourhood_2 : BLOCK 1
-        Rectangle rect53 = new Rectangle(50, 280, 35, 35);
-        rect53.setArcHeight(25);
-        rect53.setArcWidth(25);
-        rect53.setFill(Color.BLUE);
+        Rectangle Building53 = new Rectangle(50, 280, 35, 35);
+        Building53.setArcHeight(25);
+        Building53.setArcWidth(25);
+        Building53.setFill(Color.BLUE);
         
-        Rectangle rect54 = new Rectangle(125, 280, 35, 35);
-        rect54.setArcHeight(25);
-        rect54.setArcWidth(25);
-        rect54.setFill(Color.BLUE);
+        Rectangle Building54 = new Rectangle(125, 280, 35, 35);
+        Building54.setArcHeight(25);
+        Building54.setArcWidth(25);
+        Building54.setFill(Color.BLUE);
         
-        Rectangle rect55 = new Rectangle(200, 280, 35, 35);
-        rect55.setArcHeight(25);
-        rect55.setArcWidth(25);
-        rect55.setFill(Color.BLUE);
+        Rectangle Building55 = new Rectangle(200, 280, 35, 35);
+        Building55.setArcHeight(25);
+        Building55.setArcWidth(25);
+        Building55.setFill(Color.BLUE);
         
-        Rectangle rect56 = new Rectangle(270, 280, 35, 35);
-        rect56.setArcHeight(25);
-        rect56.setArcWidth(25);
-        rect56.setFill(Color.BLUE);
+        Rectangle Building56 = new Rectangle(270, 280, 35, 35);
+        Building56.setArcHeight(25);
+        Building56.setArcWidth(25);
+        Building56.setFill(Color.BLUE);
         
         // Neighbourhood_2 : BLOCK 2
         
-        Rectangle rect57 = new Rectangle(370, 280, 35, 35);
-        rect57.setArcHeight(25);
-        rect57.setArcWidth(25);
-        rect57.setFill(Color.BLUE);
+        Rectangle Building57 = new Rectangle(370, 280, 35, 35);
+        Building57.setArcHeight(25);
+        Building57.setArcWidth(25);
+        Building57.setFill(Color.BLUE);
         
-        Rectangle rect58 = new Rectangle(460, 280, 35, 35);
-        rect58.setArcHeight(25);
-        rect58.setArcWidth(25);
-        rect58.setFill(Color.BLUE);
+        Rectangle Building58 = new Rectangle(460, 280, 35, 35);
+        Building58.setArcHeight(25);
+        Building58.setArcWidth(25);
+        Building58.setFill(Color.BLUE);
         
-        Rectangle rect59 = new Rectangle(540, 280, 35, 35);
-        rect59.setArcHeight(25);
-        rect59.setArcWidth(25);
-        rect59.setFill(Color.BLUE);
+        Rectangle Building59 = new Rectangle(540, 280, 35, 35);
+        Building59.setArcHeight(25);
+        Building59.setArcWidth(25);
+        Building59.setFill(Color.BLUE);
         
         // Neighbourhood_2 : BLOCK 3 :
         
-        Rectangle rect60 = new Rectangle(630, 280, 35, 35);
-        rect60 .setArcHeight(25);
-        rect60.setArcWidth(25);
-        rect60.setFill(Color.BLUE);
+        Rectangle Building60 = new Rectangle(630, 280, 35, 35);
+        Building60 .setArcHeight(25);
+        Building60.setArcWidth(25);
+        Building60.setFill(Color.BLUE);
         
-        Rectangle rect61 = new Rectangle(690, 280, 35, 35);
-        rect61.setArcHeight(25);
-        rect61.setArcWidth(25);
-        rect61.setFill(Color.BLUE);
+        Rectangle Building61 = new Rectangle(690, 280, 35, 35);
+        Building61.setArcHeight(25);
+        Building61.setArcWidth(25);
+        Building61.setFill(Color.BLUE);
         
-        Rectangle rect62 = new Rectangle(750, 280, 35, 35);
-        rect62.setArcHeight(25);
-        rect62.setArcWidth(25);
-        rect62.setFill(Color.BLUE);
+        Rectangle Building62 = new Rectangle(750, 280, 35, 35);
+        Building62.setArcHeight(25);
+        Building62.setArcWidth(25);
+        Building62.setFill(Color.BLUE);
         
-        Rectangle rect63 = new Rectangle(810, 280, 35, 35);
-        rect63.setArcHeight(25);
-        rect63.setArcWidth(25);
-        rect63.setFill(Color.BLUE);
+        Rectangle Building63 = new Rectangle(810, 280, 35, 35);
+        Building63.setArcHeight(25);
+        Building63.setArcWidth(25);
+        Building63.setFill(Color.BLUE);
         
         // Neighbourhood_2 : BLOCK 4
         
-        Rectangle rect64 = new Rectangle(890, 280, 35, 35);
-        rect64.setArcHeight(25);
-        rect64.setArcWidth(25);
-        rect64.setHeight(35);
-        rect64.setWidth(70);
-        rect64.setFill(Color.BLUE);
+        Rectangle Building64 = new Rectangle(890, 280, 35, 35);
+        Building64.setArcHeight(25);
+        Building64.setArcWidth(25);
+        Building64.setHeight(35);
+        Building64.setWidth(70);
+        Building64.setFill(Color.BLUE);
         
-        Rectangle rect65 = new Rectangle(980, 280, 35, 35);
-        rect65.setArcHeight(25);
-        rect65.setArcWidth(25);
-        rect65.setHeight(35);
-        rect65.setWidth(70);
-        rect65.setFill(Color.BLUE);
+        Rectangle Building65 = new Rectangle(980, 280, 35, 35);
+        Building65.setArcHeight(25);
+        Building65.setArcWidth(25);
+        Building65.setHeight(35);
+        Building65.setWidth(70);
+        Building65.setFill(Color.BLUE);
         
         // Neighbourhood_2 : BLOCK 5
-        Rectangle rect66 = new Rectangle(50, 345, 35, 35);
-        rect66.setArcHeight(25);
-        rect66.setArcWidth(25);
-        rect66.setFill(Color.BLUE);
+        Rectangle Building66 = new Rectangle(50, 345, 35, 35);
+        Building66.setArcHeight(25);
+        Building66.setArcWidth(25);
+        Building66.setFill(Color.BLUE);
         
-        Rectangle rect67 = new Rectangle(125, 345, 35, 35);
-        rect67.setArcHeight(25);
-        rect67.setArcWidth(25);
-        rect67.setFill(Color.BLUE);
+        Rectangle Building67 = new Rectangle(125, 345, 35, 35);
+        Building67.setArcHeight(25);
+        Building67.setArcWidth(25);
+        Building67.setFill(Color.BLUE);
         
-        Rectangle rect68 = new Rectangle(200, 345, 35, 35);
-        rect68.setArcHeight(25);
-        rect68.setArcWidth(25);
-        rect68.setFill(Color.BLUE);
+        Rectangle Building68 = new Rectangle(200, 345, 35, 35);
+        Building68.setArcHeight(25);
+        Building68.setArcWidth(25);
+        Building68.setFill(Color.BLUE);
         
-        Rectangle rect69 = new Rectangle(270, 345, 35, 35);
-        rect69.setArcHeight(25);
-        rect69.setArcWidth(25);
-        rect69.setFill(Color.BLUE);
+        Rectangle Building69 = new Rectangle(270, 345, 35, 35);
+        Building69.setArcHeight(25);
+        Building69.setArcWidth(25);
+        Building69.setFill(Color.BLUE);
         
         // Neighbourhood_2 : BLOCK 6
         
-        Rectangle rect70 = new Rectangle(370, 345, 35, 35);
-        rect70.setArcHeight(25);
-        rect70.setArcWidth(25);
-        rect70.setFill(Color.BLUE);
+        Rectangle Building70 = new Rectangle(370, 345, 35, 35);
+        Building70.setArcHeight(25);
+        Building70.setArcWidth(25);
+        Building70.setFill(Color.BLUE);
         
-        Rectangle rect71 = new Rectangle(460, 345, 35, 35);
-        rect71.setArcHeight(25);
-        rect71.setArcWidth(25);
-        rect71.setFill(Color.BLUE);
+        Rectangle Building71 = new Rectangle(460, 345, 35, 35);
+        Building71.setArcHeight(25);
+        Building71.setArcWidth(25);
+        Building71.setFill(Color.BLUE);
         
-        Rectangle rect72 = new Rectangle(540, 345, 35, 35);
-        rect72.setArcHeight(25);
-        rect72.setArcWidth(25);
-        rect72.setFill(Color.BLUE);
+        Rectangle Building72 = new Rectangle(540, 345, 35, 35);
+        Building72.setArcHeight(25);
+        Building72.setArcWidth(25);
+        Building72.setFill(Color.BLUE);
         
         // Neighbourhood_2 : BLOCK 7
         
-        Rectangle rect73 = new Rectangle(630, 345, 35, 35);
-        rect73.setArcHeight(25);
-        rect73.setArcWidth(25);
-        rect73.setFill(Color.BLUE);
+        Rectangle Building73 = new Rectangle(630, 345, 35, 35);
+        Building73.setArcHeight(25);
+        Building73.setArcWidth(25);
+        Building73.setFill(Color.BLUE);
         
-        Rectangle rect74 = new Rectangle(690, 345, 35, 35);
-        rect74.setArcHeight(25);
-        rect74.setArcWidth(25);
-        rect74.setFill(Color.BLUE);
+        Rectangle Building74 = new Rectangle(690, 345, 35, 35);
+        Building74.setArcHeight(25);
+        Building74.setArcWidth(25);
+        Building74.setFill(Color.BLUE);
         
-        Rectangle rect75 = new Rectangle(750, 345, 35, 35);
-        rect75.setArcHeight(25);
-        rect75.setArcWidth(25);
-        rect75.setFill(Color.BLUE);
+        Rectangle Building75 = new Rectangle(750, 345, 35, 35);
+        Building75.setArcHeight(25);
+        Building75.setArcWidth(25);
+        Building75.setFill(Color.BLUE);
         
-        Rectangle rect76 = new Rectangle(810, 345, 35, 35);
-        rect76.setArcHeight(25);
-        rect76.setArcWidth(25);
-        rect76.setFill(Color.BLUE);
+        Rectangle Building76 = new Rectangle(810, 345, 35, 35);
+        Building76.setArcHeight(25);
+        Building76.setArcWidth(25);
+        Building76.setFill(Color.BLUE);
         
         // Neighbourhood_2 : BLOCK 8
         
-        Rectangle rect77 = new Rectangle(880, 345, 35, 35);
-        rect77.setArcHeight(25);
-        rect77.setArcWidth(25);
-        rect77.setFill(Color.BLUE);
+        Rectangle Building77 = new Rectangle(880, 345, 35, 35);
+        Building77.setArcHeight(25);
+        Building77.setArcWidth(25);
+        Building77.setFill(Color.BLUE);
         
-        Rectangle rect78 = new Rectangle(950, 345, 35, 35);
-        rect78.setArcHeight(25);
-        rect78.setArcWidth(25);
-        rect78.setFill(Color.BLUE);
+        Rectangle Building78 = new Rectangle(950, 345, 35, 35);
+        Building78.setArcHeight(25);
+        Building78.setArcWidth(25);
+        Building78.setFill(Color.BLUE);
         
-        Rectangle rect79 = new Rectangle(1010, 345, 35, 35);
-        rect79.setArcHeight(25);
-        rect79.setArcWidth(25);
-        rect79.setFill(Color.BLUE);
+        Rectangle Building79 = new Rectangle(1010, 345, 35, 35);
+        Building79.setArcHeight(25);
+        Building79.setArcWidth(25);
+        Building79.setFill(Color.BLUE);
         
         // Neighbourhood_2 : BLOCK 9
-        Rectangle rect80 = new Rectangle(50, 410, 35, 35);
-        rect80.setArcHeight(25);
-        rect80.setArcWidth(25);
-        rect80.setFill(Color.BLUE);
+        Rectangle Building80 = new Rectangle(50, 410, 35, 35);
+        Building80.setArcHeight(25);
+        Building80.setArcWidth(25);
+        Building80.setFill(Color.BLUE);
         
-        Rectangle rect81 = new Rectangle(165, 410, 35, 35);
-        rect81.setArcHeight(25);
-        rect81.setArcWidth(25);
-        rect81.setFill(Color.BLUE);
+        Rectangle Building81 = new Rectangle(165, 410, 35, 35);
+        Building81.setArcHeight(25);
+        Building81.setArcWidth(25);
+        Building81.setFill(Color.BLUE);
         
-        Rectangle rect82 = new Rectangle(270, 410, 35, 35);
-        rect82.setArcHeight(25);
-        rect82.setArcWidth(25);
-        rect82.setFill(Color.BLUE);
+        Rectangle Building82 = new Rectangle(270, 410, 35, 35);
+        Building82.setArcHeight(25);
+        Building82.setArcWidth(25);
+        Building82.setFill(Color.BLUE);
         
         // Neighbourhood_2 : BLOCK 10 
-        Rectangle rect83 = new Rectangle(350, 410, 35, 35);
-        rect83.setArcHeight(25);
-        rect83.setArcWidth(25);
-        rect83.setFill(Color.BLUE);
+        Rectangle Building83 = new Rectangle(350, 410, 35, 35);
+        Building83.setArcHeight(25);
+        Building83.setArcWidth(25);
+        Building83.setFill(Color.BLUE);
         
-        Rectangle rect84 = new Rectangle(425, 410, 35, 35);
-        rect84.setArcHeight(25);
-        rect84.setArcWidth(25);
-        rect84.setFill(Color.BLUE);
+        Rectangle Building84 = new Rectangle(425, 410, 35, 35);
+        Building84.setArcHeight(25);
+        Building84.setArcWidth(25);
+        Building84.setFill(Color.BLUE);
         
-        Rectangle rect85 = new Rectangle(490, 410, 35, 35);
-        rect85.setArcHeight(25);
-        rect85.setArcWidth(25);
-        rect85.setFill(Color.BLUE);
+        Rectangle Building85 = new Rectangle(490, 410, 35, 35);
+        Building85.setArcHeight(25);
+        Building85.setArcWidth(25);
+        Building85.setFill(Color.BLUE);
         
-        Rectangle rect86 = new Rectangle(550, 410, 35, 35);
-        rect86.setArcHeight(25);
-        rect86.setArcWidth(25);
-        rect86.setFill(Color.BLUE);
+        Rectangle Building86 = new Rectangle(550, 410, 35, 35);
+        Building86.setArcHeight(25);
+        Building86.setArcWidth(25);
+        Building86.setFill(Color.BLUE);
         
         // Neighbourhood_2 : BLOCK 11
-        Rectangle rect87 = new Rectangle(640, 410, 35, 35);
-        rect87.setArcHeight(25);
-        rect87.setArcWidth(25);
-        rect87.setHeight(35);
-        rect87.setWidth(80);
-        rect87.setFill(Color.BLUE);
+        Rectangle Building87 = new Rectangle(640, 410, 35, 35);
+        Building87.setArcHeight(25);
+        Building87.setArcWidth(25);
+        Building87.setHeight(35);
+        Building87.setWidth(80);
+        Building87.setFill(Color.BLUE);
         
-        Rectangle rect88 = new Rectangle(760, 410, 35, 35);
-        rect88.setArcHeight(25);
-        rect88.setArcWidth(25);
-        rect88.setHeight(35);
-        rect88.setWidth(80);
-        rect88.setFill(Color.BLUE);
+        Rectangle Building88 = new Rectangle(760, 410, 35, 35);
+        Building88.setArcHeight(25);
+        Building88.setArcWidth(25);
+        Building88.setHeight(35);
+        Building88.setWidth(80);
+        Building88.setFill(Color.BLUE);
         
         // Neighbourhood_2 : BLOCK 12 
-        Rectangle rect89 = new Rectangle(880, 410, 35, 35);
-        rect89.setArcHeight(25);
-        rect89.setArcWidth(25);
-        rect89.setFill(Color.BLUE);
+        Rectangle Building89 = new Rectangle(880, 410, 35, 35);
+        Building89.setArcHeight(25);
+        Building89.setArcWidth(25);
+        Building89.setFill(Color.BLUE);
         
-        Rectangle rect90 = new Rectangle(950, 410, 35, 35);
-        rect90.setArcHeight(25);
-        rect90.setArcWidth(25);
-        rect90.setFill(Color.BLUE);
+        Rectangle Building90 = new Rectangle(950, 410, 35, 35);
+        Building90.setArcHeight(25);
+        Building90.setArcWidth(25);
+        Building90.setFill(Color.BLUE);
         
-        Rectangle rect91 = new Rectangle(1010, 410, 35, 35);
-        rect91.setArcHeight(25);
-        rect91.setArcWidth(25);
-        rect91.setFill(Color.BLUE);
+        Rectangle Building91 = new Rectangle(1010, 410, 35, 35);
+        Building91.setArcHeight(25);
+        Building91.setArcWidth(25);
+        Building91.setFill(Color.BLUE);
         
-        // Neighbourhood 3 ( from rect 92 to rect 133  ) with 12 blocks include Warehouse :
+        // Neighbourhood 3 ( from Building 92 to Building 133  ) with 12 blocks include Warehouse :
         Text Neighbourhood_3 = new Text(1120, 550, "AlRabwah");
         Neighbourhood_3.setFont(font);
         Neighbourhood_3.setFill(Color.SALMON);
         
         // Neighbourhood_3 : BLOCK 1
-        Rectangle rect92 = new Rectangle(50, 475, 35, 35);
-        rect92.setArcHeight(25);
-        rect92.setArcWidth(25);
-        rect92.setFill(Color.SALMON);
+        Rectangle Building92 = new Rectangle(50, 475, 35, 35);
+        Building92.setArcHeight(25);
+        Building92.setArcWidth(25);
+        Building92.setFill(Color.SALMON);
         
-        Rectangle rect93 = new Rectangle(125, 475, 35, 35);
-        rect93.setArcHeight(25);
-        rect93.setArcWidth(25);
-        rect93.setFill(Color.SALMON);
+        Rectangle Building93 = new Rectangle(125, 475, 35, 35);
+        Building93.setArcHeight(25);
+        Building93.setArcWidth(25);
+        Building93.setFill(Color.SALMON);
         
-        Rectangle rect94 = new Rectangle(200, 475, 35, 35);
-        rect94.setArcHeight(25);
-        rect94.setArcWidth(25);
-        rect94.setFill(Color.SALMON);
+        Rectangle Building94 = new Rectangle(200, 475, 35, 35);
+        Building94.setArcHeight(25);
+        Building94.setArcWidth(25);
+        Building94.setFill(Color.SALMON);
         
-        Rectangle rect95 = new Rectangle(270, 475, 35, 35);
-        rect95.setArcHeight(25);
-        rect95.setArcWidth(25);
-        rect95.setFill(Color.SALMON);
+        Rectangle Building95 = new Rectangle(270, 475, 35, 35);
+        Building95.setArcHeight(25);
+        Building95.setArcWidth(25);
+        Building95.setFill(Color.SALMON);
         
         // Neighbourhood_3 : BLOCK 2
-        Rectangle rect96 = new Rectangle(370, 475, 35, 35);
-        rect96.setArcHeight(25);
-        rect96.setArcWidth(25);
-        rect96.setFill(Color.SALMON);
+        Rectangle Building96 = new Rectangle(370, 475, 35, 35);
+        Building96.setArcHeight(25);
+        Building96.setArcWidth(25);
+        Building96.setFill(Color.SALMON);
         
-        Rectangle rect97 = new Rectangle(460, 475, 35, 35);
-        rect97.setArcHeight(25);
-        rect97.setArcWidth(25);
-        rect97.setFill(Color.SALMON);
+        Rectangle Building97 = new Rectangle(460, 475, 35, 35);
+        Building97.setArcHeight(25);
+        Building97.setArcWidth(25);
+        Building97.setFill(Color.SALMON);
         
-        Rectangle rect98 = new Rectangle(540, 475, 35, 35);
-        rect98.setArcHeight(25);
-        rect98.setArcWidth(25);
-        rect98.setFill(Color.SALMON);
+        Rectangle Building98 = new Rectangle(540, 475, 35, 35);
+        Building98.setArcHeight(25);
+        Building98.setArcWidth(25);
+        Building98.setFill(Color.SALMON);
         
         // Neighbourhood_3 : BLOCK 3
-        Rectangle rect99 = new Rectangle(630, 475, 35, 35);
-        rect99.setArcHeight(25);
-        rect99.setArcWidth(25);
-        rect99.setFill(Color.SALMON);
+        Rectangle Building99 = new Rectangle(630, 475, 35, 35);
+        Building99.setArcHeight(25);
+        Building99.setArcWidth(25);
+        Building99.setFill(Color.SALMON);
         
-        Rectangle rect100 = new Rectangle(690, 475, 35, 35);
-        rect100.setArcHeight(25);
-        rect100.setArcWidth(25);
-        rect100.setFill(Color.SALMON);
+        Rectangle Building100 = new Rectangle(690, 475, 35, 35);
+        Building100.setArcHeight(25);
+        Building100.setArcWidth(25);
+        Building100.setFill(Color.SALMON);
         
-        Rectangle rect101 = new Rectangle(750, 475, 35, 35);
-        rect101.setArcHeight(25);
-        rect101.setArcWidth(25);
-        rect101.setFill(Color.SALMON);
+        Rectangle Building101 = new Rectangle(750, 475, 35, 35);
+        Building101.setArcHeight(25);
+        Building101.setArcWidth(25);
+        Building101.setFill(Color.SALMON);
         
-        Rectangle rect102 = new Rectangle(810, 475, 35, 35);
-        rect102.setArcHeight(25);
-        rect102.setArcWidth(25);
-        rect102.setFill(Color.SALMON);
+        Rectangle Building102 = new Rectangle(810, 475, 35, 35);
+        Building102.setArcHeight(25);
+        Building102.setArcWidth(25);
+        Building102.setFill(Color.SALMON);
         
         // Neighbourhood_3 : BLOCK 4
-        Rectangle rect103 = new Rectangle(890, 475, 35, 35);
-        rect103.setArcHeight(25);
-        rect103.setArcWidth(25);
-        rect103.setFill(Color.SALMON);
+        Rectangle Building103 = new Rectangle(890, 475, 35, 35);
+        Building103.setArcHeight(25);
+        Building103.setArcWidth(25);
+        Building103.setFill(Color.SALMON);
         
-        Rectangle rect104 = new Rectangle(960, 475, 35, 35);
-        rect104.setArcHeight(25);
-        rect104.setArcWidth(25);
-        rect104.setFill(Color.SALMON);
+        Rectangle Building104 = new Rectangle(960, 475, 35, 35);
+        Building104.setArcHeight(25);
+        Building104.setArcWidth(25);
+        Building104.setFill(Color.SALMON);
         
-        Rectangle rect105 = new Rectangle(1020, 475, 35, 35);
-        rect105.setArcHeight(25);
-        rect105.setArcWidth(25);
-        rect105.setFill(Color.SALMON);
+        Rectangle Building105 = new Rectangle(1020, 475, 35, 35);
+        Building105.setArcHeight(25);
+        Building105.setArcWidth(25);
+        Building105.setFill(Color.SALMON);
         
         // Neighbourhood_3 : BLOCK 5
-        Rectangle rect106 = new Rectangle(50, 540, 35, 35);
-        rect106.setArcHeight(25);
-        rect106.setArcWidth(25);
-        rect106.setFill(Color.SALMON);
+        Rectangle Building106 = new Rectangle(50, 540, 35, 35);
+        Building106.setArcHeight(25);
+        Building106.setArcWidth(25);
+        Building106.setFill(Color.SALMON);
         
-        Rectangle rect107 = new Rectangle(125, 540, 35, 35);
-        rect107.setArcHeight(25);
-        rect107.setArcWidth(25);
-        rect107.setFill(Color.SALMON);
+        Rectangle Building107 = new Rectangle(125, 540, 35, 35);
+        Building107.setArcHeight(25);
+        Building107.setArcWidth(25);
+        Building107.setFill(Color.SALMON);
         
-        Rectangle rect108 = new Rectangle(200, 540, 35, 35);
-        rect108.setArcHeight(25);
-        rect108.setArcWidth(25);
-        rect108.setFill(Color.SALMON);
+        Rectangle Building108 = new Rectangle(200, 540, 35, 35);
+        Building108.setArcHeight(25);
+        Building108.setArcWidth(25);
+        Building108.setFill(Color.SALMON);
         
-        Rectangle rect109 = new Rectangle(270, 540, 35, 35);
-        rect109.setArcHeight(25);
-        rect109.setArcWidth(25);
-        rect109.setFill(Color.SALMON);
+        Rectangle Building109 = new Rectangle(270, 540, 35, 35);
+        Building109.setArcHeight(25);
+        Building109.setArcWidth(25);
+        Building109.setFill(Color.SALMON);
         
         // Neighbourhood_3 : BLOCK 6
-        Rectangle rect110 = new Rectangle(355, 540, 35, 35);
-        rect110.setArcHeight(25);
-        rect110.setArcWidth(25);
-        rect110.setFill(Color.SALMON);
+        Rectangle Building110 = new Rectangle(355, 540, 35, 35);
+        Building110.setArcHeight(25);
+        Building110.setArcWidth(25);
+        Building110.setFill(Color.SALMON);
         
-        Rectangle rect111 = new Rectangle(425, 540, 35, 35);
-        rect111.setArcHeight(25);
-        rect111.setArcWidth(25);
-        rect111.setFill(Color.SALMON);
+        Rectangle Building111 = new Rectangle(425, 540, 35, 35);
+        Building111.setArcHeight(25);
+        Building111.setArcWidth(25);
+        Building111.setFill(Color.SALMON);
         
-        Rectangle rect112 = new Rectangle(490, 540, 35, 35);
-        rect112.setArcHeight(25);
-        rect112.setArcWidth(25);
-        rect112.setFill(Color.SALMON);
+        Rectangle Building112 = new Rectangle(490, 540, 35, 35);
+        Building112.setArcHeight(25);
+        Building112.setArcWidth(25);
+        Building112.setFill(Color.SALMON);
         
-        Rectangle rect113 = new Rectangle(550, 540, 35, 35);
-        rect113.setArcHeight(25);
-        rect113.setArcWidth(25);
-        rect113.setFill(Color.SALMON);
+        Rectangle Building113 = new Rectangle(550, 540, 35, 35);
+        Building113.setArcHeight(25);
+        Building113.setArcWidth(25);
+        Building113.setFill(Color.SALMON);
         
         // Neighbourhood_3 : BLOCK 7
         
-        Rectangle rect114 = new Rectangle(640, 540, 35, 35);
-        rect114.setArcHeight(25);
-        rect114.setArcWidth(25);
-        rect114.setFill(Color.SALMON);
+        Rectangle Building114 = new Rectangle(640, 540, 35, 35);
+        Building114.setArcHeight(25);
+        Building114.setArcWidth(25);
+        Building114.setFill(Color.SALMON);
         
-        Rectangle rect115 = new Rectangle(720, 540, 35, 35);
-        rect115.setArcHeight(25);
-        rect115.setArcWidth(25);
-        rect115.setFill(Color.SALMON);
+        Rectangle Building115 = new Rectangle(720, 540, 35, 35);
+        Building115.setArcHeight(25);
+        Building115.setArcWidth(25);
+        Building115.setFill(Color.SALMON);
         
-        Rectangle rect116 = new Rectangle(800, 540, 35, 35);
-        rect116.setArcHeight(25);
-        rect116.setArcWidth(25);
-        rect116.setFill(Color.SALMON); 
+        Rectangle Building116 = new Rectangle(800, 540, 35, 35);
+        Building116.setArcHeight(25);
+        Building116.setArcWidth(25);
+        Building116.setFill(Color.SALMON); 
         
         // Neighbourhood_3 : BLOCK 8
         
-        Rectangle rect117 = new Rectangle(890, 540, 35, 35);
-        rect117.setArcHeight(25);
-        rect117.setArcWidth(25);
-        rect117.setFill(Color.SALMON);
+        Rectangle Building117 = new Rectangle(890, 540, 35, 35);
+        Building117.setArcHeight(25);
+        Building117.setArcWidth(25);
+        Building117.setFill(Color.SALMON);
         
-        Rectangle rect118 = new Rectangle(955, 540, 35, 35);
-        rect118.setArcHeight(25);
-        rect118.setArcWidth(25);
-        rect118.setFill(Color.SALMON);
+        Rectangle Building118 = new Rectangle(955, 540, 35, 35);
+        Building118.setArcHeight(25);
+        Building118.setArcWidth(25);
+        Building118.setFill(Color.SALMON);
         
-        Rectangle rect119 = new Rectangle(1015, 540, 35, 35);
-        rect119.setArcHeight(25);
-        rect119.setArcWidth(25);
-        rect119.setFill(Color.SALMON);
+        Rectangle Building119 = new Rectangle(1015, 540, 35, 35);
+        Building119.setArcHeight(25);
+        Building119.setArcWidth(25);
+        Building119.setFill(Color.SALMON);
         
-        // Neighbourhood_3 : BLOCK 9 for "Warehouse , which take rect from 120 to 123 "
+        // Neighbourhood_3 : BLOCK 9 for "Warehouse , which take Building from 120 to 123 "
         Text Warehouse_label = new Text(100,645,"Warehouse");
         Warehouse_label.setFont(font);
         Warehouse_label.setFill(Color.BLACK);
@@ -720,57 +720,57 @@ public class FadingRectangle extends Application {
         
         // Neighbourhood_3 : BLOCK 10 
         
-        Rectangle rect124 = new Rectangle(350, 605, 35, 35);
-        rect124.setArcHeight(25);
-        rect124.setArcWidth(25);
-        rect124.setFill(Color.SALMON);
+        Rectangle Building124 = new Rectangle(350, 605, 35, 35);
+        Building124.setArcHeight(25);
+        Building124.setArcWidth(25);
+        Building124.setFill(Color.SALMON);
         
-        Rectangle rect125 = new Rectangle(425, 605, 35, 35);
-        rect125.setArcHeight(25);
-        rect125.setArcWidth(25);
-        rect125.setFill(Color.SALMON);
+        Rectangle Building125 = new Rectangle(425, 605, 35, 35);
+        Building125.setArcHeight(25);
+        Building125.setArcWidth(25);
+        Building125.setFill(Color.SALMON);
         
-        Rectangle rect126 = new Rectangle(490, 605, 35, 35);
-        rect126.setArcHeight(25);
-        rect126.setArcWidth(25);
-        rect126.setFill(Color.SALMON);
+        Rectangle Building126 = new Rectangle(490, 605, 35, 35);
+        Building126.setArcHeight(25);
+        Building126.setArcWidth(25);
+        Building126.setFill(Color.SALMON);
         
-        Rectangle rect127 = new Rectangle(550, 605, 35, 35);
-        rect127.setArcHeight(25);
-        rect127.setArcWidth(25);
-        rect127.setFill(Color.SALMON);
+        Rectangle Building127 = new Rectangle(550, 605, 35, 35);
+        Building127.setArcHeight(25);
+        Building127.setArcWidth(25);
+        Building127.setFill(Color.SALMON);
         
         // Neighbourhood_3 : BLOCK 11
-        Rectangle rect128 = new Rectangle(635, 605, 35, 35);
-        rect128.setArcHeight(25);
-        rect128.setArcWidth(25);
-        rect128.setFill(Color.SALMON);
+        Rectangle Building128 = new Rectangle(635, 605, 35, 35);
+        Building128.setArcHeight(25);
+        Building128.setArcWidth(25);
+        Building128.setFill(Color.SALMON);
         
-        Rectangle rect129 = new Rectangle(710, 605, 35, 35);
-        rect129.setArcHeight(25);
-        rect129.setArcWidth(25);
-        rect129.setFill(Color.SALMON);
+        Rectangle Building129 = new Rectangle(710, 605, 35, 35);
+        Building129.setArcHeight(25);
+        Building129.setArcWidth(25);
+        Building129.setFill(Color.SALMON);
         
-        Rectangle rect130 = new Rectangle(785, 605, 35, 35);
-        rect130.setArcHeight(25);
-        rect130.setArcWidth(25);
-        rect130.setFill(Color.SALMON);
+        Rectangle Building130 = new Rectangle(785, 605, 35, 35);
+        Building130.setArcHeight(25);
+        Building130.setArcWidth(25);
+        Building130.setFill(Color.SALMON);
         
         // Neighbourhood_3 : BLOCK 12
-        Rectangle rect131 = new Rectangle(880, 605, 35, 35);
-        rect131.setArcHeight(25);
-        rect131.setArcWidth(25);
-        rect131.setFill(Color.SALMON);
+        Rectangle Building131 = new Rectangle(880, 605, 35, 35);
+        Building131.setArcHeight(25);
+        Building131.setArcWidth(25);
+        Building131.setFill(Color.SALMON);
         
-        Rectangle rect132 = new Rectangle(945, 605, 35, 35);
-        rect132.setArcHeight(25);
-        rect132.setArcWidth(25);
-        rect132.setFill(Color.SALMON);
+        Rectangle Building132 = new Rectangle(945, 605, 35, 35);
+        Building132.setArcHeight(25);
+        Building132.setArcWidth(25);
+        Building132.setFill(Color.SALMON);
         
-        Rectangle rect133 = new Rectangle(1010, 605, 35, 35);
-        rect133.setArcHeight(25);
-        rect133.setArcWidth(25);
-        rect133.setFill(Color.SALMON);
+        Rectangle Building133 = new Rectangle(1010, 605, 35, 35);
+        Building133.setArcHeight(25);
+        Building133.setArcWidth(25);
+        Building133.setFill(Color.SALMON);
         
         
         
@@ -781,68 +781,68 @@ public class FadingRectangle extends Application {
         
         // Streets for Alhamdaniyah Neighourhood: 
         
-        Line line_stret1 = new Line(0, 0, 1000, 0);
-        line_stret1.setStrokeWidth(12);
-        line_stret1.setTranslateX(50);
-        line_stret1.setTranslateY(66);
+        Line Street_1 = new Line(0, 0, 1000, 0);
+        Street_1.setStrokeWidth(12);
+        Street_1.setTranslateX(50);
+        Street_1.setTranslateY(66);
         
-         Line line_stret2 = new Line(0, 0, 1000, 0);
-        line_stret2.setStrokeWidth(12);
-        line_stret2.setTranslateX(50);
-        line_stret2.setTranslateY(132);
+         Line Street_2 = new Line(0, 0, 1000, 0);
+        Street_2.setStrokeWidth(12);
+        Street_2.setTranslateX(50);
+        Street_2.setTranslateY(132);
         
         
-        Line line_stret3 = new Line(0, 0, 1000, 0);
-        line_stret3.setStrokeWidth(12);
-        line_stret3.setTranslateX(50);
-        line_stret3.setTranslateY(198);
+        Line Street_3 = new Line(0, 0, 1000, 0);
+        Street_3.setStrokeWidth(12);
+        Street_3.setTranslateX(50);
+        Street_3.setTranslateY(198);
         
         //Streets for AlManar Neighourhood:
         
-         Line line_stret4 = new Line(0, 0, 1000, 0);
-        line_stret4.setStrokeWidth(12);
-        line_stret4.setTranslateX(50);
-        line_stret4.setTranslateY(264);
+         Line Street_4 = new Line(0, 0, 1000, 0);
+        Street_4.setStrokeWidth(12);
+        Street_4.setTranslateX(50);
+        Street_4.setTranslateY(264);
         
         
         
-         Line line_stret5 = new Line(0, 0, 1000, 0);
-        line_stret5.setStrokeWidth(12);
-        line_stret5.setTranslateX(50);
-        line_stret5.setTranslateY(330);
+         Line Street_5 = new Line(0, 0, 1000, 0);
+        Street_5.setStrokeWidth(12);
+        Street_5.setTranslateX(50);
+        Street_5.setTranslateY(330);
         
         
-        Line line_stret6 = new Line(0, 0, 1000, 0);
-        line_stret6.setStrokeWidth(12);
-        line_stret6.setTranslateX(50);
-        line_stret6.setTranslateY(396);
+        Line Street_6 = new Line(0, 0, 1000, 0);
+        Street_6.setStrokeWidth(12);
+        Street_6.setTranslateX(50);
+        Street_6.setTranslateY(396);
         
         //Streets for AlRabwah Neighourhood: 
         
-        Line line_stret7 = new Line(0, 0, 1000, 0);
-        line_stret7.setStrokeWidth(12);
-        line_stret7.setTranslateX(50);
-        line_stret7.setTranslateY(462);
+        Line Street_7 = new Line(0, 0, 1000, 0);
+        Street_7.setStrokeWidth(12);
+        Street_7.setTranslateX(50);
+        Street_7.setTranslateY(462);
         
         
-        Line line_stret8 = new Line(0, 0, 1000, 0);
-        line_stret8.setStrokeWidth(12);
-        line_stret8.setTranslateX(50);
-        line_stret8.setTranslateY(528);
+        Line Street_8 = new Line(0, 0, 1000, 0);
+        Street_8.setStrokeWidth(12);
+        Street_8.setTranslateX(50);
+        Street_8.setTranslateY(528);
         
         
-        Line line_stret9 = new Line(0, 0, 1000, 0);
-        line_stret9.setStrokeWidth(12);
-        line_stret9.setTranslateX(50);
-        line_stret9.setTranslateY(594);
+        Line Street_9 = new Line(0, 0, 1000, 0);
+        Street_9.setStrokeWidth(12);
+        Street_9.setTranslateX(50);
+        Street_9.setTranslateY(594);
         
         
         //STREET A: 
         
-         Line line_stret_topDwon1 = new Line(0, 0, 0, 670);
-        line_stret_topDwon1.setStrokeWidth(12);
-        line_stret_topDwon1.setTranslateX(330);
-        line_stret_topDwon1.setTranslateY(0);
+         Line Street_A = new Line(0, 0, 0, 670);
+        Street_A.setStrokeWidth(12);
+        Street_A.setTranslateX(330);
+        Street_A.setTranslateY(0);
         
         // White line inside street A
 
@@ -854,17 +854,17 @@ public class FadingRectangle extends Application {
         
        
         // STREET B :
-         Line line_stret_topDwon2 = new Line(0, 0, 0, 670);
-        line_stret_topDwon2.setStrokeWidth(12);
-        line_stret_topDwon2.setTranslateX(600);
-        line_stret_topDwon2.setTranslateY(0);
+         Line Street_B = new Line(0, 0, 0, 670);
+        Street_B.setStrokeWidth(12);
+        Street_B.setTranslateX(600);
+        Street_B.setTranslateY(0);
         
         
         // STREET C: 
-        Line line_stret_topDwon3 = new Line(0, 0, 0, 670);
-        line_stret_topDwon3.setStrokeWidth(12);
-        line_stret_topDwon3.setTranslateX(860);
-        line_stret_topDwon3.setTranslateY(0);
+        Line Street_C = new Line(0, 0, 0, 670);
+        Street_C.setStrokeWidth(12);
+        Street_C.setTranslateX(860);
+        Street_C.setTranslateY(0);
         
         
         
@@ -1025,16 +1025,16 @@ public class FadingRectangle extends Application {
             // Add homes to Neighborhood 1 group
             
             Group neighborhood1Group = new Group();
-            neighborhood1Group.getChildren().addAll( rect1 ,rect2 , rect3 , rect4 ,rect5,rect6,rect7,rect8,rect9,rect10,rect11,rect12,rect13,rect14,rect15,rect16,rect17,rect18,rect19,rect20,rect21,rect22,rect23,rect24,rect25,rect26,rect27,rect28,rect29,rect30,rect31,rect32,rect33,rect34,rect35,rect36,rect37,rect38,rect39,rect40,rect41,rect42,rect43,rect44,rect45,rect46,rect47,rect48,rect49,rect50,rect51,rect52);
+            neighborhood1Group.getChildren().addAll( Building1 ,Building2 , Building3 , Building4 ,Building5,Building6,Building7,Building8,Building9,Building10,Building11,Building12,Building13,Building14,Building15,Building16,Building17,Building18,Building19,Building20,Building21,Building22,Building23,Building24,Building25,Building26,Building27,Building28,Building29,Building30,Building31,Building32,Building33,Building34,Building35,Building36,Building37,Building38,Building39,Building40,Building41,Building42,Building43,Building44,Building45,Building46,Building47,Building48,Building49,Building50,Building51,Building52);
             
             // Add homes to Neighborhood 2 group
             Group neighborhood2Group = new Group();
-            neighborhood2Group.getChildren().addAll(rect53,rect54,rect55,rect56,rect57,rect58,rect59,rect60,rect61,rect62,rect63,rect64,rect65,rect66,rect67,rect68,rect69,rect70,rect71,rect72,rect73,rect74,rect75,rect76,rect77,rect78,rect79,rect80,rect81,rect82,rect83,rect84,rect85,rect86,rect87,rect88,rect89,rect90,rect91);
+            neighborhood2Group.getChildren().addAll(Building53,Building54,Building55,Building56,Building57,Building58,Building59,Building60,Building61,Building62,Building63,Building64,Building65,Building66,Building67,Building68,Building69,Building70,Building71,Building72,Building73,Building74,Building75,Building76,Building77,Building78,Building79,Building80,Building81,Building82,Building83,Building84,Building85,Building86,Building87,Building88,Building89,Building90,Building91);
             
             // Add homes to Neighborhood 3 group
             
             Group neighborhood3Group = new Group();
-            neighborhood3Group.getChildren().addAll(rect92,rect93,rect94,rect95,rect96,rect97,rect98,rect99,rect100,rect101,rect102,rect103,rect104,rect105,rect106,rect107,rect108,rect109,rect110,rect111,rect112,rect113,rect114,rect115,rect116,rect117,rect118,rect119,Warehouse,Warehouse_label,rect124,rect125,rect126,rect127,rect128,rect129,rect130,rect131,rect132,rect133);
+            neighborhood3Group.getChildren().addAll(Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Warehouse,Warehouse_label,Building124,Building125,Building126,Building127,Building128,Building129,Building130,Building131,Building132,Building133);
             // Add the neighborhood group to the neighborhoodsGroup
             
             neighborhoodsGroup.getChildren().add(neighborhood1Group);
@@ -1044,9 +1044,9 @@ public class FadingRectangle extends Application {
 
             // Create a group for streets
             Group streetsGroup = new Group();
-            streetsGroup.getChildren().addAll(line_stret1, line_stret2, line_stret3, line_stret4, line_stret5,
-                            line_stret6,line_stret7,line_street_white1,line_stret8,line_stret9,line_stret_topDwon1 , 
-                            line_stret_topDwon2,line_stret_topDwon3);
+            streetsGroup.getChildren().addAll(Street_1, Street_2, Street_3, Street_4, Street_5,
+                            Street_6,Street_7,line_street_white1,Street_8,Street_9,Street_A , 
+                            Street_B,Street_C);
 
             // Create a group for warehouses
             Group warehousesGroup = new Group();
@@ -1073,7 +1073,4 @@ public class FadingRectangle extends Application {
             primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 }
