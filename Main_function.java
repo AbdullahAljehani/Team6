@@ -28,7 +28,7 @@ public class Main_function {
         };
 
         // Schedule the TimerTask to run every 100 milliseconds (adjust the delay and period as needed)
-        timer.schedule(simulationTask, 0, 50); // 0 ms delay, 100 ms period (0.1 seconds)
+        timer.schedule(simulationTask, 0, 10); // 0 ms delay, 100 ms period (0.1 seconds)
     }
 
     private static String formatTime(int seconds) {
