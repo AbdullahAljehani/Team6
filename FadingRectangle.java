@@ -15,8 +15,8 @@ import javafx.scene.layout.Pane;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.MenuButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -893,81 +893,119 @@ public class FadingRectangle extends Application {
         pathTransition.setPath(path);
         pathTransition.play();
 
-       // Time,distance and cost Counter Shapes :
+       // Time,distance,cost and Number of Simulation  Counter Shapes :
        
-        // StackPane roo = new StackPane();
+        // For Time : 
         Rectangle timerRectangle = new Rectangle(1080,70,80, 40);
         timerRectangle.setStroke(javafx.scene.paint.Color.SKYBLUE);
         timerRectangle.setStrokeType(StrokeType.INSIDE);
         timerRectangle.setStrokeWidth(5);
+        
+        // For Distance : 
         Rectangle distanceRectangle = new Rectangle(1190,70,80, 40);
         distanceRectangle.setStroke(javafx.scene.paint.Color.SKYBLUE);
         distanceRectangle.setStrokeType(StrokeType.INSIDE);
         distanceRectangle.setStrokeWidth(5);
-        Rectangle costRectangle = new Rectangle(1130,130,80, 40);
+        
+        // For Cost : 
+        Rectangle costRectangle = new Rectangle(1080,140,80, 40);
         costRectangle.setStroke(javafx.scene.paint.Color.SKYBLUE);
         costRectangle.setStrokeType(StrokeType.INSIDE);
         costRectangle.setStrokeWidth(5);
         
-        // Time,distance and cost Labels :
+        // For No.Simulations : 
+        Rectangle No_SimulationRectangle = new Rectangle(1190,140,80, 40);
+        No_SimulationRectangle.setStroke(javafx.scene.paint.Color.SKYBLUE);
+        No_SimulationRectangle.setStrokeType(StrokeType.INSIDE);
+        No_SimulationRectangle.setStrokeWidth(5);
         
-        Font Labelfont = new Font(" Times New Roman",15);
+        // Time,distance,cost and No.Simulations Labels :
+        
+        // For Time : 
+        
+        Font Labelfont = new Font(" Times New Roman",13);
         Label timeLabel = new Label("Time");
-        Label distanceLabel = new Label("Distance");
-        Label costLabel = new Label("Cost of gasoline");
         timeLabel.setFont(Labelfont);
-        distanceLabel.setFont(Labelfont);
-        costLabel.setFont(Labelfont);
         timeLabel.setLayoutX(1100);
         timeLabel.setLayoutY(45);
+        
+        // For Distance :
+        Label distanceLabel = new Label("Distance");
+        distanceLabel.setFont(Labelfont);
         distanceLabel.setLayoutX(1200);
         distanceLabel.setLayoutY(45);
-        costLabel.setLayoutX(1122);
-        costLabel.setLayoutY(110);
-        // MeneButton---------------------------------------------
+        
+        // For Cost :
+        Label costLabel = new Label("Cost of gasoline");
+        costLabel.setFont(Labelfont);
+        costLabel.setLayoutX(1075);
+        costLabel.setLayoutY(120);
+        
+        // For No_Simulations :
+        Label No_SimulationLabel = new Label("Number of Simulations");
+        No_SimulationLabel.setFont(Labelfont);
+        No_SimulationLabel.setLayoutX(1190);
+        No_SimulationLabel.setLayoutY(120);
       
 
         
         // Time,distance and cost Counter Labels :
         
+        // For Time : 
+        
         Font CounterLabelfont = new Font(" Times New Roman",15);
         Label CounterTimeLabel = new Label("00:00:00");
-        Label CounterDistanceLabel = new Label("00.00 Km");
-        Label CounterCostLabel = new Label("$ 00,00");
         CounterTimeLabel.setFont(CounterLabelfont);
         CounterTimeLabel.setTextFill(Color.WHITE);
-        CounterDistanceLabel.setFont(CounterLabelfont);
-        CounterDistanceLabel.setTextFill(Color.WHITE);
-        CounterCostLabel.setFont(CounterLabelfont);
-        CounterCostLabel.setTextFill(Color.WHITE);
         CounterTimeLabel.setLayoutX(1090);
         CounterTimeLabel.setLayoutY(78);
+        
+        // For Distance :
+        
+        Label CounterDistanceLabel = new Label("00.00 Km");
+        CounterDistanceLabel.setFont(CounterLabelfont);
+        CounterDistanceLabel.setTextFill(Color.WHITE);
         CounterDistanceLabel.setLayoutX(1200);
         CounterDistanceLabel.setLayoutY(78);
-        CounterCostLabel.setLayoutX(1145);
-        CounterCostLabel.setLayoutY(140);
+        
+        // For Cost :
+        
+        Label CounterCostLabel = new Label("$ 00,00");
+        CounterCostLabel.setFont(CounterLabelfont);
+        CounterCostLabel.setTextFill(Color.WHITE);
+        CounterCostLabel.setLayoutX(1095);
+        CounterCostLabel.setLayoutY(150);
+        
+        // For No_Simulations:
+        
+        Label CounterNo_SimulationLabel = new Label("0");
+        CounterNo_SimulationLabel.setFont(CounterLabelfont);
+        CounterNo_SimulationLabel.setTextFill(Color.WHITE);
+        CounterNo_SimulationLabel.setLayoutX(1225);
+        CounterNo_SimulationLabel.setLayoutY(150);
 
 
+       // Create Object from Buttons : 
+       
+        Button Start_button = new Button("Start");
+        Start_button.setPrefSize(60, 25);
+        Start_button.setLayoutX(1060 );
+        Start_button.setLayoutY(15);
 
-       Button button1 = new Button("Start");
-        button1.setPrefSize(60, 25);
-        button1.setLayoutX(1060 );
-        button1.setLayoutY(15);
+        Button Pause_button = new Button("Pause");
+        Pause_button.setPrefSize(60, 25);
+        Pause_button.setLayoutX(1130);
+        Pause_button.setLayoutY(15);
 
-        Button button2 = new Button("Pause");
-        button2.setPrefSize(60, 25);
-        button2.setLayoutX(1130);
-        button2.setLayoutY(15);
+        Button End_button = new Button("End ");
+        End_button.setPrefSize(60, 25);
+        End_button.setLayoutX(1200);
+        End_button.setLayoutY(15);
 
-        Button button3 = new Button("End ");
-        button3.setPrefSize(60, 25);
-        button3.setLayoutX(1200);
-        button3.setLayoutY(15);
-
-        Button button4 = new Button("Rise speed");
-        button4.setPrefSize(70, 25);
-        button4.setLayoutX(1270);
-        button4.setLayoutY(15);
+        Button Back_button = new Button("Back");
+        Back_button.setPrefSize(70, 25);
+        Back_button.setLayoutX(1270);
+        Back_button.setLayoutY(15);
         
 
       
@@ -975,6 +1013,11 @@ public class FadingRectangle extends Application {
             // Set the scene's root to the StackPane container
 
             StackPane root = new StackPane();
+            
+            // Create a group for Buttons : 
+            
+            Group buttonsGroup = new Group ();
+            buttonsGroup.getChildren().addAll(Start_button,Pause_button,End_button,Back_button);
 
             // Create a group for neighborhoods
             Group neighborhoodsGroup = new Group();
@@ -982,7 +1025,7 @@ public class FadingRectangle extends Application {
             // Add homes to Neighborhood 1 group
             
             Group neighborhood1Group = new Group();
-            neighborhood1Group.getChildren().addAll(button1, button2, button3, button4 , rect1 ,rect2 , rect3 , rect4 ,rect5,rect6,rect7,rect8,rect9,rect10,rect11,rect12,rect13,rect14,rect15,rect16,rect17,rect18,rect19,rect20,rect21,rect22,rect23,rect24,rect25,rect26,rect27,rect28,rect29,rect30,rect31,rect32,rect33,rect34,rect35,rect36,rect37,rect38,rect39,rect40,rect41,rect42,rect43,rect44,rect45,rect46,rect47,rect48,rect49,rect50,rect51,rect52);
+            neighborhood1Group.getChildren().addAll( rect1 ,rect2 , rect3 , rect4 ,rect5,rect6,rect7,rect8,rect9,rect10,rect11,rect12,rect13,rect14,rect15,rect16,rect17,rect18,rect19,rect20,rect21,rect22,rect23,rect24,rect25,rect26,rect27,rect28,rect29,rect30,rect31,rect32,rect33,rect34,rect35,rect36,rect37,rect38,rect39,rect40,rect41,rect42,rect43,rect44,rect45,rect46,rect47,rect48,rect49,rect50,rect51,rect52);
             
             // Add homes to Neighborhood 2 group
             Group neighborhood2Group = new Group();
@@ -1014,14 +1057,14 @@ public class FadingRectangle extends Application {
             carRoutesGroup.getChildren().add(car);
             
             Group labelsGroup = new Group();
-            labelsGroup.getChildren().addAll(timeLabel, distanceLabel,costLabel,timerRectangle,distanceRectangle,costRectangle);
+            labelsGroup.getChildren().addAll(timeLabel, distanceLabel,costLabel,No_SimulationLabel,timerRectangle,distanceRectangle,costRectangle,No_SimulationRectangle);
             Group counterLabelsGroup = new Group();
-                counterLabelsGroup.getChildren().addAll( CounterTimeLabel, CounterDistanceLabel,CounterCostLabel);
+                counterLabelsGroup.getChildren().addAll( CounterTimeLabel, CounterDistanceLabel,CounterCostLabel,CounterNo_SimulationLabel);
 
         
-            Scene scene = new Scene(root , 1500, 700,Color.WHITE);
+            Scene scene = new Scene(root , 700, 700,Color.WHITE);
             Pane AllGroups = new Pane();
-            AllGroups.getChildren().addAll(streetsGroup, neighborhoodsGroup,warehousesGroup,carRoutesGroup,labelsGroup,counterLabelsGroup);
+            AllGroups.getChildren().addAll(streetsGroup, neighborhoodsGroup,warehousesGroup,carRoutesGroup,labelsGroup,counterLabelsGroup,buttonsGroup);
 
             root.getChildren().add(AllGroups);
         // Set the stage title and show the scene
@@ -1030,4 +1073,7 @@ public class FadingRectangle extends Application {
             primaryStage.show();
     }
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
