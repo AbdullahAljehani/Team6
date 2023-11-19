@@ -8,6 +8,9 @@ public class MainProgram {
 
     public static void main(String[] args) {
         Timer timer = new Timer();
+        
+        FadingRectangle.launch(FadingRectangle.class, args);
+        
 
        
         TimerTask simulationTask = new TimerTask() {
