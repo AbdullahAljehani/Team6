@@ -2,7 +2,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
-public class Main_function {
+public class MainProgram  {
     private static int secondsPassed = 0;
 
     public static void main(String[] args) {
