@@ -1,9 +1,7 @@
 import javafx.animation.PathTransition;
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
@@ -13,15 +11,12 @@ import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.text.*;
 import javafx.scene.shape.StrokeType;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.scene.image.ImageView;
-
 
 
 public class FadingRectangle extends Application {
@@ -875,31 +870,15 @@ public class FadingRectangle extends Application {
         //-------------CAR ------------ 
         
         
-       Image carImage = new Image("Car.png"); // Replace "your_car_image.png" with the path to your car image
-        ImageView carImageView = new ImageView(carImage);
-        carImageView.setFitWidth(40); // Set the width of the car image
-        carImageView.setFitHeight(20); // Set the height of the car image
-        carImageView.setLayoutX(75); // Set the initial X position of the car
-
-        // Create a TranslateTransition for the car
-        TranslateTransition carTransition = new TranslateTransition(Duration.seconds(5), carImageView);
-        carTransition.setToX(300); // Set the final X position of the car
-        carTransition.setCycleCount(TranslateTransition.INDEFINITE); // Make the transition repeat indefinitely
-
-        // Start the car animation
-        carTransition.play();
-
-        // Create a Pane to hold the car image and add it to the center of the BorderPane
-        BorderPane borderPane = new BorderPane();
-
-        Pane contentPane = new Pane();
-        contentPane.getChildren().add(carImageView);
-        borderPane.setCenter(contentPane);
+        Rectangle car = new Rectangle(75, 180, 15, 15);
+        car.setArcHeight(15);
+        car.setArcWidth(15);
+        car.setFill(Color.RED);   
         
         //Instantiating the path class  
      
         
-        Path path = new Path();
+       /* Path path = new Path();
         MoveTo move = new MoveTo(300, 645);
         LineTo line1 = new LineTo(330, 645);
         MoveTo move2 = new MoveTo(330, 645);
@@ -908,9 +887,9 @@ public class FadingRectangle extends Application {
         
         PathTransition pathTransition = new PathTransition();
         pathTransition.setDuration(Duration.seconds(15));
-        pathTransition.setNode(carImageView);
+        pathTransition.setNode(car);
         pathTransition.setPath(path);
-        pathTransition.play();
+        pathTransition.play();*/
 
        // Time,distance,cost and Number of Simulation  Counter Shapes :
        
@@ -1073,7 +1052,7 @@ public class FadingRectangle extends Application {
 
             // Create a group for car routes
             Group carRoutesGroup = new Group();
-            carRoutesGroup.getChildren().add(carImageView);
+            carRoutesGroup.getChildren().add(car);
             
             Group labelsGroup = new Group();
             labelsGroup.getChildren().addAll(timeLabel, distanceLabel,costLabel,No_SimulationLabel,timerRectangle,distanceRectangle,costRectangle,No_SimulationRectangle);
@@ -1081,7 +1060,7 @@ public class FadingRectangle extends Application {
                 counterLabelsGroup.getChildren().addAll( CounterTimeLabel, CounterDistanceLabel,CounterCostLabel,CounterNo_SimulationLabel);
 
         
-            Scene scene = new Scene(root , 1400, 700,Color.WHITE);
+            Scene scene = new Scene(root , 700, 700,Color.WHITE);
             Pane AllGroups = new Pane();
             AllGroups.getChildren().addAll(streetsGroup, neighborhoodsGroup,warehousesGroup,carRoutesGroup,labelsGroup,counterLabelsGroup,buttonsGroup);
 

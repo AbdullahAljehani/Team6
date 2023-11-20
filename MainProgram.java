@@ -6,8 +6,8 @@ public class MainProgram {
     private static DeliveryDriver deliveryDriver;  
     private static int secondsPassed = 0;
 
-
     public static void main(String[] args) {
+
         Substreet streetA = new Substreet('A', 10.0, 80, 5, null, null);
         Substreet streetB = new Substreet('B', 10.0, 80, 5, null, null);
         Substreet streetC = new Substreet('C', 10.0, 80, 5, null, null);
@@ -37,6 +37,9 @@ public class MainProgram {
         city1.addNeighborhood(neighborhood1);
         city1.addNeighborhood(neighborhood2);
         city1.addNeighborhood(neighborhood3);
+        
+       
+        FadingRectangle.launch(FadingRectangle.class, args);
 
 
         
@@ -60,14 +63,16 @@ public class MainProgram {
         Offical_paper package4= new Offical_paper (customer4,4);
         Normal package5=new Normal(customer5, 5);
         Offical_paper package6= new Offical_paper (customer6,6);
-        DeliveryRoute route= new DeliveryRoute(90);
         DeliveryDriver driver= new DeliveryDriver();
+        DeliveryRoute route= new DeliveryRoute(90);
         driver.addPackage(package1);
         driver.addPackage(package2);
         driver.addPackage(package3);
         driver.addPackage(package4);
         driver.addPackage(package5);
         driver.addPackage(package6);
+        driver.setCurrentRoute(route);
+        route.addSubstreet(street9);
 
        
 
@@ -112,6 +117,13 @@ public class MainProgram {
         long remainingSeconds = seconds % 60;
 
         return String.format("%02d:%02d:%02d", hours, minutes, remainingSeconds);
+    }
+    public static void moveDriverAndRefreshGUI() {
+        // Move the driver based on your logic
+        deliveryDriver.moveDriver(1, DeliveryDriver.Direction.FORWARD);
+        
+
+        
     }
     
     

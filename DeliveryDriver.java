@@ -11,8 +11,9 @@ public class DeliveryDriver {
     private static final int MIN_X = 0;
     private static final int MAX_Y = 100;
     private static final int MIN_Y = 0;
+    private Substreet currentSubstreet;
 
-    private enum Direction {
+    public enum Direction {
         FORWARD,
         BACKWARD,
         LEFT,
@@ -24,8 +25,8 @@ public class DeliveryDriver {
         this.currentX = 0;
         this.currentY = 0;
         this.currentDistanceOnRoute = 0;
+        this.currentSubstreet = null; // Initialize to null
     }
-Substreet currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
 
     public void addPackage(Package aPackage) {
         packages.add(aPackage);
@@ -46,6 +47,14 @@ Substreet currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIn
         return this.currentRoute;
     }
 
+    public int getCurrentX(){
+        return currentX;
+    }
+
+    public int getCurrentY(){
+        return currentY;
+    }
+
     public boolean isPackageDelivered(Package aPackage) {
         return aPackage.isDelivered;
     }
@@ -53,11 +62,13 @@ Substreet currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIn
     public void moveDriver(int distance, Direction direction) {
         if (currentRoute != null) {
             if (currentRoute.getSubstreets() != null && !currentRoute.getSubstreets().isEmpty()) {
+                // Move the initialization here
+                currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
+                
                 updateDistanceOnRoute(distance);
-               
 
                 double remainingDistanceOnSubstreet = currentSubstreet.getDistance() - currentDistanceOnRoute;
-    
+
                 if (remainingDistanceOnSubstreet <= 0) {
                     moveToNextSubstreet();
                     updateDistanceOnRoute(distance);
@@ -71,9 +82,8 @@ Substreet currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIn
             System.out.println("No route set for the driver.");
         }
     }
-    
 
-    private void updateDriverPosition(int distance, Direction direction) {
+    public void updateDriverPosition(int distance, Direction direction) {
         System.out.println("Driver moved by " + distance + " units in direction: " + direction);
     
         switch (direction) {
@@ -121,6 +131,7 @@ Substreet currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIn
             return 0;
         }
     }
+
     public void deliverPackage() {
         if (currentRoute != null) {
             for (int i = 0; i < getPackages().size(); i++) {
@@ -139,7 +150,6 @@ Substreet currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIn
     
                     Building destinationBuilding = aPackage.getCustomer().getBuilding();
     
-                   
                     if (destinationBuilding.getSubstreet() == currentSubstreet) {
                         moveToBuilding(destinationBuilding);
     
@@ -152,86 +162,80 @@ Substreet currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIn
     
                         return;
                     } else {
-        
-                        //moveToSubstreet(destinationBuilding.getSubstreet());
+                        
+                        
+
+                            // moveToSubstreet(destinationBuilding.getSubstreet());
                     }
                 }
             }
-    
+
             System.out.println("No more packages assigned to the driver at the current position.");
         } else {
             System.out.println("No route set for the driver.");
         }
     }
-    
+
     public void moveToBuilding(Building destinationBuilding) {
         double distanceToDestination = calculateDistanceToBuilding(destinationBuilding.getXCoordinate(), destinationBuilding.getYCoordinate());
-    
+
         moveDriver((int) distanceToDestination, Direction.FORWARD);
     }
-    
-   
-    
-    
+
     public void moveToNextSubstreet() {
-    if (currentRoute != null && currentRoute.getSubstreets() != null) {
-        int tripDelay = calculateTripDelay();
-        System.out.println("Introducing a delay of " + tripDelay + " minutes for the entire trip.");
+        if (currentRoute != null && currentRoute.getSubstreets() != null) {
+            int tripDelay = calculateTripDelay();
+            System.out.println("Introducing a delay of " + tripDelay + " minutes for the entire trip.");
 
-        
-        try {
-            Thread.sleep(tripDelay * 1000 * 60); 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        if (currentSubstreetIndex < currentRoute.getSubstreets().size() - 1) {
-            currentSubstreetIndex++;
-            Substreet nextSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
-            System.out.println("Driver moved to the next street. Next substreet: " + nextSubstreet.getStreetName());
-        } else {
-            System.out.println("No more substreets in the route.");
-        }
-    } else {
-        System.out.println("No route or substreets set for the driver.");
-    }
-}
-public double calculateDistanceToBuilding(double destinationX, double destinationY) {
-    
-    double deltaX = destinationX - currentX;
-    double deltaY = destinationY - currentY;
-    return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-
-}
-private void moveToNextPackage() {
-    for (int i = 0; i < getPackages().size(); i++) {
-        Package aPackage = getPackages().get(i);
-
-        if (aPackage.isAssignedToDriver && !aPackage.isDelivered) {
-            aPackage.isDelivered = true;
-            aPackage.isAssignedToDriver = false;
-
-            int nextPackageIndex = i + 1;
-
-            if (nextPackageIndex < getPackages().size()) {
-                Package nextPackage = getPackages().get(nextPackageIndex);
-
-                nextPackage.isDelivered = false;
-                nextPackage.isAssignedToDriver = true;
-
-                System.out.println("Driver assigned to the next package with ID: " + nextPackage.getPackageId());
-            } else {
-                System.out.println("No more packages assigned to the driver at the current position.");
+            try {
+                Thread.sleep(tripDelay * 1000 * 60);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
-            return;
+            if (currentSubstreetIndex < currentRoute.getSubstreets().size() - 1) {
+                currentSubstreetIndex++;
+                currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
+                System.out.println("Driver moved to the next street. Next substreet: " + currentSubstreet.getStreetName());
+            } else {
+                System.out.println("No more substreets in the route.");
+            }
+        } else {
+            System.out.println("No route or substreets set for the driver.");
         }
     }
 
-    System.out.println("No more packages assigned to the driver at the current position.");
+    public double calculateDistanceToBuilding(double destinationX, double destinationY) {
+        double deltaX = destinationX - currentX;
+        double deltaY = destinationY - currentY;
+        return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    }
+
+    private void moveToNextPackage() {
+        for (int i = 0; i < getPackages().size(); i++) {
+            Package aPackage = getPackages().get(i);
+
+            if (aPackage.isAssignedToDriver && !aPackage.isDelivered) {
+                aPackage.isDelivered = true;
+                aPackage.isAssignedToDriver = false;
+
+                int nextPackageIndex = i + 1;
+
+                if (nextPackageIndex < getPackages().size()) {
+                    Package nextPackage = getPackages().get(nextPackageIndex);
+
+                    nextPackage.isDelivered = false;
+                    nextPackage.isAssignedToDriver = true;
+
+                    System.out.println("Driver assigned to the next package with ID: " + nextPackage.getPackageId());
+                } else {
+                    System.out.println("No more packages assigned to the driver at the current position.");
+                }
+
+                return;
+            }
+        }
+
+        System.out.println("No more packages assigned to the driver at the current position.");
+    }
 }
-}
-
-
-
