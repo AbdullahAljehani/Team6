@@ -10,7 +10,7 @@ public class MainProgram {
         Timer timer = new Timer();
         
        
-        FirstPage.launch(FirstPage.class, args);
+        FadingRectangle.launch(FadingRectangle.class, args);
 
 
         
