@@ -1,0 +1,1327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.Path?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Button?>
+
+<Pane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FadingRectangle">
+    <children>
+        <!-- Neighbourhoods -->
+        <!-- Neighbourhood 1: Alhamdaniya -->
+        <Text layoutX="1090" layoutY="230">
+            <font>
+                <Font name="Times New Roman" size="25"/>
+            </font>
+            <fill>
+                <Color fx:constant="GREY"/>
+            </fill>
+            Alhamdaniya
+        </Text>
+
+        <!-- Neighbourhood_1: BLOCK 1 -->
+
+        <!-- Building 1 -->
+        <Rectangle layoutX="50" layoutY="20" width="35" height="35" arcHeight="20" arcWidth="20" fill="GREY"/>
+
+        <!-- Building 2 -->
+        <Rectangle layoutX="160" layoutY="20" width="35" height="35" arcHeight="20" arcWidth="20" fill="GREY"/>
+
+        <!-- Building 3 -->
+        <Rectangle layoutX="270" layoutY="20" width="35" height="35" arcHeight="20" arcWidth="20" fill="GREY"/>
+
+        <!-- Neighbourhood_1: BLOCK 2 -->
+
+        <!-- Building 4 -->
+        <Rectangle layoutX="350" layoutY="20" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 5 -->
+        <Rectangle layoutX="425" layoutY="20" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 6 -->
+        <Rectangle layoutX="490" layoutY="20" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 7 -->
+        <Rectangle layoutX="550" layoutY="20" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Neighbourhood_1: BLOCK 3 -->
+
+        <!-- Building 8 -->
+        <Rectangle layoutX="640" layoutY="20" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 9 -->
+        <Rectangle layoutX="710" layoutY="20" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 10 -->
+        <Rectangle layoutX="790" layoutY="20" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Neighbourhood_1: BLOCK 4 -->
+
+        <!-- Building 11 -->
+        <Rectangle layoutX="880" layoutY="20" width="70" height="35" arcHeight="25" arcWidth="25">
+            <fill>
+                <Color fx:constant="GREY"/>
+            </fill>
+        </Rectangle>
+
+        <!-- Building 12 -->
+        <Rectangle layoutX="970" layoutY="20" width="70" height="35" arcHeight="25" arcWidth="25">
+            <fill>
+                <Color fx:constant="GREY"/>
+            </fill>
+        </Rectangle>
+
+        <!-- Neighbourhood_1: BLOCK 5 -->
+
+        <!-- Building 13 -->
+        <Rectangle layoutX="50" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 14 -->
+        <Rectangle layoutX="125" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 15 -->
+        <Rectangle layoutX="200" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 16 -->
+        <Rectangle layoutX="270" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Neighbourhood_1 : BLOCK 6 -->
+
+          <!-- Building 17 -->
+        <Rectangle layoutX="350" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+          <!-- Building 18 -->
+        <Rectangle layoutX="460" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+          <!-- Building 19 -->
+        <Rectangle layoutX="550" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Neighbourhood_1 : BLOCK 7 -->
+
+        <!-- Building 20 -->
+        <Rectangle layoutX="625" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 21 -->
+        <Rectangle layoutX="680" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 22 -->
+        <Rectangle layoutX="740" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 23 -->
+        <Rectangle layoutX="800" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Neighbourhood_1 : BLOCK 8 -->
+
+         <!-- Building 24 -->
+        <Rectangle layoutX="875" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+         <!-- Building 25 -->
+        <Rectangle layoutX="950" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+         <!-- Building 26 -->
+        <Rectangle layoutX="1020" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Neighbourhood_1 : BLOCK 9 -->
+
+        <!-- Building 27 -->
+        <Rectangle layoutX="50" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 28 -->
+        <Rectangle layoutX="160" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 29 -->
+        <Rectangle layoutX="270" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Neighbourhood_1 : BLOCK 10 -->
+
+        <!-- Building 30 -->
+        <Rectangle layoutX="350" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 31 -->
+        <Rectangle layoutX="425" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 32 -->
+        <Rectangle layoutX="490" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 33 -->
+        <Rectangle layoutX="550" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Neighbourhood_1 : BLOCK 11 -->
+
+        <!-- Building 34 -->
+        <Rectangle layoutX="630" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 35 -->
+        <Rectangle layoutX="710" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 36 -->
+        <Rectangle layoutX="790" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Neighbourhood_1 : BLOCK 12 -->
+
+        <!-- Building 37 -->
+        <Rectangle layoutX="870" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 38 -->
+        <Rectangle layoutX="920" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 39 -->
+        <Rectangle layoutX="970" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 40 -->
+        <Rectangle layoutX="1020" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Neighbourhood_1 : BLOCK 13 -->
+
+        <!-- Building 41 -->
+        <Rectangle layoutX="50" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 42 -->
+        <Rectangle layoutX="165" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 43 -->
+        <Rectangle layoutX="270" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Neighbourhood_1 : BLOCK 14 -->
+
+        <!-- Building 44 -->
+        <Rectangle layoutX="360" layoutY="215" width="80" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 45 -->
+        <Rectangle layoutX="495" layoutY="215" width="80" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Neighbourhood_1 : BLOCK 15 -->
+
+        <!-- Building 46 -->
+        <Rectangle layoutX="620" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 47 -->
+        <Rectangle layoutX="680" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 48 -->
+        <Rectangle layoutX="740" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 49 -->
+        <Rectangle layoutX="800" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Neighbourhood_1 : BLOCK 16 -->
+
+        <!-- Building 50 -->
+        <Rectangle layoutX="880" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 51 -->
+        <Rectangle layoutX="950" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+        <!-- Building 52 -->
+        <Rectangle layoutX="1010" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+    
+        <!-- Neighbourhood 2: AlManar -->
+
+        <Text layoutX="1120" layoutY="400" text="Almanar">
+            <font>
+                <Font name="System Regular" size="12.0" />
+            </font>
+            <fill>
+                <Color fx:constant="BLUE" />
+            </fill>
+            Almanar
+        </Text>
+
+        <!-- Neighbourhood_2 : BLOCK 1 -->
+
+        <!-- Building 53 -->
+        <Rectangle layoutX="50" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 54 -->
+        <Rectangle layoutX="125" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 55 -->
+        <Rectangle layoutX="200" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 56 -->
+        <Rectangle layoutX="270" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Neighbourhood_2 : BLOCK 2 -->
+
+        <!-- Building 57 -->
+        <Rectangle layoutX="370" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 58 -->
+        <Rectangle layoutX="460" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 59 -->
+        <Rectangle layoutX="540" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Neighbourhood_2 : BLOCK 3 -->
+
+        <!-- Building 60 -->
+        <Rectangle layoutX="630" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 61 -->
+        <Rectangle layoutX="690" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 62 -->
+        <Rectangle layoutX="750" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 63 -->
+        <Rectangle layoutX="810" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Neighbourhood_2 : BLOCK 4 -->
+
+        <!-- Building 64 -->
+        <Rectangle layoutX="890" layoutY="280" width="70" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 65 -->
+        <Rectangle layoutX="980" layoutY="280" width="70" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Neighbourhood_2 : BLOCK 5 -->
+
+        <!-- Building 66 -->
+        <Rectangle layoutX="50" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 67 -->
+        <Rectangle layoutX="125" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 68 -->
+        <Rectangle layoutX="200" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 69 -->
+        <Rectangle layoutX="270" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Neighbourhood_2 : BLOCK 6 -->
+
+        <!-- Building 70 -->
+        <Rectangle layoutX="370" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 71 -->
+        <Rectangle layoutX="460" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 72 -->
+        <Rectangle layoutX="540" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Neighbourhood_2 : BLOCK 7 -->
+
+        <!-- Building 73 -->
+        <Rectangle layoutX="630" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 74 -->
+        <Rectangle layoutX="690" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 75 -->
+        <Rectangle layoutX="750" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 76 -->
+        <Rectangle layoutX="810" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Neighbourhood_2 : BLOCK 8 -->
+
+        <!-- Building 77 -->
+        <Rectangle layoutX="880" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 78 -->
+        <Rectangle layoutX="950" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 79 -->
+        <Rectangle layoutX="1010" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Neighbourhood_2 : BLOCK 9 -->
+
+        <!-- Building 80 -->
+        <Rectangle layoutX="50" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 81 -->
+        <Rectangle layoutX="165" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 82 -->
+        <Rectangle layoutX="270" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Neighbourhood_2 : BLOCK 10 -->
+
+        <!-- Building 83 -->
+        <Rectangle layoutX="350" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 84 -->
+        <Rectangle layoutX="425" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 85 -->
+        <Rectangle layoutX="490" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 86 -->
+        <Rectangle layoutX="550" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Neighbourhood_2 : BLOCK 11 -->
+
+        <!-- Building 87 -->
+        <Rectangle layoutX="640" layoutY="410" width="80" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 88 -->
+        <Rectangle layoutX="760" layoutY="410" width="80" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Neighbourhood_2 : BLOCK 12 -->
+
+        <!-- Building 89 -->
+        <Rectangle layoutX="880" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 90 -->
+        <Rectangle layoutX="950" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Building 91 -->
+        <Rectangle layoutX="1010" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+        <!-- Neighbourhood 3 (from Building 92 to Building 133) with 12 blocks include Warehouse -->
+
+        <Text layoutX="1120" layoutY="550" text="AlRabwah" fill="SALMON">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            AlRabwah
+        </Text>
+
+        <!-- Neighbourhood_3 : BLOCK 1 -->
+
+        <!-- Building 92 -->
+        <Rectangle layoutX="50" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 93 -->
+        <Rectangle layoutX="125" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 94 -->
+        <Rectangle layoutX="200" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 95 -->
+        <Rectangle layoutX="270" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Neighbourhood_3 : BLOCK 2 -->
+
+        <!-- Building 96 -->
+        <Rectangle layoutX="370" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 97 -->
+        <Rectangle layoutX="460" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 98 -->
+        <Rectangle layoutX="540" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Neighbourhood_3 : BLOCK 3 -->
+
+        <!-- Building 99 -->
+        <Rectangle layoutX="630" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 100 -->
+        <Rectangle layoutX="690" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 101 -->
+        <Rectangle layoutX="750" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 102 -->
+        <Rectangle layoutX="810" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Neighbourhood_3 : BLOCK 4 -->
+
+        <!-- Building 103 -->
+        <Rectangle layoutX="890" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 104 -->
+        <Rectangle layoutX="960" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 105 -->
+        <Rectangle layoutX="1020" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Neighbourhood_3 : BLOCK 5 -->
+
+        <!-- Building 106 -->
+        <Rectangle layoutX="50" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 107 -->
+        <Rectangle layoutX="125" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 108 -->
+        <Rectangle layoutX="200" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 109 -->
+        <Rectangle layoutX="270" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Neighbourhood_3 : BLOCK 6 -->
+
+        <!-- Building 110 -->
+        <Rectangle layoutX="355" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 111 -->
+        <Rectangle layoutX="425" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 112 -->
+        <Rectangle layoutX="490" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 113 -->
+        <Rectangle layoutX="550" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Neighbourhood_3 : BLOCK 7 -->
+
+        <!-- Building 114 -->
+        <Rectangle layoutX="640" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 115 -->
+        <Rectangle layoutX="720" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 116 -->
+        <Rectangle layoutX="800" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Neighbourhood_3 : BLOCK 8 -->
+
+        <!-- Building 117 -->
+        <Rectangle layoutX="890" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 118 -->
+        <Rectangle layoutX="955" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 119 -->
+        <Rectangle layoutX="1015" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Neighbourhood_3 : BLOCK 9 for "Warehouse, which takes Building from 120 to 123" -->
+        <Text layoutX="100" layoutY="645" text="Warehouse" fill="BLACK">
+            <font>
+                <Font name="System" size="12.0" />
+            </font>
+            Warehouse
+        </Text>
+
+        <!-- WareHouse -->
+        <Rectangle layoutX="45" layoutY="600" width="280" height="110" arcHeight="25" arcWidth="25" fill="SILVER" />
+
+        <!-- Neighbourhood_3 : BLOCK 10 -->
+
+        <!-- Building 124 -->
+        <Rectangle layoutX="350" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 125 -->
+        <Rectangle layoutX="425" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 126 -->
+        <Rectangle layoutX="490" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 127 -->
+        <Rectangle layoutX="550" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Neighbourhood_3 : BLOCK 11 -->
+
+        <!-- Building 128 -->
+        <Rectangle layoutX="635" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 129 -->
+        <Rectangle layoutX="710" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Building 130 -->
+        <Rectangle layoutX="785" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+        <!-- Neighbourhood_3 : BLOCK 12 -->
+
+         <!-- Building 131 -->
+        <Rectangle layoutX="880" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+         <!-- Building 132 -->
+        <Rectangle layoutX="945" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+         <!-- Building 132 -->
+        <Rectangle layoutX="1010" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+
+        <!-- Streets for Alhamdaniyah Neighbourhood -->
+
+        <!-- Street 1 -->
+        <Line startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="66" stroke="BLACK" />
+
+        <!-- Street 2 -->
+        <Line startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="132" stroke="BLACK" />
+
+        <!-- Street 3 -->
+        <Line startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="198" stroke="BLACK" />
+
+        <!-- Streets for AlManar Neighbourhood -->
+
+        <!-- Street 4 -->
+        <Line startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="264" stroke="BLACK" />
+
+        <!-- Street 5 -->
+        <Line startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="330" stroke="BLACK" />
+
+        <!-- Street 6 -->
+        <Line startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="396" stroke="BLACK" />
+
+        <!-- Streets for AlRabwah Neighbourhood -->
+
+        <!-- Street 7 -->
+        <Line startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="462" stroke="BLACK" />
+
+        <!-- Street 8 -->
+        <Line startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="528" stroke="BLACK" />
+
+        <!-- Street 9 -->
+        <Line startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="594" stroke="BLACK" />
+
+
+
+        <!-- Street A -->
+        <Line startX="0" startY="0" endX="0" endY="670" strokeWidth="12" translateX="330" translateY="0" stroke="BLACK" />
+
+        <!-- Street B -->
+        <Line startX="0" startY="0" endX="0" endY="670" strokeWidth="12" translateX="600" translateY="0" stroke="BLACK" />
+
+        <!-- Street C -->
+        <Line startX="0" startY="0" endX="0" endY="670" strokeWidth="12" translateX="860" translateY="0" stroke="BLACK" />
+
+
+
+        
+        <!-- Car -->
+        <Rectangle x="75" y="180" width="15" height="15" arcWidth="15" arcHeight="15" fill="RED" />
+
+        <!-- Car Path -->
+        <Path>
+            <elements>
+                <MoveTo x="300" y="645" />
+                <LineTo x="330" y="645" />
+                <MoveTo x="330" y="645" />
+                <LineTo x="330" y="100" />
+            </elements>
+        </Path>
+
+        <!-- Car Path Transition -->
+        <PathTransition>
+            <duration>
+                <Duration seconds="15" />
+            </duration>
+            <node>
+                <Rectangle fx:id="car" />
+            </node>
+            <path>
+                <Path />
+            </path>
+        </PathTransition>
+
+
+
+        <!-- Time Counter Shape -->
+        <Rectangle x="1080" y="70" width="80" height="40" stroke="SKYBLUE" strokeType="INSIDE" strokeWidth="5" />
+
+        <!-- Distance Counter Shape -->
+        <Rectangle x="1190" y="70" width="80" height="40" stroke="SKYBLUE" strokeType="INSIDE" strokeWidth="5" />
+
+        <!-- Cost Counter Shape -->
+        <Rectangle x="1080" y="140" width="80" height="40" stroke="SKYBLUE" strokeType="INSIDE" strokeWidth="5" />
+
+        <!-- No.Simulations Counter Shape -->
+        <Rectangle x="1190" y="140" width="80" height="40" stroke="SKYBLUE" strokeType="INSIDE" strokeWidth="5" />
+
+        <!-- Time Label -->
+        <Label text="Time" font="Times New Roman 13" layoutX="1100" layoutY="45" />
+
+        <!-- Distance Label -->
+        <Label text="Distance" font="Times New Roman 13" layoutX="1200" layoutY="45" />
+
+        <!-- Cost Label -->
+        <Label text="Cost of gasoline" font="Times New Roman 13" layoutX="1075" layoutY="120" />
+
+        <!-- No.Simulations Label -->
+        <Label text="Number of Simulations" font="Times New Roman 13" layoutX="1190" layoutY="120" />
+
+        <!-- Time Counter Label -->
+        <Label text="00:00:00" font="Times New Roman 15" textFill="WHITE" layoutX="1090" layoutY="78" />
+
+        <!-- Distance Counter Label -->
+        <Label text="00.00 Km" font="Times New Roman 15" textFill="WHITE" layoutX="1200" layoutY="78" />
+
+        <!-- Cost Counter Label -->
+        <Label text="$ 00,00" font="Times New Roman 15" textFill="WHITE" layoutX="1095" layoutY="150" />
+
+        <!-- No.Simulations Counter Label -->
+        <Label text="0" font="Times New Roman 15" textFill="WHITE" layoutX="1225" layoutY="150" />
+
+
+
+        <!-- Start button -->
+        <Button text="Start" prefWidth="60" prefHeight="25" layoutX="1060" layoutY="15" />
+
+        <!-- Pause button -->
+        <Button text="Pause" prefWidth="60" prefHeight="25" layoutX="1130" layoutY="15" />
+
+        <!-- End button -->
+        <Button text="End" prefWidth="60" prefHeight="25" layoutX="1200" layoutY="15" />
+
+        <!-- Back button -->
+        <Button text="Back" prefWidth="70" prefHeight="25" layoutX="1270" layoutY="15" />
+
+    <children>
+        <!-- Buttons group -->
+        <Group>
+            <children>
+                <Button text="Start" prefWidth="60" prefHeight="25" layoutX="1060" layoutY="15" />
+                <Button text="Pause" prefWidth="60" prefHeight="25" layoutX="1130" layoutY="15" />
+                <Button text="End" prefWidth="60" prefHeight="25" layoutX="1200" layoutY="15" />
+                <Button text="Back" prefWidth="70" prefHeight="25" layoutX="1270" layoutY="15" />
+            </children>
+        </Group>
+
+
+        <!-- Neighborhoods group -->
+        <Group fx:id="neighborhoodsGroup">
+            <children>
+                <!-- Neighborhood 1 group -->
+                <Group fx:id="neighborhood1Group">
+                    <!-- Add homes to Neighborhood 1 group -->
+                    <children>
+                        <!-- Neighbourhood_1: BLOCK 1 -->
+                        <!-- Building 1 -->
+                        <Rectangle fx:id="Building 1" layoutX="50" layoutY="20" width="35" height="35" arcHeight="20" arcWidth="20" fill="GREY"/>
+
+                        <!-- Building 2 -->
+                        <Rectangle fx:id="Building 2" layoutX="160" layoutY="20" width="35" height="35" arcHeight="20" arcWidth="20" fill="GREY"/>
+
+                        <!-- Building 3 -->
+                        <Rectangle fx:id="Building 3" layoutX="270" layoutY="20" width="35" height="35" arcHeight="20" arcWidth="20" fill="GREY"/>
+
+                        <!-- Neighbourhood_1: BLOCK 2 -->
+
+                        <!-- Building 4 -->
+                        <Rectangle fx:id="Building 4" layoutX="350" layoutY="20" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 5 -->
+                        <Rectangle fx:id="Building 5" layoutX="425" layoutY="20" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 6 -->
+                        <Rectangle fx:id="Building 6" layoutX="490" layoutY="20" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 7 -->
+                        <Rectangle fx:id="Building 7" layoutX="550" layoutY="20" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Neighbourhood_1: BLOCK 3 -->
+
+                        <!-- Building 8 -->
+                        <Rectangle fx:id="Building 8" layoutX="640" layoutY="20" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 9 -->
+                        <Rectangle fx:id="Building 9" layoutX="710" layoutY="20" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 10 -->
+                        <Rectangle fx:id="Building 10" layoutX="790" layoutY="20" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Neighbourhood_1: BLOCK 4 -->
+
+                        <!-- Building 11 -->
+                        <Rectangle fx:id="Building 11" layoutX="880" layoutY="20" width="70" height="35" arcHeight="25" arcWidth="25">
+                            <fill>
+                                <Color fx:constant="GREY"/>
+                            </fill>
+                        </Rectangle>
+
+                        <!-- Building 12 -->
+                        <Rectangle fx:id="Building 12" layoutX="970" layoutY="20" width="70" height="35" arcHeight="25" arcWidth="25">
+                            <fill>
+                                <Color fx:constant="GREY"/>
+                            </fill>
+                        </Rectangle>
+
+                        <!-- Neighbourhood_1: BLOCK 5 -->
+
+                        <!-- Building 13 -->
+                        <Rectangle fx:id="Building 13" layoutX="50" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 14 -->
+                        <Rectangle fx:id="Building 14" layoutX="125" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 15 -->
+                        <Rectangle fx:id="Building 15" layoutX="200" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 16 -->
+                        <Rectangle fx:id="Building 16" layoutX="270" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Neighbourhood_1 : BLOCK 6 -->
+
+                        <!-- Building 17 -->
+                        <Rectangle fx:id="Building 17" layoutX="350" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 18 -->
+                        <Rectangle fx:id="Building 18" layoutX="460" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 19 -->
+                        <Rectangle fx:id="Building 19" layoutX="550" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Neighbourhood_1 : BLOCK 7 -->
+
+                        <!-- Building 20 -->
+                        <Rectangle fx:id="Building 20" layoutX="625" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 21 -->
+                        <Rectangle fx:id="Building 21" layoutX="680" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 22 -->
+                        <Rectangle fx:id="Building 22" layoutX="740" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 23 -->
+                        <Rectangle fx:id="Building 23" layoutX="800" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Neighbourhood_1 : BLOCK 8 -->
+
+                        <!-- Building 24 -->
+                        <Rectangle fx:id="Building 24" layoutX="875" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 25 -->
+                        <Rectangle fx:id="Building 25" layoutX="950" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 26 -->
+                        <Rectangle fx:id="Building 26" layoutX="1020" layoutY="80" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Neighbourhood_1 : BLOCK 9 -->
+
+                        <!-- Building 27 -->
+                        <Rectangle fx:id="Building 27" layoutX="50" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 28 -->
+                        <Rectangle fx:id="Building 28" layoutX="160" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 29 -->
+                        <Rectangle fx:id="Building 29" layoutX="270" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Neighbourhood_1 : BLOCK 10 -->
+
+                        <!-- Building 30 -->
+                        <Rectangle fx:id="Building 30" layoutX="350" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 31 -->
+                        <Rectangle fx:id="Building 31" layoutX="425" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 32 -->
+                        <Rectangle fx:id="Building 32" layoutX="490" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 33 -->
+                        <Rectangle fx:id="Building 33" layoutX="550" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Neighbourhood_1 : BLOCK 11 -->
+
+                        <!-- Building 34 -->
+                        <Rectangle fx:id="Building 34" layoutX="630" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 35 -->
+                        <Rectangle fx:id="Building 35" layoutX="710" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 36 -->
+                        <Rectangle fx:id="Building 36" layoutX="790" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Neighbourhood_1 : BLOCK 12 -->
+
+                        <!-- Building 37 -->
+                        <Rectangle fx:id="Building 37" layoutX="870" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 38 -->
+                        <Rectangle fx:id="Building 38" layoutX="920" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 39 -->
+                        <Rectangle fx:id="Building 39" layoutX="970" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 40 -->
+                        <Rectangle fx:id="Building 40" layoutX="1020" layoutY="150" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Neighbourhood_1 : BLOCK 13 -->
+
+                        <!-- Building 41 -->
+                        <Rectangle fx:id="Building 41" layoutX="50" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 42 -->
+                        <Rectangle fx:id="Building 42" layoutX="165" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 43 -->
+                        <Rectangle fx:id="Building 43" layoutX="270" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+
+                        <!-- Building 44 -->
+                        <Rectangle fx:id="Building 44" layoutX="360" layoutY="215" width="80" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 45 -->
+                        <Rectangle fx:id="Building 45" layoutX="495" layoutY="215" width="80" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Neighbourhood_1 : BLOCK 15 -->
+
+                        <!-- Building 46 -->
+                        <Rectangle fx:id="Building 46" layoutX="620" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 47 -->
+                        <Rectangle fx:id="Building 47" layoutX="680" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 48 -->
+                        <Rectangle fx:id="Building 48" fx:id= "Building48" layoutX="740" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 49 -->
+                        <Rectangle fx:id="Building 49" layoutX="800" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Neighbourhood_1 : BLOCK 16 -->
+
+                        <!-- Building 50 -->
+                        <Rectangle fx:id="Building 50" layoutX="880" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 51 -->
+                        <Rectangle fx:id="Building 51" layoutX="950" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+
+                        <!-- Building 52 -->
+                        <Rectangle fx:id="Building 52" layoutX="1010" layoutY="215" width="35" height="35" arcHeight="25" arcWidth="25" fill="GREY"/>
+                    
+                    </children>
+                </Group>
+
+                <!-- Neighborhood 2 group -->
+                <Group fx:id="neighborhood2Group">
+                    <!-- Add homes to Neighborhood 2 group -->
+                    <children>
+                        <!-- Neighbourhood_2 : BLOCK 1 -->
+
+                        <!-- Building 53 -->
+                        <Rectangle fx:id="Building 53" layoutX="50" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 54 -->
+                        <Rectangle fx:id="Building 54" layoutX="125" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 55 -->
+                        <Rectangle fx:id="Building 55" layoutX="200" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 56 -->
+                        <Rectangle fx:id="Building 56" layoutX="270" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Neighbourhood_2 : BLOCK 2 -->
+
+                        <!-- Building 57 -->
+                        <Rectangle fx:id="Building 57" layoutX="370" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 58 -->
+                        <Rectangle fx:id="Building 58" layoutX="460" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 59 -->
+                        <Rectangle fx:id="Building 59" layoutX="540" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Neighbourhood_2 : BLOCK 3 -->
+
+                        <!-- Building 60 -->
+                        <Rectangle fx:id="Building 60" layoutX="630" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 61 -->
+                        <Rectangle fx:id="Building 61" layoutX="690" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 62 -->
+                        <Rectangle fx:id="Building 62" layoutX="750" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 63 -->
+                        <Rectangle fx:id="Building 63" layoutX="810" layoutY="280" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Neighbourhood_2 : BLOCK 4 -->
+
+                        <!-- Building 64 -->
+                        <Rectangle fx:id="Building 64" layoutX="890" layoutY="280" width="70" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 65 -->
+                        <Rectangle fx:id="Building 65" layoutX="980" layoutY="280" width="70" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Neighbourhood_2 : BLOCK 5 -->
+
+                        <!-- Building 66 -->
+                        <Rectangle fx:id="Building 66" layoutX="50" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 67 -->
+                        <Rectangle fx:id="Building 67" layoutX="125" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 68 -->
+                        <Rectangle fx:id="Building 68" layoutX="200" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 69 -->
+                        <Rectangle fx:id="Building 69" layoutX="270" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Neighbourhood_2 : BLOCK 6 -->
+
+                        <!-- Building 70 -->
+                        <Rectangle fx:id="Building 70" layoutX="370" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 71 -->
+                        <Rectangle fx:id="Building 71" layoutX="460" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 72 -->
+                        <Rectangle fx:id="Building 72" layoutX="540" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Neighbourhood_2 : BLOCK 7 -->
+
+                        <!-- Building 73 -->
+                        <Rectangle fx:id="Building 73" layoutX="630" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 74 -->
+                        <Rectangle fx:id="Building 74" layoutX="690" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 75 -->
+                        <Rectangle fx:id="Building 75" layoutX="750" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 76 -->
+                        <Rectangle fx:id="Building 76" layoutX="810" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Neighbourhood_2 : BLOCK 8 -->
+
+                        <!-- Building 77 -->
+                        <Rectangle fx:id="Building 77" layoutX="880" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 78 -->
+                        <Rectangle fx:id="Building 78" layoutX="950" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 79 -->
+                        <Rectangle fx:id="Building 79" layoutX="1010" layoutY="345" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Neighbourhood_2 : BLOCK 9 -->
+
+                        <!-- Building 80 -->
+                        <Rectangle fx:id="Building 80" layoutX="50" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 81 -->
+                        <Rectangle fx:id="Building 81" layoutX="165" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 82 -->
+                        <Rectangle fx:id="Building 82" layoutX="270" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Neighbourhood_2 : BLOCK 10 -->
+
+                        <!-- Building 83 -->
+                        <Rectangle fx:id="Building 83" layoutX="350" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 84 -->
+                        <Rectangle fx:id="Building 84" layoutX="425" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 85 -->
+                        <Rectangle fx:id="Building 85" layoutX="490" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 86 -->
+                        <Rectangle fx:id="Building 86" layoutX="550" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Neighbourhood_2 : BLOCK 11 -->
+
+                        <!-- Building 87 -->
+                        <Rectangle fx:id="Building 87" layoutX="640" layoutY="410" width="80" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 88 -->
+                        <Rectangle fx:id="Building 88" layoutX="760" layoutY="410" width="80" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Neighbourhood_2 : BLOCK 12 -->
+
+                        <!-- Building 89 -->
+                        <Rectangle fx:id="Building 89" layoutX="880" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 90 -->
+                        <Rectangle fx:id="Building 90" layoutX="950" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                        <!-- Building 91 -->
+                        <Rectangle fx:id="Building 91" layoutX="1010" layoutY="410" width="35" height="35" arcHeight="25" arcWidth="25" fill="BLUE" />
+
+                    </children>
+                </Group>
+
+                <!-- Neighborhood 3 group -->
+                <Group fx:id="neighborhood3Group">
+                    <!-- Add homes to Neighborhood 3 group -->
+                    <children>
+                        <!-- Neighbourhood_3 : BLOCK 1 -->
+
+                        <!-- Building 92 -->
+                        <Rectangle fx:id="Building 92" layoutX="50" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 93 -->
+                        <Rectangle fx:id="Building 93" layoutX="125" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 94 -->
+                        <Rectangle fx:id="Building 94" layoutX="200" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 95 -->
+                        <Rectangle fx:id="Building 95" layoutX="270" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Neighbourhood_3 : BLOCK 2 -->
+
+                        <!-- Building 96 -->
+                        <Rectangle fx:id="Building 96" layoutX="370" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 97 -->
+                        <Rectangle fx:id="Building 97" layoutX="460" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 98 -->
+                        <Rectangle fx:id="Building 98" layoutX="540" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Neighbourhood_3 : BLOCK 3 -->
+
+                        <!-- Building 99 -->
+                        <Rectangle fx:id="Building 99" layoutX="630" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 100 -->
+                        <Rectangle fx:id="Building 100" layoutX="690" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 101 -->
+                        <Rectangle fx:id="Building 101"  layoutX="750" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 102 -->
+                        <Rectangle fx:id="Building 102"  layoutX="810" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Neighbourhood_3 : BLOCK 4 -->
+
+                        <!-- Building 103 -->
+                        <Rectangle fx:id="Building 103"  layoutX="890" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 104 -->
+                        <Rectangle fx:id="Building 104"  layoutX="960" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 105 -->
+                        <Rectangle fx:id="Building 105"  layoutX="1020" layoutY="475" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Neighbourhood_3 : BLOCK 5 -->
+
+                        <!-- Building 106 -->
+                        <Rectangle fx:id="Building 106"  layoutX="50" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 107 -->
+                        <Rectangle fx:id="Building 107"  layoutX="125" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 108 -->
+                        <Rectangle fx:id="Building 108"  layoutX="200" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 109 -->
+                        <Rectangle fx:id="Building 109"  layoutX="270" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Neighbourhood_3 : BLOCK 6 -->
+
+                        <!-- Building 110 -->
+                        <Rectangle fx:id="Building 110"  layoutX="355" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 111 -->
+                        <Rectangle fx:id="Building 111" layoutX="425" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 112 -->
+                        <Rectangle fx:id="Building 112" layoutX="490" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 113 -->
+                        <Rectangle fx:id="Building 113" layoutX="550" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Neighbourhood_3 : BLOCK 7 -->
+
+                        <!-- Building 114 -->
+                        <Rectangle fx:id="Building 114" layoutX="640" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 115 -->
+                        <Rectangle fx:id="Building 115" layoutX="720" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 116 -->
+                        <Rectangle fx:id="Building 116" layoutX="800" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Neighbourhood_3 : BLOCK 8 -->
+
+                        <!-- Building 117 -->
+                        <Rectangle fx:id="Building 117" layoutX="890" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 118 -->
+                        <Rectangle fx:id="Building 118" layoutX="955" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 119 -->
+                        <Rectangle fx:id="Building 119" layoutX="1015" layoutY="540" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Neighbourhood_3 : BLOCK 9 for "Warehouse, which takes Building from 120 to 123" -->
+                        <Text layoutX="100" layoutY="645" text="Warehouse" fill="BLACK">
+                            <font>
+                                <Font name="System" size="12.0" />
+                            </font>
+                            Warehouse
+                        </Text>
+
+                        <!-- WareHouse -->
+                        <Rectangle fx:id="Warehouse" layoutX="45" layoutY="600" width="280" height="110" arcHeight="25" arcWidth="25" fill="SILVER" />
+
+                        <!-- Neighbourhood_3 : BLOCK 10 -->
+
+                        <!-- Building 124 -->
+                        <Rectangle fx:id="Building 124" layoutX="350" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 125 -->
+                        <Rectangle fx:id="Building 125" layoutX="425" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 126 -->
+                        <Rectangle fx:id="Building 126" layoutX="490" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 127 -->
+                        <Rectangle fx:id="Building 127" layoutX="550" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Neighbourhood_3 : BLOCK 11 -->
+
+                        <!-- Building 128 -->
+                        <Rectangle fx:id="Building 128" layoutX="635" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 129 -->
+                        <Rectangle fx:id="Building 129" layoutX="710" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 130 -->
+                        <Rectangle fx:id="Building 130" layoutX="785" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Neighbourhood_3 : BLOCK 12 -->
+
+                        <!-- Building 131 -->
+                        <Rectangle fx:id="Building 131" layoutX="880" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 132 -->
+                        <Rectangle fx:id="Building 132" layoutX="945" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                        <!-- Building 133 -->
+                        <Rectangle fx:id="Building 133" layoutX="1010" layoutY="605" width="35" height="35" arcHeight="25" arcWidth="25" fill="SALMON" />
+
+                    </children>
+                </Group>
+
+                <!-- Add the neighborhood group to the neighborhoodsGroup -->
+                <children>
+                    <Group fx:id="Neighbourhood_1" />
+                    <Group fx:id="Neighbourhood_2" />
+                    <Group fx:id="Neighbourhood_3" />
+                </children>
+            </children>
+        </Group>
+
+
+
+        <!-- Streets group -->
+
+        <Group fx:id="streetsGroup">
+            <children>
+                <!-- Street nodes -->
+
+                <!-- Streets for Alhamdaniyah Neighbourhood -->
+
+                <!-- Street 1 -->
+                <Line fx:id="Street_1" startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="66" stroke="BLACK" />
+
+                <!-- Street 2 -->
+                <Line fx:id="Street_2" startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="132" stroke="BLACK" />
+
+                <!-- Street 3 -->
+                <Line fx:id="Street_3" startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="198" stroke="BLACK" />
+
+                <!-- Streets for AlManar Neighbourhood -->
+
+                <!-- Street 4 -->
+                <Line fx:id="Street_4" startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="264" stroke="BLACK" />
+
+                <!-- Street 5 -->
+                <Line fx:id="Street_5" startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="330" stroke="BLACK" />
+
+                <!-- Street 6 -->
+                <Line fx:id="Street_6" startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="396" stroke="BLACK" />
+
+                <!-- Streets for AlRabwah Neighbourhood -->
+
+                <!-- Street 7 -->
+                <Line fx:id="Street_7" startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="462" stroke="BLACK" />
+
+                <!-- Street 8 -->
+                <Line fx:id="Street_8" startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="528" stroke="BLACK" />
+
+                <!-- Street 9 -->
+                <Line fx:id="Street_9" startX="0" startY="0" endX="1000" endY="0" strokeWidth="12" translateX="50" translateY="594" stroke="BLACK" />
+
+
+
+                <!-- Street A -->
+                <Line fx:id="Street_A" startX="0" startY="0" endX="0" endY="670" strokeWidth="12" translateX="330" translateY="0" stroke="BLACK" />
+
+                <!-- Street B -->
+                <Line fx:id="Street_B" startX="0" startY="0" endX="0" endY="670" strokeWidth="12" translateX="600" translateY="0" stroke="BLACK" />
+
+                <!-- Street C -->
+                <Line fx:id="Street_C" startX="0" startY="0" endX="0" endY="670" strokeWidth="12" translateX="860" translateY="0" stroke="BLACK" />
+
+            </children>
+        </Group>
+
+        <!-- Warehouses group -->
+        <Group fx:id="warehousesGroup">
+            <!-- Warehouse node -->
+            <Rectangle fx:id="Warehouse" layoutX="45" layoutY="600" width="280" height="110" arcHeight="25" arcWidth="25" fill="SILVER" />
+            <!-- Warehouse_label node -->
+            <Text fx:id="Warehouse_label" layoutX="100" layoutY="645" text="Warehouse" fill="BLACK">
+                <font>
+                    <Font name="System" size="12.0" />
+                </font>
+                Warehouse
+            </Text>
+        </Group>
+
+        <!-- Car routes group -->
+        <Path fx:id="carRoutesGroup">
+            <elements>
+            <!-- Car route nodes -->
+            <MoveTo x="300" y="645" />
+            <LineTo x="330" y="645" />
+            <MoveTo x="330" y="645" />
+            <LineTo x="330" y="100" />
+            </elements>
+        </Path>
+
+        <!-- Labels group -->
+        <Group fx:id="labelsGroup">
+            <!-- Time Label -->
+            <Label fx:id="timeLabel" text="Time" font="Times New Roman 13" layoutX="1100" layoutY="45" />
+
+            <!-- Distance Label -->
+            <Label fx:id="distanceLabel" text="Distance" font="Times New Roman 13" layoutX="1200" layoutY="45" />
+
+            <!-- Cost Label -->
+            <Label fx:id="costLabel" text="Cost of gasoline" font="Times New Roman 13" layoutX="1075" layoutY="120" />
+
+            <!-- No.Simulations Label -->
+            <Label fx:id="No_SimulationLabel" text="Number of Simulations" font="Times New Roman 13" layoutX="1190" layoutY="120" />
+
+            <!-- Time Counter Shape -->
+            <Rectangle fx:id="timerRectangle" x="1080" y="70" width="80" height="40" stroke="SKYBLUE" strokeType="INSIDE" strokeWidth="5" />
+
+            <!-- Distance Counter Shape -->
+            <Rectangle fx:id="distanceRectangle" x="1190" y="70" width="80" height="40" stroke="SKYBLUE" strokeType="INSIDE" strokeWidth="5" />
+
+            <!-- Cost Counter Shape -->
+            <Rectangle fx:id="costRectangle" x="1080" y="140" width="80" height="40" stroke="SKYBLUE" strokeType="INSIDE" strokeWidth="5" />
+
+            <!-- No.Simulations Counter Shape -->
+            <Rectangle fx:id="No_SimulationRectangle" x="1190" y="140" width="80" height="40" stroke="SKYBLUE" strokeType="INSIDE" strokeWidth="5" />
+        </Group>
+
+        <!-- Counter labels group -->
+        <Group fx:id="counterLabelsGroup">
+
+            <!-- Time Counter Label -->
+            <Label fx:id="CounterTimeLabel" text="00:00:00" font="Times New Roman 15" textFill="WHITE" layoutX="1090" layoutY="78" />
+
+            <!-- Distance Counter Label -->
+            <Label fx:id="CounterDistanceLabel" text="00.00 Km" font="Times New Roman 15" textFill="WHITE" layoutX="1200" layoutY="78" />
+
+            <!-- Cost Counter Label -->
+            <Label fx:id="CounterCostLabel" text="$ 00,00" font="Times New Roman 15" textFill="WHITE" layoutX="1095" layoutY="150" />
+            <!-- No.Simulations Counter Label -->
+            <Label fx:id="CounterNo_SimulationLabel" text="0" font="Times New Roman 15" textFill="WHITE" layoutX="1225" layoutY="150" />
+        </Group>
+
+    </children>
+    <!-- Create the scene and set the root node -->
+    <Scene fx:id="scene" width="700" height="700" fill="WHITE">
+        <root>
+            <!-- Include the AllGroups Pane -->
+            <Pane fx:id="AllGroups">
+                <!-- Include the existing groups within AllGroups -->
+                <children>
+                    <Group fx:id="streetsGroup" />
+                    <Group fx:id="neighborhoodsGroup" />
+                    <Group fx:id="warehousesGroup" />
+                    <Group fx:id="carRoutesGroup" />
+                    <Group fx:id="labelsGroup" />
+                    <Group fx:id="counterLabelsGroup" />
+                    <Group fx:id="buttonsGroup" />
+                </children>
+            </Pane>
+        </root>
+    </Scene>
+</Pane>
+
+        
