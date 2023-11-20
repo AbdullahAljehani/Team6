@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class Neighborhood {
-    private char neighborhoodName;
+    private String neighborhoodName;
     private ArrayList<Substreet> substreets;
 
-    public Neighborhood(char neighborhoodName) {
+    public Neighborhood(String neighborhoodName) {
         this.neighborhoodName = neighborhoodName;
         this.substreets = new ArrayList<>();
     }
@@ -13,7 +13,7 @@ public class Neighborhood {
         substreets.add(substreet);
     }
 
-    public char getNeighborhoodName() {
+    public String getNeighborhoodName() {
         return neighborhoodName;
     }
 

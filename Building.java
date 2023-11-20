@@ -1,13 +1,13 @@
 public class Building {
-    private static int lastBuildingNumber = 0;
+   // private static int lastBuildingNumber = 0;
     private int buildingNumber;
-    private double xCoordinate;
-    private double yCoordinate;
+    private int xCoordinate;
+    private int yCoordinate;
     private Substreet substreet;
 
-    public Building(double xCoordinate, double yCoordinate, Substreet substreet) {
-        lastBuildingNumber++;
-        this.buildingNumber = lastBuildingNumber;
+    public Building(int  buildingNumber,int xCoordinate, int yCoordinate, Substreet substreet) {
+       // lastBuildingNumber++;
+        this.buildingNumber = buildingNumber;
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.substreet = substreet;

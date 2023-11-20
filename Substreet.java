@@ -60,4 +60,8 @@ public class Substreet {
     public ArrayList<Building> getBuildingLeft() {
         return new ArrayList<>(buildingLeft);
     }
+    public void setConnections(Substreet firstEnd, Substreet secondEnd) {
+        this.firstEnd = firstEnd;
+        this.secondEnd = secondEnd;
+    }
 }

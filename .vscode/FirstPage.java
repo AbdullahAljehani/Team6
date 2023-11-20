@@ -3,18 +3,18 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
 public class FirstPage extends Application {
+    
+   
 
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Best Route Application");
+        
 
         // Create label
         Label titleLabel = new Label("Best Route to deliver package");
@@ -22,7 +22,7 @@ public class FirstPage extends Application {
         titleLabel.setAlignment(Pos.CENTER);
 
         // Create buttons
-        Button phase1Button = new Button("Phase 1");
+        Button phase1Button = new Button("Phase 1");     
         Button phase2Button = new Button("Phase 2");
 
         // Make buttons bigger
@@ -44,10 +44,10 @@ public class FirstPage extends Application {
         BorderPane.setAlignment(titleLabel, Pos.CENTER);
         borderPane.setCenter(gridPane);
 
-        // Set dark mode background color
-        BackgroundFill backgroundFill = new BackgroundFill(Color.DARKSLATEGRAY, CornerRadii.EMPTY, javafx.geometry.Insets.EMPTY);
-        Background background = new Background(backgroundFill);
-        borderPane.setBackground(background);
+        // Set dark mode background image as a style
+        borderPane.setStyle("-fx-background-image: url('Background.jpg'); " +
+                            "-fx-background-size: cover; " +
+                            "-fx-background-repeat: no-repeat;");
 
         // Bind properties for dynamic resizing
         titleLabel.prefWidthProperty().bind(borderPane.widthProperty());
@@ -69,7 +69,5 @@ public class FirstPage extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+   
 }
