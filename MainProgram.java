@@ -6,12 +6,13 @@ public class MainProgram {
     private static DeliveryDriver deliveryDriver;  
     private static int secondsPassed = 0;
 
+
     public static void main(String[] args) {
         Timer timer = new Timer();
         
        
+        FadingRectangle.launch(FadingRectangle.class,args);
         FirstPage.launch(FirstPage.class, args);
-
 
         
         
