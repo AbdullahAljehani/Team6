@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MainProgram",
+            "request": "launch",
+            "mainClass": "MainProgram",
+            "projectName": "Team6_26afd44e"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -16,7 +23,6 @@
             "request": "launch",
             "mainClass": "FadingRectangle",
             "projectName": "Team6_1d241d58"
-            
         },
         {
             "type": "java",
