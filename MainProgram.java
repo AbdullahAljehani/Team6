@@ -181,15 +181,16 @@ public class MainProgram {
     }
     public static void startAnimation() {
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(1), event -> {
+                new KeyFrame(Duration.seconds(10), event -> {
                     Platform.runLater(() -> {
-                        // Move the car forward by a distance
-                        driver.moveDriver(50); // Adjust distance as needed
+                        // Move the car forward by a distance using the pathTransition
+                        driver.moveDriver(500); // Adjust distance as needed
                     });
                 })
         );
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
+    
 
 }

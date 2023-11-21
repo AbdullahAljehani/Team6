@@ -99,9 +99,9 @@ public class DeliveryDriver {
 }
 
 public void updateDriverPosition(int distance) {
-        Path path = new Path();
-        int destinationX = currentX;
-        int destinationY = currentY;
+    Path path = new Path();
+    int destinationX = currentX;
+    int destinationY = currentY;
 
     // Create the path
     path.getElements().addAll(new MoveTo(currentX, currentY), new LineTo(destinationX, destinationY));
@@ -116,6 +116,7 @@ public void updateDriverPosition(int distance) {
     currentX = destinationX;
     currentY = destinationY;
 }
+
 
 
     public void updateDistanceOnRoute(int distance) {
