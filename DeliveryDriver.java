@@ -1,4 +1,16 @@
 import java.util.ArrayList;
+import javafx.animation.PathTransition;
+import javafx.scene.control.skin.TextInputControlSkin.Direction;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Path;
+import javafx.util.Duration;
+import javafx.animation.PauseTransition;
+
+
+
 
 public class DeliveryDriver {
     private ArrayList<Package> packages;
@@ -7,18 +19,12 @@ public class DeliveryDriver {
     private int currentY;
     private double currentDistanceOnRoute;
     private int currentSubstreetIndex; 
-    private static final int MAX_X = 100;
-    private static final int MIN_X = 0;
-    private static final int MAX_Y = 100;
-    private static final int MIN_Y = 0;
     private Substreet currentSubstreet;
+    private Rectangle car;
+    private PathTransition pathTransition;
 
-    public enum Direction {
-        FORWARD,
-        BACKWARD,
-        LEFT,
-        RIGHT
-    }
+
+   
 
     public DeliveryDriver() {
         this.packages = new ArrayList<>();
@@ -26,8 +32,17 @@ public class DeliveryDriver {
         this.currentY = 0;
         this.currentDistanceOnRoute = 0;
         this.currentSubstreet = null; // Initialize to null
+        this.pathTransition = new PathTransition();
+        this.car = new Rectangle(75, 180, 15, 15);
+        this.car.setArcHeight(15);
+        this.car.setArcWidth(15);
+        this.car.setFill(Color.RED);
+        this.pathTransition.setNode(car);
+        this.pathTransition.setDuration(Duration.seconds(30));
     }
-
+    public Rectangle getCar() {
+        return car;
+    }
     public void addPackage(Package aPackage) {
         packages.add(aPackage);
     }
@@ -41,6 +56,7 @@ public class DeliveryDriver {
         this.currentX = 0; 
         this.currentY = 0; 
         this.currentDistanceOnRoute = 0; 
+        
     }
 
     public DeliveryRoute getCurrentRoute() {
@@ -59,66 +75,48 @@ public class DeliveryDriver {
         return aPackage.isDelivered;
     }
 
-    public void moveDriver(int distance, Direction direction) {
-        if (currentRoute != null) {
-            if (currentRoute.getSubstreets() != null && !currentRoute.getSubstreets().isEmpty()) {
-                // Move the initialization here
-                currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
-                
+    public void moveDriver(int distance) {
+    if (currentRoute != null) {
+        if (currentRoute.getSubstreets() != null && !currentRoute.getSubstreets().isEmpty()) {
+            currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
+
+            updateDistanceOnRoute(distance);
+
+            double remainingDistanceOnSubstreet = currentSubstreet.getDistance() - currentDistanceOnRoute;
+
+            if (remainingDistanceOnSubstreet <= 0) {
+                moveToNextSubstreet();
                 updateDistanceOnRoute(distance);
-
-                double remainingDistanceOnSubstreet = currentSubstreet.getDistance() - currentDistanceOnRoute;
-
-                if (remainingDistanceOnSubstreet <= 0) {
-                    moveToNextSubstreet();
-                    updateDistanceOnRoute(distance);
-                } else {
-                    updateDriverPosition(distance, direction);
-                }
             } else {
-                System.out.println("No substreets set for the driver's route.");
+                updateDriverPosition(distance);
             }
         } else {
-            System.out.println("No route set for the driver.");
+            System.out.println("No substreets set for the driver's route.");
         }
+    } else {
+        System.out.println("No route set for the driver.");
     }
+}
 
-    public void updateDriverPosition(int distance, Direction direction) {
-        System.out.println("Driver moved by " + distance + " units in direction: " + direction);
-    
-        switch (direction) {
-            case FORWARD:
-                currentY += distance;
-                if (currentY > MAX_Y) {
-                    System.out.println("Warning: Driver reached the maximum Y coordinate.");
-                    currentY = MAX_Y; 
-                }
-                break;
-            case BACKWARD:
-                currentY -= distance;
-                if (currentY < MIN_Y) {
-                    System.out.println("Warning: Driver reached the minimum Y coordinate.");
-                    currentY = MIN_Y; 
-                }
-                break;
-            case LEFT:
-                currentX -= distance;
-                if (currentX < MIN_X) {
-                    System.out.println("Warning: Driver reached the minimum X coordinate.");
-                    currentX = MIN_X; 
-                }
-                break;
-            case RIGHT:
-                currentX += distance;
-                if (currentX > MAX_X) {
-                    System.out.println("Warning: Driver reached the maximum X coordinate.");
-                    currentX = MAX_X; 
-                }
-                break;
-            default:
-                System.out.println("Invalid direction");
-        }
-    }
+public void updateDriverPosition(int distance) {
+        Path path = new Path();
+        int destinationX = currentX;
+        int destinationY = currentY;
+
+    // Create the path
+    path.getElements().addAll(new MoveTo(currentX, currentY), new LineTo(destinationX, destinationY));
+
+    // Create a PathTransition
+    pathTransition.setPath(path);
+
+    // Play the transition
+    pathTransition.play();
+
+    // Update the current position
+    currentX = destinationX;
+    currentY = destinationY;
+}
+
 
     public void updateDistanceOnRoute(int distance) {
         currentDistanceOnRoute += distance;
@@ -142,7 +140,7 @@ public class DeliveryDriver {
                         int substreetDelay = currentSubstreet.getDelay();
                         System.out.println("Official package detected. Introducing a delay of " + substreetDelay + " minutes on Substreet " + currentSubstreet.getStreetName());
                         try {
-                            Thread.sleep(substreetDelay * 1000 * 60); 
+                            Thread.sleep(substreetDelay * 1000 * 60);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -162,48 +160,51 @@ public class DeliveryDriver {
     
                         return;
                     } else {
-                        
-                        
-
-                            // moveToSubstreet(destinationBuilding.getSubstreet());
+                        // Adjust this part based on your logic
+                        // For example, you might want to move to the substreet instead of the building directly
+                        moveToNextSubstreet();
                     }
                 }
             }
-
+    
             System.out.println("No more packages assigned to the driver at the current position.");
         } else {
             System.out.println("No route set for the driver.");
         }
     }
+    
 
     public void moveToBuilding(Building destinationBuilding) {
         double distanceToDestination = calculateDistanceToBuilding(destinationBuilding.getXCoordinate(), destinationBuilding.getYCoordinate());
-
-        moveDriver((int) distanceToDestination, Direction.FORWARD);
+    
+        moveDriver((int) distanceToDestination);
     }
+    
 
+  
+    
     public void moveToNextSubstreet() {
         if (currentRoute != null && currentRoute.getSubstreets() != null) {
             int tripDelay = calculateTripDelay();
             System.out.println("Introducing a delay of " + tripDelay + " minutes for the entire trip.");
-
-            try {
-                Thread.sleep(tripDelay * 1000 * 60);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            if (currentSubstreetIndex < currentRoute.getSubstreets().size() - 1) {
-                currentSubstreetIndex++;
-                currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
-                System.out.println("Driver moved to the next street. Next substreet: " + currentSubstreet.getStreetName());
-            } else {
-                System.out.println("No more substreets in the route.");
-            }
+    
+            PauseTransition pause = new PauseTransition(Duration.minutes(tripDelay));
+            pause.setOnFinished(event -> {
+                if (currentSubstreetIndex < currentRoute.getSubstreets().size() - 1) {
+                    currentSubstreetIndex++;
+                    currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
+                    System.out.println("Driver moved to the next street. Next substreet: " + currentSubstreet.getStreetName());
+                } else {
+                    System.out.println("No more substreets in the route.");
+                }
+            });
+    
+            pause.play();
         } else {
             System.out.println("No route or substreets set for the driver.");
         }
     }
+    
 
     public double calculateDistanceToBuilding(double destinationX, double destinationY) {
         double deltaX = destinationX - currentX;
@@ -211,7 +212,7 @@ public class DeliveryDriver {
         return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
     }
 
-    private void moveToNextPackage() {
+    public void moveToNextPackage() {
         for (int i = 0; i < getPackages().size(); i++) {
             Package aPackage = getPackages().get(i);
 

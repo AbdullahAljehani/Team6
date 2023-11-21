@@ -1,4 +1,6 @@
+import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
@@ -13,19 +15,27 @@ import javafx.scene.text.*;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.layout.Pane;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
+
 public class FadingRectangle extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        // ------------ Neighbourhoods ------------------------
+        Platform.runLater(() -> MainProgram.startSimulation());
+        primaryStage.setOnCloseRequest(windowEvent -> {
+            MainProgram.stopSimulation();
+            Platform.exit();
+            System.exit(0);
+        });
+    
         
-        // Neighbourhood 1 : from ( Building 1 to Building 52 ) , with 16 blocks
+    
         Text Neighbourhood_1 = new Text(1090, 230, "Alhamdaniya");
         Font font = new Font("Times New Roman",25);
         Neighbourhood_1.setFont(font);
@@ -870,29 +880,9 @@ public class FadingRectangle extends Application {
         //-------------CAR ------------ 
         
         
-        Rectangle car = new Rectangle(75, 180, 15, 15);
-        car.setArcHeight(15);
-        car.setArcWidth(15);
-        car.setFill(Color.RED);   
+        DeliveryDriver driver = new DeliveryDriver();
         
-        //Instantiating the path class  
-     
-        
-       /* Path path = new Path();
-        MoveTo move = new MoveTo(300, 645);
-        LineTo line1 = new LineTo(330, 645);
-        MoveTo move2 = new MoveTo(330, 645);
-        LineTo line2 = new LineTo(330, 100);
-        path.getElements().addAll(move, line1 , move2 , line2);
-        
-        PathTransition pathTransition = new PathTransition();
-        pathTransition.setDuration(Duration.seconds(15));
-        pathTransition.setNode(car);
-        pathTransition.setPath(path);
-        pathTransition.play();*/
-
-       // Time,distance,cost and Number of Simulation  Counter Shapes :
-       
+ 
         // For Time : 
         Rectangle timerRectangle = new Rectangle(1080,70,80, 40);
         timerRectangle.setStroke(javafx.scene.paint.Color.SKYBLUE);
@@ -1052,7 +1042,7 @@ public class FadingRectangle extends Application {
 
             // Create a group for car routes
             Group carRoutesGroup = new Group();
-            carRoutesGroup.getChildren().add(car);
+            carRoutesGroup.getChildren().add(driver.getCar());
             
             Group labelsGroup = new Group();
             labelsGroup.getChildren().addAll(timeLabel, distanceLabel,costLabel,No_SimulationLabel,timerRectangle,distanceRectangle,costRectangle,No_SimulationRectangle);
@@ -1070,5 +1060,6 @@ public class FadingRectangle extends Application {
             primaryStage.setScene(scene );
             primaryStage.show();
     }
-
 }
+
+
