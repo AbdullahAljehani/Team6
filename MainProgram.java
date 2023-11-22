@@ -1,13 +1,6 @@
-import java.util.Timer;
-import java.util.TimerTask;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.util.Duration;
-import java.util.List;
 
 public class MainProgram {
-    private static int secondsPassed = 0;
     private static Substreet streetA;
     private static Substreet streetB;
     private static Substreet streetC;
@@ -48,31 +41,36 @@ public class MainProgram {
     private static Normal package5;
     private static Offical_paper package6;
 
-    private static DeliveryDriver driver;
-    private static DeliveryRoute route;
-    private static Timer timer;
+    public static DeliveryDriver driver;
+    public static DeliveryRoute route;
+
 
     public static void main(String[] args) {
-        initializeObjects();
-        FadingRectangle.launch(FadingRectangle.class, args);
-        startSimulation();
-        startAnimation();
+    initializeObjects();
+    FadingRectangle.launch(FadingRectangle.class, args);
+    Platform.runLater(() -> {
+    FadingRectangle.updateCarPositionInGUI();
+});
+   
+        
+        
         
     }
 
-    private static void initializeObjects() {
-        streetA = new Substreet('A', 10.0, 80, 5, null, null);
-        streetB = new Substreet('B', 10.0, 80, 5, null, null);
-        streetC = new Substreet('C', 10.0, 80, 5, null, null);
-        street1 = new Substreet('1', 5.0, 60, 2, null, null);
-        street2 = new Substreet('2', 5.0, 60, 2, null, null);
-        street3 = new Substreet('3', 5.0, 60, 2, null, null);
-        street4 = new Substreet('4', 5.0, 60, 2, null, null);
-        street5 = new Substreet('5', 5.0, 60, 2, null, null);
-        street6 = new Substreet('6', 5.0, 60, 2, null, null);
-        street7 = new Substreet('7', 5.0, 60, 2, null, null);
-        street8 = new Substreet('8', 5.0, 60, 2, null, null);
+    public static void initializeObjects() {
+        streetA = new Substreet('A', 10.0, 80, 5, streetB, null);
+        streetB = new Substreet('B', 10.0, 80, 5, streetC, null);
+        streetC = new Substreet('C', 10.0, 80, 5, street1, null);
+        street1 = new Substreet('1', 5.0, 60, 2, street2, null);
+        street2 = new Substreet('2', 5.0, 60, 2, street3, null);
+        street3 = new Substreet('3', 5.0, 60, 2, street4, null);
+        street4 = new Substreet('4', 5.0, 60, 2, street5, null);
+        street5 = new Substreet('5', 5.0, 60, 2, street6, null);
+        street6 = new Substreet('6', 5.0, 60, 2, street7, null);
+        street7 = new Substreet('7', 5.0, 60, 2, street8, null);
+        street8 = new Substreet('8', 5.0, 60, 2, street9, null);
         street9 = new Substreet('9', 5.0, 60, 2, null, null);
+
 
         neighborhood1 = new Neighborhood("Alhamdaniyah");
         neighborhood2 = new Neighborhood("AlManar");
@@ -132,65 +130,11 @@ public class MainProgram {
         route.addSubstreet(street8);
         route.addSubstreet(street9);
         driver.setCurrentRoute(route);
+        System.out.println(" " + driver.getCurrentRoute());
     }
 
-    public static void startSimulation() {
-
-
-        Timer timer = new Timer();
-
-        TimerTask simulationTask = new TimerTask() {
-            @Override
-            public void run() {
-                secondsPassed++;
-
-                System.out.println("Timer " + formatTime(secondsPassed));
-
-                if (allDelivered(driver)) {
-                    System.out.println("All packages delivered. Simulation completed.");
-                    timer.cancel();
-                }
-            }
-        };
-
-        timer.schedule(simulationTask, 0, 10);
-    }
-    public static void stopSimulation() {
-        if (timer != null) {
-            timer.cancel();
-        }
-    }
-
-    public static boolean allDelivered(DeliveryDriver driver) {
-        List<Package> packages = driver.getPackages();
-
-        for (Package aPackage : packages) {
-            if (!aPackage.isDelivered) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private static String formatTime(int seconds) {
-        long hours = seconds / 3600;
-        long minutes = (seconds % 3600) / 60;
-        long remainingSeconds = seconds % 60;
-
-        return String.format("%02d:%02d:%02d", hours, minutes, remainingSeconds);
-    }
-    public static void startAnimation() {
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(10), event -> {
-                    Platform.runLater(() -> {
-                        // Move the car forward by a distance using the pathTransition
-                        driver.moveDriver(500); // Adjust distance as needed
-                    });
-                })
-        );
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+   
     }
     
 
-}
+

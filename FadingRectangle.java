@@ -1,16 +1,16 @@
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
-import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
 import javafx.scene.text.*;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.layout.Pane;
@@ -23,16 +23,29 @@ import javafx.stage.Stage;
 
 
 
-public class FadingRectangle extends Application {
 
+public class FadingRectangle extends Application {
+ private static Timer timer;
+ private static int secondsPassed = 0;
     @Override
     public void start(Stage primaryStage) {
-        Platform.runLater(() -> MainProgram.startSimulation());
+       
+        startSimulation();
+        startAnimation();
+        // Use a Timeline to periodically update the car position
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(1), event -> updateCarPositionInGUI())
+        );
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+        
+    
         primaryStage.setOnCloseRequest(windowEvent -> {
-            MainProgram.stopSimulation();
+            stopSimulation();
             Platform.exit();
             System.exit(0);
         });
+    
     
         
     
@@ -880,7 +893,7 @@ public class FadingRectangle extends Application {
         //-------------CAR ------------ 
         
         
-        DeliveryDriver driver = new DeliveryDriver();
+       
         
  
         // For Time : 
@@ -1042,7 +1055,7 @@ public class FadingRectangle extends Application {
 
             // Create a group for car routes
             Group carRoutesGroup = new Group();
-            carRoutesGroup.getChildren().add(driver.getCar());
+            carRoutesGroup.getChildren().add(MainProgram.driver.getCar());
             
             Group labelsGroup = new Group();
             labelsGroup.getChildren().addAll(timeLabel, distanceLabel,costLabel,No_SimulationLabel,timerRectangle,distanceRectangle,costRectangle,No_SimulationRectangle);
@@ -1060,6 +1073,71 @@ public class FadingRectangle extends Application {
             primaryStage.setScene(scene );
             primaryStage.show();
     }
+    public static void updateCarPositionInGUI() {
+        Rectangle car = MainProgram.driver.getCar();
+        car.setLayoutX(MainProgram.driver.getCurrentX());
+        car.setLayoutY(MainProgram.driver.getCurrentY());
+        System.out.println("Car position updated. X: " + MainProgram.driver.getCurrentX() + ", Y: " + MainProgram.driver.getCurrentY());
+    }
+     public static void startSimulation() {
+
+
+        Timer timer = new Timer();
+
+        TimerTask simulationTask = new TimerTask() {
+            @Override
+            public void run() {
+                secondsPassed++;
+                System.out.println("Timer " + formatTime(secondsPassed));
+                if (allDelivered(MainProgram.driver)) {
+                    System.out.println("All packages delivered. Simulation completed.");
+                    timer.cancel();
+                }
+            }
+        };
+
+        timer.schedule(simulationTask, 0, 10);
+    }
+    public static void stopSimulation() {
+        if (timer != null) {
+            timer.cancel();
+        }
+    }
+
+    public static boolean allDelivered(DeliveryDriver driver) {
+        List<Package> packages = driver.getPackages();
+
+        for (Package aPackage : packages) {
+            if (!aPackage.isDelivered) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static String formatTime(int seconds) {
+        long hours = seconds / 3600;
+        long minutes = (seconds % 3600) / 60;
+        long remainingSeconds = seconds % 60;
+
+        return String.format("%02d:%02d:%02d", hours, minutes, remainingSeconds);
+    }
+    
+    public static void startAnimation() {    
+    new AnimationTimer() {
+        @Override
+        public void handle(long now) {
+            MainProgram.driver.setCurrentRoute(MainProgram.route);
+
+            MainProgram.driver.moveDriver(40);
+            updateCarPositionInGUI();
+        }
+    }.start();
 }
+
+    }
+    
+    
+
 
 

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
-import javafx.scene.control.skin.TextInputControlSkin.Direction;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -8,6 +9,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Path;
 import javafx.util.Duration;
 import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
 
 
 
@@ -22,6 +24,7 @@ public class DeliveryDriver {
     private Substreet currentSubstreet;
     private Rectangle car;
     private PathTransition pathTransition;
+    private Path path;
 
 
    
@@ -32,13 +35,17 @@ public class DeliveryDriver {
         this.currentY = 0;
         this.currentDistanceOnRoute = 0;
         this.currentSubstreet = null; // Initialize to null
+        this.path = new Path(new MoveTo(currentX, currentY)); // Initialize the path
         this.pathTransition = new PathTransition();
         this.car = new Rectangle(75, 180, 15, 15);
         this.car.setArcHeight(15);
         this.car.setArcWidth(15);
         this.car.setFill(Color.RED);
         this.pathTransition.setNode(car);
-        this.pathTransition.setDuration(Duration.seconds(30));
+        this.pathTransition.setDuration(Duration.seconds(5));
+        this.pathTransition.setPath(path);
+        
+        
     }
     public Rectangle getCar() {
         return car;
@@ -56,6 +63,7 @@ public class DeliveryDriver {
         this.currentX = 0; 
         this.currentY = 0; 
         this.currentDistanceOnRoute = 0; 
+        
         
     }
 
@@ -76,46 +84,64 @@ public class DeliveryDriver {
     }
 
     public void moveDriver(int distance) {
-    if (currentRoute != null) {
-        if (currentRoute.getSubstreets() != null && !currentRoute.getSubstreets().isEmpty()) {
-            currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
-
-            updateDistanceOnRoute(distance);
-
-            double remainingDistanceOnSubstreet = currentSubstreet.getDistance() - currentDistanceOnRoute;
-
-            if (remainingDistanceOnSubstreet <= 0) {
-                moveToNextSubstreet();
+        if (currentRoute != null) {
+            if (currentRoute.getSubstreets() != null && !currentRoute.getSubstreets().isEmpty()) {
+                currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
+    
                 updateDistanceOnRoute(distance);
-            } else {
                 updateDriverPosition(distance);
+    
+                double remainingDistanceOnSubstreet = currentSubstreet.getDistance() - currentDistanceOnRoute;
+                if (remainingDistanceOnSubstreet <= 0) {
+                    PauseTransition pause = new PauseTransition(Duration.seconds(1)); // Adjust the duration as needed
+                    pause.setOnFinished(event -> moveToNextSubstreet());
+                    pause.play();
+                }
+            } else {
+                System.out.println("No substreets set for the driver's route.");
             }
         } else {
-            System.out.println("No substreets set for the driver's route.");
+            System.out.println("No route set for the driver.");
         }
-    } else {
-        System.out.println("No route set for the driver.");
     }
-}
+    
 
 public void updateDriverPosition(int distance) {
-    Path path = new Path();
-    int destinationX = currentX;
-    int destinationY = currentY;
+    int destinationX = currentX + distance;
+    int destinationY = currentY+distance;
+    System.out.println("Updating position. DestinationX: " + destinationX + ", DestinationY: " + destinationY);
+    
 
-    // Create the path
-    path.getElements().addAll(new MoveTo(currentX, currentY), new LineTo(destinationX, destinationY));
+    // Update the path with the new destination
+    path.getElements().add(new LineTo(destinationX, destinationY));
 
-    // Create a PathTransition
-    pathTransition.setPath(path);
+    // Create a new PathTransition with the updated path
+    PathTransition newPathTransition = new PathTransition();
+    newPathTransition.setNode(car);
+    newPathTransition.setPath(path);
+    newPathTransition.setInterpolator(Interpolator.LINEAR); // Use linear interpolation for smooth movement
 
-    // Play the transition
-    pathTransition.play();
+    // Set an event handler to update the current position when the transition is finished
+   Timeline timeline = new Timeline(
+    new KeyFrame(Duration.seconds(1), e -> {
+        this.currentX = destinationX;
+        this.currentY = destinationY;
+        System.out.println("After update. CurrentX: " + currentX + ", CurrentY: " + currentY);
+        FadingRectangle.updateCarPositionInGUI();
+    })
+);
+timeline.setCycleCount(1);
+timeline.play();
 
-    // Update the current position
-    currentX = destinationX;
-    currentY = destinationY;
+    // Stop the current path transition (if any) and play the new one
+    pathTransition.stop();
+    newPathTransition.play();
+
+    // Update the current path transition
+    pathTransition = newPathTransition;
+    
 }
+
 
 
 
