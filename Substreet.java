@@ -9,6 +9,9 @@ public class Substreet {
     private int delay;
     private Substreet firstEnd;
     private Substreet secondEnd;
+    private ArrayList<SubstreetPart> parts;
+
+    
 
     public Substreet(char streetName, double distance, int speedLimit, int delay, Substreet firstEnd, Substreet secondEnd) {
         this.buildingRight = new ArrayList<>();
@@ -60,7 +63,13 @@ public class Substreet {
     public ArrayList<Building> getBuildingLeft() {
         return new ArrayList<>(buildingLeft);
     }
-    public void setConnections(Substreet firstEnd, Substreet secondEnd) {
+    public void addPart(SubstreetPart part) {
+        parts.add(part);
+    }
+    public ArrayList<SubstreetPart> getParts() {
+        return new ArrayList<>(parts);
+    }
+    public void setConnections(ArrayList<SubstreetPart> parts,Substreet firstEnd, Substreet secondEnd) {
         this.firstEnd = firstEnd;
         this.secondEnd = secondEnd;
     }

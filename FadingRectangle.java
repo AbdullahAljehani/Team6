@@ -28,16 +28,12 @@ public class FadingRectangle extends Application {
  private static Label CounterTimeLabel;
  private static Timer timer;
  private static int secondsPassed = 0;
+ private static Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {MainProgram.driver.setCurrentRoute(MainProgram.route);MainProgram.driver.moveDriver(40);updateCarPositionInGUI();}));
 
     @Override
     public void start(Stage primaryStage) {
        
         startSimulation();
-        startAnimation();
-        // Use a Timeline to periodically update the car position
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(1), event -> updateCarPositionInGUI())
-        );
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
         
@@ -1065,7 +1061,7 @@ public class FadingRectangle extends Application {
                 counterLabelsGroup.getChildren().addAll( CounterTimeLabel, CounterDistanceLabel,CounterCostLabel,CounterNo_SimulationLabel);
 
         
-            Scene scene = new Scene(root , 700, 700,Color.WHITE);
+            Scene scene = new Scene(root , 1400, 700,Color.WHITE);
             Pane AllGroups = new Pane();
             AllGroups.getChildren().addAll(streetsGroup, neighborhoodsGroup,warehousesGroup,carRoutesGroup,labelsGroup,counterLabelsGroup,buttonsGroup);
 
@@ -1099,6 +1095,7 @@ public class FadingRectangle extends Application {
                 if (allDelivered(MainProgram.driver)) {
                     System.out.println("All packages delivered. Simulation completed.");
                     timer.cancel();
+                    timeline.stop();
                 }
             }
         };
@@ -1109,6 +1106,7 @@ public class FadingRectangle extends Application {
     public static void stopSimulation() {
         if (timer != null) {
             timer.cancel();
+            timeline.stop();
         }
     }
 
@@ -1131,17 +1129,7 @@ public class FadingRectangle extends Application {
         return String.format("%02d:%02d:%02d", hours, minutes, remainingSeconds);
     }
     
-    public static void startAnimation() {    
-    new AnimationTimer() {
-        @Override
-        public void handle(long now) {
-            MainProgram.driver.setCurrentRoute(MainProgram.route);
-
-            MainProgram.driver.moveDriver(40);
-            updateCarPositionInGUI();
-        }
-    }.start();
-}
+    
 
     }
     

@@ -48,9 +48,7 @@ public class MainProgram {
     public static void main(String[] args) {
     initializeObjects();
     FadingRectangle.launch(FadingRectangle.class, args);
-    Platform.runLater(() -> {
-    FadingRectangle.updateCarPositionInGUI();
-});
+ 
    
         
         

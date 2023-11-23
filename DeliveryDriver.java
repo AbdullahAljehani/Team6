@@ -60,8 +60,8 @@ public class DeliveryDriver {
 
     public void setCurrentRoute(DeliveryRoute route) {
         this.currentRoute = route;
-        this.currentX = 0; 
-        this.currentY = 0; 
+        this.currentX = 45; 
+        this.currentY = 600; 
         this.currentDistanceOnRoute = 0; 
         
         
@@ -106,41 +106,31 @@ public class DeliveryDriver {
     }
     
 
-public void updateDriverPosition(int distance) {
-    int destinationX = currentX + distance;
-    int destinationY = currentY+distance;
-    System.out.println("Updating position. DestinationX: " + destinationX + ", DestinationY: " + destinationY);
+    public void updateDriverPosition(int distance) {
+        int destinationX = currentX + distance;
+        int destinationY = currentY + distance;
+        System.out.println("Updating position. DestinationX: " + destinationX + ", DestinationY: " + destinationY);
     
-
-    // Update the path with the new destination
-    path.getElements().add(new LineTo(destinationX, destinationY));
-
-    // Create a new PathTransition with the updated path
-    PathTransition newPathTransition = new PathTransition();
-    newPathTransition.setNode(car);
-    newPathTransition.setPath(path);
-    newPathTransition.setInterpolator(Interpolator.LINEAR); // Use linear interpolation for smooth movement
-
-    // Set an event handler to update the current position when the transition is finished
-   Timeline timeline = new Timeline(
-    new KeyFrame(Duration.seconds(1), e -> {
-        this.currentX = destinationX;
-        this.currentY = destinationY;
-        System.out.println("After update. CurrentX: " + currentX + ", CurrentY: " + currentY);
-        FadingRectangle.updateCarPositionInGUI();
-    })
-);
-timeline.setCycleCount(1);
-timeline.play();
-
-    // Stop the current path transition (if any) and play the new one
-    pathTransition.stop();
-    newPathTransition.play();
-
-    // Update the current path transition
-    pathTransition = newPathTransition;
+        // Update the path with the new destination
+        path.getElements().add(new LineTo(destinationX, destinationY));
     
-}
+        // Stop the current path transition (if any) and play the updated one
+        pathTransition.stop();
+        pathTransition.play();
+    
+        // Introduce a pause transition for a short delay (adjust duration as needed)
+        PauseTransition pause = new PauseTransition(Duration.seconds(1));
+        pause.setOnFinished(e -> {
+            this.currentX = destinationX;
+            this.currentY = destinationY;
+            System.out.println("After update. CurrentX: " + currentX + ", CurrentY: " + currentY);
+            FadingRectangle.updateCarPositionInGUI();
+        });
+    
+        // Start the pause transition
+        pause.play();
+    }
+    
 
 
 
