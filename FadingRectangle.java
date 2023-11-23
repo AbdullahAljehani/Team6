@@ -25,8 +25,10 @@ import javafx.stage.Stage;
 
 
 public class FadingRectangle extends Application {
+ private static Label CounterTimeLabel;
  private static Timer timer;
  private static int secondsPassed = 0;
+
     @Override
     public void start(Stage primaryStage) {
        
@@ -955,7 +957,7 @@ public class FadingRectangle extends Application {
         // For Time : 
         
         Font CounterLabelfont = new Font(" Times New Roman",15);
-        Label CounterTimeLabel = new Label("00:00:00");
+        FadingRectangle.CounterTimeLabel = new Label("00:00:00");
         CounterTimeLabel.setFont(CounterLabelfont);
         CounterTimeLabel.setTextFill(Color.WHITE);
         CounterTimeLabel.setLayoutX(1090);
@@ -1073,14 +1075,17 @@ public class FadingRectangle extends Application {
             primaryStage.setScene(scene );
             primaryStage.show();
     }
+
+
     public static void updateCarPositionInGUI() {
         Rectangle car = MainProgram.driver.getCar();
         car.setLayoutX(MainProgram.driver.getCurrentX());
         car.setLayoutY(MainProgram.driver.getCurrentY());
         System.out.println("Car position updated. X: " + MainProgram.driver.getCurrentX() + ", Y: " + MainProgram.driver.getCurrentY());
     }
-     public static void startSimulation() {
 
+
+     public static void startSimulation() {
 
         Timer timer = new Timer();
 
@@ -1088,7 +1093,9 @@ public class FadingRectangle extends Application {
             @Override
             public void run() {
                 secondsPassed++;
-                System.out.println("Timer " + formatTime(secondsPassed));
+                Platform.runLater(() -> {
+                    FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));
+                });
                 if (allDelivered(MainProgram.driver)) {
                     System.out.println("All packages delivered. Simulation completed.");
                     timer.cancel();
@@ -1098,6 +1105,7 @@ public class FadingRectangle extends Application {
 
         timer.schedule(simulationTask, 0, 10);
     }
+    
     public static void stopSimulation() {
         if (timer != null) {
             timer.cancel();
