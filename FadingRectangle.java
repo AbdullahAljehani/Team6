@@ -28,6 +28,7 @@ public class FadingRectangle extends Application {
  private static Label CounterTimeLabel;
  private static Timer timer;
  private static int secondsPassed = 0;
+ 
 
     @Override
     public void start(Stage primaryStage) {
@@ -36,7 +37,7 @@ public class FadingRectangle extends Application {
         startAnimation();
         // Use a Timeline to periodically update the car position
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(1), event -> updateCarPositionInGUI())
+                new KeyFrame(Duration.seconds(100), event -> updateCarPositionInGUI())
         );
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
@@ -999,6 +1000,9 @@ public class FadingRectangle extends Application {
         Pause_button.setPrefSize(60, 25);
         Pause_button.setLayoutX(1130);
         Pause_button.setLayoutY(15);
+        Pause_button.setOnAction(e -> {
+            stopSimulation();
+        });
 
         Button End_button = new Button("End ");
         End_button.setPrefSize(60, 25);
@@ -1009,7 +1013,10 @@ public class FadingRectangle extends Application {
         Back_button.setPrefSize(70, 25);
         Back_button.setLayoutX(1270);
         Back_button.setLayoutY(15);
-        
+        Back_button.setOnAction(e -> {
+            openFirstPage();
+            primaryStage.close();
+        });
 
       
       
@@ -1107,6 +1114,7 @@ public class FadingRectangle extends Application {
     }
     
     public static void stopSimulation() {
+        
         if (timer != null) {
             timer.cancel();
         }
@@ -1142,6 +1150,12 @@ public class FadingRectangle extends Application {
         }
     }.start();
 }
+
+    private void openFirstPage() {
+        FirstPage firstPage = new FirstPage(); // Create an instance of FirstPage
+        Stage stage = new Stage(); // Create a new stage
+        firstPage.start(stage); // Call the start method of FirstPage, passing the new stage
+    }
 
     }
     

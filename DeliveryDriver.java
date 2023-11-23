@@ -35,13 +35,15 @@ public class DeliveryDriver {
         this.currentY = 0;
         this.currentDistanceOnRoute = 0;
         this.currentSubstreet = null; // Initialize to null
-        this.path = new Path(new MoveTo(currentX, currentY)); // Initialize the path
+        this.path = new Path(new MoveTo(currentX, currentY), new LineTo(300, 150)); // Initialize the path
         this.pathTransition = new PathTransition();
         this.car = new Rectangle(75, 180, 15, 15);
         this.car.setArcHeight(15);
         this.car.setArcWidth(15);
         this.car.setFill(Color.RED);
         this.pathTransition.setNode(car);
+        pathTransition.setInterpolator(Interpolator.LINEAR);
+        pathTransition.setCycleCount(PathTransition.INDEFINITE);    
         this.pathTransition.setDuration(Duration.seconds(5));
         this.pathTransition.setPath(path);
         
@@ -60,8 +62,8 @@ public class DeliveryDriver {
 
     public void setCurrentRoute(DeliveryRoute route) {
         this.currentRoute = route;
-        this.currentX = 0; 
-        this.currentY = 0; 
+        this.currentX = 50; 
+        this.currentY = 600; 
         this.currentDistanceOnRoute = 0; 
         
         
@@ -123,7 +125,7 @@ public void updateDriverPosition(int distance) {
 
     // Set an event handler to update the current position when the transition is finished
    Timeline timeline = new Timeline(
-    new KeyFrame(Duration.seconds(1), e -> {
+    new KeyFrame(Duration.seconds(100), e -> {
         this.currentX = destinationX;
         this.currentY = destinationY;
         System.out.println("After update. CurrentX: " + currentX + ", CurrentY: " + currentY);

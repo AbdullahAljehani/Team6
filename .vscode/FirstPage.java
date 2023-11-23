@@ -28,6 +28,10 @@ public class FirstPage extends Application {
         // Make buttons bigger
         phase1Button.setStyle("-fx-font-size: 20px;");
         phase2Button.setStyle("-fx-font-size: 20px;");
+        phase1Button.setOnAction(e -> {
+            openSimulationPage();
+            primaryStage.close();
+        });
 
         // Create GridPane for buttons
         GridPane gridPane = new GridPane();
@@ -67,6 +71,11 @@ public class FirstPage extends Application {
 
         // Show the stage
         primaryStage.show();
+    }
+    private void openSimulationPage() {
+        FadingRectangle SimulationPage = new FadingRectangle(); // Create an instance of FirstPage
+        Stage stage = new Stage(); // Create a new stage
+        SimulationPage.start(stage); // Call the start method of FirstPage, passing the new stage
     }
 
    
