@@ -7,21 +7,19 @@ public class Substreet {
     private double distance;
     private int speedLimit;
     private int delay;
-    private Substreet firstEnd;
-    private Substreet secondEnd;
     private ArrayList<SubstreetPart> parts;
 
     
 
-    public Substreet(char streetName, double distance, int speedLimit, int delay, Substreet firstEnd, Substreet secondEnd) {
+    public Substreet(char streetName, double distance, int speedLimit, int delay) {
         this.buildingRight = new ArrayList<>();
         this.buildingLeft = new ArrayList<>();
+        this.parts = new ArrayList<>();
         this.streetName = streetName;
         this.distance = distance;
         this.speedLimit = speedLimit;
         this.delay = delay;
-        this.firstEnd = firstEnd;
-        this.secondEnd = secondEnd;
+        
     }
     
     public void addBuildingRight(Building building) {
@@ -48,13 +46,6 @@ public class Substreet {
         return this.delay;
     }
 
-    public Substreet getFirstEnd() {
-        return this.firstEnd;
-    }
-
-    public Substreet getSecondEnd() {
-        return this.secondEnd;
-    }
 
     public ArrayList<Building> getBuildingRight() {
         return new ArrayList<>(buildingRight);
@@ -69,8 +60,5 @@ public class Substreet {
     public ArrayList<SubstreetPart> getParts() {
         return new ArrayList<>(parts);
     }
-    public void setConnections(ArrayList<SubstreetPart> parts,Substreet firstEnd, Substreet secondEnd) {
-        this.firstEnd = firstEnd;
-        this.secondEnd = secondEnd;
-    }
+    
 }

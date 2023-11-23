@@ -1,6 +1,5 @@
 import java.util.ArrayList;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
+
 import javafx.animation.PathTransition;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
@@ -9,7 +8,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Path;
 import javafx.util.Duration;
 import javafx.animation.PauseTransition;
-import javafx.animation.Timeline;
 
 
 
@@ -42,9 +40,10 @@ public class DeliveryDriver {
         this.car.setArcWidth(15);
         this.car.setFill(Color.RED);
         this.pathTransition.setNode(car);
-        this.pathTransition.setDuration(Duration.seconds(5));
+        this.pathTransition.setDuration(Duration.seconds(20));
         this.pathTransition.setPath(path);
-        
+        path.getElements().addAll(MainProgram.street1_part1.createPath().getElements());
+
         
     }
     public Rectangle getCar() {
@@ -60,8 +59,8 @@ public class DeliveryDriver {
 
     public void setCurrentRoute(DeliveryRoute route) {
         this.currentRoute = route;
-        this.currentX = 45; 
-        this.currentY = 600; 
+        this.currentX = 0; 
+        this.currentY = 0; 
         this.currentDistanceOnRoute = 0; 
         
         
@@ -83,13 +82,12 @@ public class DeliveryDriver {
         return aPackage.isDelivered;
     }
 
-    public void moveDriver(int distance) {
+    public void moveDriver(int destinationX, int destinationY) {
         if (currentRoute != null) {
             if (currentRoute.getSubstreets() != null && !currentRoute.getSubstreets().isEmpty()) {
                 currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
     
-                updateDistanceOnRoute(distance);
-                updateDriverPosition(distance);
+                updateDriverPosition(destinationX, destinationY);
     
                 double remainingDistanceOnSubstreet = currentSubstreet.getDistance() - currentDistanceOnRoute;
                 if (remainingDistanceOnSubstreet <= 0) {
@@ -105,10 +103,7 @@ public class DeliveryDriver {
         }
     }
     
-
-    public void updateDriverPosition(int distance) {
-        int destinationX = currentX + distance;
-        int destinationY = currentY + distance;
+    public void updateDriverPosition(int destinationX, int destinationY) {
         System.out.println("Updating position. DestinationX: " + destinationX + ", DestinationY: " + destinationY);
     
         // Update the path with the new destination
@@ -130,6 +125,7 @@ public class DeliveryDriver {
         // Start the pause transition
         pause.play();
     }
+    
     
 
 
@@ -166,7 +162,7 @@ public class DeliveryDriver {
                     Building destinationBuilding = aPackage.getCustomer().getBuilding();
     
                     if (destinationBuilding.getSubstreet() == currentSubstreet) {
-                        moveToBuilding(destinationBuilding);
+                       // moveToBuilding(destinationBuilding);
     
                         System.out.println("Package delivered at building " + destinationBuilding.getBuildingNumber());
     
@@ -191,12 +187,12 @@ public class DeliveryDriver {
     }
     
 
-    public void moveToBuilding(Building destinationBuilding) {
+   /*  public void moveToBuilding(Building destinationBuilding) {
         double distanceToDestination = calculateDistanceToBuilding(destinationBuilding.getXCoordinate(), destinationBuilding.getYCoordinate());
     
         moveDriver((int) distanceToDestination);
     }
-    
+    */
 
   
     

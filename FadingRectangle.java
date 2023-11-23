@@ -28,7 +28,7 @@ public class FadingRectangle extends Application {
  private static Label CounterTimeLabel;
  private static Timer timer;
  private static int secondsPassed = 0;
- private static Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {MainProgram.driver.setCurrentRoute(MainProgram.route);MainProgram.driver.moveDriver(40);updateCarPositionInGUI();}));
+ private static Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {MainProgram.driver.setCurrentRoute(MainProgram.route);MainProgram.driver.moveDriver(MainProgram.street1_part4.getX(),66);}));
 
     @Override
     public void start(Stage primaryStage) {
@@ -36,6 +36,7 @@ public class FadingRectangle extends Application {
         startSimulation();
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+        System.out.println(MainProgram.street1_part4.getX());
         
     
         primaryStage.setOnCloseRequest(windowEvent -> {
