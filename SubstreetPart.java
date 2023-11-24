@@ -1,6 +1,6 @@
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
+// import javafx.scene.shape.LineTo;
+// import javafx.scene.shape.MoveTo;
+// import javafx.scene.shape.Path;
 
 
 public class SubstreetPart {
@@ -39,6 +39,18 @@ public class SubstreetPart {
    
     public Substreet getSecondEnd(){
         return this.secondEnd;
+    }
+    public SubstreetPart getNextPart() {
+        return this.nextPart;
+    }
+    public String toString() {
+        return "SubstreetPart{" +
+                "x=" + x +
+                ", y=" + y +
+                ", firstEnd=" + firstEnd +
+                ", secondEnd=" + secondEnd +
+                ", nextPart=" + nextPart +
+                '}';
     }
     /*public Path createPath() {
         Path path = new Path();

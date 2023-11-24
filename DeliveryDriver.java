@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.animation.PathTransition;
 import javafx.scene.paint.Color;
@@ -6,6 +7,7 @@ import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Path;
+import javafx.scene.shape.PathElement;
 import javafx.util.Duration;
 import javafx.animation.PauseTransition;
 
@@ -22,7 +24,7 @@ public class DeliveryDriver {
     private Substreet currentSubstreet;
     private Rectangle car;
     private PathTransition pathTransition;
-    private Path path;
+    public  Path path;
 
 
    
@@ -84,20 +86,31 @@ public class DeliveryDriver {
         return aPackage.isDelivered;
     }
 
-    public void createPath(double x, double y) {
+    public void createPath(SubstreetPart part) {
+        System.out.println(part.toString());
+
         if (path.getElements().isEmpty()) {
-            path.getElements().add(new MoveTo(x, y));
+            path.getElements().add(new MoveTo(part.getX(), part.getY()));
         } else {
-            path.getElements().add(new LineTo(x, y));
+            if (part.getNextPart() != null) {
+                path.getElements().add(new LineTo(part.getNextPart().getX(), part.getNextPart().getY()));
+            }
+            else{
+                System.out.println("null");
+            }
         }
     }
+    
+    
+
+   
     public void moveDriver(){
     if (!path.getElements().isEmpty()) {
         System.out.println("Path elements: " + path.getElements());
     
         pathTransition.stop();
         pathTransition.setPath(path);
-        pathTransition.setCycleCount(1);
+        pathTransition.setCycleCount(0);
     
         // Set up the event to be triggered after the transition is complete
         pathTransition.setOnFinished(e -> {
