@@ -8,7 +8,7 @@ public class SubstreetPart {
     private int y;
     private Substreet firstEnd;
     private Substreet secondEnd;
-    private SubstreetPart nextPart;
+    public SubstreetPart nextPart;
 
 
     public SubstreetPart( int x, int y,Substreet firstEnd,Substreet secondEnd,SubstreetPart nextPart) {
@@ -43,14 +43,9 @@ public class SubstreetPart {
     public SubstreetPart getNextPart() {
         return this.nextPart;
     }
-    public String toString() {
-        return "SubstreetPart{" +
-                "x=" + x +
-                ", y=" + y +
-                ", firstEnd=" + firstEnd +
-                ", secondEnd=" + secondEnd +
-                ", nextPart=" + nextPart +
-                '}';
+    
+    public void setNextPart(SubstreetPart nextPart) {
+        this.nextPart = nextPart;
     }
     /*public Path createPath() {
         Path path = new Path();

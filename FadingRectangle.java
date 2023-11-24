@@ -30,10 +30,8 @@ public class FadingRectangle extends Application {
        
         startSimulation();
         MainProgram.driver.createPath(MainProgram.street1_part1);
-        //MainProgram.driver.createPath(MainProgram.street1_part2.getX(), MainProgram.street1_part2.getY());
-    //     MainProgram.driver.createPath(MainProgram.street1_part3.getX(), MainProgram.street1_part3.getY());
-    //    MainProgram.driver.createPath(MainProgram.street1_part4.getX(), MainProgram.street1_part4.getY());
-    //    MainProgram.driver.createPath(MainProgram.street1_part3.getX(), MainProgram.street1_part3.getY());
+        // MainProgram.driver.createPath(MainProgram.street1_part2);
+        // MainProgram.driver.createPath(MainProgram.street1_part3);
         MainProgram.driver.moveDriver();
 
         

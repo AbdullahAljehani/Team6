@@ -42,7 +42,7 @@ public class DeliveryDriver {
         this.car.setArcWidth(15);
         this.car.setFill(Color.RED);
         this.pathTransition.setNode(car);
-        this.pathTransition.setDuration(Duration.seconds(20));
+        this.pathTransition.setDuration(Duration.seconds(5));
         this.pathTransition.setPath(path);
     //path.getElements().addAll(MainProgram.street1_part1.createPath().getElements());
         //path.getElements().addAll(MainProgram.street2_part1.createPath().getElements());
@@ -87,19 +87,17 @@ public class DeliveryDriver {
     }
 
     public void createPath(SubstreetPart part) {
-        System.out.println(part.toString());
-
+        
+        
         if (path.getElements().isEmpty()) {
             path.getElements().add(new MoveTo(part.getX(), part.getY()));
         } else {
             if (part.getNextPart() != null) {
                 path.getElements().add(new LineTo(part.getNextPart().getX(), part.getNextPart().getY()));
             }
-            else{
-                System.out.println("null");
-            }
         }
     }
+    
     
     
 
@@ -110,7 +108,7 @@ public class DeliveryDriver {
     
         pathTransition.stop();
         pathTransition.setPath(path);
-        pathTransition.setCycleCount(0);
+        pathTransition.setCycleCount(1);
     
         // Set up the event to be triggered after the transition is complete
         pathTransition.setOnFinished(e -> {

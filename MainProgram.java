@@ -149,82 +149,82 @@ public class MainProgram {
       street8 = new Substreet('8', 5.0, 60, 4);
       street9 = new Substreet('9', 5.0, 60, 4);
       
-      street1_part1= new SubstreetPart( 35, 66, null, streetA,street1_part2);
-      street1_part2= new SubstreetPart( 290, 66, streetA, streetB,street1_part3);
-      street1_part3= new SubstreetPart( 560, 66, streetB, streetC,street1_part4);
+      street1_part1= new SubstreetPart( 45, 66, null, streetA,null);
+      street1_part2= new SubstreetPart( 290, 66, streetA, streetB,null);
+      street1_part3= new SubstreetPart( 560, 66, streetB, streetC,null);
       street1_part4= new SubstreetPart( 1050, 66, streetC, null,null);
 
-      street2_part1= new SubstreetPart( 0, 130, null, streetA,street2_part1);
-      street2_part2= new SubstreetPart( 0,130, streetA, streetB,street2_part2);
-      street2_part3= new SubstreetPart( 0,130, streetB, streetC,street2_part3);
-      street2_part4= new SubstreetPart( 1045, 130, streetC, null,street2_part4);
+      street2_part1= new SubstreetPart( 0, 130, null, streetA,null);
+      street2_part2= new SubstreetPart( 0,130, streetA, streetB,null);
+      street2_part3= new SubstreetPart( 0,130, streetB, streetC,null);
+      street2_part4= new SubstreetPart( 1045, 130, streetC, null,null);
 
-      street3_part1= new SubstreetPart( 0, 197, null, streetA,street3_part1);
-      street3_part2= new SubstreetPart( 0, 197, streetA, streetB,street3_part2);
-      street3_part3= new SubstreetPart( 0, 197, streetB, streetC,street3_part3);
-      street3_part4= new SubstreetPart( 1045, 197, streetC, null,street3_part4);
+      street3_part1= new SubstreetPart( 0, 197, null, streetA,null);
+      street3_part2= new SubstreetPart( 0, 197, streetA, streetB,null);
+      street3_part3= new SubstreetPart( 0, 197, streetB, streetC,null);
+      street3_part4= new SubstreetPart( 1045, 197, streetC, null,null);
 
-      street4_part1= new SubstreetPart( 0, 0, null, streetA,street4_part1);
-      street4_part2= new SubstreetPart( 0, 0, streetA, streetB,street4_part2);
-      street4_part3= new SubstreetPart( 0, 0, streetB, streetC,street4_part3);
-      street4_part4= new SubstreetPart( 1045, 265, streetC, null,street4_part4);
+      street4_part1= new SubstreetPart( 0, 0, null, streetA,null);
+      street4_part2= new SubstreetPart( 0, 0, streetA, streetB,null);
+      street4_part3= new SubstreetPart( 0, 0, streetB, streetC,null);
+      street4_part4= new SubstreetPart( 1045, 265, streetC, null,null);
 
-      street5_part1= new SubstreetPart( 0, 0, null, streetA,street5_part2);
-      street5_part2= new SubstreetPart( 0, 0, streetA, streetB,street5_part3);
-      street5_part3= new SubstreetPart( 0, 0, streetB, streetC,street5_part4);
+      street5_part1= new SubstreetPart( 0, 0, null, streetA,null);
+      street5_part2= new SubstreetPart( 0, 0, streetA, streetB,null);
+      street5_part3= new SubstreetPart( 0, 0, streetB, streetC,null);
       street5_part4= new SubstreetPart( 1045, 330, streetC, null,null);
 
-      street6_part1= new SubstreetPart( 0, 0, null, streetA,street6_part2);
-      street6_part2= new SubstreetPart( 0, 0, streetA, streetB,street6_part3);
-      street6_part3= new SubstreetPart( 0, 0, streetB, streetC,street6_part4);
+      street6_part1= new SubstreetPart( 0, 0, null, streetA,null);
+      street6_part2= new SubstreetPart( 0, 0, streetA, streetB,null);
+      street6_part3= new SubstreetPart( 0, 0, streetB, streetC,null);
       street6_part4= new SubstreetPart( 1045, 395, streetC, null,null);
 
-      street7_part1= new SubstreetPart( 0, 0, null, streetA,street7_part2);
-      street7_part2= new SubstreetPart( 0, 0, streetA, streetB,street7_part3);
-      street7_part3= new SubstreetPart( 0, 0, streetB, streetC,street7_part4);
+      street7_part1= new SubstreetPart( 0, 0, null, streetA,null);
+      street7_part2= new SubstreetPart( 0, 0, streetA, streetB,null);
+      street7_part3= new SubstreetPart( 0, 0, streetB, streetC,null);
       street7_part4= new SubstreetPart( 1045, 461, streetC, null,null);
 
-      street8_part1= new SubstreetPart( 0, 0, null, streetA,street8_part2);
-      street8_part2= new SubstreetPart( 0, 0, streetA, streetB,street8_part3);
-      street8_part3= new SubstreetPart( 0, 0, streetB, streetC,street8_part4);
+      street8_part1= new SubstreetPart( 0, 0, null, streetA,null);
+      street8_part2= new SubstreetPart( 0, 0, streetA, streetB,null);
+      street8_part3= new SubstreetPart( 0, 0, streetB, streetC,null);
       street8_part4= new SubstreetPart( 1045, 527, streetC, null,null);
       
-      street9_part1= new SubstreetPart( 0, 0, null, streetA,street9_part2);
-      street9_part2= new SubstreetPart( 0, 0, streetA, streetB,street9_part3);
-      street9_part3= new SubstreetPart( 0, 0, streetB, streetC,street9_part4);
+      street9_part1= new SubstreetPart( 0, 0, null, streetA,null);
+      street9_part2= new SubstreetPart( 0, 0, streetA, streetB,null);
+      street9_part3= new SubstreetPart( 0, 0, streetB, streetC,null);
       street9_part4= new SubstreetPart( 1045, 594, streetC, null,null);
 
-      streetA_part1= new SubstreetPart( 860, 66, null, street1,streetA_part2);
-      streetA_part2= new SubstreetPart( 860, 130, street1, street2,streetA_part3);
-      streetA_part3= new SubstreetPart( 860, 197, street2, street3,streetA_part4);
-      streetA_part4= new SubstreetPart( 860, 265, street3, street4,streetA_part5);
-      streetA_part5= new SubstreetPart( 860, 330, street4, street5,streetA_part6);
-      streetA_part6= new SubstreetPart( 860, 395, street5, street6,streetA_part7);
-      streetA_part7= new SubstreetPart( 860, 461, street6, street7,streetA_part8);
-      streetA_part8= new SubstreetPart( 860, 527, street7, street8,streetA_part9);
-      streetA_part9= new SubstreetPart( 860, 594, street8, street9,streetA_part10);
+      streetA_part1= new SubstreetPart( 860, 66, null, street1,null);
+      streetA_part2= new SubstreetPart( 860, 130, street1, street2,null);
+      streetA_part3= new SubstreetPart( 860, 197, street2, street3,null);
+      streetA_part4= new SubstreetPart( 860, 265, street3, street4,null);
+      streetA_part5= new SubstreetPart( 860, 330, street4, street5,null);
+      streetA_part6= new SubstreetPart( 860, 395, street5, street6,null);
+      streetA_part7= new SubstreetPart( 860, 461, street6, street7,null);
+      streetA_part8= new SubstreetPart( 860, 527, street7, street8,null);
+      streetA_part9= new SubstreetPart( 860, 594, street8, street9,null);
       streetA_part10= new SubstreetPart( 860, 650, street9, null,null);
 
-      streetB_part1= new SubstreetPart( 0, 0, null,street1,streetB_part2);
-      streetB_part2= new SubstreetPart( 0, 0, street1, street2,streetB_part3);
-      streetB_part3= new SubstreetPart( 0, 0, street2, street3,streetB_part4);
-      streetB_part4= new SubstreetPart( 0, 0, street3, street4,streetB_part5);
-      streetB_part5= new SubstreetPart( 0, 0, street4, street5,streetB_part6);
-      streetB_part6= new SubstreetPart( 0, 0, street5, street6,streetB_part7);
-      streetB_part7= new SubstreetPart( 0, 0, street6, street7,streetB_part8);
-      streetB_part8= new SubstreetPart( 0, 0, street7, street8,streetB_part9);
-      streetB_part9= new SubstreetPart( 0, 0, street8, street9,streetB_part10);
+      streetB_part1= new SubstreetPart( 0, 0, null,street1,null);
+      streetB_part2= new SubstreetPart( 0, 0, street1, street2,null);
+      streetB_part3= new SubstreetPart( 0, 0, street2, street3,null);
+      streetB_part4= new SubstreetPart( 0, 0, street3, street4,null);
+      streetB_part5= new SubstreetPart( 0, 0, street4, street5,null);
+      streetB_part6= new SubstreetPart( 0, 0, street5, street6,null);
+      streetB_part7= new SubstreetPart( 0, 0, street6, street7,null);
+      streetB_part8= new SubstreetPart( 0, 0, street7, street8,null);
+      streetB_part9= new SubstreetPart( 0, 0, street8, street9,null);
       streetB_part10= new SubstreetPart( 0, 0, street9, null,null);
 
-      streetC_part1= new SubstreetPart( 800, 66, null, street1,streetC_part2);
-      streetC_part2= new SubstreetPart( 545, 66, street1, street2,streetC_part3);
-      streetC_part3= new SubstreetPart( 284, 66, street2, street3,streetC_part4);
-      streetC_part4= new SubstreetPart( 0, 66, street3, street4,streetC_part5);
-      streetC_part5= new SubstreetPart( 0, 0, street4, street5,streetC_part6);
-      streetC_part6= new SubstreetPart( 0, 0, street5, street6,streetC_part7);
-      streetC_part7= new SubstreetPart( 0, 0, street6, street7,streetC_part8);
-      streetC_part8= new SubstreetPart( 0, 0, street7, street8,streetC_part9);
-      streetC_part9= new SubstreetPart( 0, 0, street8, street9,streetC_part10);
+      streetC_part1= new SubstreetPart( 800, 66, null, street1,null);
+      streetC_part2= new SubstreetPart( 545, 66, street1, street2,null);
+      streetC_part3= new SubstreetPart( 284, 66, street2, street3,null);
+      streetC_part4= new SubstreetPart( 0, 66, street3, street4,null);
+      streetC_part5= new SubstreetPart( 0, 0, street4, street5,null);
+      streetC_part6= new SubstreetPart( 0, 0, street5, street6,null);
+      streetC_part7= new SubstreetPart( 0, 0, street6, street7,null);
+      streetC_part8= new SubstreetPart( 0, 0, street7, street8,null);
+      streetC_part9= new SubstreetPart( 0, 0, street8, street9,null);
       streetC_part10= new SubstreetPart( 0, 0, street9, null,null);
      
       street1.addPart(street1_part1);
@@ -304,6 +304,54 @@ public class MainProgram {
       streetC.addPart(streetC_part8);
       streetC.addPart(streetC_part9);
       streetC.addPart(streetC_part10);
+      
+      street1_part1.setNextPart(street1_part2);
+      street1_part2.setNextPart(street1_part3);
+      street1_part3.setNextPart(street1_part4);
+      street1_part4.setNextPart(null);
+
+      street2_part1.setNextPart(street2_part2);
+      street2_part2.setNextPart(street2_part3);
+      street2_part3.setNextPart(street2_part4);
+      street2_part4.setNextPart(null);
+
+      street3_part1.setNextPart(street3_part2);
+      street3_part2.setNextPart(street3_part3);
+      street3_part3.setNextPart(street3_part4);
+      street3_part4.setNextPart(null);
+
+      street4_part1.setNextPart(street4_part2);
+      street4_part2.setNextPart(street4_part3);
+      street4_part3.setNextPart(street4_part4);
+      street4_part4.setNextPart(null);
+
+      street5_part1.setNextPart(street5_part2);
+      street5_part2.setNextPart(street5_part3);
+      street5_part3.setNextPart(street5_part4);
+      street5_part4.setNextPart(null);
+
+      street6_part1.setNextPart(street6_part2);
+      street6_part2.setNextPart(street6_part3);
+      street6_part3.setNextPart(street6_part4);
+      street6_part4.setNextPart(null);
+
+      street7_part1.setNextPart(street7_part2);
+      street7_part2.setNextPart(street7_part3);
+      street7_part3.setNextPart(street7_part4);
+      street7_part4.setNextPart(null);
+
+      street8_part1.setNextPart(street8_part2);
+      street8_part2.setNextPart(street8_part3);
+      street8_part3.setNextPart(street8_part4);
+      street8_part4.setNextPart(null);
+      
+      street9_part1.setNextPart(street9_part2);
+      street9_part2.setNextPart(street9_part3);
+      street9_part3.setNextPart(street9_part4);
+      street9_part4.setNextPart(null);
+
+      
+
         
         neighborhood1 = new Neighborhood("Alhamdaniyah");
         neighborhood2 = new Neighborhood("AlManar");
