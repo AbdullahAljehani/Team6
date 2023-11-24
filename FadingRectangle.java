@@ -1,16 +1,11 @@
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
 import javafx.scene.text.*;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.layout.Pane;
@@ -28,7 +23,6 @@ public class FadingRectangle extends Application {
  private static Label CounterTimeLabel;
  private static Timer timer;
  private static int secondsPassed = 0;
- //private static Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), event -> { MainProgram.driver.setCurrentRoute(MainProgram.route); MainProgram.driver.moveDriver(MainProgram.street1_part4.getX(), MainProgram.street1_part4.getY()); }));
 
 
     @Override
@@ -36,8 +30,7 @@ public class FadingRectangle extends Application {
        
         startSimulation();
         MainProgram.driver.moveDriver(MainProgram.street1_part4.getX(), MainProgram.street1_part4.getY());
-        //timeline.setCycleCount(Timeline.INDEFINITE);
-        //timeline.play();
+        
         
         
     
@@ -1104,7 +1097,7 @@ public class FadingRectangle extends Application {
                 if (allDelivered(MainProgram.driver)) {
                     System.out.println("All packages delivered. Simulation completed.");
                     timer.cancel();
-                    //timeline.stop();
+                    
                 }
             }
         };
@@ -1115,7 +1108,7 @@ public class FadingRectangle extends Application {
     public static void stopSimulation() {
         if (timer != null) {
             timer.cancel();
-            //timeline.stop();
+            
         }
     }
 

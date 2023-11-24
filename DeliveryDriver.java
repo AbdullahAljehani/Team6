@@ -94,10 +94,10 @@ public class DeliveryDriver {
                 path.getElements().add(new LineTo(destinationX, destinationY));
                 pathTransition.stop();
                 pathTransition.play();
-                updateDriverPosition(MainProgram.street1_part2.getX(),MainProgram.street1_part2.getY());
+                /*updateDriverPosition(MainProgram.street1_part2.getX(),MainProgram.street1_part2.getY());
                 updateDriverPosition(MainProgram.street1_part3.getX(),MainProgram.street1_part3.getY());
                 moveToBuilding(MainProgram.building127);
-                moveToBuilding(MainProgram.building103);
+                moveToBuilding(MainProgram.building103);*/
                 // Optional: If you want to update the GUI immediately
                 FadingRectangle.updateCarPositionInGUI();
 
@@ -207,8 +207,7 @@ public class DeliveryDriver {
             path.getElements().add(new LineTo(destinationBuilding.getXCoordinate(), destinationBuilding.getYCoordinate()));
             pathTransition.stop();
             pathTransition.play();
-        // double distanceToDestination = calculateDistanceToBuilding(destinationBuilding.getXCoordinate(), destinationBuilding.getYCoordinate());
-    
+       
     }
     
 
