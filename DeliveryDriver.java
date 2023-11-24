@@ -7,7 +7,6 @@ import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Path;
-import javafx.scene.shape.PathElement;
 import javafx.util.Duration;
 import javafx.animation.PauseTransition;
 
@@ -24,26 +23,26 @@ public class DeliveryDriver {
     private Substreet currentSubstreet;
     private Rectangle car;
     private PathTransition pathTransition;
-    public  Path path;
+    public   Path path;
 
 
    
 
     public DeliveryDriver() {
         this.packages = new ArrayList<>();
-        this.currentX = 35;
-        this.currentY = 66;
+        //this.currentX = 35;
+        //this.currentY = 66;
         this.currentDistanceOnRoute = 0;
         this.currentSubstreet = null; // Initialize to null
-        this.path = new Path(new MoveTo(currentX,currentY )); // Initialize the path
+        //this.path = new Path(new MoveTo(currentX,currentY )); // Initialize the path
         this.pathTransition = new PathTransition();
         this.car = new Rectangle(75, 180, 15, 15);
         this.car.setArcHeight(15);
         this.car.setArcWidth(15);
         this.car.setFill(Color.RED);
         this.pathTransition.setNode(car);
-        this.pathTransition.setDuration(Duration.seconds(5));
-        this.pathTransition.setPath(path);
+        this.pathTransition.setDuration(Duration.seconds(20));
+        //this.pathTransition.setPath(path);
     //path.getElements().addAll(MainProgram.street1_part1.createPath().getElements());
         //path.getElements().addAll(MainProgram.street2_part1.createPath().getElements());
 
@@ -85,18 +84,33 @@ public class DeliveryDriver {
     public boolean isPackageDelivered(Package aPackage) {
         return aPackage.isDelivered;
     }
+    public void setPath(Path path) {
+        this.path = path;
+    }
 
-    public void createPath(SubstreetPart part) {
-        
-        
-        if (path.getElements().isEmpty()) {
-            path.getElements().add(new MoveTo(part.getX(), part.getY()));
-        } else {
-            if (part.getNextPart() != null) {
-                path.getElements().add(new LineTo(part.getNextPart().getX(), part.getNextPart().getY()));
+    public void createPath(List<SubstreetPart> parts) {
+        if (parts == null || parts.isEmpty()) {
+            return; // No parts to create a path
+        }
+    
+        Path path = new Path(); // Create a single Path object for the entire sequence
+    
+        for (SubstreetPart part : parts) {
+            if (path.getElements().isEmpty()) {
+                path.getElements().add(new MoveTo(part.getX(), part.getY()));
+            } else {
+                SubstreetPart nextPart = part.getNextPart();
+                if (nextPart != null) {
+                    path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
+                }
             }
         }
+    
+        setPath(path);
     }
+    
+    
+    
     
     
     

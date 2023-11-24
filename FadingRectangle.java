@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,15 +30,14 @@ public class FadingRectangle extends Application {
     public void start(Stage primaryStage) {
        
         startSimulation();
-        MainProgram.driver.createPath(MainProgram.street1_part1);
-        // MainProgram.driver.createPath(MainProgram.street1_part2);
-        // MainProgram.driver.createPath(MainProgram.street1_part3);
-        MainProgram.driver.moveDriver();
+List<SubstreetPart> street1Parts = Arrays.asList(MainProgram.streetA_part10,MainProgram.streetA_part9,MainProgram.streetA_part8,MainProgram.streetA_part7,MainProgram.street7_part4,MainProgram.street7_part3,MainProgram.street7_part2,MainProgram.street7_part1);
 
-        
-        
-    
-        primaryStage.setOnCloseRequest(windowEvent -> {
+MainProgram.driver.createPath(street1Parts);
+MainProgram.driver.moveDriver();
+
+
+
+  primaryStage.setOnCloseRequest(windowEvent -> {
             stopSimulation();
             Platform.exit();
             System.exit(0);
