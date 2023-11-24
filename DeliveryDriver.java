@@ -29,11 +29,11 @@ public class DeliveryDriver {
 
     public DeliveryDriver() {
         this.packages = new ArrayList<>();
-        this.currentX = 0;
-        this.currentY = 0;
+        this.currentX = 35;
+        this.currentY = 66;
         this.currentDistanceOnRoute = 0;
         this.currentSubstreet = null; // Initialize to null
-        this.path = new Path(new MoveTo(currentX, currentY)); // Initialize the path
+        this.path = new Path(new MoveTo(currentX,currentY )); // Initialize the path
         this.pathTransition = new PathTransition();
         this.car = new Rectangle(75, 180, 15, 15);
         this.car.setArcHeight(15);
@@ -42,7 +42,9 @@ public class DeliveryDriver {
         this.pathTransition.setNode(car);
         this.pathTransition.setDuration(Duration.seconds(20));
         this.pathTransition.setPath(path);
-        path.getElements().addAll(MainProgram.street1_part1.createPath().getElements());
+    //path.getElements().addAll(MainProgram.street1_part1.createPath().getElements());
+        //path.getElements().addAll(MainProgram.street2_part1.createPath().getElements());
+
 
         
     }
@@ -82,8 +84,35 @@ public class DeliveryDriver {
         return aPackage.isDelivered;
     }
 
+    public void createPath(double x, double y) {
+        if (path.getElements().isEmpty()) {
+            path.getElements().add(new MoveTo(x, y));
+        } else {
+            path.getElements().add(new LineTo(x, y));
+        }
+    }
+    public void moveDriver(){
+    if (!path.getElements().isEmpty()) {
+        System.out.println("Path elements: " + path.getElements());
     
-    public void moveDriver(int destinationX, int destinationY) {
+        pathTransition.stop();
+        pathTransition.setPath(path);
+        pathTransition.setCycleCount(1);
+    
+        // Set up the event to be triggered after the transition is complete
+        pathTransition.setOnFinished(e -> {
+            System.out.println("Transition finished");
+            FadingRectangle.updateCarPositionInGUI();
+            moveToNextSubstreet(); // Move to the next substreet after finishing the path
+        });
+    
+        pathTransition.play();} // Start the animation
+    }
+    
+
+    
+    
+    /*public void moveDriver(int destinationX, int destinationY) {
         if (currentRoute != null) {
             if (currentRoute.getSubstreets() != null && !currentRoute.getSubstreets().isEmpty()) {
                 currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
@@ -94,12 +123,15 @@ public class DeliveryDriver {
                 path.getElements().add(new LineTo(destinationX, destinationY));
                 pathTransition.stop();
                 pathTransition.play();
-                /*updateDriverPosition(MainProgram.street1_part2.getX(),MainProgram.street1_part2.getY());
+                updateDriverPosition(MainProgram.street1_part1.getX(),MainProgram.street1_part1.getY());
+                updateDriverPosition(MainProgram.street1_part2.getX(),MainProgram.street1_part2.getY());
                 updateDriverPosition(MainProgram.street1_part3.getX(),MainProgram.street1_part3.getY());
-                moveToBuilding(MainProgram.building127);
+                updateDriverPosition(MainProgram.street1_part4.getX(),MainProgram.street1_part4.getY());*/
+
+                /*moveToBuilding(MainProgram.building127);
                 moveToBuilding(MainProgram.building103);*/
                 // Optional: If you want to update the GUI immediately
-                FadingRectangle.updateCarPositionInGUI();
+               /* FadingRectangle.updateCarPositionInGUI();
 
                 // Move to the next substreet or perform any other logic as needed
                 double remainingDistanceOnSubstreet = currentSubstreet.getDistance() - currentDistanceOnRoute;
@@ -116,7 +148,6 @@ public class DeliveryDriver {
 
     // ... other code ...
 
-    
     public void updateDriverPosition(int destinationX, int destinationY) {
         System.out.println("Updating position. DestinationX: " + destinationX + ", DestinationY: " + destinationY);
         
@@ -140,7 +171,7 @@ public class DeliveryDriver {
     
         // Start the pause transition
         pause.play();
-    }
+    } */
     
     
 

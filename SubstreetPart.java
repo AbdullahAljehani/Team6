@@ -40,7 +40,7 @@ public class SubstreetPart {
     public Substreet getSecondEnd(){
         return this.secondEnd;
     }
-    public Path createPath() {
+    /*public Path createPath() {
         Path path = new Path();
         path.getElements().add(new MoveTo(x, y));
         
@@ -50,5 +50,5 @@ public class SubstreetPart {
         }
         
         return path;
-    }
+    }*/
 }

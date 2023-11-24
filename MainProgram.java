@@ -149,10 +149,10 @@ public class MainProgram {
         street8 = new Substreet('8', 5.0, 60, 4);
         street9 = new Substreet('9', 5.0, 60, 4);
         
-        street1_part1= new SubstreetPart( 800, 33, null, streetA,null);
-        street1_part2= new SubstreetPart( 545, 33, streetA, streetB,street1_part1);
-        street1_part3= new SubstreetPart( 284, 33, streetB, streetC,street1_part2);
-        street1_part4= new SubstreetPart( 0, 33, streetC, null,street1_part3);
+        street1_part1= new SubstreetPart( 35, 66, null, streetA,null);
+        street1_part2= new SubstreetPart( 290, 66, streetA, streetB,street1_part1);
+        street1_part3= new SubstreetPart( 560, 66, streetB, streetC,street1_part2);
+        street1_part4= new SubstreetPart( 1050, 66, streetC, null,street1_part3);
 
         street2_part1= new SubstreetPart( 0, 66, null, streetA,street2_part1);
         street2_part2= new SubstreetPart( 0,66, streetA, streetB,street2_part2);
