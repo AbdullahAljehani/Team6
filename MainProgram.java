@@ -1,6 +1,6 @@
 
 public class MainProgram {
-    private static Substreet streetA;
+    public static Substreet streetA;
     private static Substreet streetB;
     private static Substreet streetC;
     private static Substreet street1;
@@ -14,12 +14,12 @@ public class MainProgram {
     private static Substreet street9;
     
     public static SubstreetPart street1_part1;
-    private static SubstreetPart street1_part2;
-    private static SubstreetPart street1_part3;
+    public static SubstreetPart street1_part2;
+    public static SubstreetPart street1_part3;
     public static SubstreetPart street1_part4;
     
-    private static SubstreetPart street2_part1;
-    private static SubstreetPart street2_part2;
+    public static SubstreetPart street2_part1;
+    public static SubstreetPart street2_part2;
     private static SubstreetPart street2_part3;
     private static SubstreetPart street2_part4;
 
@@ -66,8 +66,8 @@ public class MainProgram {
 
     private static City city1;
 
-    private static Building building127;
-    private static Building building103;
+    public static Building building127;
+    public static Building building103;
     private static Building building70;
     private static Building building64;
     private static Building building44;

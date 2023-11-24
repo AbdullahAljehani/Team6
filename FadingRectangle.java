@@ -28,14 +28,16 @@ public class FadingRectangle extends Application {
  private static Label CounterTimeLabel;
  private static Timer timer;
  private static int secondsPassed = 0;
- private static Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {MainProgram.driver.setCurrentRoute(MainProgram.route);MainProgram.driver.moveDriver(MainProgram.street1_part4.getX(),66);}));
+ //private static Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), event -> { MainProgram.driver.setCurrentRoute(MainProgram.route); MainProgram.driver.moveDriver(MainProgram.street1_part4.getX(), MainProgram.street1_part4.getY()); }));
+
 
     @Override
     public void start(Stage primaryStage) {
        
         startSimulation();
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+        MainProgram.driver.moveDriver(MainProgram.street1_part4.getX(), MainProgram.street1_part4.getY());
+        //timeline.setCycleCount(Timeline.INDEFINITE);
+        //timeline.play();
         
         
     
@@ -998,8 +1000,6 @@ public class FadingRectangle extends Application {
         Pause_button.setLayoutY(15);
         Pause_button.setOnAction(e -> {
             stopSimulation();
-            timer.cancel();
-            timeline.stop();
         });
         Button End_button = new Button("End ");
         End_button.setPrefSize(60, 25);
@@ -1104,7 +1104,7 @@ public class FadingRectangle extends Application {
                 if (allDelivered(MainProgram.driver)) {
                     System.out.println("All packages delivered. Simulation completed.");
                     timer.cancel();
-                    timeline.stop();
+                    //timeline.stop();
                 }
             }
         };
@@ -1115,7 +1115,7 @@ public class FadingRectangle extends Application {
     public static void stopSimulation() {
         if (timer != null) {
             timer.cancel();
-            timeline.stop();
+            //timeline.stop();
         }
     }
 
