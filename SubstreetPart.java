@@ -1,61 +1,54 @@
-// import javafx.scene.shape.LineTo;
-// import javafx.scene.shape.MoveTo;
-// import javafx.scene.shape.Path;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class SubstreetPart {
     private int x;
     private int y;
     private Substreet firstEnd;
     private Substreet secondEnd;
-    public SubstreetPart nextPart;
+    private List<SubstreetPart> nextParts;
 
-
-    public SubstreetPart( int x, int y,Substreet firstEnd,Substreet secondEnd,SubstreetPart nextPart) {
+    public SubstreetPart(int x, int y, Substreet firstEnd, Substreet secondEnd) {
         this.x = x;
         this.y = y;
-        this.firstEnd= firstEnd;
-        this.secondEnd= secondEnd;
-        this.nextPart = nextPart;
-        
+        this.firstEnd = firstEnd;
+        this.secondEnd = secondEnd;
+        this.nextParts = new ArrayList<>();
     }
-    public void setX(int x){
-        
-        this.x=x;
+
+    public void setX(int x) {
+        this.x = x;
     }
-    public int getX(){
+
+    public int getX() {
         return this.x;
     }
-    public void setY(int y){
-        this.y=y;
+
+    public void setY(int y) {
+        this.y = y;
     }
-    public int getY(){
+
+    public int getY() {
         return this.y;
     }
 
-    public Substreet getFirstEnd(){
+    public Substreet getFirstEnd() {
         return this.firstEnd;
     }
-   
-    public Substreet getSecondEnd(){
+
+    public Substreet getSecondEnd() {
         return this.secondEnd;
     }
-    public SubstreetPart getNextPart() {
-        return this.nextPart;
-    }
-    
+
     public void setNextPart(SubstreetPart nextPart) {
-        this.nextPart = nextPart;
-    }
-    /*public Path createPath() {
-        Path path = new Path();
-        path.getElements().add(new MoveTo(x, y));
-        
         if (nextPart != null) {
-            // Add a LineTo element to connect with the next part
-            path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
+            this.nextParts.add(nextPart);
         }
-        
-        return path;
-    }*/
+    }
+
+    public List<SubstreetPart> getNextParts() {
+        return Collections.unmodifiableList(nextParts);
+    }
 }
+

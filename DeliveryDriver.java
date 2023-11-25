@@ -95,19 +95,43 @@ public class DeliveryDriver {
     
         Path path = new Path(); // Create a single Path object for the entire sequence
     
-        for (SubstreetPart part : parts) {
-            if (path.getElements().isEmpty()) {
-                path.getElements().add(new MoveTo(part.getX(), part.getY()));
-            } else {
-                SubstreetPart nextPart = part.getNextPart();
-                if (nextPart != null) {
+        SubstreetPart currentPart = parts.get(0); // Start with the first part
+    
+        System.out.println("Added MoveTo: (" + currentPart.getX() + ", " + currentPart.getY() + ")");
+        path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
+    
+        for (int i = 1; i < parts.size(); i++) {
+            SubstreetPart expectedNextPart = parts.get(i);
+    
+            List<SubstreetPart> nextParts = currentPart.getNextParts();
+    
+            boolean found = false;
+            for (SubstreetPart nextPart : nextParts) {
+                if (nextPart != null && nextPart.equals(expectedNextPart)) {
+                    System.out.println("Added LineTo: (" + nextPart.getX() + ", " + nextPart.getY() + ")");
                     path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
+                    currentPart = nextPart; // Move to the next part
+                    found = true;
+                    break;
                 }
+            }
+    
+            if (!found) {
+                System.out.println("Next part not found or does not match the expected part");
+                break; // Exit the loop if the next part is not found
             }
         }
     
         setPath(path);
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
