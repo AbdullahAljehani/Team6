@@ -117,7 +117,7 @@ public class DeliveryDriver {
             }
     
             if (!found) {
-                System.out.println("Next part not found or does not match the expected part");
+                System.out.println("Next part not found or does not match the expected part");//
                 break; // Exit the loop if the next part is not found
             }
         }
@@ -146,7 +146,7 @@ public class DeliveryDriver {
     
         pathTransition.stop();
         pathTransition.setPath(path);
-        pathTransition.setCycleCount(1);
+        pathTransition.setCycleCount(1);//
     
         // Set up the event to be triggered after the transition is complete
         pathTransition.setOnFinished(e -> {

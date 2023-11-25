@@ -157,7 +157,7 @@ public class MainProgram {
       street2_part1= new SubstreetPart( 35, 130, null, streetA);
       street2_part2= new SubstreetPart( 330,130, streetA, streetB);
       street2_part3= new SubstreetPart( 600,130, streetB, streetC);
-      street2_part4= new SubstreetPart( 1045, 130, streetC, null);
+      street2_part4= new SubstreetPart( 1045, 130, streetC, null);//
 
       street3_part1= new SubstreetPart( 35, 197, null, streetA);
       street3_part2= new SubstreetPart( 330, 197, streetA, streetB);
