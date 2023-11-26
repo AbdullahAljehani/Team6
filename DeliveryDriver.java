@@ -97,7 +97,6 @@ public class DeliveryDriver {
     
         SubstreetPart currentPart = parts.get(0); // Start with the first part
     
-        System.out.println("Added MoveTo: (" + currentPart.getX() + ", " + currentPart.getY() + ")");
         path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
     
         for (int i = 1; i < parts.size(); i++) {
@@ -108,7 +107,6 @@ public class DeliveryDriver {
             boolean found = false;
             for (SubstreetPart nextPart : nextParts) {
                 if (nextPart != null && nextPart.equals(expectedNextPart)) {
-                    System.out.println("Added LineTo: (" + nextPart.getX() + ", " + nextPart.getY() + ")");
                     path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
                     currentPart = nextPart; // Move to the next part
                     found = true;
@@ -117,13 +115,14 @@ public class DeliveryDriver {
             }
     
             if (!found) {
-                System.out.println("Next part not found or does not match the expected part");//
                 break; // Exit the loop if the next part is not found
             }
         }
     
         setPath(path);
     }
+    
+    
     
     
     

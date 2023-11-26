@@ -5,15 +5,12 @@ import java.util.List;
 public class SubstreetPart {
     private int x;
     private int y;
-    private Substreet firstEnd;
-    private Substreet secondEnd;
+    
     private List<SubstreetPart> nextParts;
 
-    public SubstreetPart(int x, int y, Substreet firstEnd, Substreet secondEnd) {
+    public SubstreetPart(int x, int y) {
         this.x = x;
         this.y = y;
-        this.firstEnd = firstEnd;
-        this.secondEnd = secondEnd;
         this.nextParts = new ArrayList<>();
     }
 
@@ -33,13 +30,6 @@ public class SubstreetPart {
         return this.y;
     }
 
-    public Substreet getFirstEnd() {
-        return this.firstEnd;
-    }
-
-    public Substreet getSecondEnd() {
-        return this.secondEnd;
-    }
 
     public void setNextPart(SubstreetPart nextPart) {
         if (nextPart != null) {

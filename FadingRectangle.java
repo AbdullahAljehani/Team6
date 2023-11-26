@@ -31,7 +31,7 @@ public class FadingRectangle extends Application {
        
         startSimulation();
 //List<SubstreetPart> street1Parts = Arrays.asList(MainProgram.streetA_part10,MainProgram.streetA_part9,MainProgram.streetA_part8,MainProgram.streetA_part7,MainProgram.street7_part4,MainProgram.street7_part3,MainProgram.street7_part2,MainProgram.street7_part1);
-List<SubstreetPart> street1Parts = Arrays.asList(MainProgram.street1_part1,MainProgram.streetC_part1,MainProgram.street1_part2,MainProgram.streetB_part1,MainProgram.streetB_part2,MainProgram.street2_part3,MainProgram.streetA_part2,MainProgram.street1_part4,MainProgram.streetA_part1,MainProgram.street1_part3);
+List<SubstreetPart> street1Parts = Arrays.asList(MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreetA,MainProgram.intersection1_1,MainProgram.intersection1_2,MainProgram.intersection1_3,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection2_3,MainProgram.EndOfStreet2,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection4_3,MainProgram.intersection5_3,MainProgram.intersection5_2,MainProgram.intersection6_2,MainProgram.intersection7_2,MainProgram.intersection8_2,MainProgram.intersection8_3,MainProgram.intersection9_3,MainProgram.EndOfStreetC);
 MainProgram.driver.createPath(street1Parts);
 MainProgram.driver.moveDriver();
 
