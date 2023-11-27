@@ -196,13 +196,13 @@ public class MainProgram {
       EndOfStreet9= new SubstreetPart( 1050, 594);
 
       FirstOfStreetC= new SubstreetPart( 860, 0);
-      EndOfStreetC= new SubstreetPart( 860, 650);
+      EndOfStreetC= new SubstreetPart( 860, 670);
 
       FirstOfStreetB= new SubstreetPart( 600, 0);
-      EndOfStreetB= new SubstreetPart( 600, 650);
+      EndOfStreetB= new SubstreetPart( 600, 670);
 
       FirstOfStreetA= new SubstreetPart( 330, 0);
-      EndOfStreetA= new SubstreetPart( 330, 650);
+      EndOfStreetA= new SubstreetPart( 330, 670);
       
       street1.addPart(FirstOfStreet1);
       street1.addPart(EndOfStreet1);
