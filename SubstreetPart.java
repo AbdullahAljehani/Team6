@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
+
 public class SubstreetPart {
     private int x;
     private int y;
-    private double distance;
-
     private List<SubstreetPart> nextParts;
 
-    public SubstreetPart(int x, int y,double distance) {
+    public SubstreetPart(int x, int y) {
         this.x = x;
         this.y = y;
         this.nextParts = new ArrayList<>();
@@ -31,20 +31,23 @@ public class SubstreetPart {
         return this.y;
     }
 
-    public void setDistance(double distance) {
-        this.distance = distance;
-    }
+  
 
-   public double getDistance() {
+    public double getDistanceTo(SubstreetPart currentPart,SubstreetPart nextPart) {
+        double deltaX = Math.abs(currentPart.getX() - nextPart.getX());
+        double deltaY = Math.abs(currentPart.getY() - nextPart.getY());
     
-        return this.distance;
+        double scale = 0.01;
+        double distanceInKm = (deltaX+deltaY)*scale;   
+        return distanceInKm;
     }
-
+    
 
     public void setNextPart(SubstreetPart nextPart) {
         if (nextPart != null) {
             this.nextParts.add(nextPart);
         }
+
     }
 
     public List<SubstreetPart> getNextParts() {

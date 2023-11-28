@@ -141,68 +141,68 @@ public class MainProgram {
       street8 = new Substreet('8', 5.0, 60, 4);
       street9 = new Substreet('9', 5.0, 60, 4);
       
-      FirstOfStreet1= new SubstreetPart( 35, 66,3.0);
-      intersection1_1= new SubstreetPart( 330, 66,3.0);
-      intersection1_2= new SubstreetPart( 600, 66,3.0);
-      intersection1_3= new SubstreetPart(860, 66,3.0);
-      EndOfStreet1= new SubstreetPart( 1050, 66,3.0);
+      FirstOfStreet1= new SubstreetPart( 35, 66);
+      intersection1_1= new SubstreetPart( 330, 66);
+      intersection1_2= new SubstreetPart( 600, 66);
+      intersection1_3= new SubstreetPart(860, 66);
+      EndOfStreet1= new SubstreetPart( 1050, 66);
 
-      FirstOfStreet2= new SubstreetPart( 35, 130,3.0);
-      intersection2_1= new SubstreetPart( 330, 130,3.0);
-      intersection2_2= new SubstreetPart( 600, 130,3.0);
-      intersection2_3= new SubstreetPart(860, 130,3.0);
-      EndOfStreet2= new SubstreetPart( 1050, 130,3.0);
+      FirstOfStreet2= new SubstreetPart( 35, 130);
+      intersection2_1= new SubstreetPart( 330, 130);
+      intersection2_2= new SubstreetPart( 600, 130);
+      intersection2_3= new SubstreetPart(860, 130);
+      EndOfStreet2= new SubstreetPart( 1050, 130);
 
-      FirstOfStreet3= new SubstreetPart( 35, 197,3.0);
-      intersection3_1= new SubstreetPart( 330, 197,3.0);
-      intersection3_2= new SubstreetPart( 600, 197,3.0);
-      intersection3_3= new SubstreetPart(860, 197,3.0);
-      EndOfStreet3= new SubstreetPart( 1050, 197,3.0);
+      FirstOfStreet3= new SubstreetPart( 35, 197);
+      intersection3_1= new SubstreetPart( 330, 197);
+      intersection3_2= new SubstreetPart( 600, 197);
+      intersection3_3= new SubstreetPart(860, 197);
+      EndOfStreet3= new SubstreetPart( 1050, 197);
 
-      FirstOfStreet4= new SubstreetPart( 35, 265,3.0);
-      intersection4_1= new SubstreetPart( 330, 265,3.0);
-      intersection4_2= new SubstreetPart( 600, 265,3.0);
-      intersection4_3= new SubstreetPart(860, 265,3.0);
-      EndOfStreet4= new SubstreetPart( 1050, 265,3.0);
+      FirstOfStreet4= new SubstreetPart( 35, 265);
+      intersection4_1= new SubstreetPart( 330, 265);
+      intersection4_2= new SubstreetPart( 600, 265);
+      intersection4_3= new SubstreetPart(860, 265);
+      EndOfStreet4= new SubstreetPart( 1050, 265);
 
-      FirstOfStreet5= new SubstreetPart( 35, 330,3.0);
-      intersection5_1= new SubstreetPart( 330, 330,3.0);
-      intersection5_2= new SubstreetPart( 600, 330,3.0);
-      intersection5_3= new SubstreetPart(860, 330,3.0);
-      EndOfStreet5= new SubstreetPart( 1050, 330,3.0);
+      FirstOfStreet5= new SubstreetPart( 35, 330);
+      intersection5_1= new SubstreetPart( 330, 330);
+      intersection5_2= new SubstreetPart( 600, 330);
+      intersection5_3= new SubstreetPart(860, 330);
+      EndOfStreet5= new SubstreetPart( 1050, 330);
 
-      FirstOfStreet6= new SubstreetPart( 35, 395,3.0);
-      intersection6_1= new SubstreetPart( 330, 395,3.0);
-      intersection6_2= new SubstreetPart( 600, 395,3.0);
-      intersection6_3= new SubstreetPart(860, 395,3.0);
-      EndOfStreet6= new SubstreetPart( 1050, 395,3.0);
+      FirstOfStreet6= new SubstreetPart( 35, 395);
+      intersection6_1= new SubstreetPart( 330, 395);
+      intersection6_2= new SubstreetPart( 600, 395);
+      intersection6_3= new SubstreetPart(860, 395);
+      EndOfStreet6= new SubstreetPart( 1050, 395);
   
-      FirstOfStreet7= new SubstreetPart( 35, 461,3.0);
-      intersection7_1= new SubstreetPart( 330, 461,3.0);
-      intersection7_2= new SubstreetPart( 600, 461,3.0);
-      intersection7_3= new SubstreetPart(860, 461,3.0);
-      EndOfStreet7= new SubstreetPart( 1050, 461,3.0);
+      FirstOfStreet7= new SubstreetPart( 35, 461);
+      intersection7_1= new SubstreetPart( 330, 461);
+      intersection7_2= new SubstreetPart( 600, 461);
+      intersection7_3= new SubstreetPart(860, 461);
+      EndOfStreet7= new SubstreetPart( 1050, 461);
 
-      FirstOfStreet8= new SubstreetPart( 35, 527,3.0);
-      intersection8_1= new SubstreetPart( 330, 527,3.0);
-      intersection8_2= new SubstreetPart( 600, 527,3.0);
-      intersection8_3= new SubstreetPart(860, 527,3.0);
-      EndOfStreet8= new SubstreetPart( 1050, 527,3.0);
+      FirstOfStreet8= new SubstreetPart( 35, 527);
+      intersection8_1= new SubstreetPart( 330, 527);
+      intersection8_2= new SubstreetPart( 600, 527);
+      intersection8_3= new SubstreetPart(860, 527);
+      EndOfStreet8= new SubstreetPart( 1050, 527);
   
-      FirstOfStreet9= new SubstreetPart( 35, 594,3.0);
-      intersection9_1= new SubstreetPart( 330, 594,3.0);
-      intersection9_2= new SubstreetPart( 600, 594,3.0);
-      intersection9_3= new SubstreetPart(860, 594,3.0);
-      EndOfStreet9= new SubstreetPart( 1050, 594,3.0);
+      FirstOfStreet9= new SubstreetPart( 35, 594);
+      intersection9_1= new SubstreetPart( 330, 594);
+      intersection9_2= new SubstreetPart( 600, 594);
+      intersection9_3= new SubstreetPart(860, 594);
+      EndOfStreet9= new SubstreetPart( 1050, 594);
 
-      FirstOfStreetC= new SubstreetPart( 860, 0,3.0);
-      EndOfStreetC= new SubstreetPart( 860, 670,3.0);
+      FirstOfStreetC= new SubstreetPart( 860, 0);
+      EndOfStreetC= new SubstreetPart( 860, 670);
 
-      FirstOfStreetB= new SubstreetPart( 600, 0,3.0);
-      EndOfStreetB= new SubstreetPart( 600, 670,3.0);
+      FirstOfStreetB= new SubstreetPart( 600, 0);
+      EndOfStreetB= new SubstreetPart( 600, 670);
 
-      FirstOfStreetA= new SubstreetPart( 330, 0,3.0);
-      EndOfStreetA= new SubstreetPart( 330, 670,3.0);
+      FirstOfStreetA= new SubstreetPart( 330, 0);
+      EndOfStreetA= new SubstreetPart( 330, 670);
       
       street1.addPart(FirstOfStreet1);
       street1.addPart(EndOfStreet1);
@@ -418,72 +418,7 @@ public class MainProgram {
   EndOfStreetC.setNextPart(intersection9_3);
 
 
-
-
-
-
-
-
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-   
-      
-
-
-      
-
-        
         neighborhood1 = new Neighborhood("Alhamdaniyah");
         neighborhood2 = new Neighborhood("AlManar");
         neighborhood3 = new Neighborhood("AlRabwah");

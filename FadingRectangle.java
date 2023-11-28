@@ -22,31 +22,22 @@ import javafx.stage.Stage;
 
 public class FadingRectangle extends Application {
  private static Label CounterTimeLabel;
+  public static Label CounterDistanceLabel;
+
  private static Timer timer;
  private static int secondsPassed = 0;
 
+List<SubstreetPart> street1Parts = Arrays.asList(MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreetA,MainProgram.intersection1_1,MainProgram.intersection1_2,MainProgram.intersection1_3,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection2_3,MainProgram.EndOfStreet2,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection4_3,MainProgram.intersection5_3,MainProgram.intersection5_2,MainProgram.intersection6_2,MainProgram.intersection7_2,MainProgram.intersection8_2,MainProgram.intersection8_3,MainProgram.intersection9_3,MainProgram.EndOfStreetC);
 
     @Override
     public void start(Stage primaryStage) {
        
         startSimulation();
-//List<SubstreetPart> street1Parts = Arrays.asList(MainProgram.streetA_part10,MainProgram.streetA_part9,MainProgram.streetA_part8,MainProgram.streetA_part7,MainProgram.street7_part4,MainProgram.street7_part3,MainProgram.street7_part2,MainProgram.street7_part1);
-List<SubstreetPart> street1Parts = Arrays.asList(MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreetA,MainProgram.intersection1_1,MainProgram.intersection1_2,MainProgram.intersection1_3,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection2_3,MainProgram.EndOfStreet2,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection4_3,MainProgram.intersection5_3,MainProgram.intersection5_2,MainProgram.intersection6_2,MainProgram.intersection7_2,MainProgram.intersection8_2,MainProgram.intersection8_3,MainProgram.intersection9_3,MainProgram.EndOfStreetC);
 MainProgram.driver.createPath(street1Parts);
 MainProgram.driver.moveDriver();
-
-
-
-  primaryStage.setOnCloseRequest(windowEvent -> {
-            stopSimulation();
-            Platform.exit();
-            System.exit(0);
-        });
+primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();System.exit(0);});
     
-    
-        
-    
-        Text Neighbourhood_1 = new Text(1090, 230, "Alhamdaniya");
+    Text Neighbourhood_1 = new Text(1090, 230, "Alhamdaniya");
         Font font = new Font("Times New Roman",25);
         Neighbourhood_1.setFont(font);
         Neighbourhood_1.setFill(Color.GREY);
@@ -960,7 +951,7 @@ MainProgram.driver.moveDriver();
         
         // For Distance :
         
-        Label CounterDistanceLabel = new Label("00.00 Km");
+        FadingRectangle.CounterDistanceLabel = new Label("00.00 Km");
         CounterDistanceLabel.setFont(CounterLabelfont);
         CounterDistanceLabel.setTextFill(Color.WHITE);
         CounterDistanceLabel.setLayoutX(1200);
@@ -1086,25 +1077,23 @@ MainProgram.driver.moveDriver();
     }
 
 
-     public static void startSimulation() {
-
+    public static void startSimulation() {
         Timer timer = new Timer();
-
+    
         TimerTask simulationTask = new TimerTask() {
             @Override
             public void run() {
                 secondsPassed++;
                 Platform.runLater(() -> {
-                    FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));
-                });
+                    FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));});
+    
                 if (allDelivered(MainProgram.driver)) {
                     System.out.println("All packages delivered. Simulation completed.");
                     timer.cancel();
-                    
                 }
             }
         };
-
+    
         timer.schedule(simulationTask, 0, 10);
     }
     
@@ -1133,13 +1122,24 @@ MainProgram.driver.moveDriver();
 
         return String.format("%02d:%02d:%02d", hours, minutes, remainingSeconds);
     }
+    public static String formatDistance(double distance) {
+        return String.format("%.2f", distance);
+    }
+    
+        
+    
     
     private void openFirstPage() {
         FirstPage firstPage = new FirstPage(); // Create an instance of FirstPage
         Stage stage = new Stage(); // Create a new stage
         firstPage.start(stage); // Call the start method of FirstPage, passing the new stage
     }
-    
+    public  static void updateDistanceLabel() {
+        Platform.runLater(() -> {
+            double currentDistance = DeliveryDriver.getDistance();
+            FadingRectangle.CounterDistanceLabel.setText(FadingRectangle.formatDistance(currentDistance));
+            });
+    }
 
     }
     

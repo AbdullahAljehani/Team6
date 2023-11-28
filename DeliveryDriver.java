@@ -9,6 +9,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Path;
 import javafx.util.Duration;
 import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 
 
 
@@ -24,17 +25,18 @@ public class DeliveryDriver {
     private Rectangle car;
     private PathTransition pathTransition;
     public   Path path;
+    private static double Distance=0;
+
+   
+
 
 
    
 
     public DeliveryDriver() {
         this.packages = new ArrayList<>();
-        //this.currentX = 35;
-        //this.currentY = 66;
         this.currentDistanceOnRoute = 0;
         this.currentSubstreet = null; // Initialize to null
-        //this.path = new Path(new MoveTo(currentX,currentY )); // Initialize the path
         this.pathTransition = new PathTransition();
         this.car = new Rectangle(75, 180, 15, 15);
         this.car.setArcHeight(15);
@@ -42,9 +44,6 @@ public class DeliveryDriver {
         this.car.setFill(Color.RED);
         this.pathTransition.setNode(car);
         this.pathTransition.setDuration(Duration.seconds(20));
-        //this.pathTransition.setPath(path);
-    //path.getElements().addAll(MainProgram.street1_part1.createPath().getElements());
-        //path.getElements().addAll(MainProgram.street2_part1.createPath().getElements());
 
 
         
@@ -54,6 +53,9 @@ public class DeliveryDriver {
     }
     public void addPackage(Package aPackage) {
         packages.add(aPackage);
+    }
+    public static double getDistance() {
+        return Distance;
     }
 
     public ArrayList<Package> getPackages() {
@@ -68,6 +70,8 @@ public class DeliveryDriver {
         
         
     }
+    
+
 
     public DeliveryRoute getCurrentRoute() {
         return this.currentRoute;
@@ -87,59 +91,59 @@ public class DeliveryDriver {
     public void setPath(Path path) {
         this.path = path;
     }
+   public static void updateDistance(double increment) {
+    Distance += increment;
+    System.out.println(Distance);
+}
 
-    public void createPath(List<SubstreetPart> parts) {
-        if (parts == null || parts.isEmpty()) {
-            return; // No parts to create a path
-        }
-    
-        Path path = new Path(); // Create a single Path object for the entire sequence
-    
-        SubstreetPart currentPart = parts.get(0); // Start with the first part
-    
-        path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
-    
-        for (int i = 1; i < parts.size(); i++) {
-            SubstreetPart expectedNextPart = parts.get(i);
-    
-            List<SubstreetPart> nextParts = currentPart.getNextParts();
-    
-            boolean found = false;
-            for (SubstreetPart nextPart : nextParts) {
-                if (nextPart != null && nextPart.equals(expectedNextPart)) {
-                    path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
-                    currentPart = nextPart; // Move to the next part
-                    found = true;
-                    break;
-                }
-            }
-    
-            if (!found) {
-                break; // Exit the loop if the next part is not found
-            }
-        }
-    
-        setPath(path);
+public void createPath(List<SubstreetPart> parts) {
+    if (parts == null || parts.isEmpty()) {
+        return; // No parts to create a path
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    Path path = new Path(); // Create a single Path object for the entire sequence
+
+    SubstreetPart currentPart = parts.get(0); // Start with the first part
+    path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
+
+    // Loop through the path and update the distance and label after each segment
+    for (int i = 1; i < parts.size(); i++) {
+        SubstreetPart expectedNextPart = parts.get(i);
+
+        List<SubstreetPart> nextParts = currentPart.getNextParts();
+        boolean found = false;
+        for (SubstreetPart nextPart : nextParts) {
+            if (nextPart != null && nextPart.equals(expectedNextPart)) {
+                path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
+
+                // Check if the driver has moved to the next part and notify listeners
+
+                double increment = currentPart.getDistanceTo(currentPart, nextPart);
+                updateDistance(increment); // Update the distance after each segment
+
+                // Update the GUI label on the UI thread
+                Platform.runLater(() -> {
+                    FadingRectangle.updateDistanceLabel();
+                });
+
+                currentPart = nextPart;
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            break;
+        }
+    }
+
+    setPath(path);
+}
     
 
-   
-    public void moveDriver(){
+
+    
+public void moveDriver(){
     if (!path.getElements().isEmpty()) {
         System.out.println("Path elements: " + path.getElements());
     
@@ -349,3 +353,4 @@ public class DeliveryDriver {
         System.out.println("No more packages assigned to the driver at the current position.");
     }
 }
+
