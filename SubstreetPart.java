@@ -5,10 +5,11 @@ import java.util.List;
 public class SubstreetPart {
     private int x;
     private int y;
-    
+    private double distance;
+
     private List<SubstreetPart> nextParts;
 
-    public SubstreetPart(int x, int y) {
+    public SubstreetPart(int x, int y,double distance) {
         this.x = x;
         this.y = y;
         this.nextParts = new ArrayList<>();
@@ -28,6 +29,15 @@ public class SubstreetPart {
 
     public int getY() {
         return this.y;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+   public double getDistance() {
+    
+        return this.distance;
     }
 
 
