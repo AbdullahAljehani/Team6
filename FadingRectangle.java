@@ -33,8 +33,8 @@ List<SubstreetPart> street1Parts = Arrays.asList(MainProgram.FirstOfStreet1,Main
     public void start(Stage primaryStage) {
        
         startSimulation();
-MainProgram.driver.createPath(street1Parts);
-MainProgram.driver.moveDriver();
+        MainProgram.driver.createPath(street1Parts);
+        MainProgram.driver.moveDriver();
 primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();System.exit(0);});
     
     Text Neighbourhood_1 = new Text(1090, 230, "Alhamdaniya");
@@ -980,6 +980,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         Start_button.setPrefSize(60, 25);
         Start_button.setLayoutX(1060 );
         Start_button.setLayoutY(15);
+        Start_button.setOnAction((event) -> {MainProgram.driver.createPath(street1Parts);MainProgram.driver.moveDriver();});
 
         Button Pause_button = new Button("Pause");
         Pause_button.setPrefSize(60, 25);
@@ -1080,12 +1081,18 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     public static void startSimulation() {
         Timer timer = new Timer();
     
+        // Create a listener for path changes
+        
         TimerTask simulationTask = new TimerTask() {
             @Override
             public void run() {
                 secondsPassed++;
+    
+                // Update distance label and driver's distance directly in the simulation task
                 Platform.runLater(() -> {
-                    FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));});
+                    
+                    FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));
+                });
     
                 if (allDelivered(MainProgram.driver)) {
                     System.out.println("All packages delivered. Simulation completed.");
@@ -1096,6 +1103,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     
         timer.schedule(simulationTask, 0, 10);
     }
+    
     
     public static void stopSimulation() {
         if (timer != null) {

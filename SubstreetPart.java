@@ -37,7 +37,7 @@ public class SubstreetPart {
         double deltaX = Math.abs(currentPart.getX() - nextPart.getX());
         double deltaY = Math.abs(currentPart.getY() - nextPart.getY());
     
-        double scale = 0.01;
+    double scale = 0.01;
         double distanceInKm = (deltaX+deltaY)*scale;   
         return distanceInKm;
     }
