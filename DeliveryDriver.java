@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.TimerTask;
 import java.util.function.Consumer;
-
 import javafx.animation.PathTransition;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
@@ -28,7 +26,7 @@ public class DeliveryDriver {
     public static double Distance=0;
      private static double GasolineCost=0;
     public static boolean continueTransition = false;
-    private Consumer<Void> onDeliveryCompletionCallback;
+   
     
 
 
@@ -139,9 +137,6 @@ public void createPath(List<SubstreetPart> parts) {
     setPath(path);
 } 
 
-public void createPath(SubstreetPart part) {
-    createPath(Collections.singletonList(part));
-}
 
 
 public void moveDriver() {
@@ -156,7 +151,6 @@ public void moveDriver() {
             pathTransition.setCycleCount(1);
             pathTransition.setOnFinished(e -> {
             handleTransitionCompletion();
-            handleDeliveryCompletion();
 });
           
 
@@ -375,17 +369,6 @@ public void handleTransitionCompletion() {
     }
 
         // Setter method for the callback
-        public void setOnDeliveryCompletion(Consumer<Void> callback) {
-            this.onDeliveryCompletionCallback = callback;
-        }
-    
-        // Method to be called when the delivery is completed
-        private void handleDeliveryCompletion() {
-            // You can add any additional logic here if needed
-            if (onDeliveryCompletionCallback != null) {
-                onDeliveryCompletionCallback.accept(null);
-            }
-        }
-
+      
 }
 

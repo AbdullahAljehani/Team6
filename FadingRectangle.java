@@ -984,7 +984,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         Start_button.setLayoutY(15);
         Start_button.setOnAction((event) -> { MainProgram.driver.createPath(MainProgram.pathofpackage1);MainProgram.driver.moveDriver();isStartClicked = true;secondsPassed = 0;FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));startSimulation(); isPaused=false;
 
-         MainProgram.driver.setOnDeliveryCompletion((Void) -> {FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));MainProgram.driver.createPath(MainProgram.pathofpackage2);MainProgram.driver.moveDriver();secondsPassed = 0;startSimulation();});});
+        ;});
                 
         Button Pause_button = new Button("Pause");
         Pause_button.setPrefSize(60, 25);
@@ -1191,7 +1191,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
             MainProgram.driver.pathTransition.setPath(null);
             MainProgram.driver.pathTransition.setCycleCount(1);
             MainProgram.driver.handleTransitionCompletion();
-          
+  
         });
     }
 }
