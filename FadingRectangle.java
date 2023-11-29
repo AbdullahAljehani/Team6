@@ -25,16 +25,17 @@ public class FadingRectangle extends Application {
   public static Label CounterDistanceLabel;
 
  private static Timer timer;
- private static int secondsPassed = 0;
+ public static int secondsPassed = 0;
+ public static  boolean isStartClicked=true;
+ public static boolean isPaused = false;
+
 
 List<SubstreetPart> street1Parts = Arrays.asList(MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreetA,MainProgram.intersection1_1,MainProgram.intersection1_2,MainProgram.intersection1_3,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection2_3,MainProgram.EndOfStreet2,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection4_3,MainProgram.intersection5_3,MainProgram.intersection5_2,MainProgram.intersection6_2,MainProgram.intersection7_2,MainProgram.intersection8_2,MainProgram.intersection8_3,MainProgram.intersection9_3,MainProgram.EndOfStreetC);
 
     @Override
     public void start(Stage primaryStage) {
        
-        startSimulation();
-        MainProgram.driver.createPath(street1Parts);
-        MainProgram.driver.moveDriver();
+       
 primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();System.exit(0);});
     
     Text Neighbourhood_1 = new Text(1090, 230, "Alhamdaniya");
@@ -980,8 +981,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         Start_button.setPrefSize(60, 25);
         Start_button.setLayoutX(1060 );
         Start_button.setLayoutY(15);
-        Start_button.setOnAction((event) -> {MainProgram.driver.createPath(street1Parts);MainProgram.driver.moveDriver();});
-
+        Start_button.setOnAction((event) -> {MainProgram.driver.createPath(street1Parts);isStartClicked = true; MainProgram.driver.moveDriver();secondsPassed = 0;startSimulation();});        
         Button Pause_button = new Button("Pause");
         Pause_button.setPrefSize(60, 25);
         Pause_button.setLayoutX(1130);
@@ -993,7 +993,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         End_button.setPrefSize(60, 25);
         End_button.setLayoutX(1200);
         End_button.setLayoutY(15);
-
+        End_button.setOnAction(e -> {endSimulation();});
         Button Back_button = new Button("Back");
         Back_button.setPrefSize(70, 25);
         Back_button.setLayoutX(1270);
@@ -1070,33 +1070,25 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     }
 
 
-    public static void updateCarPositionInGUI() {
-        Rectangle car = MainProgram.driver.getCar();
-        car.setLayoutX(MainProgram.driver.getCurrentX());
-        car.setLayoutY(MainProgram.driver.getCurrentY());
-        System.out.println("Car position updated. X: " + MainProgram.driver.getCurrentX() + ", Y: " + MainProgram.driver.getCurrentY());
-    }
+   
 
 
     public static void startSimulation() {
         Timer timer = new Timer();
     
-        // Create a listener for path changes
-        
         TimerTask simulationTask = new TimerTask() {
             @Override
             public void run() {
-                secondsPassed++;
+                if (!isPaused) { // Check if simulation is not paused
+                    secondsPassed++;
+                    Platform.runLater(() -> {
+                        FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));
+                    });
     
-                // Update distance label and driver's distance directly in the simulation task
-                Platform.runLater(() -> {
-                    
-                    FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));
-                });
-    
-                if (allDelivered(MainProgram.driver)) {
-                    System.out.println("All packages delivered. Simulation completed.");
-                    timer.cancel();
+                    if (allDelivered(MainProgram.driver)) {
+                        System.out.println("All packages delivered. Simulation completed.");
+                        timer.cancel();
+                    }
                 }
             }
         };
@@ -1105,13 +1097,18 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     }
     
     
+    
     public static void stopSimulation() {
-        if (timer != null) {
-            timer.cancel();
-            
+        isPaused = !isPaused; // Toggle pause state
+    
+        if (MainProgram.driver.pathTransition != null) {
+            if (isPaused) {
+                MainProgram.driver.pathTransition.pause();
+            } else {
+                MainProgram.driver.pathTransition.play();}
         }
     }
-
+    
     public static boolean allDelivered(DeliveryDriver driver) {
         List<Package> packages = driver.getPackages();
 
@@ -1147,6 +1144,13 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
             double currentDistance = DeliveryDriver.getDistance();
             FadingRectangle.CounterDistanceLabel.setText(FadingRectangle.formatDistance(currentDistance));
             });
+    }
+    public static void endSimulation() {
+        secondsPassed = 0;
+        MainProgram.driver.continueTransition = false;
+        MainProgram.driver.handleTransitionCompletion();
+
+
     }
 
     }

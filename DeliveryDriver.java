@@ -20,17 +20,21 @@ public class DeliveryDriver {
     private double currentDistanceOnRoute;
     private int currentSubstreetIndex; 
     private Substreet currentSubstreet;
-    private Rectangle car;
-    private PathTransition pathTransition;
+    private static Rectangle car;
+    public static PathTransition pathTransition;
     public   Path path;
     private static double Distance=0;
+    public static boolean continueTransition = true;
+
+    
+
 
     public DeliveryDriver() {
         this.packages = new ArrayList<>();
         this.currentDistanceOnRoute = 0;
         this.currentSubstreet = null; // Initialize to null
         this.pathTransition = new PathTransition();
-        this.car = new Rectangle(75, 180, 15, 15);
+        this.car = new Rectangle(28, 58, 15, 15);
         this.car.setArcHeight(15);
         this.car.setArcWidth(15);
         this.car.setFill(Color.RED);
@@ -88,6 +92,7 @@ public class DeliveryDriver {
     System.out.println(Distance);
     
 }
+
    
 public void createPath(List<SubstreetPart> parts) {
     if (parts == null || parts.isEmpty()) {
@@ -125,25 +130,38 @@ public void createPath(List<SubstreetPart> parts) {
 
 
 public void moveDriver() {
-    if (!path.getElements().isEmpty()) {
+    if (!path.getElements().isEmpty() && FadingRectangle.isStartClicked) {
         System.out.println("Path elements: " + path.getElements());
-        pathTransition.stop();
-        pathTransition.setPath(path);
-        pathTransition.setCycleCount(1);
 
-        // Set up the event to be triggered after the transition is complete
-        pathTransition.setOnFinished(e -> {
-            
-            FadingRectangle.updateDistanceLabel();
-            System.out.println("Transition finished");
-            FadingRectangle.updateCarPositionInGUI();
-            moveToNextSubstreet(); // Move to the next substreet after finishing the path
-       });
+        // Check if the simulation is not paused and has not ended before stopping and resetting the path
+        if (!FadingRectangle.isPaused && continueTransition) {
+            pathTransition.stop();
+            pathTransition.setPath(path);
+            pathTransition.setCycleCount(1);
+            pathTransition.setOnFinished(e -> handleTransitionCompletion());
+          
 
-        pathTransition.play(); // Start the animation
+            pathTransition.play();
+        } else {
+            // If the simulation is paused or has ended, reset the pathTransition and start it again
+            pathTransition.stop();
+            pathTransition.setPath(path);
+            pathTransition.setCycleCount(1);
+            pathTransition.setOnFinished(e -> handleTransitionCompletion());
+
+            pathTransition.play();
+        }
     }
 }
-    
+ 
+public void handleTransitionCompletion() {
+        FadingRectangle.updateDistanceLabel();
+        System.out.println("Transition finished");
+      
+
+    }
+
+
 
     
     
