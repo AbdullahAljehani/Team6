@@ -110,32 +110,36 @@ public void createPathForPackages(List<List<SubstreetPart>> Packages) {
     if (Packages == null || Packages.isEmpty()) {
         return;
     }
-    
     Distance = 0;
     this.path = new Path();
 
-    for (List<SubstreetPart> parts : Packages) {
-        if (parts != null && !parts.isEmpty()) {
-            SubstreetPart currentPart = parts.get(0);
-
+    for (List<SubstreetPart> packageParts : Packages) {
+        if (packageParts != null && !packageParts.isEmpty()) {
+            SubstreetPart currentPart = packageParts.get(0); // Start with the first part of the package
+            
             this.path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
 
-            for (int i = 1; i < parts.size(); i++) {
-                SubstreetPart expectedNextPart = parts.get(i);
+            for (int i = 1; i < packageParts.size(); i++) {
+                SubstreetPart expectedNextPart = packageParts.get(i);
                 List<SubstreetPart> nextParts = currentPart.getNextParts();
                 boolean found = false;
+                
                 for (SubstreetPart nextPart : nextParts) {
                     if (nextPart != null && nextPart.equals(expectedNextPart)) {
                         path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
+                        
                         double increment = currentPart.getDistanceTo(currentPart, nextPart);
                         updateDistance(increment);
+                        
                         double gasolineCostIncrement = currentPart.calculateGasolineCost(currentPart, nextPart);
                         updateGasolineCost(gasolineCostIncrement);
+                        
                         currentPart = nextPart;
                         found = true;
                         break;
                     }
                 }
+                
                 if (!found) {
                     break;
                 }
@@ -145,8 +149,6 @@ public void createPathForPackages(List<List<SubstreetPart>> Packages) {
 
     setPath(path);
 }
-
-
 
 
 public void moveDriver() {

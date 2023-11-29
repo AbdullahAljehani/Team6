@@ -3,10 +3,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainProgram {
-  public static List<List<SubstreetPart>> packages = new ArrayList<>();
+   public static List<List<SubstreetPart>> Packages = new ArrayList<>();
   public static Substreet streetA;
-    public static List<SubstreetPart> initialparts1 = Arrays.asList(MainProgram.EndOfStreetA,MainProgram.intersection9_1,MainProgram.intersection8_1,MainProgram.intersection7_1,MainProgram.intersection6_1,MainProgram.intersection5_1,MainProgram.intersection4_1,MainProgram.FirstOfStreet4);
-    public static List<SubstreetPart> initialparts2 = Arrays.asList(MainProgram.FirstOfStreet4,MainProgram.intersection4_1,MainProgram.intersection3_1,MainProgram.intersection2_1,MainProgram.intersection1_1,MainProgram.EndOfStreet1);
+    // public static List<SubstreetPart> initialparts1 = Arrays.asList(MainProgram.EndOfStreetA,MainProgram.intersection9_1,MainProgram.intersection8_1,MainProgram.intersection7_1,MainProgram.intersection6_1,MainProgram.intersection5_1,MainProgram.intersection4_1,MainProgram.FirstOfStreet4);
+    // public static List<SubstreetPart> initialparts2 = Arrays.asList(MainProgram.FirstOfStreet4,MainProgram.intersection4_1,MainProgram.intersection3_1,MainProgram.intersection2_1,MainProgram.intersection1_1,MainProgram.EndOfStreet1);
     private static Substreet streetB;
     private static Substreet streetC;
     private static Substreet street1;
@@ -133,18 +133,18 @@ public class MainProgram {
     }
 
     public static void initializeObjects() {
-      streetA = new Substreet('A', 10.0, 80, 2);
-      streetB = new Substreet('B', 10.0, 80, 2);
-      streetC = new Substreet('C', 10.0, 80, 2);
-      street1 = new Substreet('1', 5.0, 60, 4);
-      street2 = new Substreet('2', 5.0, 60, 4);
-      street3 = new Substreet('3', 5.0, 60, 4);
-      street4 = new Substreet('4', 5.0, 60, 4);
-      street5 = new Substreet('5', 5.0, 60, 4);
-      street6 = new Substreet('6', 5.0, 60, 4);
-      street7 = new Substreet('7', 5.0, 60, 4);
-      street8 = new Substreet('8', 5.0, 60, 4);
-      street9 = new Substreet('9', 5.0, 60, 4);
+        streetA = new Substreet('A', 10.0, 80, 2);
+        streetB = new Substreet('B', 10.0, 80, 2);
+        streetC = new Substreet('C', 10.0, 80, 2);
+        street1 = new Substreet('1', 5.0, 60, 4);
+        street2 = new Substreet('2', 5.0, 60, 4);
+        street3 = new Substreet('3', 5.0, 60, 4);
+        street4 = new Substreet('4', 5.0, 60, 4);
+        street5 = new Substreet('5', 5.0, 60, 4);
+        street6 = new Substreet('6', 5.0, 60, 4);
+        street7 = new Substreet('7', 5.0, 60, 4);
+        street8 = new Substreet('8', 5.0, 60, 4);
+        street9 = new Substreet('9', 5.0, 60, 4);
       
       FirstOfStreet1= new SubstreetPart( 35, 66);
       intersection1_1= new SubstreetPart( 330, 66);
@@ -455,8 +455,7 @@ public class MainProgram {
         customer4 = new Customer(4, building70);
         customer5 = new Customer(5, building103);
         customer6 = new Customer(6, building127);
-        Package package1 = new Offical_paper(customer1, 1, initialparts1);
-        Package package2 = new Normal(customer2, 2, initialparts2);
+
         driver = new DeliveryDriver();
         route = new DeliveryRoute(90);
 
@@ -476,9 +475,13 @@ public class MainProgram {
         route.addSubstreet(street8);
         route.addSubstreet(street9);
         driver.setCurrentRoute(route);
-        packages.add(package1.getPath());
-        packages.add(package2.getPath());
-        
+      List<SubstreetPart> initialparts1 = Arrays.asList(MainProgram.EndOfStreetA,MainProgram.intersection9_1,MainProgram.intersection8_1,MainProgram.intersection7_1,MainProgram.intersection6_1,MainProgram.intersection5_1,MainProgram.intersection4_1,MainProgram.FirstOfStreet4);
+       List<SubstreetPart> initialparts2 = Arrays.asList(MainProgram.FirstOfStreet4,MainProgram.intersection4_1,MainProgram.intersection3_1,MainProgram.intersection2_1,MainProgram.intersection1_1,MainProgram.EndOfStreet1);
+        Package package1 = new Offical_paper(customer1, 1,initialparts1 );
+        Package package2 = new Normal(customer2, 2,initialparts2 ); 
+        Packages.add(package1.getPath());
+        Packages.add(package2.getPath());
+
     }
 
     
