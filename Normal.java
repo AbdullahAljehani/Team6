@@ -1,7 +1,9 @@
+import java.util.List;
+
 public class Normal extends Package  {
 
-    public Normal(Customer customer, int packageId) {
-        super(customer,  packageId);
+    public Normal(Customer customer, int packageId,List<SubstreetPart> currentParts) {
+        super(customer,  packageId,currentParts);
 
     }
 

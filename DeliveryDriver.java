@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.TimerTask;
+import java.util.function.Consumer;
 
 import javafx.animation.PathTransition;
 import javafx.scene.paint.Color;
@@ -13,7 +15,7 @@ import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 
 public class DeliveryDriver {
-    private ArrayList<Package> packages;
+    private List<Package> packages;
     private DeliveryRoute currentRoute;
     private int currentX;
     private int currentY;
@@ -22,10 +24,10 @@ public class DeliveryDriver {
     private Substreet currentSubstreet;
     private static Rectangle car;
     public static PathTransition pathTransition;
-    public   Path path;
+    private Path path;
     private static double Distance=0;
     public static boolean continueTransition = true;
-
+    private Consumer<Void> onDeliveryCompletionCallback;
     
 
 
@@ -33,6 +35,7 @@ public class DeliveryDriver {
         this.packages = new ArrayList<>();
         this.currentDistanceOnRoute = 0;
         this.currentSubstreet = null; // Initialize to null
+        this.path = new Path();
         this.pathTransition = new PathTransition();
         this.car = new Rectangle(28, 58, 15, 15);
         this.car.setArcHeight(15);
@@ -54,8 +57,14 @@ public class DeliveryDriver {
         return Distance;
     }
 
-    public ArrayList<Package> getPackages() {
-        return new ArrayList<>(packages);
+    public void setPackages(List<Package> packages) {
+        this.packages = packages;
+    }
+
+    // Other methods...
+
+      public List<Package> getPackages() {
+        return packages;
     }
 
     public void setCurrentRoute(DeliveryRoute route) {
@@ -99,10 +108,10 @@ public void createPath(List<SubstreetPart> parts) {
         return; 
     }
 
-    Path path = new Path(); 
+    this.path = new Path(); 
 
     SubstreetPart currentPart = parts.get(0); 
-    path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
+    this.path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
     
     for (int i = 1; i < parts.size(); i++) {
         SubstreetPart expectedNextPart = parts.get(i);
@@ -128,17 +137,25 @@ public void createPath(List<SubstreetPart> parts) {
     setPath(path);
 }
 
+public void createPath(SubstreetPart part) {
+    createPath(Collections.singletonList(part));
+}
+
 
 public void moveDriver() {
+        System.out.println("Simulating the delivery process...");
     if (!path.getElements().isEmpty() && FadingRectangle.isStartClicked) {
         System.out.println("Path elements: " + path.getElements());
-
+        Platform.runLater(() -> {
         // Check if the simulation is not paused and has not ended before stopping and resetting the path
         if (!FadingRectangle.isPaused && continueTransition) {
             pathTransition.stop();
             pathTransition.setPath(path);
             pathTransition.setCycleCount(1);
-            pathTransition.setOnFinished(e -> handleTransitionCompletion());
+            pathTransition.setOnFinished(e -> {
+            handleTransitionCompletion();
+            handleDeliveryCompletion();
+});
           
 
             pathTransition.play();
@@ -151,6 +168,7 @@ public void moveDriver() {
 
             pathTransition.play();
         }
+    });
     }
 }
  
@@ -353,5 +371,19 @@ public void handleTransitionCompletion() {
 
         System.out.println("No more packages assigned to the driver at the current position.");
     }
+
+        // Setter method for the callback
+        public void setOnDeliveryCompletion(Consumer<Void> callback) {
+            this.onDeliveryCompletionCallback = callback;
+        }
+    
+        // Method to be called when the delivery is completed
+        private void handleDeliveryCompletion() {
+            // You can add any additional logic here if needed
+            if (onDeliveryCompletionCallback != null) {
+                onDeliveryCompletionCallback.accept(null);
+            }
+        }
+
 }
 

@@ -981,7 +981,22 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         Start_button.setPrefSize(60, 25);
         Start_button.setLayoutX(1060 );
         Start_button.setLayoutY(15);
-        Start_button.setOnAction((event) -> {MainProgram.driver.createPath(street1Parts);isStartClicked = true; MainProgram.driver.moveDriver();secondsPassed = 0;startSimulation();});        
+        Start_button.setOnAction((event) -> {
+            MainProgram.driver.createPath(MainProgram.pathofpackage1);
+            MainProgram.driver.moveDriver();
+            isStartClicked = true;
+            secondsPassed = 0;
+            startSimulation();
+            
+            MainProgram.driver.setOnDeliveryCompletion((Void) -> {
+                // When the delivery of the first package is completed, start the second one
+                MainProgram.driver.createPath(MainProgram.pathofpackage2);
+                MainProgram.driver.moveDriver();
+                secondsPassed = 0;
+                startSimulation();
+            });
+        });
+                
         Button Pause_button = new Button("Pause");
         Pause_button.setPrefSize(60, 25);
         Pause_button.setLayoutX(1130);
@@ -1111,14 +1126,19 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     
     public static boolean allDelivered(DeliveryDriver driver) {
         List<Package> packages = driver.getPackages();
-
+    
+        boolean allDelivered = true; // Declare and initialize the variable
+    
         for (Package aPackage : packages) {
-            if (!aPackage.isDelivered) {
-                return false;
+            if (aPackage != null && !aPackage.isDelivered()) {
+                allDelivered = false;
+                break;  // If any package is not delivered, exit the loop and set allDelivered to false
             }
         }
-        return true;
+    
+        return allDelivered;  // Return the final result after checking all packages
     }
+    
 
     private static String formatTime(int seconds) {
         long hours = seconds / 3600;
