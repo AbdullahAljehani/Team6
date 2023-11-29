@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javafx.application.Platform;
-
 public class MainProgram {
   public static List<SubstreetPart> pathofpackage1;
   public static List<SubstreetPart> pathofpackage2;
@@ -134,10 +132,7 @@ public class MainProgram {
     // Set the packages on the driver
     driver.setPackages(packages);
     FadingRectangle.launch(FadingRectangle.class, args);
- 
    
-        
-        
         
     }
 

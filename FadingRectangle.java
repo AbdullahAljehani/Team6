@@ -982,28 +982,21 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         Start_button.setPrefSize(60, 25);
         Start_button.setLayoutX(1060 );
         Start_button.setLayoutY(15);
-        Start_button.setOnAction((event) -> {
-            MainProgram.driver.createPath(MainProgram.pathofpackage1);
-            MainProgram.driver.moveDriver();
-            isStartClicked = true;
-            secondsPassed = 0;
-            startSimulation();
-            
-            MainProgram.driver.setOnDeliveryCompletion((Void) -> {
-                // When the delivery of the first package is completed, start the second one
-                MainProgram.driver.createPath(MainProgram.pathofpackage2);
-                MainProgram.driver.moveDriver();
-                secondsPassed = 0;
-                startSimulation();
-            });
-        });
+        Start_button.setOnAction((event) -> { MainProgram.driver.createPath(MainProgram.pathofpackage1);MainProgram.driver.moveDriver();isStartClicked = true;secondsPassed = 0;FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));startSimulation(); isPaused=false;
+
+         MainProgram.driver.setOnDeliveryCompletion((Void) -> {FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));MainProgram.driver.createPath(MainProgram.pathofpackage2);MainProgram.driver.moveDriver();secondsPassed = 0;startSimulation();});});
                 
         Button Pause_button = new Button("Pause");
         Pause_button.setPrefSize(60, 25);
         Pause_button.setLayoutX(1130);
         Pause_button.setLayoutY(15);
+        
         Pause_button.setOnAction(e -> {
-            stopSimulation();
+            if (isPaused) {
+                resumeSimulation();
+            } else {
+                stopSimulation();
+            }
         });
         Button End_button = new Button("End ");
         End_button.setPrefSize(60, 25);
@@ -1090,12 +1083,11 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
 
 
     public static void startSimulation() {
-        Timer timer = new Timer();
-    
-        TimerTask simulationTask = new TimerTask() {
+        timer = new Timer();
+      TimerTask simulationTask = new TimerTask() {
             @Override
             public void run() {
-                if (!isPaused) { // Check if simulation is not paused
+                if (!isPaused) {
                     secondsPassed++;
                     Platform.runLater(() -> {
                         FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));
@@ -1103,6 +1095,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     
                     if (allDelivered(MainProgram.driver)) {
                         System.out.println("All packages delivered. Simulation completed.");
+                        System.out.println("startSimulation: Timer instance at completion: " + timer.hashCode()); // Debug print
                         timer.cancel();
                     }
                 }
@@ -1112,16 +1105,21 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         timer.schedule(simulationTask, 0, 10);
     }
     
-    
-    
     public static void stopSimulation() {
         isPaused = !isPaused; // Toggle pause state
-    
+
         if (MainProgram.driver.pathTransition != null) {
             if (isPaused) {
-                MainProgram.driver.pathTransition.pause();
-            } else {
-                MainProgram.driver.pathTransition.play();}
+                MainProgram.driver.pathTransition.pause();            } 
+
+
+        }
+    }
+    public static void resumeSimulation() {
+        isPaused = false; // Resume the simulation
+
+        if (MainProgram.driver.pathTransition != null) {
+            MainProgram.driver.pathTransition.play();
         }
     }
     
@@ -1149,27 +1147,28 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         return String.format("%02d:%02d:%02d", hours, minutes, remainingSeconds);
     }
     public static String formatDistance(double distance) {
-        return String.format("%.2f", distance);
+        return String.format("%.2f %s", distance,"Km");
     }
     
         
     
     
     private void openFirstPage() {
-        FirstPage firstPage = new FirstPage(); // Create an instance of FirstPage
-        Stage stage = new Stage(); // Create a new stage
-        firstPage.start(stage); // Call the start method of FirstPage, passing the new stage
+        FirstPage firstPage = new FirstPage(); 
+        Stage stage = new Stage(); 
+        firstPage.start(stage); 
     }
+    
     public  static void updateDistanceLabel() {
         Platform.runLater(() -> {
-            double currentDistance = DeliveryDriver.getDistance();
-            FadingRectangle.CounterDistanceLabel.setText(FadingRectangle.formatDistance(currentDistance));
+            FadingRectangle.CounterDistanceLabel.setText(FadingRectangle.formatDistance(MainProgram.driver.Distance));
             });
     }
+    
     public static void updateGasolineCostLabel() {
         Platform.runLater(() -> {
             double costOfGasoline = DeliveryDriver.getGasolineCost();
-            FadingRectangle.CounterCostLabel.setText(formatGasolineCost(costOfGasoline));
+            //FadingRectangle.CounterCostLabel.setText(formatGasolineCost(costOfGasoline));
         });
     }
     public static String formatGasolineCost(double cost) {
@@ -1177,14 +1176,26 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     }
 
     public static void endSimulation() {
-        secondsPassed = 0;
-        MainProgram.driver.continueTransition = false;
-        MainProgram.driver.handleTransitionCompletion();
+     
 
-
+    if (timer != null) {
+        timer.cancel();
     }
 
+    MainProgram.driver.continueTransition = false;
+
+    // Reset the pathTransition
+    if (MainProgram.driver.pathTransition != null) {
+        Platform.runLater(() -> {
+            MainProgram.driver.pathTransition.stop();
+            MainProgram.driver.pathTransition.setPath(null);
+            MainProgram.driver.pathTransition.setCycleCount(1);
+            MainProgram.driver.handleTransitionCompletion();
+          
+        });
     }
+}
+}
     
     
 

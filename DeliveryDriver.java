@@ -25,9 +25,9 @@ public class DeliveryDriver {
     private static Rectangle car;
     public static PathTransition pathTransition;
     private Path path;
-    private static double Distance=0;
+    public static double Distance=0;
      private static double GasolineCost=0;
-    public static boolean continueTransition = true;
+    public static boolean continueTransition = false;
     private Consumer<Void> onDeliveryCompletionCallback;
     
 
@@ -38,7 +38,7 @@ public class DeliveryDriver {
         this.currentSubstreet = null; // Initialize to null
         this.path = new Path();
         this.pathTransition = new PathTransition();
-        this.car = new Rectangle(28, 58, 15, 15);
+        this.car = new Rectangle(322, 662, 15, 15);
         this.car.setArcHeight(15);
         this.car.setArcWidth(15);
         this.car.setFill(Color.RED);
@@ -54,9 +54,7 @@ public class DeliveryDriver {
     public void addPackage(Package aPackage) {
         packages.add(aPackage);
     }
-    public static double getDistance() {
-        return Distance;
-    }
+   
     public static double getGasolineCost() {
         return GasolineCost;
     }
@@ -64,7 +62,6 @@ public class DeliveryDriver {
         this.packages = packages;
     }
 
-    // Other methods...
 
       public List<Package> getPackages() {
         return packages;
@@ -99,6 +96,9 @@ public class DeliveryDriver {
     public void setPath(Path path) {
         this.path = path;
     }
+    public Path getpath(){
+        return path;
+    }
    public static void updateDistance(double increment) {
     Distance += increment;
     System.out.println(Distance);
@@ -110,43 +110,34 @@ public static void updateGasolineCost(double increment) {
 }
 public void createPath(List<SubstreetPart> parts) {
     if (parts == null || parts.isEmpty()) {
-        return; // No parts to create a path
+        return; 
     }
+    Distance=0;
+    this.path = new Path(); 
+    SubstreetPart currentPart = parts.get(0); 
 
-    Path path = new Path(); // Create a single Path object for the entire sequence
+    this.path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
 
-    SubstreetPart currentPart = parts.get(0); // Start with the first part
-    path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
-
-    // Loop through the path and update the distance and label after each segment
     for (int i = 1; i < parts.size(); i++) {
         SubstreetPart expectedNextPart = parts.get(i);
-
         List<SubstreetPart> nextParts = currentPart.getNextParts();
         boolean found = false;
         for (SubstreetPart nextPart : nextParts) {
             if (nextPart != null && nextPart.equals(expectedNextPart)) {
                 path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
-
-                double distanceIncrement = currentPart.getDistanceTo(currentPart, nextPart);
-                updateDistance(distanceIncrement); // Update the distance after each segment
-
-                double gasolineCostIncrement = currentPart.calculateGasolineCost(currentPart,nextPart);
-                updateGasolineCost(gasolineCostIncrement); // Update the gasoline cost after each segment
-
+                double increment = currentPart.getDistanceTo(currentPart,nextPart); 
+                 updateDistance(increment);
                 currentPart = nextPart;
                 found = true;
                 break;
             }
         }
-
         if (!found) {
             break;
         }
     }
-
     setPath(path);
-}
+} 
 
 public void createPath(SubstreetPart part) {
     createPath(Collections.singletonList(part));
@@ -157,8 +148,8 @@ public void moveDriver() {
         System.out.println("Simulating the delivery process...");
     if (!path.getElements().isEmpty() && FadingRectangle.isStartClicked) {
         System.out.println("Path elements: " + path.getElements());
+         FadingRectangle.CounterDistanceLabel.setText("00.00 Km");
         Platform.runLater(() -> {
-        // Check if the simulation is not paused and has not ended before stopping and resetting the path
         if (!FadingRectangle.isPaused && continueTransition) {
             pathTransition.stop();
             pathTransition.setPath(path);
@@ -171,7 +162,6 @@ public void moveDriver() {
 
             pathTransition.play();
         } else {
-            // If the simulation is paused or has ended, reset the pathTransition and start it again
             pathTransition.stop();
             pathTransition.setPath(path);
             pathTransition.setCycleCount(1);
@@ -184,13 +174,12 @@ public void moveDriver() {
 }
  
 public void handleTransitionCompletion() {
-        FadingRectangle.updateDistanceLabel();
+    Platform.runLater(() -> {
         FadingRectangle.updateGasolineCostLabel();
-
+        FadingRectangle.updateDistanceLabel();
         System.out.println("Transition finished");
-      
-
-    }
+    });
+}
 
 
 
