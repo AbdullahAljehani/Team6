@@ -41,7 +41,9 @@ public class SubstreetPart {
         double distanceInKm = (deltaX+deltaY)*scale;   
         return distanceInKm;
     }
-    
+    public double calculateGasolineCost(SubstreetPart currentPart,SubstreetPart nextPart) {
+        double costPerKilometer = 2.5; 
+        return getDistanceTo( currentPart, nextPart) * costPerKilometer;}
 
     public void setNextPart(SubstreetPart nextPart) {
         if (nextPart != null) {

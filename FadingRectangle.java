@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 public class FadingRectangle extends Application {
  private static Label CounterTimeLabel;
   public static Label CounterDistanceLabel;
+  public static Label CounterCostLabel;
 
  private static Timer timer;
  public static int secondsPassed = 0;
@@ -1165,6 +1166,16 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
             FadingRectangle.CounterDistanceLabel.setText(FadingRectangle.formatDistance(currentDistance));
             });
     }
+    public static void updateGasolineCostLabel() {
+        Platform.runLater(() -> {
+            double costOfGasoline = DeliveryDriver.getGasolineCost();
+            FadingRectangle.CounterCostLabel.setText(formatGasolineCost(costOfGasoline));
+        });
+    }
+    public static String formatGasolineCost(double cost) {
+        return String.format("%s %.2f", "$" , cost ); // Replace "Currency" with your desired currency symbol or abbreviation
+    }
+
     public static void endSimulation() {
         secondsPassed = 0;
         MainProgram.driver.continueTransition = false;

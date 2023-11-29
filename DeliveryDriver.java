@@ -26,6 +26,7 @@ public class DeliveryDriver {
     public static PathTransition pathTransition;
     private Path path;
     private static double Distance=0;
+     private static double GasolineCost=0;
     public static boolean continueTransition = true;
     private Consumer<Void> onDeliveryCompletionCallback;
     
@@ -56,7 +57,9 @@ public class DeliveryDriver {
     public static double getDistance() {
         return Distance;
     }
-
+    public static double getGasolineCost() {
+        return GasolineCost;
+    }
     public void setPackages(List<Package> packages) {
         this.packages = packages;
     }
@@ -101,18 +104,21 @@ public class DeliveryDriver {
     System.out.println(Distance);
     
 }
-
-   
+public static void updateGasolineCost(double increment) {
+    GasolineCost += increment;
+    System.out.println(GasolineCost);
+}
 public void createPath(List<SubstreetPart> parts) {
     if (parts == null || parts.isEmpty()) {
-        return; 
+        return; // No parts to create a path
     }
 
-    this.path = new Path(); 
+    Path path = new Path(); // Create a single Path object for the entire sequence
 
-    SubstreetPart currentPart = parts.get(0); 
-    this.path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
-    
+    SubstreetPart currentPart = parts.get(0); // Start with the first part
+    path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
+
+    // Loop through the path and update the distance and label after each segment
     for (int i = 1; i < parts.size(); i++) {
         SubstreetPart expectedNextPart = parts.get(i);
 
@@ -121,8 +127,13 @@ public void createPath(List<SubstreetPart> parts) {
         for (SubstreetPart nextPart : nextParts) {
             if (nextPart != null && nextPart.equals(expectedNextPart)) {
                 path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
-                double increment = currentPart.getDistanceTo(currentPart,nextPart); // Use nextPart here
-                 updateDistance(increment);
+
+                double distanceIncrement = currentPart.getDistanceTo(currentPart, nextPart);
+                updateDistance(distanceIncrement); // Update the distance after each segment
+
+                double gasolineCostIncrement = currentPart.calculateGasolineCost(currentPart,nextPart);
+                updateGasolineCost(gasolineCostIncrement); // Update the gasoline cost after each segment
+
                 currentPart = nextPart;
                 found = true;
                 break;
@@ -174,6 +185,8 @@ public void moveDriver() {
  
 public void handleTransitionCompletion() {
         FadingRectangle.updateDistanceLabel();
+        FadingRectangle.updateGasolineCostLabel();
+
         System.out.println("Transition finished");
       
 
