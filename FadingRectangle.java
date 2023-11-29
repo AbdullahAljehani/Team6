@@ -982,7 +982,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         Start_button.setPrefSize(60, 25);
         Start_button.setLayoutX(1060 );
         Start_button.setLayoutY(15);
-        Start_button.setOnAction((event) -> { MainProgram.driver.createPath(MainProgram.pathofpackage1);MainProgram.driver.moveDriver();isStartClicked = true;secondsPassed = 0;FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));startSimulation(); isPaused=false;
+        Start_button.setOnAction((event) -> { MainProgram.driver.createPathForPackages(MainProgram.packages);MainProgram.driver.moveDriver();isStartClicked = true;secondsPassed = 0;FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));startSimulation(); isPaused=false;
 
         ;});
                 

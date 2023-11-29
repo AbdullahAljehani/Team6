@@ -13,7 +13,7 @@ public abstract class Package  {
         this.isAssignedToDriver = false;
         this.isDelivered = false;
         this.packageId = packageId;
-        this.path = MainProgram.createPackagePath(path);
+        this.path = path;
         this.currentPartIndex = 0;
     }
 

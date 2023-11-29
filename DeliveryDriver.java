@@ -99,43 +99,53 @@ public class DeliveryDriver {
     }
    public static void updateDistance(double increment) {
     Distance += increment;
-    System.out.println(Distance);
+    System.out.println("Distance "+Distance);
     
 }
 public static void updateGasolineCost(double increment) {
     GasolineCost += increment;
-    System.out.println(GasolineCost);
+    System.out.println("GasolineCost "+GasolineCost);
 }
-public void createPath(List<SubstreetPart> parts) {
-    if (parts == null || parts.isEmpty()) {
-        return; 
+public void createPathForPackages(List<List<SubstreetPart>> Packages) {
+    if (Packages == null || Packages.isEmpty()) {
+        return;
     }
-    Distance=0;
-    this.path = new Path(); 
-    SubstreetPart currentPart = parts.get(0); 
+    
+    Distance = 0;
+    this.path = new Path();
 
-    this.path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
+    for (List<SubstreetPart> parts : Packages) {
+        if (parts != null && !parts.isEmpty()) {
+            SubstreetPart currentPart = parts.get(0);
 
-    for (int i = 1; i < parts.size(); i++) {
-        SubstreetPart expectedNextPart = parts.get(i);
-        List<SubstreetPart> nextParts = currentPart.getNextParts();
-        boolean found = false;
-        for (SubstreetPart nextPart : nextParts) {
-            if (nextPart != null && nextPart.equals(expectedNextPart)) {
-                path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
-                double increment = currentPart.getDistanceTo(currentPart,nextPart); 
-                 updateDistance(increment);
-                currentPart = nextPart;
-                found = true;
-                break;
+            this.path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
+
+            for (int i = 1; i < parts.size(); i++) {
+                SubstreetPart expectedNextPart = parts.get(i);
+                List<SubstreetPart> nextParts = currentPart.getNextParts();
+                boolean found = false;
+                for (SubstreetPart nextPart : nextParts) {
+                    if (nextPart != null && nextPart.equals(expectedNextPart)) {
+                        path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
+                        double increment = currentPart.getDistanceTo(currentPart, nextPart);
+                        updateDistance(increment);
+                        double gasolineCostIncrement = currentPart.calculateGasolineCost(currentPart, nextPart);
+                        updateGasolineCost(gasolineCostIncrement);
+                        currentPart = nextPart;
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    break;
+                }
             }
         }
-        if (!found) {
-            break;
-        }
     }
+
     setPath(path);
-} 
+}
+
 
 
 
