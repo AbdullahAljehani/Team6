@@ -105,8 +105,8 @@ public class MainProgram {
     private static Building building44;
     private static Building building11;
 
-    private static Customer customer1;
-    private static Customer customer2;
+    public static Customer customer1;
+    public static Customer customer2;
     private static Customer customer3;
     private static Customer customer4;
     private static Customer customer5;
@@ -124,13 +124,15 @@ public class MainProgram {
     List<SubstreetPart> street1Parts = Arrays.asList(MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreetA,MainProgram.intersection1_1,MainProgram.intersection1_2,MainProgram.intersection1_3,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection2_3,MainProgram.EndOfStreet2,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection4_3,MainProgram.intersection5_3,MainProgram.intersection5_2,MainProgram.intersection6_2,MainProgram.intersection7_2,MainProgram.intersection8_2,MainProgram.intersection8_3,MainProgram.intersection9_3,MainProgram.EndOfStreetC);
 
 
-
+  
     public static void main(String[] args) {
-    initializeObjects();        
+    initializeObjects();
+    driver.setPackages(createPackages()); 
     FadingRectangle.launch(FadingRectangle.class, args);
    
         
     }
+
 
     public static void initializeObjects() {
         streetA = new Substreet('A', 10.0, 80, 2);
@@ -475,18 +477,41 @@ public class MainProgram {
         route.addSubstreet(street8);
         route.addSubstreet(street9);
         driver.setCurrentRoute(route);
+ 
+  
+      
+    }
+
+  public static List<Package> createPackages() {
+      // Create packages and initialize them with relevant information
+      List<Package> packages = new ArrayList<>();
       List<SubstreetPart> initialparts1 = Arrays.asList(MainProgram.EndOfStreetA,MainProgram.intersection9_1,MainProgram.intersection8_1,MainProgram.intersection7_1,MainProgram.intersection6_1,MainProgram.intersection5_1,MainProgram.intersection4_1,MainProgram.FirstOfStreet4);
-       List<SubstreetPart> initialparts2 = Arrays.asList(MainProgram.FirstOfStreet4,MainProgram.intersection4_1,MainProgram.intersection3_1,MainProgram.intersection2_1,MainProgram.intersection1_1,MainProgram.EndOfStreet1);
-        Package package1 = new Offical_paper(customer1, 1,initialparts1 );
-        Package package2 = new Normal(customer2, 2,initialparts2 ); 
+      List<SubstreetPart> initialparts2 = Arrays.asList(MainProgram.FirstOfStreet4,MainProgram.intersection4_1,MainProgram.intersection3_1,MainProgram.intersection2_1,MainProgram.intersection1_1,MainProgram.EndOfStreet1);
+      package1 = new Offical_paper(customer1, 1, initialparts1);
+      package2 = new Normal(customer2, 2, initialparts2);
+      
+
+
+      packages.add(package1);
+      packages.add(package2);
+      System.out.println("Path for Package 1: " + package1.getPath());
+      System.out.println("Path for Package 2: " + package2.getPath());
+
+
+      return packages;
+    }
+
+    public static List<List<SubstreetPart>> PackagesPaths () {
+        List<List<SubstreetPart>> Packages = new ArrayList<>();
         Packages.add(package1.getPath());
         Packages.add(package2.getPath());
 
-    }
+        return Packages;
 
+    }
+}
     
 
 
-}
     
     
