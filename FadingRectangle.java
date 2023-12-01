@@ -1095,7 +1095,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     
                     if (allDelivered(MainProgram.driver)) {
                         System.out.println("All packages delivered. Simulation completed.");
-                        System.out.println("startSimulation: Timer instance at completion: " + timer.hashCode()); // Debug print
+                        
                         timer.cancel();
                     }
                 }

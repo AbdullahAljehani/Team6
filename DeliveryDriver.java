@@ -59,6 +59,8 @@ public class DeliveryDriver {
     public void setPackages(List<Package> packages) {
         this.packages = packages;
     }
+   
+    
 
 
       public List<Package> getPackages() {
@@ -106,44 +108,46 @@ public static void updateGasolineCost(double increment) {
     GasolineCost += increment;
     System.out.println("GasolineCost "+GasolineCost);
 }
-public void createPathForPackages(List<List<SubstreetPart>> Packages) {
-    if (Packages == null || Packages.isEmpty()) {
+public void createPathForPackages(List<List<SubstreetPart>> packages) {
+    if (packages == null || packages.isEmpty()) {
         return;
     }
+
     Distance = 0;
     this.path = new Path();
 
-    for (List<SubstreetPart> packageParts : Packages) {
+    for (List<SubstreetPart> packageParts : packages) {
         if (packageParts != null && !packageParts.isEmpty()) {
-            SubstreetPart currentPart = packageParts.get(0); // Start with the first part of the package
-            
+            SubstreetPart currentPart = packageParts.get(0);
+            deliverPackage();
+
             this.path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
 
             for (int i = 1; i < packageParts.size(); i++) {
                 SubstreetPart expectedNextPart = packageParts.get(i);
                 List<SubstreetPart> nextParts = currentPart.getNextParts();
                 boolean found = false;
-                
+
                 for (SubstreetPart nextPart : nextParts) {
                     if (nextPart != null && nextPart.equals(expectedNextPart)) {
                         path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
-                        
+
                         double increment = currentPart.getDistanceTo(currentPart, nextPart);
                         updateDistance(increment);
-                        
                         double gasolineCostIncrement = currentPart.calculateGasolineCost(currentPart, nextPart);
                         updateGasolineCost(gasolineCostIncrement);
-                        
+
                         currentPart = nextPart;
                         found = true;
                         break;
                     }
                 }
-                
+
                 if (!found) {
                     break;
                 }
             }
+
         }
     }
 
@@ -184,82 +188,10 @@ public void handleTransitionCompletion() {
         FadingRectangle.updateGasolineCostLabel();
         FadingRectangle.updateDistanceLabel();
         System.out.println("Transition finished");
+        
+       
     });
 }
-
-
-
-    
-    
-    /*public void moveDriver(int destinationX, int destinationY) {
-        if (currentRoute != null) {
-            if (currentRoute.getSubstreets() != null && !currentRoute.getSubstreets().isEmpty()) {
-                currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
-
-                // Update the driver position immediately without animation
-                this.currentX = destinationX;
-                this.currentY = destinationY;
-                path.getElements().add(new LineTo(destinationX, destinationY));
-                pathTransition.stop();
-                pathTransition.play();
-                updateDriverPosition(MainProgram.street1_part1.getX(),MainProgram.street1_part1.getY());
-                updateDriverPosition(MainProgram.street1_part2.getX(),MainProgram.street1_part2.getY());
-                updateDriverPosition(MainProgram.street1_part3.getX(),MainProgram.street1_part3.getY());
-                updateDriverPosition(MainProgram.street1_part4.getX(),MainProgram.street1_part4.getY());*/
-
-                /*moveToBuilding(MainProgram.building127);
-                moveToBuilding(MainProgram.building103);*/
-                // Optional: If you want to update the GUI immediately
-               /* FadingRectangle.updateCarPositionInGUI();
-
-                // Move to the next substreet or perform any other logic as needed
-                double remainingDistanceOnSubstreet = currentSubstreet.getDistance() - currentDistanceOnRoute;
-                if (remainingDistanceOnSubstreet <= 0) {
-                    moveToNextSubstreet();
-                }
-            } else {
-                System.out.println("No substreets set for the driver's route.");
-            }
-        } else {
-            System.out.println("No route set for the driver.");
-        }
-    }
-
-    // ... other code ...
-
-    public void updateDriverPosition(int destinationX, int destinationY) {
-        System.out.println("Updating position. DestinationX: " + destinationX + ", DestinationY: " + destinationY);
-        
-        this.currentX = destinationX;
-        this.currentY = destinationY;
-        // Update the path with the new destination
-        path.getElements().add(new LineTo(destinationX, destinationY));
-    
-        // Stop the current path transition (if any) and play the updated one
-        pathTransition.stop();
-        pathTransition.play();
-    
-        // Introduce a pause transition for a short delay (adjust duration as needed)
-        PauseTransition pause = new PauseTransition(Duration.seconds(1));
-        pause.setOnFinished(e -> {
-            this.currentX = destinationX;
-            this.currentY = destinationY;
-            System.out.println("After update. CurrentX: " + currentX + ", CurrentY: " + currentY);
-            FadingRectangle.updateCarPositionInGUI();
-        });
-    
-        // Start the pause transition
-        pause.play();
-    } */
-    
-    
-
-
-
-
-    public void updateDistanceOnRoute(int distance) {
-        currentDistanceOnRoute += distance;
-    }
 
     public int calculateTripDelay() {
         if (currentSubstreet != null) {
@@ -274,7 +206,7 @@ public void handleTransitionCompletion() {
             for (int i = 0; i < getPackages().size(); i++) {
                 Package aPackage = getPackages().get(i);
     
-                if (aPackage.isAssignedToDriver && !aPackage.isDelivered) {
+                if ( !aPackage.isDelivered) {
                     if (aPackage instanceof Offical_paper && currentSubstreet != null) {
                         int substreetDelay = currentSubstreet.getDelay();
                         System.out.println("Official package detected. Introducing a delay of " + substreetDelay + " minutes on Substreet " + currentSubstreet.getStreetName());
@@ -288,19 +220,17 @@ public void handleTransitionCompletion() {
                     Building destinationBuilding = aPackage.getCustomer().getBuilding();
     
                     if (destinationBuilding.getSubstreet() == currentSubstreet) {
-                       // moveToBuilding(destinationBuilding);
     
                         System.out.println("Package delivered at building " + destinationBuilding.getBuildingNumber());
     
                         aPackage.isDelivered = true;
-                        aPackage.isAssignedToDriver = false;
+                        
     
                         moveToNextPackage();
     
                         return;
                     } else {
-                        // Adjust this part based on your logic
-                        // For example, you might want to move to the substreet instead of the building directly
+                        
                         moveToNextSubstreet();
                     }
                 }
@@ -312,16 +242,6 @@ public void handleTransitionCompletion() {
         }
     }
     
-
-        public void moveToBuilding(Building destinationBuilding) {
-            path.getElements().add(new LineTo(destinationBuilding.getXCoordinate(), destinationBuilding.getYCoordinate()));
-            pathTransition.stop();
-            pathTransition.play();
-       
-    }
-    
-
-  
     
     public void moveToNextSubstreet() {
         if (currentRoute != null && currentRoute.getSubstreets() != null) {
@@ -346,19 +266,14 @@ public void handleTransitionCompletion() {
     }
     
 
-    public double calculateDistanceToBuilding(double destinationX, double destinationY) {
-        double deltaX = destinationX - currentX;
-        double deltaY = destinationY - currentY;
-        return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-    }
-
+   
     public void moveToNextPackage() {
         for (int i = 0; i < getPackages().size(); i++) {
             Package aPackage = getPackages().get(i);
 
-            if (aPackage.isAssignedToDriver && !aPackage.isDelivered) {
+            if ( !aPackage.isDelivered) {
                 aPackage.isDelivered = true;
-                aPackage.isAssignedToDriver = false;
+            
 
                 int nextPackageIndex = i + 1;
 
@@ -366,7 +281,7 @@ public void handleTransitionCompletion() {
                     Package nextPackage = getPackages().get(nextPackageIndex);
 
                     nextPackage.isDelivered = false;
-                    nextPackage.isAssignedToDriver = true;
+                    
 
                     System.out.println("Driver assigned to the next package with ID: " + nextPackage.getPackageId());
                 } else {
@@ -380,7 +295,6 @@ public void handleTransitionCompletion() {
         System.out.println("No more packages assigned to the driver at the current position.");
     }
 
-        // Setter method for the callback
       
 }
 
