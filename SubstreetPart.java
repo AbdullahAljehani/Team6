@@ -8,11 +8,13 @@ public class SubstreetPart {
     private int x;
     private int y;
     private List<SubstreetPart> nextParts;
+private int delay;
 
-    public SubstreetPart(int x, int y) {
+    public SubstreetPart(int x, int y,int delay) {
         this.x = x;
         this.y = y;
         this.nextParts = new ArrayList<>();
+        this.delay=delay;
     }
 
     public void setX(int x) {
@@ -29,6 +31,9 @@ public class SubstreetPart {
 
     public int getY() {
         return this.y;
+    }
+    public int getDelay(){
+        return this.delay;
     }
 
   

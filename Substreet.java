@@ -6,19 +6,17 @@ public class Substreet {
     private char streetName;
     private double distance;
     private int speedLimit;
-    private int delay;
     private ArrayList<SubstreetPart> parts;
 
     
 
-    public Substreet(char streetName, double distance, int speedLimit, int delay) {
+    public Substreet(char streetName, double distance, int speedLimit) {
         this.buildingRight = new ArrayList<>();
         this.buildingLeft = new ArrayList<>();
         this.parts = new ArrayList<>();
         this.streetName = streetName;
         this.distance = distance;
         this.speedLimit = speedLimit;
-        this.delay = delay;
         
     }
     
@@ -42,9 +40,7 @@ public class Substreet {
         return this.speedLimit;
     }
 
-    public int getDelay() {
-        return this.delay;
-    }
+   
 
 
     public ArrayList<Building> getBuildingRight() {

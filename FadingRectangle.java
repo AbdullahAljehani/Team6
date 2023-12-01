@@ -36,7 +36,7 @@ List<SubstreetPart> street1Parts = Arrays.asList(MainProgram.FirstOfStreet1,Main
     @Override
     public void start(Stage primaryStage) {
        
-       
+       allDelivered(MainProgram.driver);
 primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();System.exit(0);});
     
     Text Neighbourhood_1 = new Text(1090, 230, "Alhamdaniya");
@@ -982,7 +982,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         Start_button.setPrefSize(60, 25);
         Start_button.setLayoutX(1060 );
         Start_button.setLayoutY(15);
-        Start_button.setOnAction((event) -> { MainProgram.driver.createPathForPackages(MainProgram.Packages);MainProgram.driver.moveDriver();isStartClicked = true;secondsPassed = 0;FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));startSimulation(); isPaused=false;
+        Start_button.setOnAction((event) -> { MainProgram.driver.createPathForPackages(MainProgram.PackagesPaths());MainProgram.driver.moveDriver();isStartClicked = true;secondsPassed = 0;FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));startSimulation(); isPaused=false;
 
         ;});
                 
@@ -1125,17 +1125,14 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     
     public static boolean allDelivered(DeliveryDriver driver) {
         List<Package> packages = driver.getPackages();
-    
-        boolean allDelivered = true; // Declare and initialize the variable
-    
+        
         for (Package aPackage : packages) {
             if (aPackage != null && !aPackage.isDelivered()) {
-                allDelivered = false;
-                break;  // If any package is not delivered, exit the loop and set allDelivered to false
+                break;  
             }
         }
     
-        return allDelivered;  // Return the final result after checking all packages
+        return MainProgram.package1.isDelivered;  
     }
     
 
