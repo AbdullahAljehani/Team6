@@ -37,18 +37,21 @@ private int delay;
     }
 
   
-
-    public double getDistanceTo(SubstreetPart currentPart,SubstreetPart nextPart) {
-        double deltaX = Math.abs(currentPart.getX() - nextPart.getX());
-        double deltaY = Math.abs(currentPart.getY() - nextPart.getY());
+    public double getDistanceTo(SubstreetPart nextPart) {
+        double deltaX = Math.abs(this.getX() - nextPart.getX());
+        double deltaY = Math.abs(this.getY() - nextPart.getY());
     
-    double scale = 0.01;
-        double distanceInKm = (deltaX+deltaY)*scale;   
+        // Assuming deltaX and deltaY are in some unit (e.g., pixels)
+        // Convert to kilometers if necessary
+        double pixelToKmConversionFactor = 0.001; // Adjust this according to your scale
+        double distanceInKm = Math.sqrt(deltaX * deltaX + deltaY * deltaY) * pixelToKmConversionFactor;
+    
         return distanceInKm;
     }
+    
     public double calculateGasolineCost(SubstreetPart currentPart,SubstreetPart nextPart) {
         double costPerKilometer = 2.5; 
-        return getDistanceTo( currentPart, nextPart) * costPerKilometer;}
+        return  costPerKilometer;}
 
     public void setNextPart(SubstreetPart nextPart) {
         if (nextPart != null) {

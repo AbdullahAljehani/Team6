@@ -445,7 +445,6 @@ public class MainProgram {
     intersection9_1.setNextPart(destinationBuilding127);
     destinationBuilding127.setNextPart(intersection9_2);
     intersection9_2.setNextPart(destinationBuilding127);
-    destinationBuilding127.setNextPart(intersection9_2);
   
   //@Bulidng 103
     destinationBuilding103.setNextPart(EndOfStreet7);
@@ -513,12 +512,12 @@ public class MainProgram {
          building11 = new Building(11,destinationBuilding11);
 
 
-        customer1 = new Customer(1, building44);
-        customer2 = new Customer(2, building11);
-        customer3 = new Customer(3, building64);
-        customer4 = new Customer(4, building70);
-        customer5 = new Customer(5, building103);
-        customer6 = new Customer(6, building127);
+        customer1 = new Customer(1, building127);
+        customer2 = new Customer(2, building103);
+        customer3 = new Customer(3, building70);
+        customer4 = new Customer(4, building64);
+        customer5 = new Customer(5, building44);
+        customer6 = new Customer(6, building11);
 
         driver = new DeliveryDriver();
         route = new DeliveryRoute(90);
@@ -548,7 +547,7 @@ public class MainProgram {
       // Create packages and initialize them with relevant information
       List<Package> packages = new ArrayList<>();
       List<SubstreetPart> initialparts1 = Arrays.asList(MainProgram.EndOfStreetA,MainProgram.intersection9_1,MainProgram.destinationBuilding127);
-      List<SubstreetPart> initialparts2 = Arrays.asList(MainProgram.intersection9_2,MainProgram.intersection9_3,MainProgram.intersection8_3,MainProgram.intersection7_3,MainProgram.destinationBuilding103);
+      List<SubstreetPart> initialparts2 = Arrays.asList(MainProgram.destinationBuilding127,MainProgram.intersection9_2,MainProgram.intersection9_3,MainProgram.intersection8_3,MainProgram.intersection7_3,MainProgram.destinationBuilding103);
       package1 = new Offical_paper(customer1, 1, initialparts1);
       package2 = new Normal(customer2, 2, initialparts2);
       

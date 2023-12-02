@@ -15,8 +15,8 @@ import javafx.application.Platform;
 public class DeliveryDriver {
     private List<Package> packages;
     private DeliveryRoute currentRoute;
-    private int currentX;
-    private int currentY;
+    public int currentX;
+    public int currentY;
     private double currentDistanceOnRoute;
     private int currentSubstreetIndex; 
     private Substreet currentSubstreet;
@@ -24,12 +24,13 @@ public class DeliveryDriver {
     public static PathTransition pathTransition;
     private Path path;
     public static double Distance=0;
-     private static double GasolineCost=0;
+     public static double GasolineCost=0;
     public static boolean continueTransition = false;
     public SubstreetPart currentSubstreetPart;
-   
-    
 
+private double distanceForCurrentPath = 0;
+
+// Other class variables and methods...
 
     public DeliveryDriver() {
         this.packages = new ArrayList<>();
@@ -42,7 +43,7 @@ public class DeliveryDriver {
         this.car.setArcWidth(15);
         this.car.setFill(Color.RED);
         this.pathTransition.setNode(car);
-        this.pathTransition.setDuration(Duration.seconds(20));
+        this.pathTransition.setDuration(Duration.seconds(59));
 
 
         
@@ -100,109 +101,99 @@ public class DeliveryDriver {
     public Path getpath(){
         return path;
     }
-   public static void updateDistance(double increment) {
-    Distance += increment;
-    System.out.println("Distance "+Distance);
+
     
-}
 public static void updateGasolineCost(double increment) {
     GasolineCost += increment;
     System.out.println("GasolineCost "+GasolineCost);
 }
+
+
+public static void updateDistance(double increment) {
+    Distance += increment;
+    System.out.println("Total Distance: " + Distance);
+}
+public void updateDistanceForCurrentPath(double increment) {
+    distanceForCurrentPath += increment;
+    System.out.println("Distance for Current Path: " + distanceForCurrentPath);
+}
+
+public Path generatePath(List<SubstreetPart> packageParts) {
+    Path path = new Path();
+
+    if (packageParts.isEmpty()) {
+        return path;
+    }
+
+    SubstreetPart currentPart = packageParts.get(0);
+    path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
+    currentX = currentPart.getX();
+    currentY = currentPart.getY();
+
+    for (int i = 1; i < packageParts.size(); i++) {
+        SubstreetPart nextPart = packageParts.get(i);
+        path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
+
+        double increment = currentPart.getDistanceTo(nextPart);
+        distanceForCurrentPath += increment;
+        updateDistanceForCurrentPath(increment);
+        updateDistance(increment);
+
+        currentPart = nextPart;
+        currentX = currentPart.getX();
+        currentY = currentPart.getY();
+
+    }
+
+    return path;
+}
+
 public void createPathForPackages(List<List<SubstreetPart>> packages) {
     if (packages == null || packages.isEmpty()) {
         return;
     }
 
-    Distance = 0;
-    this.path = new Path();
+    playPathTransitions(packages, 0);
+}
 
-    for (List<SubstreetPart> packageParts : packages) {
-        if (packageParts != null && !packageParts.isEmpty()) {
-            SubstreetPart currentPart = packageParts.get(0);
-            
-
-            this.path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
-            
-            // Update currentX and currentY with the starting coordinates of the package
-            currentX = currentPart.getX();
-            currentY = currentPart.getY();
-
-            for (int i = 1; i < packageParts.size(); i++) {
-                SubstreetPart expectedNextPart = packageParts.get(i);
-                List<SubstreetPart> nextParts = currentPart.getNextParts();
-                boolean found = false;
-
-                for (SubstreetPart nextPart : nextParts) {
-                    if (nextPart != null && nextPart.equals(expectedNextPart)) {
-                        path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
-
-                        double increment = currentPart.getDistanceTo(currentPart, nextPart);
-                        updateDistance(increment);
-                        double gasolineCostIncrement = currentPart.calculateGasolineCost(currentPart, nextPart);
-                        updateGasolineCost(gasolineCostIncrement);
-
-                        currentPart = nextPart;
-                        found = true;
-
-                        // Update currentX and currentY with the coordinates of the next part
-                        currentX = currentPart.getX();
-                        currentY = currentPart.getY();
-                        deliverPackage();
-                        System.out.println("x"+currentX+", y"+currentY);
-                        
-                        break;
-                    }
-                }
-
-                if (!found) {
-                    break;
-                }
-            }
-        }
+private void playPathTransitions(List<List<SubstreetPart>> packages, int index) {
+    if (index >= packages.size()) {
+        return;
     }
 
-    setPath(path);
+    Path path = generatePath(packages.get(index));
+    moveDriver(path, () -> playPathTransitions(packages, index + 1));
 }
 
 
-public void moveDriver() {
-        System.out.println("Simulating the delivery process...");
+
+public void moveDriver(Path path, Runnable onFinish) {
     if (!path.getElements().isEmpty() && FadingRectangle.isStartClicked) {
-        System.out.println("Path elements: " + path.getElements());
-         FadingRectangle.CounterDistanceLabel.setText("00.00 Km");
-        Platform.runLater(() -> {
-        if (!FadingRectangle.isPaused && continueTransition) {
-            pathTransition.stop();
-            pathTransition.setPath(path);
-            pathTransition.setCycleCount(1);
-            pathTransition.setOnFinished(e -> {
+        PathTransition pathTransition = new PathTransition();
+        pathTransition.setNode(car);
+        pathTransition.setDuration(Duration.seconds(20));
+
+        pathTransition.setPath(path);
+        pathTransition.setCycleCount(1);
+        pathTransition.setOnFinished(e -> {
             handleTransitionCompletion();
-});
-          
-
-            pathTransition.play();
-        } else {
-            pathTransition.stop();
-            pathTransition.setPath(path);
-            pathTransition.setCycleCount(1);
-            pathTransition.setOnFinished(e -> handleTransitionCompletion());
-
-            pathTransition.play();
-        }
-    });
+            deliverPackage(currentX, currentY);
+            onFinish.run();
+        });
+        
+        pathTransition.play();
     }
 }
- 
-public void handleTransitionCompletion() {
-    Platform.runLater(() -> {
+
+
+    public void handleTransitionCompletion() {
         FadingRectangle.updateGasolineCostLabel();
         FadingRectangle.updateDistanceLabel();
         System.out.println("Transition finished");
-        
-       
-    });
-}
+        }
+    
+
+
 
     public int calculateTripDelay() {
         if (currentSubstreet != null) {
@@ -212,17 +203,17 @@ public void handleTransitionCompletion() {
         }
     }
 
-    public void deliverPackage() {
+   public void deliverPackage(int currentX, int currentY) {
         for (Package aPackage : getPackages()) {
             if (!aPackage.isDelivered) {
                 Building destinationBuilding = aPackage.getCustomer().getBuilding();
     
-                System.out.println("Driver Position: (" + getCurrentX() + ", " + getCurrentY() + ")");
-                System.out.println("Destination Building: (" + destinationBuilding.getLocation().getX() + ", " + destinationBuilding.getLocation().getY() + ")");
-    
-                if (getCurrentX() == destinationBuilding.getLocation().getX() && getCurrentY() == destinationBuilding.getLocation().getY()) {
-    
-                    if (aPackage instanceof Offical_paper) {
+                System.out.println("Package " + aPackage.getPackageId() + " isDelivered: " + aPackage.isDelivered);
+                 System.out.println("currentX " +currentX + " currenty " +currentY);       
+
+                if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
+                    System.out.println("get x "+ destinationBuilding.getLocation().getX() + " get Y() "+destinationBuilding.getLocation().getY());
+                    if (aPackage instanceof Offical_paper && currentSubstreetPart != null) {
                         int substreetDelay = currentSubstreetPart.getDelay();
                         System.out.println("Official package detected. Introducing a delay of " + substreetDelay + " minutes on Substreet " + currentSubstreet.getStreetName());
                         try {
@@ -232,10 +223,15 @@ public void handleTransitionCompletion() {
                         }
                     }
     
-                    System.out.println("Package delivered at building " + destinationBuilding.getBuildingNumber());
+                    System.out.println("Package " + aPackage.getPackageId() + " delivered at building " + destinationBuilding.getBuildingNumber());
                     aPackage.isDelivered = true;
+                    System.out.println("Package " + aPackage.getPackageId() + " isDelivered updated to: " + aPackage.isDelivered);
+                    
+                    if(hasNextPackage(aPackage)&&aPackage.isDelivered==true){
                     moveToNextPackage();
-                    return;
+                    }
+    
+                    
                 }
             }
         }
@@ -243,59 +239,36 @@ public void handleTransitionCompletion() {
         System.out.println("No more packages assigned to the driver at the current position.");
     }
     
-    
-    public void moveToNextSubstreet() {
-        if (currentRoute != null && currentRoute.getSubstreets() != null) {
-            int tripDelay = calculateTripDelay();
-            System.out.println("Introducing a delay of " + tripDelay + " minutes for the entire trip.");
-    
-            PauseTransition pause = new PauseTransition(Duration.minutes(tripDelay));
-            pause.setOnFinished(event -> {
-                if (currentSubstreetIndex < currentRoute.getSubstreets().size() - 1) {
-                    currentSubstreetIndex++;
-                    currentSubstreet = currentRoute.getSubstreets().get(currentSubstreetIndex);
-                    System.out.println("Driver moved to the next street. Next substreet: " + currentSubstreet.getStreetName());
-                } else {
-                    System.out.println("No more substreets in the route.");
-                }
-            });
-    
-            pause.play();
-        } else {
-            System.out.println("No route or substreets set for the driver.");
-        }
-    }
-    
-
    
     public void moveToNextPackage() {
         for (int i = 0; i < getPackages().size(); i++) {
             Package aPackage = getPackages().get(i);
-
-            if ( !aPackage.isDelivered) {
-                aPackage.isDelivered = true;
-            
-
+    
+            if (aPackage.isDelivered) {
+               
+    
                 int nextPackageIndex = i + 1;
-
+    
                 if (nextPackageIndex < getPackages().size()) {
                     Package nextPackage = getPackages().get(nextPackageIndex);
-
+    
                     nextPackage.isDelivered = false;
-                    
-
+    
                     System.out.println("Driver assigned to the next package with ID: " + nextPackage.getPackageId());
+                    System.out.println("Package " + aPackage.getPackageId() + " marked as delivered");
+                    System.out.println("Package " + nextPackage.getPackageId() + " marked as not delivered");
                 } else {
                     System.out.println("No more packages assigned to the driver at the current position.");
                 }
-
+    
                 return;
             }
         }
-
+    
         System.out.println("No more packages assigned to the driver at the current position.");
     }
-
-      
+    private boolean hasNextPackage(Package currentPackage) {
+        int currentIndex = getPackages().indexOf(currentPackage);
+        return currentIndex < getPackages().size() - 1;
+    }
 }
-

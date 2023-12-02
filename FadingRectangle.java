@@ -982,7 +982,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         Start_button.setPrefSize(60, 25);
         Start_button.setLayoutX(1060 );
         Start_button.setLayoutY(15);
-        Start_button.setOnAction((event) -> { MainProgram.driver.createPathForPackages(MainProgram.PackagesPaths());MainProgram.driver.moveDriver();isStartClicked = true;secondsPassed = 0;FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));startSimulation(); isPaused=false;
+        Start_button.setOnAction((event) -> { MainProgram.driver.createPathForPackages(MainProgram.PackagesPaths());isStartClicked = true;secondsPassed = 0;FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));startSimulation(); isPaused=false;
 
         ;});
                 
@@ -1159,14 +1159,13 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     
     public  static void updateDistanceLabel() {
         Platform.runLater(() -> {
-            FadingRectangle.CounterDistanceLabel.setText(FadingRectangle.formatDistance(MainProgram.driver.Distance));
+            FadingRectangle.CounterDistanceLabel.setText(FadingRectangle.formatDistance(DeliveryDriver.Distance));
             });
     }
     
     public static void updateGasolineCostLabel() {
         Platform.runLater(() -> {
-            double costOfGasoline = DeliveryDriver.getGasolineCost();
-            //FadingRectangle.CounterCostLabel.setText(formatGasolineCost(costOfGasoline));
+            // FadingRectangle.CounterCostLabel.setText(formatGasolineCost(DeliveryDriver.GasolineCost));
         });
     }
     public static String formatGasolineCost(double cost) {
