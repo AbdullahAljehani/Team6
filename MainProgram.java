@@ -127,7 +127,6 @@ public class MainProgram {
     private static Offical_paper package6;
 
     public static DeliveryDriver driver;
-    public static DeliveryRoute route;
 
 
   
@@ -291,191 +290,7 @@ public class MainProgram {
       streetC.addPart(FirstOfStreetC);
       streetC.addPart(EndOfStreetC);
 
-    //#Street1
-    FirstOfStreet1.setNextPart(intersection1_1);
-    intersection1_1.setNextPart(FirstOfStreet1);
-    intersection1_1.setNextPart(FirstOfStreetA);
-    FirstOfStreetA.setNextPart(intersection1_1);
-    intersection1_1.setNextPart(intersection1_2);
-    intersection1_2.setNextPart(intersection1_1);
-    intersection1_1.setNextPart(intersection2_1);
-    intersection2_1.setNextPart(intersection1_1);
-    intersection1_2.setNextPart(FirstOfStreetB);
-    FirstOfStreetB.setNextPart(intersection1_2);
-    intersection1_2.setNextPart(intersection1_3);
-    intersection1_3.setNextPart(intersection1_2);
-    intersection1_2.setNextPart(intersection2_2);
-    intersection2_2.setNextPart(intersection1_2);
-    intersection1_3.setNextPart(FirstOfStreetC);
-    FirstOfStreetC.setNextPart(intersection1_3);
-    intersection1_3.setNextPart(EndOfStreet1);
-    EndOfStreet1.setNextPart(intersection1_3);
-    intersection1_3.setNextPart(intersection2_3);
-    intersection2_3.setNextPart(intersection1_3);
-
-  //#Street2
-  FirstOfStreet2.setNextPart(intersection2_1);
-  intersection2_1.setNextPart(FirstOfStreet2);
-  intersection2_1.setNextPart(intersection2_2);
-  intersection2_2.setNextPart(intersection2_1);
-  intersection2_1.setNextPart(intersection3_1);
-  intersection3_1.setNextPart(intersection2_1);
-  intersection2_2.setNextPart(intersection2_3);
-  intersection2_3.setNextPart(intersection2_2);
-  intersection2_2.setNextPart(intersection3_2);
-  intersection3_2.setNextPart(intersection2_2);
-  intersection2_3.setNextPart(EndOfStreet2);
-  EndOfStreet2.setNextPart(intersection2_3);
-  intersection2_3.setNextPart(intersection3_3);
-  intersection3_3.setNextPart(intersection2_3);
-
-  //#Street3
-  FirstOfStreet3.setNextPart(intersection3_1);
-  intersection3_1.setNextPart(FirstOfStreet3);
-  intersection3_1.setNextPart(intersection3_2);
-  intersection3_2.setNextPart(intersection3_1);
-  intersection3_1.setNextPart(intersection4_1);
-  intersection4_1.setNextPart(intersection3_1);
-  intersection3_2.setNextPart(intersection3_3);
-  intersection3_3.setNextPart(intersection3_2);
-  intersection3_2.setNextPart(intersection4_2);
-  intersection4_2.setNextPart(intersection3_2);
-  intersection3_3.setNextPart(EndOfStreet3);
-  EndOfStreet3.setNextPart(intersection3_3);
-  intersection3_3.setNextPart(intersection4_3);
-  intersection4_3.setNextPart(intersection3_3);
- 
-  //#Street4
-   FirstOfStreet4.setNextPart(intersection4_1);
-   intersection4_1.setNextPart(FirstOfStreet4);
-   intersection4_1.setNextPart(intersection4_2);
-   intersection4_2.setNextPart(intersection4_1);
-   intersection4_1.setNextPart(intersection5_1);
-   intersection5_1.setNextPart(intersection4_1);
-   intersection4_2.setNextPart(intersection4_3);
-   intersection4_3.setNextPart(intersection4_2);
-   intersection4_2.setNextPart(intersection5_2);
-   intersection5_2.setNextPart(intersection4_2);
-   intersection4_3.setNextPart(EndOfStreet4);
-   EndOfStreet4.setNextPart(intersection4_3);
-   intersection4_3.setNextPart(intersection5_3);
-   intersection5_3.setNextPart(intersection4_3);
-  
-   //#Street5
-  FirstOfStreet5.setNextPart(intersection5_1);
-  intersection5_1.setNextPart(FirstOfStreet5);
-  intersection5_1.setNextPart(intersection5_2);
-  intersection5_2.setNextPart(intersection5_1);
-  intersection6_1.setNextPart(intersection5_1);
-  intersection5_1.setNextPart(intersection6_1);
-  intersection5_2.setNextPart(intersection5_3);
-  intersection5_3.setNextPart(intersection5_2);
-  intersection5_2.setNextPart(intersection6_2);
-  intersection6_2.setNextPart(intersection5_2);
-  intersection5_3.setNextPart(EndOfStreet5);
-  EndOfStreet5.setNextPart(intersection5_3);
-  intersection5_3.setNextPart(intersection6_3);
-  intersection6_3.setNextPart(intersection5_3); 
-   
-  //#Street6
-   FirstOfStreet6.setNextPart(intersection6_1);
-   intersection6_1.setNextPart(FirstOfStreet6);
-   intersection6_1.setNextPart(intersection6_2);
-   intersection6_2.setNextPart(intersection6_1);
-   intersection6_1.setNextPart(intersection7_1);
-   intersection7_1.setNextPart(intersection6_1);
-   intersection6_2.setNextPart(intersection6_3);
-   intersection6_3.setNextPart(intersection6_2);
-   intersection6_2.setNextPart(intersection7_2);
-   intersection7_2.setNextPart(intersection6_2);
-   intersection6_3.setNextPart(EndOfStreet6);
-   EndOfStreet6.setNextPart(intersection6_3);
-   intersection6_3.setNextPart(intersection7_3);
-   intersection7_3.setNextPart(intersection6_3);
-
-   //#Street7
-  FirstOfStreet7.setNextPart(intersection7_1);
-  intersection7_1.setNextPart(FirstOfStreet7);
-  intersection7_1.setNextPart(intersection7_2);
-  intersection7_2.setNextPart(intersection7_1);
-  intersection8_1.setNextPart(intersection7_1);
-  intersection7_1.setNextPart(intersection8_1);
-  intersection7_2.setNextPart(intersection7_3);
-  intersection7_3.setNextPart(intersection7_2);
-  intersection7_2.setNextPart(intersection8_2);
-  intersection8_2.setNextPart(intersection7_2);
-  intersection7_3.setNextPart(EndOfStreet7);
-  EndOfStreet7.setNextPart(intersection7_3);
-  intersection7_3.setNextPart(intersection8_3);
-  intersection8_3.setNextPart(intersection7_3);
-  //#Street8
-  FirstOfStreet8.setNextPart(intersection8_1);
-  intersection8_1.setNextPart(FirstOfStreet8);
-  intersection8_1.setNextPart(intersection8_2);
-  intersection8_2.setNextPart(intersection8_1);
-  intersection9_1.setNextPart(intersection8_1);
-  intersection8_1.setNextPart(intersection9_1);
-  intersection8_2.setNextPart(intersection8_3);
-  intersection8_3.setNextPart(intersection8_2);
-  intersection8_2.setNextPart(intersection9_2);
-  intersection9_2.setNextPart(intersection8_2);
-  intersection8_3.setNextPart(EndOfStreet8);
-  EndOfStreet8.setNextPart(intersection8_3);
-  intersection8_3.setNextPart(intersection9_3);
-  intersection9_3.setNextPart(intersection8_3);
     
-  //#Street9
-  FirstOfStreet9.setNextPart(intersection9_1);
-  intersection9_1.setNextPart(FirstOfStreet9);
-  intersection9_1.setNextPart(intersection9_2);
-  intersection9_2.setNextPart(intersection9_1);
-  intersection9_1.setNextPart(EndOfStreetA);
-  EndOfStreetA.setNextPart(intersection9_1);
-  intersection9_2.setNextPart(intersection9_3);
-  intersection9_3.setNextPart(intersection9_2);
-  intersection9_2.setNextPart(EndOfStreetB);
-  EndOfStreetB.setNextPart(intersection9_2);
-  intersection9_3.setNextPart(EndOfStreet9);
-  EndOfStreet9.setNextPart(intersection9_3);
-  intersection9_3.setNextPart(EndOfStreetC);
-  EndOfStreetC.setNextPart(intersection9_3);
-  
-  //@Bulidng 127
-  destinationBuilding127.setNextPart(intersection9_1);
-    intersection9_1.setNextPart(destinationBuilding127);
-    destinationBuilding127.setNextPart(intersection9_2);
-    intersection9_2.setNextPart(destinationBuilding127);
-  
-  //@Bulidng 103
-    destinationBuilding103.setNextPart(EndOfStreet7);
-    EndOfStreet7.setNextPart(destinationBuilding103);
-    destinationBuilding103.setNextPart(intersection7_3);
-    intersection7_3.setNextPart(destinationBuilding103);
-
-     //@Bulidng 70
-    destinationBuilding70.setNextPart(intersection6_1);
-    intersection6_1.setNextPart(destinationBuilding70);
-    destinationBuilding70.setNextPart(intersection6_2);
-    intersection6_2.setNextPart(destinationBuilding70);
-
-    //@Bulidng 64
-    destinationBuilding64.setNextPart(EndOfStreet5);
-    EndOfStreet5.setNextPart(destinationBuilding64);
-    destinationBuilding64.setNextPart(intersection5_3);
-    intersection5_3.setNextPart(destinationBuilding64);
-
-    //@Bulidng 44
-    destinationBuilding44.setNextPart(intersection4_1);
-    intersection4_1.setNextPart(destinationBuilding44);
-    destinationBuilding44.setNextPart(intersection4_2);
-    intersection4_2.setNextPart(destinationBuilding44);
-
-     //@Bulidng 11
-    destinationBuilding11.setNextPart(EndOfStreet1);
-    EndOfStreet1.setNextPart(destinationBuilding11);
-    destinationBuilding11.setNextPart(intersection1_3);
-    intersection1_3.setNextPart(destinationBuilding11);
-
 
 
 
@@ -520,7 +335,6 @@ public class MainProgram {
         customer6 = new Customer(6, building11);
 
         driver = new DeliveryDriver();
-        route = new DeliveryRoute(90);
 
         driver.addPackage(package1);
         driver.addPackage(package2);
@@ -528,16 +342,6 @@ public class MainProgram {
         driver.addPackage(package4);
         driver.addPackage(package5);
         driver.addPackage(package6);
-        route.addSubstreet(street1);
-        route.addSubstreet(street2);
-        route.addSubstreet(street3);
-        route.addSubstreet(street4);
-        route.addSubstreet(street5);
-        route.addSubstreet(street6);
-        route.addSubstreet(street7);
-        route.addSubstreet(street8);
-        route.addSubstreet(street9);
-        driver.setCurrentRoute(route);
  
   
       

@@ -53,12 +53,6 @@ private int delay;
         double costPerKilometer = 2.5; 
         return  costPerKilometer;}
 
-    public void setNextPart(SubstreetPart nextPart) {
-        if (nextPart != null) {
-            this.nextParts.add(nextPart);
-        }
-
-    }
 
     public List<SubstreetPart> getNextParts() {
         return Collections.unmodifiableList(nextParts);

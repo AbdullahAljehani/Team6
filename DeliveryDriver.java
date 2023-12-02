@@ -9,16 +9,11 @@ import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Path;
 import javafx.util.Duration;
-import javafx.animation.PauseTransition;
-import javafx.application.Platform;
 
 public class DeliveryDriver {
     private List<Package> packages;
-    private DeliveryRoute currentRoute;
     public int currentX;
     public int currentY;
-    private double currentDistanceOnRoute;
-    private int currentSubstreetIndex; 
     private Substreet currentSubstreet;
     private static Rectangle car;
     public static PathTransition pathTransition;
@@ -27,26 +22,19 @@ public class DeliveryDriver {
      public static double GasolineCost=0;
     public static boolean continueTransition = false;
     public SubstreetPart currentSubstreetPart;
+    private double distanceForCurrentPath = 0;
+    public double increment;
 
-private double distanceForCurrentPath = 0;
 
-// Other class variables and methods...
 
     public DeliveryDriver() {
         this.packages = new ArrayList<>();
-        this.currentDistanceOnRoute = 0;
-        this.currentSubstreet = null; // Initialize to null
-        this.path = new Path();
-        this.pathTransition = new PathTransition();
+        this.currentSubstreet = null; 
         this.car = new Rectangle(322, 662, 15, 15);
         this.car.setArcHeight(15);
         this.car.setArcWidth(15);
         this.car.setFill(Color.RED);
-        this.pathTransition.setNode(car);
-        this.pathTransition.setDuration(Duration.seconds(59));
-
-
-        
+            
     }
     public Rectangle getCar() {
         return car;
@@ -63,26 +51,10 @@ private double distanceForCurrentPath = 0;
     }
    
     
-
-
       public List<Package> getPackages() {
         return packages;
     }
 
-    public void setCurrentRoute(DeliveryRoute route) {
-        this.currentRoute = route;
-        this.currentX = 0; 
-        this.currentY = 0; 
-        this.currentDistanceOnRoute = 0; 
-        
-        
-    }
-    
-
-
-    public DeliveryRoute getCurrentRoute() {
-        return this.currentRoute;
-    }
 
     public int getCurrentX(){
         return currentX;
@@ -92,9 +64,7 @@ private double distanceForCurrentPath = 0;
         return currentY;
     }
 
-    public boolean isPackageDelivered(Package aPackage) {
-        return aPackage.isDelivered;
-    }
+    
     public void setPath(Path path) {
         this.path = path;
     }
@@ -113,31 +83,24 @@ public static void updateDistance(double increment) {
     Distance += increment;
     System.out.println("Total Distance: " + Distance);
 }
-public void updateDistanceForCurrentPath(double increment) {
-    distanceForCurrentPath += increment;
-    System.out.println("Distance for Current Path: " + distanceForCurrentPath);
-}
 
-public Path generatePath(List<SubstreetPart> packageParts) {
+
+public Path generatePath(List<SubstreetPart> subStreetParts) {
     Path path = new Path();
 
-    if (packageParts.isEmpty()) {
+    if (subStreetParts.isEmpty()) {
         return path;
     }
 
-    SubstreetPart currentPart = packageParts.get(0);
+    SubstreetPart currentPart = subStreetParts.get(0);
     path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
-    currentX = currentPart.getX();
-    currentY = currentPart.getY();
-
-    for (int i = 1; i < packageParts.size(); i++) {
-        SubstreetPart nextPart = packageParts.get(i);
+  
+    for (int i = 1; i < subStreetParts.size(); i++) {
+        SubstreetPart nextPart = subStreetParts.get(i);
         path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
 
-        double increment = currentPart.getDistanceTo(nextPart);
+         increment = currentPart.getDistanceTo(nextPart);
         distanceForCurrentPath += increment;
-        updateDistanceForCurrentPath(increment);
-        updateDistance(increment);
 
         currentPart = nextPart;
         currentX = currentPart.getX();
@@ -171,13 +134,13 @@ public void moveDriver(Path path, Runnable onFinish) {
     if (!path.getElements().isEmpty() && FadingRectangle.isStartClicked) {
         PathTransition pathTransition = new PathTransition();
         pathTransition.setNode(car);
-        pathTransition.setDuration(Duration.seconds(20));
-
+        pathTransition.setDuration(Duration.seconds(5));
         pathTransition.setPath(path);
         pathTransition.setCycleCount(1);
         pathTransition.setOnFinished(e -> {
             handleTransitionCompletion();
             deliverPackage(currentX, currentY);
+            updateDistance(increment);
             onFinish.run();
         });
         
@@ -185,16 +148,12 @@ public void moveDriver(Path path, Runnable onFinish) {
     }
 }
 
-
     public void handleTransitionCompletion() {
         FadingRectangle.updateGasolineCostLabel();
         FadingRectangle.updateDistanceLabel();
         System.out.println("Transition finished");
         }
     
-
-
-
     public int calculateTripDelay() {
         if (currentSubstreet != null) {
             return currentSubstreetPart.getDelay();

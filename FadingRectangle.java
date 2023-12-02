@@ -1127,7 +1127,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         List<Package> packages = driver.getPackages();
     
         for (Package aPackage : packages) {
-            if (aPackage != null && !aPackage.isDelivered()) {
+            if (aPackage != null && !aPackage.isDelivered) {
                 return false;  // Return false as soon as an undelivered package is found
             }
         }

@@ -29,13 +29,8 @@ public abstract class Package  {
 
 
     
-    public boolean isDelivered() {
-        return isDelivered;
-    }
+   
 
-    public void markAsDelivered() {
-        this.isDelivered = true;
-        System.out.println("Package " + this.getPackageId() + " is delivered.");
-    }
+   
     
 }
