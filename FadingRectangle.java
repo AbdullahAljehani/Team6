@@ -1125,15 +1125,16 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     
     public static boolean allDelivered(DeliveryDriver driver) {
         List<Package> packages = driver.getPackages();
-        
+    
         for (Package aPackage : packages) {
             if (aPackage != null && !aPackage.isDelivered()) {
-                break;  
+                return false;  // Return false as soon as an undelivered package is found
             }
         }
     
-        return MainProgram.package1.isDelivered;  
+        return true;  // Return true only if all packages are delivered
     }
+    
     
 
     private static String formatTime(int seconds) {

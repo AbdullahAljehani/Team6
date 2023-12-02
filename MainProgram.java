@@ -128,7 +128,6 @@ public class MainProgram {
 
     public static DeliveryDriver driver;
     public static DeliveryRoute route;
-    List<SubstreetPart> street1Parts = Arrays.asList(MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreetA,MainProgram.intersection1_1,MainProgram.intersection1_2,MainProgram.intersection1_3,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection2_3,MainProgram.EndOfStreet2,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection4_3,MainProgram.intersection5_3,MainProgram.intersection5_2,MainProgram.intersection6_2,MainProgram.intersection7_2,MainProgram.intersection8_2,MainProgram.intersection8_3,MainProgram.intersection9_3,MainProgram.EndOfStreetC);
 
 
   
@@ -266,6 +265,9 @@ public class MainProgram {
       street7.addPart(intersection7_1);
       street7.addPart(intersection7_2);
       street7.addPart(intersection7_3);
+      street7.addPart(destinationBuilding103);
+
+
 
       street8.addPart(FirstOfStreet8);
       street8.addPart(EndOfStreet8);
@@ -278,6 +280,7 @@ public class MainProgram {
       street9.addPart(intersection9_1);
       street9.addPart(intersection9_2);
       street9.addPart(intersection9_3);
+      street9.addPart(destinationBuilding127);
      
       streetA.addPart(FirstOfStreetA);
       streetA.addPart(EndOfStreetA);
@@ -502,12 +505,12 @@ public class MainProgram {
         city1.addNeighborhood(neighborhood2);
         city1.addNeighborhood(neighborhood3);
 
-         building127 = new Building(127);
-         building103 = new Building(103);
-         building70 = new Building(70);
-         building64 = new Building(64);
-         building44 = new Building(44);
-         building11 = new Building(11);
+         building127 = new Building(127,destinationBuilding127);
+         building103 = new Building(103,destinationBuilding103);
+         building70 = new Building(70,destinationBuilding70);
+         building64 = new Building(64,destinationBuilding64);
+         building44 = new Building(44,destinationBuilding44);
+         building11 = new Building(11,destinationBuilding11);
 
 
         customer1 = new Customer(1, building44);
@@ -544,8 +547,8 @@ public class MainProgram {
   public static List<Package> createPackages() {
       // Create packages and initialize them with relevant information
       List<Package> packages = new ArrayList<>();
-      List<SubstreetPart> initialparts1 = Arrays.asList(MainProgram.EndOfStreetA,MainProgram.intersection9_1,MainProgram.intersection8_1,MainProgram.intersection7_1,MainProgram.intersection6_1,MainProgram.intersection5_1,MainProgram.intersection4_1,MainProgram.FirstOfStreet4);
-      List<SubstreetPart> initialparts2 = Arrays.asList(MainProgram.FirstOfStreet4,MainProgram.intersection4_1,MainProgram.intersection3_1,MainProgram.intersection2_1,MainProgram.intersection1_1,MainProgram.EndOfStreet1);
+      List<SubstreetPart> initialparts1 = Arrays.asList(MainProgram.EndOfStreetA,MainProgram.intersection9_1,MainProgram.destinationBuilding127);
+      List<SubstreetPart> initialparts2 = Arrays.asList(MainProgram.intersection9_2,MainProgram.intersection9_3,MainProgram.intersection8_3,MainProgram.intersection7_3,MainProgram.destinationBuilding103);
       package1 = new Offical_paper(customer1, 1, initialparts1);
       package2 = new Normal(customer2, 2, initialparts2);
       

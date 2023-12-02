@@ -26,6 +26,7 @@ public class DeliveryDriver {
     public static double Distance=0;
      private static double GasolineCost=0;
     public static boolean continueTransition = false;
+    public SubstreetPart currentSubstreetPart;
    
     
 
@@ -119,9 +120,13 @@ public void createPathForPackages(List<List<SubstreetPart>> packages) {
     for (List<SubstreetPart> packageParts : packages) {
         if (packageParts != null && !packageParts.isEmpty()) {
             SubstreetPart currentPart = packageParts.get(0);
-            deliverPackage();
+            
 
             this.path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
+            
+            // Update currentX and currentY with the starting coordinates of the package
+            currentX = currentPart.getX();
+            currentY = currentPart.getY();
 
             for (int i = 1; i < packageParts.size(); i++) {
                 SubstreetPart expectedNextPart = packageParts.get(i);
@@ -139,6 +144,13 @@ public void createPathForPackages(List<List<SubstreetPart>> packages) {
 
                         currentPart = nextPart;
                         found = true;
+
+                        // Update currentX and currentY with the coordinates of the next part
+                        currentX = currentPart.getX();
+                        currentY = currentPart.getY();
+                        deliverPackage();
+                        System.out.println("x"+currentX+", y"+currentY);
+                        
                         break;
                     }
                 }
@@ -147,7 +159,6 @@ public void createPathForPackages(List<List<SubstreetPart>> packages) {
                     break;
                 }
             }
-
         }
     }
 
@@ -195,20 +206,24 @@ public void handleTransitionCompletion() {
 
     public int calculateTripDelay() {
         if (currentSubstreet != null) {
-            return currentSubstreet.getDelay();
+            return currentSubstreetPart.getDelay();
         } else {
             return 0;
         }
     }
 
     public void deliverPackage() {
-        if (currentRoute != null) {
-            for (int i = 0; i < getPackages().size(); i++) {
-                Package aPackage = getPackages().get(i);
+        for (Package aPackage : getPackages()) {
+            if (!aPackage.isDelivered) {
+                Building destinationBuilding = aPackage.getCustomer().getBuilding();
     
-                if ( !aPackage.isDelivered) {
-                    if (aPackage instanceof Offical_paper && currentSubstreet != null) {
-                        int substreetDelay = currentSubstreet.getDelay();
+                System.out.println("Driver Position: (" + getCurrentX() + ", " + getCurrentY() + ")");
+                System.out.println("Destination Building: (" + destinationBuilding.getLocation().getX() + ", " + destinationBuilding.getLocation().getY() + ")");
+    
+                if (getCurrentX() == destinationBuilding.getLocation().getX() && getCurrentY() == destinationBuilding.getLocation().getY()) {
+    
+                    if (aPackage instanceof Offical_paper) {
+                        int substreetDelay = currentSubstreetPart.getDelay();
                         System.out.println("Official package detected. Introducing a delay of " + substreetDelay + " minutes on Substreet " + currentSubstreet.getStreetName());
                         try {
                             Thread.sleep(substreetDelay * 1000 * 60);
@@ -217,29 +232,15 @@ public void handleTransitionCompletion() {
                         }
                     }
     
-                    Building destinationBuilding = aPackage.getCustomer().getBuilding();
-    
-                    if (destinationBuilding.getSubstreet() == currentSubstreet) {
-    
-                        System.out.println("Package delivered at building " + destinationBuilding.getBuildingNumber());
-    
-                        aPackage.isDelivered = true;
-                        
-    
-                        moveToNextPackage();
-    
-                        return;
-                    } else {
-                        
-                        moveToNextSubstreet();
-                    }
+                    System.out.println("Package delivered at building " + destinationBuilding.getBuildingNumber());
+                    aPackage.isDelivered = true;
+                    moveToNextPackage();
+                    return;
                 }
             }
-    
-            System.out.println("No more packages assigned to the driver at the current position.");
-        } else {
-            System.out.println("No route set for the driver.");
         }
+    
+        System.out.println("No more packages assigned to the driver at the current position.");
     }
     
     
