@@ -30,6 +30,7 @@ public class FadingRectangle extends Application {
  public static  boolean isStartClicked=true;
  public static boolean isPaused = false;
 
+ public static int numOfSumuolation = 0;
 
 List<SubstreetPart> street1Parts = Arrays.asList(MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreetA,MainProgram.intersection1_1,MainProgram.intersection1_2,MainProgram.intersection1_3,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection2_3,MainProgram.EndOfStreet2,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection4_3,MainProgram.intersection5_3,MainProgram.intersection5_2,MainProgram.intersection6_2,MainProgram.intersection7_2,MainProgram.intersection8_2,MainProgram.intersection8_3,MainProgram.intersection9_3,MainProgram.EndOfStreetC);
 
@@ -1095,9 +1096,12 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     
                     if (allDelivered(MainProgram.driver)) {
                         System.out.println("All packages delivered. Simulation completed.");
-                        
+                        Platform.runLater(() -> {
+                            CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
+                        });
                         timer.cancel();
-                    }
+                    }                       
+
                 }
             }
         };
@@ -1158,7 +1162,9 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     }
     
 
-    
+       public static String formatCounterNo_Simulation(int num) {
+        return String.format("%d",  num ); // Replace "Currency" with your desired currency symbol or abbreviation
+    } 
     
     public static String formatGasolineCost(double cost) {
         return String.format("%s%.2f", "$" , cost ); // Replace "Currency" with your desired currency symbol or abbreviation

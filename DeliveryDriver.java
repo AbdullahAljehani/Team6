@@ -25,7 +25,6 @@ public class DeliveryDriver {
     public double totalDistance=0;
 
 
-
     public DeliveryDriver() {
         this.packages = new ArrayList<>();
         this.currentSubstreet = null; 
@@ -122,6 +121,7 @@ private void playPathTransitions(List<List<SubstreetPart>> packages, int index) 
 
     Path path = generatePath(packages.get(index));
     moveDriver(path, () -> playPathTransitions(packages, index + 1));
+
 }
 
 
@@ -134,12 +134,11 @@ public void moveDriver(Path path, Runnable onFinish) {
         pathTransition.setPath(path);
         pathTransition.setCycleCount(1);
         pathTransition.setOnFinished(e -> {
-            System.out.println("distance t " +totalDistance);
             FadingRectangle.CounterDistanceLabel.setText(FadingRectangle.formatDistance(totalDistance));
             FadingRectangle.CounterCostLabel.setText(FadingRectangle.formatGasolineCost(GasolineCost));
-
             deliverPackage(currentX, currentY);
             onFinish.run();
+
         });
         
         pathTransition.play();
