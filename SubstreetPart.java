@@ -41,8 +41,8 @@ private int delay;
         double deltaX = Math.abs(this.getX() - nextPart.getX());
         double deltaY = Math.abs(this.getY() - nextPart.getY());
     
-        //double pixelToKmConversionFactor = 0.001; 
-        double distanceInKm = (deltaX + deltaY); //* pixelToKmConversionFactor;
+        double pixelToKmConversionFactor = 0.01; 
+        double distanceInKm = (deltaX + deltaY)*pixelToKmConversionFactor;
     
         return distanceInKm;
     }

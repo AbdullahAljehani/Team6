@@ -24,7 +24,7 @@ public class FadingRectangle extends Application {
  private static Label CounterTimeLabel;
   public static Label CounterDistanceLabel;
   public static Label CounterCostLabel;
-
+  public static Label CounterNo_SimulationLabel ;
  private static Timer timer;
  public static int secondsPassed = 0;
  public static  boolean isStartClicked=true;
@@ -961,7 +961,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         
         // For Cost :
         
-        Label CounterCostLabel = new Label("$ 00,00");
+        FadingRectangle.CounterCostLabel = new Label("$ 00,00");
         CounterCostLabel.setFont(CounterLabelfont);
         CounterCostLabel.setTextFill(Color.WHITE);
         CounterCostLabel.setLayoutX(1095);
@@ -969,7 +969,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         
         // For No_Simulations:
         
-        Label CounterNo_SimulationLabel = new Label("0");
+        FadingRectangle.CounterNo_SimulationLabel = new Label("0");
         CounterNo_SimulationLabel.setFont(CounterLabelfont);
         CounterNo_SimulationLabel.setTextFill(Color.WHITE);
         CounterNo_SimulationLabel.setLayoutX(1225);
@@ -1157,12 +1157,11 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         firstPage.start(stage); 
     }
     
-               // FadingRectangle.CounterCostLabel.setText(formatGasolineCost(DeliveryDriver.GasolineCost));
 
     
     
     public static String formatGasolineCost(double cost) {
-        return String.format("%s %.2f", "$" , cost ); // Replace "Currency" with your desired currency symbol or abbreviation
+        return String.format("%s%.2f", "$" , cost ); // Replace "Currency" with your desired currency symbol or abbreviation
     }
 
     public static void endSimulation() {
