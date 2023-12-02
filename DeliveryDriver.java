@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
 import javafx.animation.PathTransition;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
@@ -15,14 +13,13 @@ public class DeliveryDriver {
     public int currentX;
     public int currentY;
     private Substreet currentSubstreet;
-    private static Rectangle car;
-    public static PathTransition pathTransition;
+    private  Rectangle car;
+    public  PathTransition pathTransition;
     private Path path;
-    public static double Distance=0;
+    public  static double Distance=0;
      public static double GasolineCost=0;
     public static boolean continueTransition = false;
     public SubstreetPart currentSubstreetPart;
-    private double distanceForCurrentPath = 0;
     public double increment;
 
 
@@ -100,7 +97,6 @@ public Path generatePath(List<SubstreetPart> subStreetParts) {
         path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
 
          increment = currentPart.getDistanceTo(nextPart);
-        distanceForCurrentPath += increment;
 
         currentPart = nextPart;
         currentX = currentPart.getX();
