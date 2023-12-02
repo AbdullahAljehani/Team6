@@ -41,10 +41,8 @@ private int delay;
         double deltaX = Math.abs(this.getX() - nextPart.getX());
         double deltaY = Math.abs(this.getY() - nextPart.getY());
     
-        // Assuming deltaX and deltaY are in some unit (e.g., pixels)
-        // Convert to kilometers if necessary
-        double pixelToKmConversionFactor = 0.001; // Adjust this according to your scale
-        double distanceInKm = Math.sqrt(deltaX * deltaX + deltaY * deltaY) * pixelToKmConversionFactor;
+        //double pixelToKmConversionFactor = 0.001; 
+        double distanceInKm = (deltaX + deltaY); //* pixelToKmConversionFactor;
     
         return distanceInKm;
     }

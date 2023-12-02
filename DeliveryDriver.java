@@ -16,11 +16,11 @@ public class DeliveryDriver {
     private  Rectangle car;
     public  PathTransition pathTransition;
     private Path path;
-    public  static double Distance=0;
      public static double GasolineCost=0;
     public static boolean continueTransition = false;
     public SubstreetPart currentSubstreetPart;
     public double increment;
+    public double totalDistance=0;
 
 
 
@@ -76,10 +76,6 @@ public static void updateGasolineCost(double increment) {
 }
 
 
-public static void updateDistance(double increment) {
-    Distance += increment;
-    System.out.println("Total Distance: " + Distance);
-}
 
 
 public Path generatePath(List<SubstreetPart> subStreetParts) {
@@ -91,18 +87,20 @@ public Path generatePath(List<SubstreetPart> subStreetParts) {
 
     SubstreetPart currentPart = subStreetParts.get(0);
     path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
-  
+    
     for (int i = 1; i < subStreetParts.size(); i++) {
         SubstreetPart nextPart = subStreetParts.get(i);
         path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
 
          increment = currentPart.getDistanceTo(nextPart);
+         totalDistance+=increment;
 
         currentPart = nextPart;
         currentX = currentPart.getX();
         currentY = currentPart.getY();
 
     }
+   
 
     return path;
 }
@@ -136,7 +134,6 @@ public void moveDriver(Path path, Runnable onFinish) {
         pathTransition.setOnFinished(e -> {
             handleTransitionCompletion();
             deliverPackage(currentX, currentY);
-            updateDistance(increment);
             onFinish.run();
         });
         

@@ -1128,11 +1128,11 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     
         for (Package aPackage : packages) {
             if (aPackage != null && !aPackage.isDelivered) {
-                return false;  // Return false as soon as an undelivered package is found
+                return false;  
             }
         }
     
-        return true;  // Return true only if all packages are delivered
+        return true;  
     }
     
     
@@ -1159,7 +1159,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     
     public  static void updateDistanceLabel() {
         Platform.runLater(() -> {
-            FadingRectangle.CounterDistanceLabel.setText(FadingRectangle.formatDistance(DeliveryDriver.Distance));
+            FadingRectangle.CounterDistanceLabel.setText(FadingRectangle.formatDistance(MainProgram.driver.totalDistance));
             });
     }
     
@@ -1181,7 +1181,6 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
 
     MainProgram.driver.continueTransition = false;
 
-    // Reset the pathTransition
     if (MainProgram.driver.pathTransition != null) {
         Platform.runLater(() -> {
             MainProgram.driver.pathTransition.stop();
