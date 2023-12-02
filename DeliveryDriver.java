@@ -19,7 +19,9 @@ public class DeliveryDriver {
      public static double GasolineCost=0;
     public static boolean continueTransition = false;
     public SubstreetPart currentSubstreetPart;
-    public double increment;
+    public double incrementGasoline;
+    public double incrementDistance;
+
     public double totalDistance=0;
 
 
@@ -77,7 +79,6 @@ public static void updateGasolineCost(double increment) {
 
 
 
-
 public Path generatePath(List<SubstreetPart> subStreetParts) {
     Path path = new Path();
 
@@ -92,9 +93,10 @@ public Path generatePath(List<SubstreetPart> subStreetParts) {
         SubstreetPart nextPart = subStreetParts.get(i);
         path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
 
-         increment = currentPart.getDistanceTo(nextPart);
-         totalDistance+=increment;
-
+         incrementDistance = currentPart.getDistanceTo(nextPart);
+        incrementGasoline = currentPart.calculateGasolineCost(nextPart);
+         GasolineCost += incrementGasoline ;
+         totalDistance+=incrementDistance;
         currentPart = nextPart;
         currentX = currentPart.getX();
         currentY = currentPart.getY();
@@ -132,7 +134,10 @@ public void moveDriver(Path path, Runnable onFinish) {
         pathTransition.setPath(path);
         pathTransition.setCycleCount(1);
         pathTransition.setOnFinished(e -> {
-            handleTransitionCompletion();
+            System.out.println("distance t " +totalDistance);
+            FadingRectangle.CounterDistanceLabel.setText(FadingRectangle.formatDistance(totalDistance));
+            FadingRectangle.CounterCostLabel.setText(FadingRectangle.formatGasolineCost(GasolineCost));
+
             deliverPackage(currentX, currentY);
             onFinish.run();
         });
@@ -141,11 +146,7 @@ public void moveDriver(Path path, Runnable onFinish) {
     }
 }
 
-    public void handleTransitionCompletion() {
-        FadingRectangle.updateGasolineCostLabel();
-        FadingRectangle.updateDistanceLabel();
-        System.out.println("Transition finished");
-        }
+
     
     public int calculateTripDelay() {
         if (currentSubstreet != null) {

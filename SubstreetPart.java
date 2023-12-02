@@ -47,9 +47,10 @@ private int delay;
         return distanceInKm;
     }
     
-    public double calculateGasolineCost(SubstreetPart currentPart,SubstreetPart nextPart) {
+    public double calculateGasolineCost(SubstreetPart nextPart) {
         double costPerKilometer = 2.5; 
-        return  costPerKilometer;}
+        return  getDistanceTo(nextPart) * costPerKilometer;
+    }
 
 
     public List<SubstreetPart> getNextParts() {

@@ -1157,17 +1157,10 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         firstPage.start(stage); 
     }
     
-    public  static void updateDistanceLabel() {
-        Platform.runLater(() -> {
-            FadingRectangle.CounterDistanceLabel.setText(FadingRectangle.formatDistance(MainProgram.driver.totalDistance));
-            });
-    }
+               // FadingRectangle.CounterCostLabel.setText(formatGasolineCost(DeliveryDriver.GasolineCost));
+
     
-    public static void updateGasolineCostLabel() {
-        Platform.runLater(() -> {
-            // FadingRectangle.CounterCostLabel.setText(formatGasolineCost(DeliveryDriver.GasolineCost));
-        });
-    }
+    
     public static String formatGasolineCost(double cost) {
         return String.format("%s %.2f", "$" , cost ); // Replace "Currency" with your desired currency symbol or abbreviation
     }
@@ -1186,7 +1179,6 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
             MainProgram.driver.pathTransition.stop();
             MainProgram.driver.pathTransition.setPath(null);
             MainProgram.driver.pathTransition.setCycleCount(1);
-            MainProgram.driver.handleTransitionCompletion();
   
         });
     }
