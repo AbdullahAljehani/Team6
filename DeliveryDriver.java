@@ -22,9 +22,10 @@ public class DeliveryDriver {
     public double incrementGasoline;
     public double incrementDistance;
 
-    public double totalDistance=0;
+    public static double totalDistance=0;
 
-
+    public boolean isSimulationRunning = false;
+    public Thread simulationThread;
     public DeliveryDriver() {
         this.packages = new ArrayList<>();
         this.currentSubstreet = null; 
@@ -128,7 +129,7 @@ private void playPathTransitions(List<List<SubstreetPart>> packages, int index) 
 
 public void moveDriver(Path path, Runnable onFinish) {
     if (!path.getElements().isEmpty() && FadingRectangle.isStartClicked) {
-        PathTransition pathTransition = new PathTransition();
+         pathTransition = new PathTransition();
         pathTransition.setNode(car);
         pathTransition.setDuration(Duration.seconds(5));
         pathTransition.setPath(path);
@@ -192,6 +193,14 @@ public void moveDriver(Path path, Runnable onFinish) {
     }
     
    
+    public void stopSimulation() {
+        // Logic to stop the ongoing simulation
+        isSimulationRunning = false;
+        if (simulationThread != null && simulationThread.isAlive()) {
+            simulationThread.interrupt(); // Interrupt the simulation thread
+        }
+        // Other necessary cleanup steps
+    }
     public void moveToNextPackage() {
         for (int i = 0; i < getPackages().size(); i++) {
             Package aPackage = getPackages().get(i);

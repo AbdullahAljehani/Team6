@@ -10,6 +10,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.*;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.layout.Pane;
+import javafx.animation.Animation;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -983,9 +984,20 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         Start_button.setPrefSize(60, 25);
         Start_button.setLayoutX(1060 );
         Start_button.setLayoutY(15);
-        Start_button.setOnAction((event) -> { MainProgram.driver.createPathForPackages(MainProgram.PackagesPaths());isStartClicked = true;secondsPassed = 0;FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));startSimulation(); isPaused=false;
+        Start_button.setOnAction((event) -> {
+            stopCurrentSimulation();
+            DeliveryDriver.GasolineCost = 0;
+            DeliveryDriver.totalDistance = 0;
+            FadingRectangle.CounterCostLabel.setText(formatGasolineCost(DeliveryDriver.GasolineCost));
+            FadingRectangle.CounterDistanceLabel.setText(formatDistance(DeliveryDriver.totalDistance));
 
-        ;});
+           MainProgram.driver.createPathForPackages(MainProgram.PackagesPaths());
+            isStartClicked = true;
+            secondsPassed = 0;
+            FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));
+            startSimulation();
+            isPaused = false;
+        });
                 
         Button Pause_button = new Button("Pause");
         Pause_button.setPrefSize(60, 25);
@@ -1108,25 +1120,29 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     
         timer.schedule(simulationTask, 0, 10);
     }
-    
+    private void stopCurrentSimulation() {
+        if (MainProgram.driver.pathTransition != null) {
+            MainProgram.driver.pathTransition.stop() ; // Stop the PathTransition animation
+        }}
     public static void stopSimulation() {
         isPaused = !isPaused; // Toggle pause state
 
         if (MainProgram.driver.pathTransition != null) {
-            if (isPaused) {
-                MainProgram.driver.pathTransition.pause();            } 
-
-
+            if (isPaused && MainProgram.driver.pathTransition.getStatus() == Animation.Status.RUNNING) {
+                MainProgram.driver.pathTransition.pause();
+            }
         }
     }
+
     public static void resumeSimulation() {
         isPaused = false; // Resume the simulation
 
         if (MainProgram.driver.pathTransition != null) {
-            MainProgram.driver.pathTransition.play();
+            if (MainProgram.driver.pathTransition.getStatus() == Animation.Status.PAUSED) {
+                MainProgram.driver.pathTransition.play();
+            }
         }
     }
-    
     public static boolean allDelivered(DeliveryDriver driver) {
         List<Package> packages = driver.getPackages();
     
