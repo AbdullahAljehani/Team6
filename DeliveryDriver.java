@@ -16,12 +16,10 @@ public class DeliveryDriver {
     private  Rectangle car;
     public  PathTransition pathTransition;
     private Path path;
-     public static double GasolineCost=0;
-    public static boolean continueTransition = false;
+    public static double GasolineCost=0;
     public SubstreetPart currentSubstreetPart;
     public double incrementGasoline;
     public double incrementDistance;
-
     public static double totalDistance=0;
 
     public boolean isSimulationRunning = false;
@@ -76,6 +74,41 @@ public static void updateGasolineCost(double increment) {
     GasolineCost += increment;
     System.out.println("GasolineCost "+GasolineCost);
 }
+public double calculateTotalDistance(List<List<SubstreetPart>> packages) {
+    double totalDistance = 0.0;
+
+    for (List<SubstreetPart> subStreetParts : packages) {
+        if (!subStreetParts.isEmpty()) {
+            SubstreetPart currentPart = subStreetParts.get(0);
+
+            for (int i = 1; i < subStreetParts.size(); i++) {
+                SubstreetPart nextPart = subStreetParts.get(i);
+                totalDistance += currentPart.getDistanceTo(nextPart);
+                currentPart = nextPart;
+            }
+        }
+    }
+
+    return totalDistance;
+}
+
+public double calculateTotalGasolineCost(List<List<SubstreetPart>> packages) {
+    double totalGasolineCost = 0.0;
+
+    for (List<SubstreetPart> subStreetParts : packages) {
+        if (!subStreetParts.isEmpty()) {
+            SubstreetPart currentPart = subStreetParts.get(0);
+
+            for (int i = 1; i < subStreetParts.size(); i++) {
+                SubstreetPart nextPart = subStreetParts.get(i);
+                totalGasolineCost += currentPart.calculateGasolineCost(nextPart);
+                currentPart = nextPart;
+            }
+        }
+    }
+
+    return totalGasolineCost;
+}
 
 
 
@@ -94,7 +127,7 @@ public Path generatePath(List<SubstreetPart> subStreetParts) {
         path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
 
          incrementDistance = currentPart.getDistanceTo(nextPart);
-        incrementGasoline = currentPart.calculateGasolineCost(nextPart);
+         incrementGasoline = currentPart.calculateGasolineCost(nextPart);
          GasolineCost += incrementGasoline ;
          totalDistance+=incrementDistance;
         currentPart = nextPart;
@@ -156,16 +189,16 @@ public void moveDriver(Path path, Runnable onFinish) {
         }
     }
 
-   public void deliverPackage(int currentX, int currentY) {
+    public void deliverPackage(int currentX, int currentY) {
         for (Package aPackage : getPackages()) {
             if (!aPackage.isDelivered) {
                 Building destinationBuilding = aPackage.getCustomer().getBuilding();
     
                 System.out.println("Package " + aPackage.getPackageId() + " isDelivered: " + aPackage.isDelivered);
-                 System.out.println("currentX " +currentX + " currenty " +currentY);       
-
+                System.out.println("currentX " + currentX + " currenty " + currentY);
+    
                 if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
-                    System.out.println("get x "+ destinationBuilding.getLocation().getX() + " get Y() "+destinationBuilding.getLocation().getY());
+                    System.out.println("get x " + destinationBuilding.getLocation().getX() + " get Y() " + destinationBuilding.getLocation().getY());
                     if (aPackage instanceof Offical_paper && currentSubstreetPart != null) {
                         int substreetDelay = currentSubstreetPart.getDelay();
                         System.out.println("Official package detected. Introducing a delay of " + substreetDelay + " minutes on Substreet " + currentSubstreet.getStreetName());
@@ -179,28 +212,23 @@ public void moveDriver(Path path, Runnable onFinish) {
                     System.out.println("Package " + aPackage.getPackageId() + " delivered at building " + destinationBuilding.getBuildingNumber());
                     aPackage.isDelivered = true;
                     System.out.println("Package " + aPackage.getPackageId() + " isDelivered updated to: " + aPackage.isDelivered);
-                    
-                    if(hasNextPackage(aPackage)&&aPackage.isDelivered==true){
-                    moveToNextPackage();
-                    }
     
-                    
+                    if (hasNextPackage(aPackage) && aPackage.isDelivered) {
+                        moveToNextPackage();
+                    }
                 }
+            } else {
+                System.out.println("Package " + aPackage.getPackageId() + " is already delivered.");
             }
         }
     
         System.out.println("No more packages assigned to the driver at the current position.");
     }
     
+    
    
-    public void stopSimulation() {
-        // Logic to stop the ongoing simulation
-        isSimulationRunning = false;
-        if (simulationThread != null && simulationThread.isAlive()) {
-            simulationThread.interrupt(); // Interrupt the simulation thread
-        }
-        // Other necessary cleanup steps
-    }
+   
+    
     public void moveToNextPackage() {
         for (int i = 0; i < getPackages().size(); i++) {
             Package aPackage = getPackages().get(i);

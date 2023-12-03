@@ -1096,8 +1096,18 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
 
 
     public static void startSimulation() {
+        // Cancel the existing timer if it's not null
+        if (timer != null) {
+            timer.cancel();
+        }
+    
+        // Reset the delivery status of packages
+        resetPackageDeliveryStatus();
+    
+        // Create a new timer
         timer = new Timer();
-      TimerTask simulationTask = new TimerTask() {
+    
+        TimerTask simulationTask = new TimerTask() {
             @Override
             public void run() {
                 if (!isPaused) {
@@ -1112,14 +1122,19 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
                             CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                         });
                         timer.cancel();
-                    }                       
-
+                    }
                 }
             }
         };
     
         timer.schedule(simulationTask, 0, 10);
     }
+    private static void resetPackageDeliveryStatus() {
+        for (Package aPackage : MainProgram.driver.getPackages()) {
+            aPackage.isDelivered = false;
+        }
+    }
+    
     private void stopCurrentSimulation() {
         if (MainProgram.driver.pathTransition != null) {
             MainProgram.driver.pathTransition.stop() ; // Stop the PathTransition animation
@@ -1193,14 +1208,22 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         timer.cancel();
     }
 
-    MainProgram.driver.continueTransition = false;
+    
 
     if (MainProgram.driver.pathTransition != null) {
         Platform.runLater(() -> {
             MainProgram.driver.pathTransition.stop();
             MainProgram.driver.pathTransition.setPath(null);
             MainProgram.driver.pathTransition.setCycleCount(1);
-  
+            double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.PackagesPaths());
+            CounterDistanceLabel.setText(formatDistance(totalDistance));
+            
+            double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths());
+            CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
+
+            
+
+
         });
     }
 }
