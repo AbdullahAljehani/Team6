@@ -109,7 +109,10 @@ public double calculateTotalGasolineCost(List<List<SubstreetPart>> packages) {
 
     return totalGasolineCost;
 }
-
+public void moveCarTo(int x, int y) {
+        car.setTranslateX(x);
+        car.setTranslateY(y);
+    }
 
 
 public Path generatePath(List<SubstreetPart> subStreetParts) {

@@ -1220,6 +1220,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
             
             double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths());
             CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
+            MainProgram.driver.moveCarTo(565, -207);
 
             
 
