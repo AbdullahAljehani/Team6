@@ -13,7 +13,7 @@ public class DeliveryDriver {
     public int currentX;
     public int currentY;
     private Substreet currentSubstreet;
-    private  Rectangle car;
+    public  Rectangle car;
     public  PathTransition pathTransition;
     private Path path;
     public static double GasolineCost=0;
@@ -122,8 +122,7 @@ public void moveCarTo(List<List<SubstreetPart>> packages) {
              firstX = firstPart.getX();
              firstY = firstPart.getY();
 
-            // Do something with the coordinates (e.g., set car position)
-            // For example:
+            
 
         }
 
@@ -139,8 +138,7 @@ public void moveCarTo(List<List<SubstreetPart>> packages) {
     
             double finalPointX  = lastX-  firstX;
             double finalPointY  = lastY-  firstY;
-            System.out.println("finalPointX "+finalPointX);
-            System.out.println("finalPointY "+finalPointY);
+            
 
             car.setTranslateX(finalPointX);
             car.setTranslateY(finalPointY);

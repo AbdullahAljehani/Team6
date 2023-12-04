@@ -988,9 +988,9 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
             stopCurrentSimulation();
             DeliveryDriver.GasolineCost = 0;
             DeliveryDriver.totalDistance = 0;
-            FadingRectangle.CounterCostLabel.setText(formatGasolineCost(DeliveryDriver.GasolineCost));
-            FadingRectangle.CounterDistanceLabel.setText(formatDistance(DeliveryDriver.totalDistance));
 
+            FadingRectangle.CounterCostLabel.setText("$ 00,00");
+            FadingRectangle.CounterDistanceLabel.setText("00.00 Km");
            MainProgram.driver.createPathForPackages(MainProgram.PackagesPaths());
             isStartClicked = true;
             secondsPassed = 0;
@@ -1022,7 +1022,9 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         Back_button.setLayoutY(15);
         Back_button.setOnAction(e -> {
             openFirstPage();
+            restSumaltion();
             primaryStage.close();
+            
             
             
         });
@@ -1203,7 +1205,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         return String.format("%s%.2f", "$" , cost ); // Replace "Currency" with your desired currency symbol or abbreviation
     }
 
-    public static void endSimulation() {
+    public  void endSimulation() {
      
 
     if (timer != null) {
@@ -1229,6 +1231,28 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
 
         });
     }
+}
+public  void restSumaltion(){
+     if (timer != null) {
+        timer.cancel();
+    }
+
+    
+
+    if (MainProgram.driver.pathTransition != null) {
+        Platform.runLater(() -> {
+            MainProgram.driver.pathTransition.stop();
+            MainProgram.driver.pathTransition.setPath(null);
+            MainProgram.driver.pathTransition.setCycleCount(1);
+            CounterDistanceLabel.setText("00.00 Km");
+            CounterCostLabel.setText("$ 00,00");
+            MainProgram.driver.moveCarTo(MainProgram.PackagesPaths());
+            MainProgram.driver.car.setTranslateX(0);
+            MainProgram.driver.car.setTranslateY(0);
+             });
+    
+}
+
 }
 }
     
