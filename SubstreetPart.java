@@ -46,18 +46,7 @@ private int delay;
     
         return distanceInKm;
     }
-    public int getSpeedLimit(SubstreetPart nextPart){
-        double distance = getDistanceTo(nextPart) /0.01 ;
-        int speedLimit = 0; 
-        if (distance < 100 ){
-            speedLimit = 80;
-            return speedLimit ;
-        }else{
-            speedLimit = 60;
-            return speedLimit;
-        }
-
-    }
+    
     public double calculateGasolineCost(SubstreetPart nextPart) {
         double costPerKilometer = 2.5; 
         return  getDistanceTo(nextPart) * costPerKilometer;
@@ -67,11 +56,5 @@ private int delay;
     public List<SubstreetPart> getNextParts() {
         return Collections.unmodifiableList(nextParts);
     }
-    public double calculateTime(SubstreetPart nexPart) {
-
-        int speed = getSpeedLimit(nexPart);
-        double distance = getDistanceTo(nexPart); 
-        return distance / speed;
-    }  
 }
 
