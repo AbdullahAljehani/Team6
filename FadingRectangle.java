@@ -1115,7 +1115,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
             @Override
             public void run() {
                 if (!isPaused) {
-                    secondsPassed++;
+                    secondsPassed+=10;
                     Platform.runLater(() -> {
                         FadingRectangle.CounterTimeLabel.setText(formatTime(secondsPassed));
                     });
@@ -1131,7 +1131,7 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
             }
         };
     
-        timer.schedule(simulationTask, 0, 10);
+        timer.schedule(simulationTask, 0, 100);
     }
     private static void resetPackageDeliveryStatus() {
         for (Package aPackage : MainProgram.driver.getPackages()) {
@@ -1225,6 +1225,10 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
             double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths());
             CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
             MainProgram.driver.moveCarTo(MainProgram.PackagesPaths());
+            CounterTimeLabel.setText(formatTime(1010));
+
+            CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
+
 
             
 
@@ -1249,6 +1253,7 @@ public  void restSumaltion(){
             MainProgram.driver.moveCarTo(MainProgram.PackagesPaths());
             MainProgram.driver.car.setTranslateX(0);
             MainProgram.driver.car.setTranslateY(0);
+
              });
     
 }
