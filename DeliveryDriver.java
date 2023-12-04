@@ -20,10 +20,12 @@ public class DeliveryDriver {
     public SubstreetPart currentSubstreetPart;
     public double incrementGasoline;
     public double incrementDistance;
+    public double incrementTime ;
     public static double totalDistance=0;
-
+    public static double totaltime = 0;
     public boolean isSimulationRunning = false;
     public Thread simulationThread;
+    
     public DeliveryDriver() {
         this.packages = new ArrayList<>();
         this.currentSubstreet = null; 
@@ -69,7 +71,7 @@ public class DeliveryDriver {
         return path;
     }
 
-    
+ 
 public static void updateGasolineCost(double increment) {
     GasolineCost += increment;
     System.out.println("GasolineCost "+GasolineCost);
@@ -114,27 +116,24 @@ public void moveCarTo(List<List<SubstreetPart>> packages) {
     double firstY=0;
     double lastX=0;
     double lastY=0;
+
     if (!packages.isEmpty()) {
-        // First substreet part from the first package
         List<SubstreetPart> firstPackage = packages.get(0);
         if (!firstPackage.isEmpty()) {
             SubstreetPart firstPart = firstPackage.get(0);
              firstX = firstPart.getX();
              firstY = firstPart.getY();
 
-            // Do something with the coordinates (e.g., set car position)
-            // For example:
+
 
         }
 
-        // Last substreet part from the last package
         List<SubstreetPart> lastPackage = packages.get(packages.size() - 1);
         if (!lastPackage.isEmpty()) {
             SubstreetPart lastPart = lastPackage.get(lastPackage.size() - 1);
              lastX = lastPart.getX();
              lastY = lastPart.getY();
 
-            // Do something with the coordinates (e.g., use lastX and lastY)
         }
     
             double finalPointX  = lastX-  firstX;
@@ -146,8 +145,6 @@ public void moveCarTo(List<List<SubstreetPart>> packages) {
             car.setTranslateY(finalPointY);
         }
     }
-
-
 
 public Path generatePath(List<SubstreetPart> subStreetParts) {
     Path path = new Path();
@@ -165,6 +162,9 @@ public Path generatePath(List<SubstreetPart> subStreetParts) {
 
          incrementDistance = currentPart.getDistanceTo(nextPart);
          incrementGasoline = currentPart.calculateGasolineCost(nextPart);
+         incrementTime = currentPart.calculateTime(nextPart);
+            // totaltime += incrementTime ;
+            // System.out.println (totaltime)  ;
          GasolineCost += incrementGasoline ;
          totalDistance+=incrementDistance;
         currentPart = nextPart;

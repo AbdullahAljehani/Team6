@@ -32,7 +32,9 @@ public class FadingRectangle extends Application {
  public static boolean isPaused = false;
 
  public static int numOfSumuolation = 0;
-
+public SubstreetPart currentPart ;
+public SubstreetPart nextPart ;
+public double totalSimulationTime = 0;
 List<SubstreetPart> street1Parts = Arrays.asList(MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreet1,MainProgram.intersection1_1,MainProgram.FirstOfStreetA,MainProgram.intersection1_1,MainProgram.intersection1_2,MainProgram.intersection1_3,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection2_3,MainProgram.EndOfStreet2,MainProgram.intersection2_3,MainProgram.intersection3_3,MainProgram.intersection4_3,MainProgram.intersection5_3,MainProgram.intersection5_2,MainProgram.intersection6_2,MainProgram.intersection7_2,MainProgram.intersection8_2,MainProgram.intersection8_3,MainProgram.intersection9_3,MainProgram.EndOfStreetC);
 
     @Override
@@ -1171,7 +1173,15 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
     }
     
     
-
+    private static String formatTotalTime(double hours) {
+        long totalSeconds = (long) (hours * 3600); // Convert hours to seconds
+    
+        long hoursPart = totalSeconds / 3600;
+        long minutesPart = (totalSeconds % 3600) / 60;
+        long remainingSecondsPart = totalSeconds % 60;
+    
+        return String.format("%02d:%02d:%02d", hoursPart, minutesPart, remainingSecondsPart);
+    }
     private static String formatTime(int seconds) {
         long hours = seconds / 3600;
         long minutes = (seconds % 3600) / 60;
@@ -1201,35 +1211,52 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         return String.format("%s%.2f", "$" , cost ); // Replace "Currency" with your desired currency symbol or abbreviation
     }
 
-    public static void endSimulation() {
-     
-
-    if (timer != null) {
-        timer.cancel();
-    }
-
+    public  void endSimulation() {
+        if (timer != null) {
+            timer.cancel();
+        }
     
-
-    if (MainProgram.driver.pathTransition != null) {
-        Platform.runLater(() -> {
-            MainProgram.driver.pathTransition.stop();
-            MainProgram.driver.pathTransition.setPath(null);
-            MainProgram.driver.pathTransition.setCycleCount(1);
-            double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.PackagesPaths());
-            CounterDistanceLabel.setText(formatDistance(totalDistance));
-            
-            double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths());
-            CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
-            MainProgram.driver.moveCarTo(MainProgram.PackagesPaths());
-
-            
-
-
-        });
-    }
-}
-}
+        if (MainProgram.driver.pathTransition != null) {
+            Platform.runLater(() -> {
+                MainProgram.driver.pathTransition.stop();
+                MainProgram.driver.pathTransition.setPath(null);
+                MainProgram.driver.pathTransition.setCycleCount(1);
     
+                double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.PackagesPaths());
+                CounterDistanceLabel.setText(formatDistance(totalDistance));
+    
+                double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths());
+                CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
+    
+                MainProgram.driver.moveCarTo(MainProgram.PackagesPaths());
+    
+                // Iterate through packages and their substreet parts
+                List<List<SubstreetPart>> packages = MainProgram.PackagesPaths();
+    
+                for (List<SubstreetPart> subStreetParts : packages) {
+                    if (!subStreetParts.isEmpty()) {
+                        currentPart = subStreetParts.get(0);
+    
+                        for (int i = 1; i < subStreetParts.size(); i++) {
+                            nextPart = subStreetParts.get(i);
+    
+                            // Calculate time for each substreet part
+                            double timeForPart = currentPart.calculateTime(nextPart);
+                            totalSimulationTime += timeForPart;
+    
+                            Platform.runLater(() -> {
+                                FadingRectangle.CounterTimeLabel.setText(formatTotalTime(totalSimulationTime));
+                            });
+    
+                            // Set the current part as the next part for the next iteration
+                            currentPart = nextPart;
+                        }
+                    }
+                }
+            });
+        }
+    }
+}    
     
 
 
