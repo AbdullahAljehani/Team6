@@ -1023,6 +1023,8 @@ primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();
         Back_button.setOnAction(e -> {
             openFirstPage();
             primaryStage.close();
+            
+            
         });
         
 
