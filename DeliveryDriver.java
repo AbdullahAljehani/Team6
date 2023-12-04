@@ -109,10 +109,44 @@ public double calculateTotalGasolineCost(List<List<SubstreetPart>> packages) {
 
     return totalGasolineCost;
 }
-public void moveCarTo(int x, int y) {
-        car.setTranslateX(x);
-        car.setTranslateY(y);
+public void moveCarTo(List<List<SubstreetPart>> packages) {
+    double firstX=0;
+    double firstY=0;
+    double lastX=0;
+    double lastY=0;
+    if (!packages.isEmpty()) {
+        // First substreet part from the first package
+        List<SubstreetPart> firstPackage = packages.get(0);
+        if (!firstPackage.isEmpty()) {
+            SubstreetPart firstPart = firstPackage.get(0);
+             firstX = firstPart.getX();
+             firstY = firstPart.getY();
+
+            // Do something with the coordinates (e.g., set car position)
+            // For example:
+
+        }
+
+        // Last substreet part from the last package
+        List<SubstreetPart> lastPackage = packages.get(packages.size() - 1);
+        if (!lastPackage.isEmpty()) {
+            SubstreetPart lastPart = lastPackage.get(lastPackage.size() - 1);
+             lastX = lastPart.getX();
+             lastY = lastPart.getY();
+
+            // Do something with the coordinates (e.g., use lastX and lastY)
+        }
+    
+            double finalPointX  = lastX-  firstX;
+            double finalPointY  = lastY-  firstY;
+            System.out.println("finalPointX "+finalPointX);
+            System.out.println("finalPointY "+finalPointY);
+
+            car.setTranslateX(finalPointX);
+            car.setTranslateY(finalPointY);
+        }
     }
+
 
 
 public Path generatePath(List<SubstreetPart> subStreetParts) {
