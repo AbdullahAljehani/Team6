@@ -196,15 +196,15 @@ private void playPathTransitions(List<List<SubstreetPart>> packages, int index) 
 
 
 public void moveDriver(Path path, Runnable onFinish) {
-    if (!path.getElements().isEmpty() && FadingRectangle.isStartClicked) {
+    if (!path.getElements().isEmpty() && MainGUISimulation .isStartClicked) {
          pathTransition = new PathTransition();
         pathTransition.setNode(car);
         pathTransition.setDuration(Duration.seconds(5));
         pathTransition.setPath(path);
         pathTransition.setCycleCount(1);
         pathTransition.setOnFinished(e -> {
-            FadingRectangle.CounterDistanceLabel.setText(FadingRectangle.formatDistance(totalDistance));
-            FadingRectangle.CounterCostLabel.setText(FadingRectangle.formatGasolineCost(GasolineCost));
+            MainGUISimulation .CounterDistanceLabel.setText(MainGUISimulation .formatDistance(totalDistance));
+            MainGUISimulation .CounterCostLabel.setText(MainGUISimulation .formatGasolineCost(GasolineCost));
             deliverPackage(currentX, currentY);
             onFinish.run();
 

@@ -133,7 +133,7 @@ public class MainProgram {
     public static void main(String[] args) {
     initializeObjects();
     driver.setPackages(createPackages()); 
-    FadingRectangle.launch(FadingRectangle.class, args);
+    MainGUISimulation.launch(MainGUISimulation.class, args);
    
         
     }

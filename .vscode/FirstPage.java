@@ -48,7 +48,7 @@ public class FirstPage extends Application {
         borderPane.setCenter(gridPane);
 
         // Set dark mode background image as a style
-        borderPane.setStyle("-fx-background-image: url('Background.jpg'); " +
+        borderPane.setStyle("-fx-background-image: url('Background2.jpg'); " +
                             "-fx-background-size: cover; " +
                             "-fx-background-repeat: no-repeat;");
 
@@ -72,7 +72,7 @@ public class FirstPage extends Application {
         primaryStage.show();
     }
     private void openSimulationPage() {
-        FadingRectangle SimulationPage = new FadingRectangle(); // Create an instance of FirstPage
+        MainGUISimulation  SimulationPage = new MainGUISimulation (); // Create an instance of FirstPage
         Stage stage = new Stage(); // Create a new stage
         SimulationPage.start(stage); // Call the start method of FirstPage, passing the new stage
     }
