@@ -1041,14 +1041,15 @@ public static int numOfSumuolation = 0;
     public void Buttons (Pane AllGroups,Stage primaryStage) {
         Button Start_button = new Button();
         Start_button.setPrefSize(60, 20);
-        Start_button.setLayoutX(1060);
+        Start_button.setLayoutX(1050);
         Start_button.setLayoutY(15);
-
-        Image Starticon = new Image(getClass().getResourceAsStream("/StartIcon.jpg"));
+        Image Starticon = new Image(getClass().getResourceAsStream("/start1.png"));
         ImageView iconView = new ImageView(Starticon);
         iconView.setFitWidth(60);
         iconView.setFitHeight(20);
         Start_button.setGraphic(iconView);
+        Start_button.setStyle("-fx-padding: 5 0 5 10;");
+        
         Start_button.setOnAction((event) -> {
             stopCurrentSimulation();
             DeliveryDriver.GasolineCost = 0;
@@ -1066,15 +1067,15 @@ public static int numOfSumuolation = 0;
                 
         Button Pause_button = new Button();
         Pause_button.setPrefSize(60, 25);
-        Pause_button.setLayoutX(1130);
+        Pause_button.setLayoutX(1125);
         Pause_button.setLayoutY(15);
-        Pause_button.setStyle("-fx-background-color: #ffffff;");
-        Image Pauseicon = new Image(getClass().getResourceAsStream("/PauseIcon.jpg"));
+        Image Pauseicon = new Image(getClass().getResourceAsStream("pause1.jpg"));
         ImageView iconView2 = new ImageView(Pauseicon);
         iconView2.setFitWidth(55);
         iconView2.setFitHeight(20);
         Pause_button.setGraphic(iconView2);
-        Pause_button.setOnAction(e -> {
+        Pause_button.setStyle("-fx-padding: 5 0 5 10;");
+                Pause_button.setOnAction(e -> {
             if (isPaused) {
                 resumeSimulation();
             } else {
@@ -1086,12 +1087,13 @@ public static int numOfSumuolation = 0;
         End_button.setPrefSize(60, 20);
         End_button.setLayoutX(1200);
         End_button.setLayoutY(15);
-        End_button.setStyle("-fx-background-color: #ffffff;");
-        Image Endicon = new Image(getClass().getResourceAsStream("/Endicon.jpg"));
+        Image Endicon = new Image(getClass().getResourceAsStream("2623550-200.png"));
         ImageView iconView3 = new ImageView(Endicon);
         iconView3.setFitWidth(55);
         iconView3.setFitHeight(20);
         End_button.setGraphic(iconView3);
+        End_button.setStyle("-fx-padding: 5 0 5 10;"); // Adjust the padding as needed
+
         End_button.setOnAction(e -> {endSimulation();});
 
         Button Back_button = new Button("Back");
@@ -1099,11 +1101,13 @@ public static int numOfSumuolation = 0;
         Back_button.setLayoutX(1270);
         Back_button.setLayoutY(15);
         Back_button.setStyle("-fx-background-color: #ffffff;");
-        Image Backicon = new Image(getClass().getResourceAsStream("/BackIcon.jpg"));
+        Image Backicon = new Image(getClass().getResourceAsStream("arrow-go-back-icon-1024x911-57tv3hi7.png"));
         ImageView iconView4 = new ImageView(Backicon);
         iconView4.setFitWidth(55);
         iconView4.setFitHeight(20);
         Back_button.setGraphic(iconView4);
+        Back_button.setStyle("-fx-padding: 5 0 5 10;");
+
         Back_button.setOnAction(e -> {
             openFirstPage();
             restSumaltion();
@@ -1140,7 +1144,6 @@ public static int numOfSumuolation = 0;
                     Platform.runLater(() -> {
                         MainGUISimulation .CounterTimeLabel.setText(formatTime(secondsPassed));
                     });
-    
                     if (allDelivered(MainProgram.driver)) {
                         System.out.println("All packages delivered. Simulation completed.");
                         Platform.runLater(() -> {

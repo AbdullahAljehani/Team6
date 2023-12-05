@@ -168,6 +168,7 @@ public Path generatePath(List<SubstreetPart> subStreetParts) {
         currentPart = nextPart;
         currentX = currentPart.getX();
         currentY = currentPart.getY();
+        // System.out.println("currentX "+currentX+" currentY "+currentY);
 
     }
    
@@ -231,7 +232,9 @@ public void moveDriver(Path path, Runnable onFinish) {
     
                 System.out.println("Package " + aPackage.getPackageId() + " isDelivered: " + aPackage.isDelivered);
                 System.out.println("currentX " + currentX + " currenty " + currentY);
-    
+                
+                System.out.println("getx "+destinationBuilding.getLocation().getX()+" getY "+destinationBuilding.getLocation().getY());
+
                 if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
                     System.out.println("get x " + destinationBuilding.getLocation().getX() + " get Y() " + destinationBuilding.getLocation().getY());
                     if (aPackage instanceof Offical_paper && currentSubstreetPart != null) {

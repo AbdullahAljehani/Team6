@@ -114,15 +114,15 @@ public class MainProgram {
 
     public static Customer customer1;
     public static Customer customer2;
-    private static Customer customer3;
+    public static Customer customer3;
     private static Customer customer4;
-    private static Customer customer5;
+    public static Customer customer5;
     private static Customer customer6;
 
     public static Offical_paper package1;
     public static Normal package2;
-    private static Normal package3;
-    private static Offical_paper package4;
+    public static Normal package3;
+    public static Offical_paper package4;
     private static Normal package5;
     private static Offical_paper package6;
 
@@ -246,7 +246,8 @@ public class MainProgram {
       street4.addPart(intersection4_1);
       street4.addPart(intersection4_2);
       street4.addPart(intersection4_3);
-      
+      street4.addPart(destinationBuilding44);
+
       street5.addPart(FirstOfStreet5);
       street5.addPart(EndOfStreet5);
       street5.addPart(intersection5_1);
@@ -258,6 +259,7 @@ public class MainProgram {
       street6.addPart(intersection6_1);
       street6.addPart(intersection6_2);
       street6.addPart(intersection6_3);
+      street6.addPart(destinationBuilding70);
 
       street7.addPart(FirstOfStreet7);
       street7.addPart(EndOfStreet7);
@@ -291,16 +293,6 @@ public class MainProgram {
       streetC.addPart(EndOfStreetC);
 
     
-
-
-
-
-  
-
-
-
-
-  
         neighborhood1 = new Neighborhood("Alhamdaniyah");
         neighborhood2 = new Neighborhood("AlManar");
         neighborhood3 = new Neighborhood("AlRabwah");
@@ -352,15 +344,27 @@ public class MainProgram {
       List<Package> packages = new ArrayList<>();
       List<SubstreetPart> initialparts1 = Arrays.asList(MainProgram.EndOfStreetA,MainProgram.intersection9_1,MainProgram.destinationBuilding127);
       List<SubstreetPart> initialparts2 = Arrays.asList(MainProgram.destinationBuilding127,MainProgram.intersection9_2,MainProgram.intersection9_3,MainProgram.intersection8_3,MainProgram.intersection7_3,MainProgram.destinationBuilding103);
+      List<SubstreetPart> initialparts3 = Arrays.asList(MainProgram.destinationBuilding103,MainProgram.intersection7_3,MainProgram.intersection7_2,MainProgram.intersection7_1,MainProgram.intersection6_1,MainProgram.destinationBuilding70);
+      List<SubstreetPart> initialparts4 = Arrays.asList(MainProgram.destinationBuilding70,MainProgram.intersection6_1,MainProgram.intersection5_1,MainProgram.intersection4_1,MainProgram.destinationBuilding44);
+
+
       package1 = new Offical_paper(customer1, 1, initialparts1);
       package2 = new Normal(customer2, 2, initialparts2);
-      
+      package3= new Normal(customer3, 3, initialparts3);
+      package4 = new Offical_paper(customer5, 4, initialparts4);
+
 
 
       packages.add(package1);
       packages.add(package2);
+      packages.add(package3);
+      packages.add(package4);
       System.out.println("Path for Package 1: " + package1.getPath());
       System.out.println("Path for Package 2: " + package2.getPath());
+      System.out.println("Path for Package 3: " + package3.getPath());
+      System.out.println("Path for Package 4: " + package4.getPath());
+
+      
 
 
       return packages;
@@ -370,6 +374,8 @@ public class MainProgram {
         List<List<SubstreetPart>> Packages = new ArrayList<>();
         Packages.add(package1.getPath());
         Packages.add(package2.getPath());
+        Packages.add(package3.getPath());
+        Packages.add(package4.getPath());
 
         return Packages;
 
