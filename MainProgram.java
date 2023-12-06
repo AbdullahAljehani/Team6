@@ -221,90 +221,90 @@ public class MainProgram {
         street8 = new Substreet('8', 5.0, 60);
         street9 = new Substreet('9', 5.0, 60);
       
-      FirstOfStreet1= new SubstreetPart( 35, 66,4);
-      intersection1_1= new SubstreetPart( 330, 66,4);
-      intersection1_2= new SubstreetPart( 600, 66,4);
-      intersection1_3= new SubstreetPart(860, 66,4);
-      EndOfStreet1= new SubstreetPart( 1050, 66,4);
-      FirstOfStreet2= new SubstreetPart( 35, 130,4);
-      intersection2_1= new SubstreetPart( 330, 130,4);
-      intersection2_2= new SubstreetPart( 600, 130,4);
-      intersection2_3= new SubstreetPart(860, 130,4);
-      EndOfStreet2= new SubstreetPart( 1050, 130,4);
+      FirstOfStreet1= new SubstreetPart( 35, 66);
+      intersection1_1= new SubstreetPart( 330, 66);
+      intersection1_2= new SubstreetPart( 600, 66);
+      intersection1_3= new SubstreetPart(860, 66);
+      EndOfStreet1= new SubstreetPart( 1050, 66);
+      FirstOfStreet2= new SubstreetPart( 35, 130);
+      intersection2_1= new SubstreetPart( 330, 130);
+      intersection2_2= new SubstreetPart( 600, 130);
+      intersection2_3= new SubstreetPart(860, 130);
+      EndOfStreet2= new SubstreetPart( 1050, 130);
 
-      FirstOfStreet3= new SubstreetPart( 35, 197,4);
-      intersection3_1= new SubstreetPart( 330, 197,4);
-      intersection3_2= new SubstreetPart( 600, 197,4);
-      intersection3_3= new SubstreetPart(860, 197,4);
-      EndOfStreet3= new SubstreetPart( 1050, 197,4);
+      FirstOfStreet3= new SubstreetPart( 35, 197);
+      intersection3_1= new SubstreetPart( 330, 197);
+      intersection3_2= new SubstreetPart( 600, 197);
+      intersection3_3= new SubstreetPart(860, 197);
+      EndOfStreet3= new SubstreetPart( 1050, 197);
 
-      FirstOfStreet4= new SubstreetPart( 35, 265,4);
-      intersection4_1= new SubstreetPart( 330, 265,4);
-      intersection4_2= new SubstreetPart( 600, 265,4);
-      intersection4_3= new SubstreetPart(860, 265,4);
-      EndOfStreet4= new SubstreetPart( 1050, 265,4);
+      FirstOfStreet4= new SubstreetPart( 35, 265);
+      intersection4_1= new SubstreetPart( 330, 265);
+      intersection4_2= new SubstreetPart( 600, 265);
+      intersection4_3= new SubstreetPart(860, 265);
+      EndOfStreet4= new SubstreetPart( 1050, 265);
 
-      FirstOfStreet5= new SubstreetPart( 35, 330,4);
-      intersection5_1= new SubstreetPart( 330, 330,4);
-      intersection5_2= new SubstreetPart( 600, 330,4);
-      intersection5_3= new SubstreetPart(860, 330,4);
-      EndOfStreet5= new SubstreetPart( 1050, 330,4);
+      FirstOfStreet5= new SubstreetPart( 35, 330);
+      intersection5_1= new SubstreetPart( 330, 330);
+      intersection5_2= new SubstreetPart( 600, 330);
+      intersection5_3= new SubstreetPart(860, 330);
+      EndOfStreet5= new SubstreetPart( 1050, 330);
 
-      FirstOfStreet6= new SubstreetPart( 35, 395,4);
-      intersection6_1= new SubstreetPart( 330, 395,4);
-      intersection6_2= new SubstreetPart( 600, 395,4);
-      intersection6_3= new SubstreetPart(860, 395,4);
-      EndOfStreet6= new SubstreetPart( 1050, 395,4);
+      FirstOfStreet6= new SubstreetPart( 35, 395);
+      intersection6_1= new SubstreetPart( 330, 395);
+      intersection6_2= new SubstreetPart( 600, 395);
+      intersection6_3= new SubstreetPart(860, 395);
+      EndOfStreet6= new SubstreetPart( 1050, 395);
   
-      FirstOfStreet7= new SubstreetPart( 35, 461,4);
-      intersection7_1= new SubstreetPart( 330, 461,4);
-      intersection7_2= new SubstreetPart( 600, 461,4);
-      intersection7_3= new SubstreetPart(860, 461,4);
-      EndOfStreet7= new SubstreetPart( 1050, 461,4);
+      FirstOfStreet7= new SubstreetPart( 35, 461);
+      intersection7_1= new SubstreetPart( 330, 461);
+      intersection7_2= new SubstreetPart( 600, 461);
+      intersection7_3= new SubstreetPart(860, 461);
+      EndOfStreet7= new SubstreetPart( 1050, 461);
 
-      FirstOfStreet8= new SubstreetPart( 35, 527,4);
-      intersection8_1= new SubstreetPart( 330, 527,4);
-      intersection8_2= new SubstreetPart( 600, 527,4);
-      intersection8_3= new SubstreetPart(860, 527,4);
-      EndOfStreet8= new SubstreetPart( 1050, 527,4);
+      FirstOfStreet8= new SubstreetPart( 35, 527);
+      intersection8_1= new SubstreetPart( 330, 527);
+      intersection8_2= new SubstreetPart( 600, 527);
+      intersection8_3= new SubstreetPart(860, 527);
+      EndOfStreet8= new SubstreetPart( 1050, 527);
   
-      FirstOfStreet9= new SubstreetPart( 35, 594,4);
-      intersection9_1= new SubstreetPart( 330, 594,4);
-      intersection9_2= new SubstreetPart( 600, 594,4);
-      intersection9_3= new SubstreetPart(860, 594,4);
-      EndOfStreet9= new SubstreetPart( 1050, 594,4);
+      FirstOfStreet9= new SubstreetPart( 35, 594);
+      intersection9_1= new SubstreetPart( 330, 594);
+      intersection9_2= new SubstreetPart( 600, 594);
+      intersection9_3= new SubstreetPart(860, 594);
+      EndOfStreet9= new SubstreetPart( 1050, 594);
 
-      FirstOfStreetC= new SubstreetPart( 860, 0,4);
-      EndOfStreetC= new SubstreetPart( 860, 670,4);
+      FirstOfStreetC= new SubstreetPart( 860, 0);
+      EndOfStreetC= new SubstreetPart( 860, 670);
 
-      FirstOfStreetB= new SubstreetPart( 600, 0,4);
-      EndOfStreetB= new SubstreetPart( 600, 670,4);
+      FirstOfStreetB= new SubstreetPart( 600, 0);
+      EndOfStreetB= new SubstreetPart( 600, 670);
 
-      FirstOfStreetA= new SubstreetPart( 330, 0,4);
-      EndOfStreetA= new SubstreetPart( 330, 670,4);
+      FirstOfStreetA= new SubstreetPart( 330, 0);
+      EndOfStreetA= new SubstreetPart( 330, 670);
 
-      destinationBuilding127= new SubstreetPart(568,594,2);
-      destinationBuilding103= new SubstreetPart(900,461,2);
-      destinationBuilding70= new SubstreetPart(390,395,2);
-      destinationBuilding44= new SubstreetPart(400,265,2);
+      destinationBuilding127= new SubstreetPart(568,594);
+      destinationBuilding103= new SubstreetPart(900,461);
+      destinationBuilding70= new SubstreetPart(390,395);
+      destinationBuilding44= new SubstreetPart(400,265);
       
-      destinationBuilding13=new SubstreetPart(68,130,2);
-      destinationBuilding32=new SubstreetPart(508,130,2);
-      destinationBuilding7=new SubstreetPart(558,66,2);
-      destinationBuilding52=new SubstreetPart(1028,197,2);
-      destinationBuilding12=new SubstreetPart(950,66,2);
-      destinationBuilding101=new SubstreetPart(768,461,2);
-      destinationBuilding79=new SubstreetPart(1028,395,2);
-      destinationBuilding74=new SubstreetPart(708,395,2);
-      destinationBuilding46=new SubstreetPart(638,265,2);
-      destinationBuilding42=new SubstreetPart(183,265,2);
+      destinationBuilding13=new SubstreetPart(68,130);
+      destinationBuilding32=new SubstreetPart(508,130);
+      destinationBuilding7=new SubstreetPart(558,66);
+      destinationBuilding52=new SubstreetPart(1028,197);
+      destinationBuilding12=new SubstreetPart(950,66);
+      destinationBuilding101=new SubstreetPart(768,461);
+      destinationBuilding79=new SubstreetPart(1028,395);
+      destinationBuilding74=new SubstreetPart(708,395);
+      destinationBuilding46=new SubstreetPart(638,265);
+      destinationBuilding42=new SubstreetPart(183,265);
 
-      destinationBuilding97=new SubstreetPart(478,461,2);
-      destinationBuilding67=new SubstreetPart(143,395,2);
-      destinationBuilding80=new SubstreetPart(68,395,2);
-      destinationBuilding116=new SubstreetPart(818,527,2);
-      destinationBuilding124=new SubstreetPart(368,594,2);
-      destinationBuilding133=new SubstreetPart(1028,594,2);
+      destinationBuilding97=new SubstreetPart(478,461);
+      destinationBuilding67=new SubstreetPart(143,395);
+      destinationBuilding80=new SubstreetPart(68,395);
+      destinationBuilding116=new SubstreetPart(818,527);
+      destinationBuilding124=new SubstreetPart(368,594);
+      destinationBuilding133=new SubstreetPart(1028,594);
 
 
       street1.addPart(FirstOfStreet1);
@@ -468,8 +468,7 @@ public class MainProgram {
         driver.addPackage(package18);
         driver.addPackage(package19);
         driver.addPackage(package20);
-
- 
+       
   
       
     }
@@ -486,43 +485,45 @@ public class MainProgram {
       List<SubstreetPart> initialparts6 = Arrays.asList(destinationBuilding13,intersection2_1,destinationBuilding32);
       List<SubstreetPart> initialparts7 = Arrays.asList(destinationBuilding32,intersection2_2,intersection2_2 , intersection1_2,destinationBuilding7);
       List<SubstreetPart> initialparts8 = Arrays.asList(destinationBuilding7,intersection1_2,intersection1_3 , intersection2_3,intersection3_3,destinationBuilding52);
+      
       List<SubstreetPart> initialparts9 = Arrays.asList(destinationBuilding52,intersection3_3,intersection2_3 , intersection1_3,destinationBuilding12);
       List<SubstreetPart> initialparts10= Arrays.asList(destinationBuilding12,intersection1_3,intersection2_3 , intersection3_3,intersection4_3,intersection5_3,intersection6_3,intersection7_3,destinationBuilding101);
       List<SubstreetPart> initialparts11= Arrays.asList(destinationBuilding101,intersection7_3,intersection6_3 , destinationBuilding79);
       List<SubstreetPart> initialparts12= Arrays.asList(destinationBuilding79,intersection6_3,destinationBuilding74 );
+      
       List<SubstreetPart> initialparts13= Arrays.asList(destinationBuilding74,intersection6_2,intersection5_2 , intersection4_2,destinationBuilding46);
       List<SubstreetPart> initialparts14= Arrays.asList(destinationBuilding46,intersection4_2,intersection4_1 , destinationBuilding42);
-
       List<SubstreetPart> initialparts15= Arrays.asList(destinationBuilding42,intersection4_1,intersection5_1 , intersection6_1,intersection7_1,destinationBuilding97);
       List<SubstreetPart> initialparts16= Arrays.asList(destinationBuilding97,intersection7_1,intersection6_1 , destinationBuilding67);
+      
       List<SubstreetPart> initialparts17= Arrays.asList(destinationBuilding67, destinationBuilding80);
       List<SubstreetPart> initialparts18= Arrays.asList(destinationBuilding80,intersection6_1,intersection7_1,intersection8_1,intersection8_2 , destinationBuilding116);
       List<SubstreetPart> initialparts19= Arrays.asList(destinationBuilding116,intersection8_3,intersection9_3 , intersection9_2,destinationBuilding124);
       List<SubstreetPart> initialparts20= Arrays.asList(destinationBuilding124,intersection9_2,intersection9_3 , destinationBuilding133);
 
 
-      package1 = new Offical_paper(customer1, 1, initialparts1);
-      package2 = new Normal(customer2, 2, initialparts2);
-      package3= new Normal(customer3, 3, initialparts3);
-      package4 = new Offical_paper(customer4, 4, initialparts4);
+      package1 = new Offical_paper(customer1, 1, initialparts1,4);
+      package2 = new Normal(customer2, 2, initialparts2,2);
+      package3= new Normal(customer3, 3, initialparts3,2);
+      package4 = new Offical_paper(customer4, 4, initialparts4,4);
 
-      package5 = new Normal(customer5, 5, initialparts5);
-      package6 = new Offical_paper(customer6, 6, initialparts6);
-      package7 = new Normal(customer7, 7, initialparts7);
-      package8 = new Normal(customer8, 8, initialparts8);
-      package9 = new Offical_paper(customer9, 9, initialparts9);
-      package10 = new Normal(customer10, 10, initialparts10);
-      package11 = new Offical_paper(customer11, 11, initialparts11);
-      package12 = new Normal(customer12, 12, initialparts12);
-      package13 = new Offical_paper(customer13, 13, initialparts13);
-      package14 = new Normal(customer14, 14, initialparts14);
+      package5 = new Normal(customer5, 5, initialparts5,2);
+      package6 = new Offical_paper(customer6, 6, initialparts6,4);
+      package7 = new Normal(customer7, 7, initialparts7,2);
+      package8 = new Normal(customer8, 8, initialparts8,2);
+      package9 = new Offical_paper(customer9, 9, initialparts9,4);
+      package10 = new Normal(customer10, 10, initialparts10,2);
+      package11 = new Offical_paper(customer11, 11, initialparts11,4);
+      package12 = new Normal(customer12, 12, initialparts12,2);
+      package13 = new Offical_paper(customer13, 13, initialparts13,4);
+      package14 = new Normal(customer14, 14, initialparts14,2);
       
-      package15 = new Normal(customer15, 15, initialparts15);
-      package16 = new Offical_paper(customer16, 16, initialparts16);
-      package17 = new Normal(customer17, 17, initialparts17);
-      package18 = new Offical_paper(customer18, 18, initialparts18);
-      package19 = new Normal(customer19, 19, initialparts19);
-      package20 = new Offical_paper(customer20, 20, initialparts20);
+      package15 = new Normal(customer15, 15, initialparts15,2);
+      package16 = new Offical_paper(customer16, 16, initialparts16,4);
+      package17 = new Normal(customer17, 17, initialparts17,2);
+      package18 = new Offical_paper(customer18, 18, initialparts18,4);
+      package19 = new Normal(customer19, 19, initialparts19,2);
+      package20 = new Offical_paper(customer20, 20, initialparts20,4);
 
 
 
@@ -548,22 +549,6 @@ public class MainProgram {
       packages.add(package18);
       packages.add(package19);
       packages.add(package20);
-
-
-
-
-      System.out.println("Path for Package 1: " + package1.getPath());
-      System.out.println("Path for Package 2: " + package2.getPath());
-      System.out.println("Path for Package 3: " + package3.getPath());
-      System.out.println("Path for Package 4: " + package4.getPath());
-
-      System.out.println("Path for Package 5: " + package5.getPath());
-      System.out.println("Path for Package 6: " + package6.getPath());
-      System.out.println("Path for Package 7: " + package7.getPath());
-      System.out.println("Path for Package 8: " + package8.getPath());
-      System.out.println("Path for Package 9: " + package9.getPath());
-      System.out.println("Path for Package 10: " + package10.getPath());
-
 
 
 

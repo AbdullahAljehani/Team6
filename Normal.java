@@ -2,8 +2,8 @@ import java.util.List;
 
 public class Normal extends Package  {
 
-    public Normal(Customer customer, int packageId,List<SubstreetPart> currentParts) {
-        super(customer,  packageId,currentParts);
+    public Normal(Customer customer, int packageId,List<SubstreetPart> currentParts,int delay) {
+        super(customer,  packageId,currentParts,delay);
 
     }
 

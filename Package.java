@@ -5,12 +5,15 @@ public abstract class Package  {
     public boolean isDelivered;
     private int packageId;
     private List<SubstreetPart> path;
+    public int delay;
 
-    public Package (Customer customer1,  int packageId,List<SubstreetPart> path) {
+    public Package (Customer customer1,  int packageId,List<SubstreetPart> path,int delay) {
         this.customer1 = customer1;
         this.isDelivered = false;
         this.packageId = packageId;
         this.path = path;
+        this.delay=delay;
+        
     }
 
     public abstract void typeOfPackage();
@@ -26,6 +29,8 @@ public abstract class Package  {
     public List<SubstreetPart> getPath() {
         return path;
     }
+   
+
 
 
     

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.PathTransition;
+import javafx.animation.PauseTransition;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -17,7 +18,6 @@ public class DeliveryDriver {
     public  PathTransition pathTransition;
     private Path path;
     public static double GasolineCost=0;
-    public SubstreetPart currentSubstreetPart;
     public double incrementGasoline;
     public double incrementDistance;
     public static double totalDistance=0;
@@ -25,8 +25,7 @@ public class DeliveryDriver {
     public boolean isSimulationRunning = false;
     public Thread simulationThread;
     public DeliveryDriver() {
-        this.packages = new ArrayList<>();
-        this.currentSubstreet = null; 
+        this.packages = new ArrayList<>(); 
         this.car = new Rectangle(322, 662, 15, 15);
         this.car.setArcHeight(15);
         this.car.setArcWidth(15);
@@ -200,7 +199,7 @@ public void moveDriver(Path path, Runnable onFinish) {
     if (!path.getElements().isEmpty() && MainGUISimulation .isStartClicked) {
          pathTransition = new PathTransition();
         pathTransition.setNode(car);
-        pathTransition.setDuration(Duration.seconds(2));
+        pathTransition.setDuration(Duration.seconds(5));
         pathTransition.setPath(path);
         pathTransition.setCycleCount(1);
         pathTransition.setOnFinished(e -> {
@@ -217,55 +216,44 @@ public void moveDriver(Path path, Runnable onFinish) {
 
 
     
-    public int calculateTripDelay() {
-        if (currentSubstreet != null) {
-            return currentSubstreetPart.getDelay();
-        } else {
-            return 0;
-        }
-    }
+  
 
-    public void deliverPackage(int currentX, int currentY) {
-        for (Package aPackage : getPackages()) {
-            if (!aPackage.isDelivered) {
-                Building destinationBuilding = aPackage.getCustomer().getBuilding();
-                
-    
-                System.out.println("Package " + aPackage.getPackageId() + " isDelivered: " + aPackage.isDelivered);
-                
-                if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
-                    System.out.println("get x " + destinationBuilding.getLocation().getX() + " get Y() " + destinationBuilding.getLocation().getY());
-                    for (Rectangle chosenBuilding : MainGUISimulation.ChosenBuilding) {
-                        System.out.println(MainGUISimulation.ChosenBuilding);
-                        if (chosenBuilding.equals(destinationBuilding.getGuiElement())) {
-                            destinationBuilding.getGuiElement().setFill(Color.GREEN);
-                        }
-                    if (aPackage instanceof Offical_paper && currentSubstreetPart != null) {
-                        int substreetDelay = currentSubstreetPart.getDelay();
-                        System.out.println("Official package detected. Introducing a delay of " + substreetDelay + " minutes on Substreet " + currentSubstreet.getStreetName());
-                        try {
-                            Thread.sleep(substreetDelay * 1000 * 60);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-    
-                    System.out.println("Package " + aPackage.getPackageId() + " delivered at building " + destinationBuilding.getBuildingNumber());
-                    aPackage.isDelivered = true;
-                    System.out.println("Package " + aPackage.getPackageId() + " isDelivered updated to: " + aPackage.isDelivered);
-    
-                    if (hasNextPackage(aPackage) && aPackage.isDelivered) {
-                        moveToNextPackage();
+public void deliverPackage(int currentX, int currentY) {
+    for (Package aPackage : getPackages()) {
+        if (!aPackage.isDelivered) {
+            Building destinationBuilding = aPackage.getCustomer().getBuilding();
+            
+            System.out.println("Package " + aPackage.getPackageId() + " isDelivered: " + aPackage.isDelivered);
+            
+            if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
+                System.out.println("get x " + destinationBuilding.getLocation().getX() + " get Y() " + destinationBuilding.getLocation().getY());
+                for (Rectangle chosenBuilding : MainGUISimulation.ChosenBuilding) {
+                    System.out.println(MainGUISimulation.ChosenBuilding);
+                    if (chosenBuilding.equals(destinationBuilding.getGuiElement())) {
+                        destinationBuilding.getGuiElement().setFill(Color.GREEN);
                     }
                 }
+              
+                int packageDelay = aPackage.delay;
+                PauseTransition pause = new PauseTransition(Duration.millis(packageDelay));
+
+                System.out.println("Package " + aPackage.getPackageId() + " delivered at building " + destinationBuilding.getBuildingNumber());
+                aPackage.isDelivered = true;
+                System.out.println("Package " + aPackage.getPackageId() + " isDelivered updated to: " + aPackage.isDelivered);
+
+                if (hasNextPackage(aPackage) && aPackage.isDelivered) {
+                    moveToNextPackage();
+                }
+                pause.play();
             } else {
                 System.out.println("Package " + aPackage.getPackageId() + " is already delivered.");
             }
         }
-    
-        System.out.println("No more packages assigned to the driver at the current position.");
     }
+
+    System.out.println("No more packages assigned to the driver at the current position.");
 }
+
     
     
    
