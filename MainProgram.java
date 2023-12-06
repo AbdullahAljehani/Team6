@@ -322,7 +322,7 @@ public class MainProgram {
         customer1 = new Customer(1, building127);
         customer2 = new Customer(2, building103);
         customer3 = new Customer(3, building70);
-        customer4 = new Customer(4, building64);
+        //customer4 = new Customer(4, building64);
         customer5 = new Customer(5, building44);
         customer6 = new Customer(6, building11);
 
@@ -332,8 +332,8 @@ public class MainProgram {
         driver.addPackage(package2);
         driver.addPackage(package3);
         driver.addPackage(package4);
-        driver.addPackage(package5);
-        driver.addPackage(package6);
+        // driver.addPackage(package5);
+        // driver.addPackage(package6);
  
   
       

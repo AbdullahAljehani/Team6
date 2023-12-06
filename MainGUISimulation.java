@@ -15,8 +15,10 @@ import javafx.scene.layout.Pane;
 import javafx.animation.Animation;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -1043,12 +1045,13 @@ public static int numOfSumuolation = 0;
         Start_button.setPrefSize(60, 20);
         Start_button.setLayoutX(1050);
         Start_button.setLayoutY(15);
-        Image Starticon = new Image(getClass().getResourceAsStream("/start1.png"));
+        Image Starticon = new Image(getClass().getResourceAsStream("StartButton.png"));
         ImageView iconView = new ImageView(Starticon);
-        iconView.setFitWidth(60);
-        iconView.setFitHeight(20);
+        iconView.setFitWidth(40);  
+        iconView.setFitHeight(20);;
         Start_button.setGraphic(iconView);
         Start_button.setStyle("-fx-padding: 5 0 5 10;");
+        Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
             stopCurrentSimulation();
@@ -1066,16 +1069,18 @@ public static int numOfSumuolation = 0;
         });
                 
         Button Pause_button = new Button();
-        Pause_button.setPrefSize(60, 25);
+        Pause_button.setPrefSize(60, 20);
         Pause_button.setLayoutX(1125);
         Pause_button.setLayoutY(15);
-        Image Pauseicon = new Image(getClass().getResourceAsStream("pause1.jpg"));
+        Image Pauseicon = new Image(getClass().getResourceAsStream("PauseButton.png"));
         ImageView iconView2 = new ImageView(Pauseicon);
-        iconView2.setFitWidth(55);
+        iconView2.setFitWidth(40);  
         iconView2.setFitHeight(20);
         Pause_button.setGraphic(iconView2);
         Pause_button.setStyle("-fx-padding: 5 0 5 10;");
-                Pause_button.setOnAction(e -> {
+        Pause_button.setContentDisplay(ContentDisplay.CENTER);
+                
+        Pause_button.setOnAction(e -> {
             if (isPaused) {
                 resumeSimulation();
             } else {
@@ -1087,26 +1092,28 @@ public static int numOfSumuolation = 0;
         End_button.setPrefSize(60, 20);
         End_button.setLayoutX(1200);
         End_button.setLayoutY(15);
-        Image Endicon = new Image(getClass().getResourceAsStream("2623550-200.png"));
+        Image Endicon = new Image(getClass().getResourceAsStream("EndButton.png"));
         ImageView iconView3 = new ImageView(Endicon);
-        iconView3.setFitWidth(55);
-        iconView3.setFitHeight(20);
+        iconView3.setFitWidth(40);  
+        iconView3.setFitHeight(20); 
         End_button.setGraphic(iconView3);
-        End_button.setStyle("-fx-padding: 5 0 5 10;"); // Adjust the padding as needed
+        End_button.setStyle("-fx-padding: 5 0 5 10;");
+        End_button.setContentDisplay(ContentDisplay.CENTER);
 
         End_button.setOnAction(e -> {endSimulation();});
 
-        Button Back_button = new Button("Back");
-        Back_button.setPrefSize(70, 25);
+        Button Back_button = new Button();
+        Back_button.setPrefSize(60, 20);
         Back_button.setLayoutX(1270);
         Back_button.setLayoutY(15);
-        Back_button.setStyle("-fx-background-color: #ffffff;");
-        Image Backicon = new Image(getClass().getResourceAsStream("arrow-go-back-icon-1024x911-57tv3hi7.png"));
-        ImageView iconView4 = new ImageView(Backicon);
-        iconView4.setFitWidth(55);
-        iconView4.setFitHeight(20);
-        Back_button.setGraphic(iconView4);
         Back_button.setStyle("-fx-padding: 5 0 5 10;");
+        Image Backicon = new Image(getClass().getResourceAsStream("BackButton.png"));
+        ImageView iconView4 = new ImageView(Backicon);
+        iconView4.setFitWidth(40);  
+        iconView4.setFitHeight(20); 
+        Back_button.setGraphic(iconView4);
+        Back_button.setContentDisplay(ContentDisplay.CENTER);
+        
 
         Back_button.setOnAction(e -> {
             openFirstPage();
@@ -1188,16 +1195,19 @@ public static int numOfSumuolation = 0;
     }
     public static boolean allDelivered(DeliveryDriver driver) {
         List<Package> packages = driver.getPackages();
-    
+        
         for (Package aPackage : packages) {
-            if (aPackage != null && !aPackage.isDelivered) {
-                return false;  
+            if (aPackage != null) {
+                //System.out.println("Package ID: " + aPackage.getPackageId() + ", Delivered: " + aPackage.isDelivered);
+                if (!aPackage.isDelivered) {
+                    return false;
+                }
             }
         }
-    
-        return true;  
+        
+        System.out.println("All packages delivered.");  // Add this line for debugging
+        return true;
     }
-    
     
 
     private static String formatTime(int seconds) {

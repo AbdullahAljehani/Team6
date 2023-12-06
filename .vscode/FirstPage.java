@@ -17,9 +17,13 @@ public class FirstPage extends Application {
         
 
         // Create label
-        Label titleLabel = new Label("Best Route to deliver package");
-        titleLabel.setStyle("-fx-font-size: 22px; -fx-text-fill: white;"); // Set text color to white
-        titleLabel.setAlignment(Pos.CENTER);
+        Label titleLabel = new Label("Best Route to Deliver Packages");
+titleLabel.setStyle(
+    "-fx-font-size: 22px; " +      // Font size
+    "-fx-text-fill: #B3C9D2; " +   // Blue text color
+    "-fx-font-weight: bold;"       // Bold font
+);
+titleLabel.setAlignment(Pos.CENTER);
 
         // Create buttons
         Button phase1Button = new Button("Phase 1");     
@@ -29,8 +33,17 @@ public class FirstPage extends Application {
             primaryStage.close();
         });
         // Make buttons bigger
-        phase1Button.setStyle("-fx-font-size: 20px;");
-        phase2Button.setStyle("-fx-font-size: 20px;");
+        phase1Button.setStyle(
+            "-fx-background-color: #0A8E22; " + // Green background color
+            "-fx-text-fill: white; " +          // White text color
+            "-fx-font-size: 16px;"              // Font size
+        );
+        
+        phase2Button.setStyle(
+            "-fx-background-color: #01119B; " + // Blue background color
+            "-fx-text-fill: white; " +          // White text color
+            "-fx-font-size: 16px;"              // Font size
+        );
 
         // Create GridPane for buttons
         GridPane gridPane = new GridPane();
@@ -48,7 +61,7 @@ public class FirstPage extends Application {
         borderPane.setCenter(gridPane);
 
         // Set dark mode background image as a style
-        borderPane.setStyle("-fx-background-image: url('Background2.jpg'); " +
+        borderPane.setStyle("-fx-background-image: url('BackgroundImage.jpg'); " +
                             "-fx-background-size: cover; " +
                             "-fx-background-repeat: no-repeat;");
 

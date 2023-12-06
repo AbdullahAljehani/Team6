@@ -272,18 +272,18 @@ public void moveDriver(Path path, Runnable onFinish) {
             Package aPackage = getPackages().get(i);
     
             if (aPackage.isDelivered) {
-               
-    
                 int nextPackageIndex = i + 1;
     
                 if (nextPackageIndex < getPackages().size()) {
                     Package nextPackage = getPackages().get(nextPackageIndex);
     
-                    nextPackage.isDelivered = false;
-    
-                    System.out.println("Driver assigned to the next package with ID: " + nextPackage.getPackageId());
-                    System.out.println("Package " + aPackage.getPackageId() + " marked as delivered");
-                    System.out.println("Package " + nextPackage.getPackageId() + " marked as not delivered");
+                    if (!nextPackage.isDelivered) { 
+                        System.out.println("Driver assigned to the next package with ID: " + nextPackage.getPackageId());
+                        System.out.println("Package " + aPackage.getPackageId() + " marked as delivered");
+                        System.out.println("Package " + nextPackage.getPackageId() + " marked as not delivered");
+                    } else {
+                        System.out.println("Package " + nextPackage.getPackageId() + " is already marked as delivered");
+                    }
                 } else {
                     System.out.println("No more packages assigned to the driver at the current position.");
                 }
