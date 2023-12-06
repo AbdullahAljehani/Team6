@@ -2,7 +2,7 @@ import java.util.List;
 
 public class Offical_paper extends Package  {
 
-    public Offical_paper(Customer customer,  int packageId,List<SubstreetPart> currentParts,int delay) {
+    public Offical_paper(Customer customer,  int packageId,List<Intersection > currentParts,int delay) {
         super(customer, packageId,currentParts,delay);
 
     }

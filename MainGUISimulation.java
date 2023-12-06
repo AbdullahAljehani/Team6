@@ -30,8 +30,8 @@ private static Label CounterTimeLabel;
 public static Label CounterDistanceLabel;
 public static Label CounterCostLabel;
 public static Label CounterNo_SimulationLabel ;
-private static Timer timer;
-public static int secondsPassed = 0;
+private  Timer timer;
+public  int secondsPassed = 0;
 public static  boolean isStartClicked=true;
 public static boolean isPaused = false;
 public static int numOfSumuolation = 0;
@@ -56,22 +56,25 @@ public static Rectangle Building116 = new Rectangle(800, 540, 35, 35);
 public static Rectangle Building124 = new Rectangle(350, 605, 35, 35);
 public static Rectangle Building133 = new Rectangle(1010, 605, 35, 35);
 public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Building44,Building13,Building32,Building7,Building52,Building12,Building12,Building101,Building79,Building74,Building46,Building42,Building97,Building67,Building80,Building116,Building124,Building133};
-
-public static Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
+public static Rectangle car ;
+public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 
 
 
     public void start(Stage primaryStage) {
     
-        primaryStage.setOnCloseRequest(windowEvent -> {stopSimulation();Platform.exit();System.exit(0);});
+        primaryStage.setOnCloseRequest(windowEvent -> {Platform.exit();System.exit(0);});
 
-            // Set the scene's root to the StackPane container
 
             StackPane root = new StackPane();
 
             // Create a group for car routes
             Group carRoutesGroup = new Group();
-            carRoutesGroup.getChildren().add(MainProgram.driver.car);
+             car = new Rectangle(322, 662, 15, 15);
+            car.setArcHeight(15);
+            car.setArcWidth(15);
+            car.setFill(Color.RED);
+            carRoutesGroup.getChildren().add(car);
 
             Scene scene = new Scene(root , 1400, 700,Color.WHITE);
             Pane AllGroups = new Pane();
@@ -772,10 +775,9 @@ public static Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Warehouse_label.setFont(font);
         Warehouse_label.setFill(Color.BLACK);
         Rectangle Warehouse = new Rectangle(45, 600, 35, 35);
-        Warehouse.setArcHeight(25);
-        Warehouse.setArcWidth(25);
+
         Warehouse.setWidth(280);
-        Warehouse.setHeight(110);
+        Warehouse.setHeight(75);
         Warehouse.setFill(Color.SILVER);
         
         // Neighbourhood_3 : BLOCK 10 
@@ -830,7 +832,46 @@ public static Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building133.setArcHeight(25);
         Building133.setArcWidth(25);
         Building133.setFill(Color.SALMON);
+
+        Text Street_1Lable = new Text(25, 73, "1");
+        Street_1Lable.setFont(font);
+        Street_1Lable.setFill(Color.BLACK);
+ 
+        Text Street_2Lable = new Text(25, 137, "2");
+        Street_2Lable.setFont(font);
+        Street_2Lable.setFill(Color.BLACK); 
         
+        Text Street_3Lable = new Text(25, 204, "3");
+        Street_3Lable.setFont(font);
+        Street_3Lable.setFill(Color.BLACK);
+        
+        Text Street_4Lable = new Text(25, 272, "4");
+        Street_4Lable.setFont(font);
+        Street_4Lable.setFill(Color.BLACK);
+        
+        Text Street_5Lable = new Text(25, 337, "5");
+        Street_5Lable.setFont(font);
+        Street_5Lable.setFill(Color.BLACK);
+        
+        Text Street_6Lable = new Text(25, 402, "6");
+        Street_6Lable.setFont(font);    
+        Street_6Lable.setFill(Color.BLACK);
+        
+        Text Street_7Lable = new Text(25, 468, "7");
+        Street_7Lable.setFont(font);
+        Street_7Lable.setFill(Color.BLACK);
+        
+        Text Street_8Lable = new Text(25, 534, "8");
+        Street_8Lable.setFont(font);    
+        Street_8Lable.setFill(Color.BLACK);
+        
+        Text Street_9Lable = new Text(25,601, "9");
+        Street_9Lable.setFont(font);
+        Street_9Lable.setFill(Color.BLACK);
+
+        // Text Street_ALable = new Text(300,700, "A");
+        // Street_9Lable.setFont(font);
+        // Street_9Lable.setFill(Color.BLACK);
 
             Group neighborhoodsGroup = new Group();
             // Add homes to Neighborhood 1 group
@@ -850,7 +891,7 @@ public static Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             Group warehousesGroup = new Group();
             warehousesGroup.getChildren().addAll(Warehouse, Warehouse_label);
 
-            neighborhoodsGroup.getChildren().addAll(Neighbourhood_1,neighborhood1Group,Neighbourhood_2,neighborhood2Group,Neighbourhood_3,neighborhood3Group,warehousesGroup);
+            neighborhoodsGroup.getChildren().addAll(Street_1Lable,Street_2Lable,Street_3Lable,Street_4Lable,Street_5Lable,Street_6Lable,Street_7Lable,Street_8Lable,Street_9Lable,Neighbourhood_1,neighborhood1Group,Neighbourhood_2,neighborhood2Group,Neighbourhood_3,neighborhood3Group,warehousesGroup);
             AllGroups.getChildren().add(neighborhoodsGroup);
     }
 
@@ -1012,6 +1053,8 @@ public static Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         No_SimulationLabel.setLayoutY(120);
       
 
+      
+
         
         // Time,distance and cost Counter Labels :
         
@@ -1034,7 +1077,7 @@ public static Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         
         // For Cost :
         
-        MainGUISimulation .CounterCostLabel = new Label("$ 00,00");
+        MainGUISimulation.CounterCostLabel = new Label("$ 00,00");
         CounterCostLabel.setFont(CounterLabelfont);
         CounterCostLabel.setTextFill(Color.WHITE);
         CounterCostLabel.setLayoutX(1095);
@@ -1065,15 +1108,12 @@ Start_button.setLayoutY(15);
 
 Image Starticon = new Image(getClass().getResourceAsStream("StartButton.png"));
 ImageView iconView = new ImageView(Starticon);
-iconView.setFitWidth(40);
-iconView.setFitHeight(20);
+iconView.setFitWidth(30);
+iconView.setFitHeight(15);
 
 Start_button.setGraphic(iconView);
-Start_button.setStyle(
-    "-fx-text-fill: white; " +          // White text color
-    "-fx-font-size: 14px; " +           // Font size
-    "-fx-padding: 5 0 5 10;"            // Padding
-);
+
+
 Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
@@ -1098,21 +1138,17 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         Pause_button.setLayoutY(15);
         Image Pauseicon = new Image(getClass().getResourceAsStream("PauseButton.png"));
         ImageView iconView2 = new ImageView(Pauseicon);
-        iconView2.setFitWidth(40);  
-        iconView2.setFitHeight(20);
+        iconView2.setFitWidth(30);  
+        iconView2.setFitHeight(15);
         Pause_button.setGraphic(iconView2);
-        Pause_button.setStyle(
-        "-fx-text-fill: white; " +          // White text color
-        "-fx-font-size: 14px; " +           // Font size
-        "-fx-padding: 5 0 5 10;"            // Padding
-    );
+
         Pause_button.setContentDisplay(ContentDisplay.CENTER);
                 
         Pause_button.setOnAction(e -> {
             if (isPaused) {
                 resumeSimulation();
             } else {
-                stopSimulation();
+                pauseSimulation();
             }
         });
         
@@ -1122,14 +1158,10 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         End_button.setLayoutY(15);
         Image Endicon = new Image(getClass().getResourceAsStream("EndButton.png"));
         ImageView iconView3 = new ImageView(Endicon);
-        iconView3.setFitWidth(40);  
-        iconView3.setFitHeight(20); 
+        iconView3.setFitWidth(30);  
+        iconView3.setFitHeight(15); 
         End_button.setGraphic(iconView3);
-        End_button.setStyle(
-            "-fx-text-fill: white; " +          // White text color
-            "-fx-font-size: 14px; " +           // Font size
-            "-fx-padding: 5 0 5 10;"            // Padding
-        );        End_button.setContentDisplay(ContentDisplay.CENTER);
+        End_button.setContentDisplay(ContentDisplay.CENTER);
 
         End_button.setOnAction(e -> {endSimulation();});
 
@@ -1137,19 +1169,16 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         Back_button.setPrefSize(60, 20);
         Back_button.setLayoutX(1275);
         Back_button.setLayoutY(15);
-        Back_button.setStyle(
-                    "-fx-text-fill: white; " +          // White text color
-                    "-fx-font-size: 14px; " +           // Font size
-                    "-fx-padding: 5 0 5 10;"            // Padding
-                );          Image Backicon = new Image(getClass().getResourceAsStream("BackButton.png"));
+          Image Backicon = new Image(getClass().getResourceAsStream("BackButton.png"));
         ImageView iconView4 = new ImageView(Backicon);
-        iconView4.setFitWidth(40);  
-        iconView4.setFitHeight(20); 
+        iconView4.setFitWidth(30);  
+        iconView4.setFitHeight(15); 
         Back_button.setGraphic(iconView4);
         Back_button.setContentDisplay(ContentDisplay.CENTER);
         
 
         Back_button.setOnAction(e -> {
+            numOfSumuolation = 0;
             openFirstPage();
             restSumaltion();
             primaryStage.close();
@@ -1166,7 +1195,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     
 
     
-    public static void startSimulation() {
+    public  void startSimulation() {
         // Cancel the existing timer if it's not null
         if (timer != null) {
             timer.cancel();
@@ -1209,7 +1238,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         if (MainProgram.driver.pathTransition != null) {
             MainProgram.driver.pathTransition.stop() ; // Stop the PathTransition animation
         }}
-    public static void stopSimulation() {
+    public static void pauseSimulation() {
         isPaused = !isPaused; // Toggle pause state
 
         if (MainProgram.driver.pathTransition != null) {
@@ -1228,12 +1257,12 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             }
         }
     }
+
     public static boolean allDelivered(DeliveryDriver driver) {
         List<Package> packages = driver.getPackages();
         
         for (Package aPackage : packages) {
             if (aPackage != null) {
-                //System.out.println("Package ID: " + aPackage.getPackageId() + ", Delivered: " + aPackage.isDelivered);
                 if (!aPackage.isDelivered) {
                     return false;
                 }
@@ -1252,20 +1281,12 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
 
         return String.format("%02d:%02d:%02d", hours, minutes, remainingSeconds);
     }
+    
     public static String formatDistance(double distance) {
         return String.format("%.2f %s", distance,"Km");
     }
     
-        
     
-    
-    private void openFirstPage() {
-        FirstPage firstPage = new FirstPage(); 
-        Stage stage = new Stage(); 
-        firstPage.start(stage); 
-    }
-    
-
     public static String formatCounterNo_Simulation(int num) {
         return String.format("%d",  num ); // Replace "Currency" with your desired currency symbol or abbreviation
     } 
@@ -1273,7 +1294,13 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     public static String formatGasolineCost(double cost) {
         return String.format("%s%.2f", "$" , cost ); // Replace "Currency" with your desired currency symbol or abbreviation
     }
-
+    
+    private void openFirstPage() {
+        FirstPage firstPage = new FirstPage(); 
+        Stage stage = new Stage(); 
+        firstPage.start(stage); 
+    }
+    
     public void endSimulation() {
         if (!MainGUISimulation.isStartClicked) {
             // Display a message or take appropriate action indicating that the simulation has not started.
@@ -1307,6 +1334,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             });
         }
     }
+    
     public  void restSumaltion(){
      if (timer != null) {
         timer.cancel();
@@ -1322,15 +1350,16 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             CounterDistanceLabel.setText("00.00 Km");
             CounterCostLabel.setText("$ 00,00");
             MainProgram.driver.moveCarTo(MainProgram.PackagesPaths());
-            MainProgram.driver.car.setTranslateX(0);
-            MainProgram.driver.car.setTranslateY(0);
+            car.setTranslateX(0);
+            car.setTranslateY(0);
 
              });
     
 }
 
 } 
-public static void initializeOriginalColors() {
+
+public  void initializeOriginalColors() {
     originalBuildingColors.put(Building127, Color.SALMON);
     originalBuildingColors.put(Building103, Color.SALMON);
     originalBuildingColors.put(Building70, Color.BLUE);
@@ -1352,7 +1381,7 @@ public static void initializeOriginalColors() {
     originalBuildingColors.put(Building124, Color.SALMON);
     originalBuildingColors.put(Building133, Color.SALMON);
 }
-public static void resetChosenBuildingColors() {
+public  void resetChosenBuildingColors() {
     initializeOriginalColors();
     for (Rectangle building : ChosenBuilding) {
         Color originalColor = originalBuildingColors.get(building);

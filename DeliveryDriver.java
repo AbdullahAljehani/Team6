@@ -12,7 +12,6 @@ public class DeliveryDriver {
     private List<Package> packages;
     private int currentX;
     private int currentY;
-    public  Rectangle car;
     public  PathTransition pathTransition;
     private Path path;
     private  double gasolineCost;
@@ -21,10 +20,7 @@ public class DeliveryDriver {
     private  double distance;
     public DeliveryDriver() {
         this.packages = new ArrayList<>(); 
-        this.car = new Rectangle(322, 662, 15, 15);
-        this.car.setArcHeight(15);
-        this.car.setArcWidth(15);
-        this.car.setFill(Color.RED);
+
             
     }
     public void setGasolineCost(double gasolineCost){
@@ -73,15 +69,15 @@ public  void updateGasolineCost(double increment) {
     gasolineCost += increment;
 }
 
-public double calculateTotalDistance(List<List<SubstreetPart>> packages) {
+public double calculateTotalDistance(List<List<Intersection>> packages) {
     double totalDistance = 0.0;
 
-    for (List<SubstreetPart> subStreetParts : packages) {
+    for (List<Intersection> subStreetParts : packages) {
         if (!subStreetParts.isEmpty()) {
-            SubstreetPart currentPart = subStreetParts.get(0);
+            Intersection currentPart = subStreetParts.get(0);
 
             for (int i = 1; i < subStreetParts.size(); i++) {
-                SubstreetPart nextPart = subStreetParts.get(i);
+                Intersection nextPart = subStreetParts.get(i);
                 totalDistance += currentPart.getDistanceTo(nextPart);
                 currentPart = nextPart;
             }
@@ -91,15 +87,15 @@ public double calculateTotalDistance(List<List<SubstreetPart>> packages) {
     return totalDistance;
 }
 
-public double calculateTotalGasolineCost(List<List<SubstreetPart>> packages) {
+public double calculateTotalGasolineCost(List<List<Intersection>> packages) {
     double totalGasolineCost = 0.0;
 
-    for (List<SubstreetPart> subStreetParts : packages) {
+    for (List<Intersection> subStreetParts : packages) {
         if (!subStreetParts.isEmpty()) {
-            SubstreetPart currentPart = subStreetParts.get(0);
+            Intersection currentPart = subStreetParts.get(0);
 
             for (int i = 1; i < subStreetParts.size(); i++) {
-                SubstreetPart nextPart = subStreetParts.get(i);
+                Intersection nextPart = subStreetParts.get(i);
                 totalGasolineCost += currentPart.calculateGasolineCost(nextPart);
                 currentPart = nextPart;
             }
@@ -108,16 +104,16 @@ public double calculateTotalGasolineCost(List<List<SubstreetPart>> packages) {
 
     return totalGasolineCost;
 }
-public void moveCarTo(List<List<SubstreetPart>> packages) {
+public void moveCarTo(List<List<Intersection>> packages) {
     double firstX=0;
     double firstY=0;
     double lastX=0;
     double lastY=0;
     if (!packages.isEmpty()) {
         // First substreet part from the first package
-        List<SubstreetPart> firstPackage = packages.get(0);
+        List<Intersection> firstPackage = packages.get(0);
         if (!firstPackage.isEmpty()) {
-            SubstreetPart firstPart = firstPackage.get(0);
+            Intersection firstPart = firstPackage.get(0);
              firstX = firstPart.getX();
              firstY = firstPart.getY();
 
@@ -126,9 +122,9 @@ public void moveCarTo(List<List<SubstreetPart>> packages) {
         }
 
         // Last substreet part from the last package
-        List<SubstreetPart> lastPackage = packages.get(packages.size() - 1);
+        List<Intersection> lastPackage = packages.get(packages.size() - 1);
         if (!lastPackage.isEmpty()) {
-            SubstreetPart lastPart = lastPackage.get(lastPackage.size() - 1);
+            Intersection lastPart = lastPackage.get(lastPackage.size() - 1);
              lastX = lastPart.getX();
              lastY = lastPart.getY();
 
@@ -139,13 +135,13 @@ public void moveCarTo(List<List<SubstreetPart>> packages) {
             double finalPointY  = lastY-  firstY;
             
 
-            car.setTranslateX(finalPointX);
-            car.setTranslateY(finalPointY);
+            MainGUISimulation.car.setTranslateX(finalPointX);
+            MainGUISimulation.car.setTranslateY(finalPointY);
         }
     }
 
 
-public void createPathForPackages(List<List<SubstreetPart>> packages) {
+public void createPathForPackages(List<List<Intersection>> packages) {
     if (packages == null || packages.isEmpty()) {
         return;
     }
@@ -153,7 +149,7 @@ public void createPathForPackages(List<List<SubstreetPart>> packages) {
     playPathTransitions(packages, 0);
 }
 
-private void playPathTransitions(List<List<SubstreetPart>> packages, int index) {
+private void playPathTransitions(List<List<Intersection>> packages, int index) {
     if (index >= packages.size()) {
         return;
     }
@@ -163,18 +159,18 @@ private void playPathTransitions(List<List<SubstreetPart>> packages, int index) 
 
 }
 
-public Path generatePath(List<SubstreetPart> subStreetParts) {
+public Path generatePath(List<Intersection> subStreetParts) {
     Path path = new Path();
 
     if (subStreetParts.isEmpty()) {
         return path;
     }
 
-    SubstreetPart currentPart = subStreetParts.get(0);
+    Intersection currentPart = subStreetParts.get(0);
     path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
     
     for (int i = 1; i < subStreetParts.size(); i++) {
-        SubstreetPart nextPart = subStreetParts.get(i);
+        Intersection nextPart = subStreetParts.get(i);
         path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
 
          incrementDistance = currentPart.getDistanceTo(nextPart);
@@ -195,9 +191,9 @@ public Path generatePath(List<SubstreetPart> subStreetParts) {
 
 
 public void moveDriver(Path path, Runnable onFinish) {
-    if (!path.getElements().isEmpty() && MainGUISimulation .isStartClicked) {
+    if (!path.getElements().isEmpty() && MainGUISimulation.isStartClicked) {
          pathTransition = new PathTransition();
-        pathTransition.setNode(car);
+        pathTransition.setNode(MainGUISimulation.car);
         pathTransition.setDuration(Duration.seconds(2));
         pathTransition.setPath(path);
         pathTransition.setCycleCount(1);

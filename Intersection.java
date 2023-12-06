@@ -4,13 +4,13 @@ import java.util.List;
 
 
 
-public class SubstreetPart {
+public class Intersection  {
     private int x;
     private int y;
-    private List<SubstreetPart> nextParts;
+    private List<Intersection > nextParts;
 
 
-    public SubstreetPart(int x, int y) {
+    public Intersection (int x, int y) {
         this.x = x;
         this.y = y;
         this.nextParts = new ArrayList<>();
@@ -35,7 +35,7 @@ public class SubstreetPart {
     
 
   
-    public double getDistanceTo(SubstreetPart nextPart) {
+    public double getDistanceTo(Intersection  nextPart) {
         double deltaX = Math.abs(this.getX() - nextPart.getX());
         double deltaY = Math.abs(this.getY() - nextPart.getY());
     
@@ -45,13 +45,13 @@ public class SubstreetPart {
         return distanceInKm;
     }
     
-    public double calculateGasolineCost(SubstreetPart nextPart) {
+    public double calculateGasolineCost(Intersection  nextPart) {
         double costPerKilometer = 2.5; 
         return  getDistanceTo(nextPart) * costPerKilometer;
     }
 
 
-    public List<SubstreetPart> getNextParts() {
+    public List<Intersection > getNextParts() {
         return Collections.unmodifiableList(nextParts);
     }
 }

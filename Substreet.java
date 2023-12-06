@@ -6,7 +6,7 @@ public class Substreet {
     private char streetName;
     private double distance;
     private int speedLimit;
-    private ArrayList<SubstreetPart> parts;
+    private ArrayList<Intersection > parts;
 
     
 
@@ -50,10 +50,10 @@ public class Substreet {
     public ArrayList<Building> getBuildingLeft() {
         return new ArrayList<>(buildingLeft);
     }
-    public void addPart(SubstreetPart part) {
+    public void addPart(Intersection  part) {
         parts.add(part);
     }
-    public ArrayList<SubstreetPart> getParts() {
+    public ArrayList<Intersection > getParts() {
         return new ArrayList<>(parts);
     }
     
