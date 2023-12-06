@@ -33,26 +33,26 @@ public static int secondsPassed = 0;
 public static  boolean isStartClicked=true;
 public static boolean isPaused = false;
 public static int numOfSumuolation = 0;
-public static Rectangle Building127 ;
-public static Rectangle Building103;
-public static Rectangle Building70;
-public static Rectangle Building44;
-public static Rectangle Building13;
-public static Rectangle Building32;
-public static Rectangle Building7;
-public static Rectangle Building52;
-public static Rectangle Building12;
-public static Rectangle Building101;
-public static Rectangle Building79;
-public static Rectangle Building74;
-public static Rectangle Building46;
-public static Rectangle Building42;
-public static Rectangle Building97;
-public static Rectangle Building67;
-public static Rectangle Building80;
-public static Rectangle Building116;
-public static Rectangle Building124;
-public static Rectangle Building133;
+public static Rectangle  Building127 = new Rectangle(550, 605, 35, 35);
+public static Rectangle  Building103 = new Rectangle(890, 475, 35, 35);
+public static Rectangle Building70 = new Rectangle(370, 345, 35, 35);
+public static Rectangle Building44 = new Rectangle(360, 215, 35, 35);
+public static Rectangle Building13 = new Rectangle(50, 80, 35, 35);
+public static Rectangle Building32 = new Rectangle(490, 150, 35, 35);
+public static Rectangle Building7 = new Rectangle(550, 20, 35, 35);
+public static Rectangle Building52 = new Rectangle(1010, 215, 35, 35);
+public static Rectangle  Building12 = new Rectangle(970, 20, 35, 35);
+public static Rectangle Building101 = new Rectangle(750, 475, 35, 35);
+public static Rectangle  Building79 = new Rectangle(1010, 345, 35, 35);
+public static Rectangle Building74 = new Rectangle(690, 345, 35, 35);
+public static Rectangle Building46 = new Rectangle(620, 215, 35, 35);
+public static Rectangle Building42 = new Rectangle(165, 215, 35, 35);
+public static Rectangle Building97 = new Rectangle(460, 475, 35, 35);
+public static Rectangle Building67 = new Rectangle(125, 345, 35, 35);
+public static Rectangle  Building80 = new Rectangle(50, 410, 35, 35);
+public static Rectangle Building116 = new Rectangle(800, 540, 35, 35);
+public static Rectangle Building124 = new Rectangle(350, 605, 35, 35);
+public static Rectangle Building133 = new Rectangle(1010, 605, 35, 35);
 public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Building44,Building13,Building32,Building7,Building52,Building12,Building12,Building101,Building79,Building74,Building46,Building42,Building97,Building67,Building80,Building116,Building124,Building133};
 
 
@@ -124,7 +124,6 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building6.setArcWidth(25);
         Building6.setFill(Color.GREY);
         
-        Building7 = new Rectangle(550, 20, 35, 35);
         Building7.setArcHeight(25);
         Building7.setArcWidth(25);
         Building7.setFill(Color.GREY);
@@ -153,7 +152,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building11.setWidth(70);
         Building11.setFill(Color.GREY);
         
-        Building12 = new Rectangle(970, 20, 35, 35);
+       
         Building12.setArcHeight(25);
         Building12.setArcWidth(25);
         Building12.setHeight(35);
@@ -161,7 +160,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building12.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 5
-        Building13 = new Rectangle(50, 80, 35, 35);
+        
         Building13.setArcHeight(25);
         Building13.setArcWidth(25);
         Building13.setFill(Color.GREY);
@@ -263,7 +262,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building31.setArcWidth(25);
         Building31.setFill(Color.GREY);
         
-        Building32 = new Rectangle(490, 150, 35, 35);
+        
         Building32.setArcHeight(25);
         Building32.setArcWidth(25);
         Building32.setFill(Color.GREY);
@@ -319,7 +318,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building41.setArcWidth(25);
         Building41.setFill(Color.GREY);
         
-        Building42 = new Rectangle(165, 215, 35, 35);
+        
         Building42.setArcHeight(25);
         Building42.setArcWidth(25);
         Building42.setFill(Color.GREY);
@@ -331,7 +330,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         
         // Neighbourhood_1 : BLOCK 14 
         
-        Building44 = new Rectangle(360, 215, 35, 35);
+  
         Building44.setArcHeight(25);
         Building44.setArcWidth(25);
         Building44.setHeight(35);
@@ -346,7 +345,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building45.setFill(Color.GREY);
         
         // Neighbourhood_1 : BLOCK 15 
-        Building46 = new Rectangle(620, 215, 35, 35);
+        
         Building46 .setArcHeight(25);
         Building46.setArcWidth(25);
         Building46.setFill(Color.GREY);
@@ -377,7 +376,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building51.setArcWidth(25);
         Building51.setFill(Color.GREY);
         
-        Building52 = new Rectangle(1010, 215, 35, 35);
+        
         Building52.setArcHeight(25);
         Building52.setArcWidth(25);
         Building52.setFill(Color.GREY);
@@ -471,7 +470,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building66.setArcWidth(25);
         Building66.setFill(Color.BLUE);
         
-        Building67 = new Rectangle(125, 345, 35, 35);
+        
         Building67.setArcHeight(25);
         Building67.setArcWidth(25);
         Building67.setFill(Color.BLUE);
@@ -488,7 +487,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         
         // Neighbourhood_2 : BLOCK 6
         
-         Building70 = new Rectangle(370, 345, 35, 35);
+         
         Building70.setArcHeight(25);
         Building70.setArcWidth(25);
         Building70.setFill(Color.BLUE);
@@ -510,7 +509,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building73.setArcWidth(25);
         Building73.setFill(Color.BLUE);
         
-        Building74 = new Rectangle(690, 345, 35, 35);
+        
         Building74.setArcHeight(25);
         Building74.setArcWidth(25);
         Building74.setFill(Color.BLUE);
@@ -537,13 +536,13 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building78.setArcWidth(25);
         Building78.setFill(Color.BLUE);
         
-        Building79 = new Rectangle(1010, 345, 35, 35);
+       
         Building79.setArcHeight(25);
         Building79.setArcWidth(25);
         Building79.setFill(Color.BLUE);
         
         // Neighbourhood_2 : BLOCK 9
-        Building80 = new Rectangle(50, 410, 35, 35);
+       
         Building80.setArcHeight(25);
         Building80.setArcWidth(25);
         Building80.setFill(Color.BLUE);
@@ -642,7 +641,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building96.setArcWidth(25);
         Building96.setFill(Color.SALMON);
         
-        Building97 = new Rectangle(460, 475, 35, 35);
+        
         Building97.setArcHeight(25);
         Building97.setArcWidth(25);
         Building97.setFill(Color.SALMON);
@@ -663,7 +662,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building100.setArcWidth(25);
         Building100.setFill(Color.SALMON);
         
-        Building101 = new Rectangle(750, 475, 35, 35);
+        
         Building101.setArcHeight(25);
         Building101.setArcWidth(25);
         Building101.setFill(Color.SALMON);
@@ -674,7 +673,6 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building102.setFill(Color.SALMON);
         
         // Neighbourhood_3 : BLOCK 4
-        Building103 = new Rectangle(890, 475, 35, 35);
         Building103.setArcHeight(25);
         Building103.setArcWidth(25);
         Building103.setFill(Color.SALMON);
@@ -743,7 +741,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building115.setArcWidth(25);
         Building115.setFill(Color.SALMON);
         
-        Building116 = new Rectangle(800, 540, 35, 35);
+    
         Building116.setArcHeight(25);
         Building116.setArcWidth(25);
         Building116.setFill(Color.SALMON); 
@@ -778,7 +776,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         
         // Neighbourhood_3 : BLOCK 10 
         
-        Building124 = new Rectangle(350, 605, 35, 35);
+        
         Building124.setArcHeight(25);
         Building124.setArcWidth(25);
         Building124.setFill(Color.SALMON);
@@ -793,7 +791,6 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building126.setArcWidth(25);
         Building126.setFill(Color.SALMON);
         
-        Building127 = new Rectangle(550, 605, 35, 35);
         Building127.setArcHeight(25);
         Building127.setArcWidth(25);
         Building127.setFill(Color.SALMON);
@@ -825,7 +822,7 @@ public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Bu
         Building132.setArcWidth(25);
         Building132.setFill(Color.SALMON);
         
-        Building133 = new Rectangle(1010, 605, 35, 35);
+        
         Building133.setArcHeight(25);
         Building133.setArcWidth(25);
         Building133.setFill(Color.SALMON);
@@ -1279,12 +1276,12 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             System.out.println("Cannot end simulation before starting.");
             return;
         }
-
+    
         // Your existing code for ending the simulation
         if (timer != null) {
             timer.cancel();
         }
-
+    
         if (MainProgram.driver.pathTransition != null) {
             Platform.runLater(() -> {
                 MainProgram.driver.pathTransition.stop();
@@ -1292,14 +1289,17 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                 MainProgram.driver.pathTransition.setCycleCount(1);
                 double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.PackagesPaths());
                 CounterDistanceLabel.setText(formatDistance(totalDistance));
-
+    
                 double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths());
                 CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
                 MainProgram.driver.moveCarTo(MainProgram.PackagesPaths());
                 CounterTimeLabel.setText(formatTime(1010));
-
+    
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
-                isStartClicked = false; // Reset the flag after ending the simulation
+                isStartClicked = false; 
+                for (Rectangle chosenBuilding : MainGUISimulation.ChosenBuilding) {
+                    chosenBuilding.setFill(Color.GREEN);
+                }
             });
         }
     }

@@ -236,6 +236,7 @@ public void moveDriver(Path path, Runnable onFinish) {
                 if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
                     System.out.println("get x " + destinationBuilding.getLocation().getX() + " get Y() " + destinationBuilding.getLocation().getY());
                     for (Rectangle chosenBuilding : MainGUISimulation.ChosenBuilding) {
+                        System.out.println(MainGUISimulation.ChosenBuilding);
                         if (chosenBuilding.equals(destinationBuilding.getGuiElement())) {
                             destinationBuilding.getGuiElement().setFill(Color.GREEN);
                         }
