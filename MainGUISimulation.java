@@ -1298,7 +1298,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                 double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths());
                 CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
                 MainProgram.driver.moveCarTo(MainProgram.PackagesPaths());
-                CounterTimeLabel.setText(formatTime(1010));
+                CounterTimeLabel.setText(formatTime(7370));
     
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                 isStartClicked = false; 

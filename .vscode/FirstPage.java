@@ -34,16 +34,18 @@ titleLabel.setAlignment(Pos.CENTER);
         });
         // Make buttons bigger
         phase1Button.setStyle(
-            "-fx-background-color: #0A8E22; " + // Green background color
-            "-fx-text-fill: white; " +          // White text color
-            "-fx-font-size: 16px;"              // Font size
-        );
-        
-        phase2Button.setStyle(
-            "-fx-background-color: #01119B; " + // Blue background color
-            "-fx-text-fill: white; " +          // White text color
-            "-fx-font-size: 16px;"              // Font size
-        );
+    "-fx-background-color: #0A8E22; " +
+    "-fx-text-fill: white; " +
+    "-fx-font-size: 20px; " + // Increase font size
+    "-fx-background-radius: 100 100 100 100;" // Set larger background radii (top-left, top-right, bottom-right, bottom-left)
+);
+
+phase2Button.setStyle(
+    "-fx-background-color: #01119B; " +
+    "-fx-text-fill: white; " +
+    "-fx-font-size: 20px; " + // Increase font size
+    "-fx-background-radius: 100 100 100 100;"
+);
 
         // Create GridPane for buttons
         GridPane gridPane = new GridPane();

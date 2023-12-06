@@ -201,7 +201,7 @@ public class MainProgram {
     public static void main(String[] args) {
     initializeObjects();
     driver.setPackages(createPackages()); 
-    MainGUISimulation.launch(MainGUISimulation.class, args);
+    FirstPage.launch(FirstPage.class, args);
    
         
     }
@@ -446,28 +446,28 @@ public class MainProgram {
 
         driver = new DeliveryDriver();
 
-        driver.addPackage(package1);
-        driver.addPackage(package2);
-        driver.addPackage(package3);
-        driver.addPackage(package4);
+        // driver.addPackage(package1);
+        // driver.addPackage(package2);
+        // driver.addPackage(package3);
+        // driver.addPackage(package4);
 
-         driver.addPackage(package5);
-        driver.addPackage(package6);
-        driver.addPackage(package7);
-        driver.addPackage(package8);
-        driver.addPackage(package9);
-        driver.addPackage(package10);
-        driver.addPackage(package11);
-        driver.addPackage(package12);
-        driver.addPackage(package13);
-        driver.addPackage(package14);
+        //  driver.addPackage(package5);
+        // driver.addPackage(package6);
+        // driver.addPackage(package7);
+        // driver.addPackage(package8);
+        // driver.addPackage(package9);
+        // driver.addPackage(package10);
+        // driver.addPackage(package11);
+        // driver.addPackage(package12);
+        // driver.addPackage(package13);
+        // driver.addPackage(package14);
 
-        driver.addPackage(package15);
-        driver.addPackage(package16);
-        driver.addPackage(package17);
-        driver.addPackage(package18);
-        driver.addPackage(package19);
-        driver.addPackage(package20);
+        // driver.addPackage(package15);
+        // driver.addPackage(package16);
+        // driver.addPackage(package17);
+        // driver.addPackage(package18);
+        // driver.addPackage(package19);
+        // driver.addPackage(package20);
        
   
       
@@ -502,28 +502,28 @@ public class MainProgram {
       List<SubstreetPart> initialparts20= Arrays.asList(destinationBuilding124,intersection9_2,intersection9_3 , destinationBuilding133);
 
 
-      package1 = new Offical_paper(customer1, 1, initialparts1,10);
+      package1 = new Offical_paper(customer1, 1, initialparts1,5);
       package2 = new Normal(customer2, 2, initialparts2,2);
       package3= new Normal(customer3, 3, initialparts3,2);
-      package4 = new Offical_paper(customer4, 4, initialparts4,10);
+      package4 = new Offical_paper(customer4, 4, initialparts4,5);
 
       package5 = new Normal(customer5, 5, initialparts5,2);
-      package6 = new Offical_paper(customer6, 6, initialparts6,10);
+      package6 = new Offical_paper(customer6, 6, initialparts6,5);
       package7 = new Normal(customer7, 7, initialparts7,2);
       package8 = new Normal(customer8, 8, initialparts8,2);
-      package9 = new Offical_paper(customer9, 9, initialparts9,10);
+      package9 = new Offical_paper(customer9, 9, initialparts9,5);
       package10 = new Normal(customer10, 10, initialparts10,2);
-      package11 = new Offical_paper(customer11, 11, initialparts11,10);
+      package11 = new Offical_paper(customer11, 11, initialparts11,5);
       package12 = new Normal(customer12, 12, initialparts12,2);
-      package13 = new Offical_paper(customer13, 13, initialparts13,10);
+      package13 = new Offical_paper(customer13, 13, initialparts13,5);
       package14 = new Normal(customer14, 14, initialparts14,2);
       
       package15 = new Normal(customer15, 15, initialparts15,2);
-      package16 = new Offical_paper(customer16, 16, initialparts16,10);
+      package16 = new Offical_paper(customer16, 16, initialparts16,5);
       package17 = new Normal(customer17, 17, initialparts17,2);
-      package18 = new Offical_paper(customer18, 18, initialparts18,10);
+      package18 = new Offical_paper(customer18, 18, initialparts18,5);
       package19 = new Normal(customer19, 19, initialparts19,2);
-      package20 = new Offical_paper(customer20, 20, initialparts20,10);
+      package20 = new Offical_paper(customer20, 20, initialparts20,5);
 
 
 

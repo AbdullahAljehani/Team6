@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.PathTransition;
-import javafx.animation.PauseTransition;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -198,7 +197,7 @@ public void moveDriver(Path path, Runnable onFinish) {
     if (!path.getElements().isEmpty() && MainGUISimulation .isStartClicked) {
          pathTransition = new PathTransition();
         pathTransition.setNode(car);
-        pathTransition.setDuration(Duration.seconds(5));
+        pathTransition.setDuration(Duration.seconds(2));
         pathTransition.setPath(path);
         pathTransition.setCycleCount(1);
         pathTransition.setOnFinished(e -> {
