@@ -1042,16 +1042,22 @@ public static int numOfSumuolation = 0;
 
     public void Buttons (Pane AllGroups,Stage primaryStage) {
         Button Start_button = new Button();
-        Start_button.setPrefSize(60, 20);
-        Start_button.setLayoutX(1050);
-        Start_button.setLayoutY(15);
-        Image Starticon = new Image(getClass().getResourceAsStream("StartButton.png"));
-        ImageView iconView = new ImageView(Starticon);
-        iconView.setFitWidth(40);  
-        iconView.setFitHeight(20);;
-        Start_button.setGraphic(iconView);
-        Start_button.setStyle("-fx-padding: 5 0 5 10;");
-        Start_button.setContentDisplay(ContentDisplay.CENTER);
+Start_button.setPrefSize(60, 20);
+Start_button.setLayoutX(1050);
+Start_button.setLayoutY(15);
+
+Image Starticon = new Image(getClass().getResourceAsStream("StartButton.png"));
+ImageView iconView = new ImageView(Starticon);
+iconView.setFitWidth(40);
+iconView.setFitHeight(20);
+
+Start_button.setGraphic(iconView);
+Start_button.setStyle(
+    "-fx-text-fill: white; " +          // White text color
+    "-fx-font-size: 14px; " +           // Font size
+    "-fx-padding: 5 0 5 10;"            // Padding
+);
+Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
             stopCurrentSimulation();
@@ -1077,7 +1083,11 @@ public static int numOfSumuolation = 0;
         iconView2.setFitWidth(40);  
         iconView2.setFitHeight(20);
         Pause_button.setGraphic(iconView2);
-        Pause_button.setStyle("-fx-padding: 5 0 5 10;");
+        Pause_button.setStyle(
+        "-fx-text-fill: white; " +          // White text color
+        "-fx-font-size: 14px; " +           // Font size
+        "-fx-padding: 5 0 5 10;"            // Padding
+    );
         Pause_button.setContentDisplay(ContentDisplay.CENTER);
                 
         Pause_button.setOnAction(e -> {
@@ -1097,17 +1107,23 @@ public static int numOfSumuolation = 0;
         iconView3.setFitWidth(40);  
         iconView3.setFitHeight(20); 
         End_button.setGraphic(iconView3);
-        End_button.setStyle("-fx-padding: 5 0 5 10;");
-        End_button.setContentDisplay(ContentDisplay.CENTER);
+        End_button.setStyle(
+            "-fx-text-fill: white; " +          // White text color
+            "-fx-font-size: 14px; " +           // Font size
+            "-fx-padding: 5 0 5 10;"            // Padding
+        );        End_button.setContentDisplay(ContentDisplay.CENTER);
 
         End_button.setOnAction(e -> {endSimulation();});
 
         Button Back_button = new Button();
         Back_button.setPrefSize(60, 20);
-        Back_button.setLayoutX(1270);
+        Back_button.setLayoutX(1275);
         Back_button.setLayoutY(15);
-        Back_button.setStyle("-fx-padding: 5 0 5 10;");
-        Image Backicon = new Image(getClass().getResourceAsStream("BackButton.png"));
+        Back_button.setStyle(
+                    "-fx-text-fill: white; " +          // White text color
+                    "-fx-font-size: 14px; " +           // Font size
+                    "-fx-padding: 5 0 5 10;"            // Padding
+                );          Image Backicon = new Image(getClass().getResourceAsStream("BackButton.png"));
         ImageView iconView4 = new ImageView(Backicon);
         iconView4.setFitWidth(40);  
         iconView4.setFitHeight(20); 
