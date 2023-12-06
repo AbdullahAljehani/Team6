@@ -200,7 +200,7 @@ public void moveDriver(Path path, Runnable onFinish) {
     if (!path.getElements().isEmpty() && MainGUISimulation .isStartClicked) {
          pathTransition = new PathTransition();
         pathTransition.setNode(car);
-        pathTransition.setDuration(Duration.seconds(5));
+        pathTransition.setDuration(Duration.seconds(2));
         pathTransition.setPath(path);
         pathTransition.setCycleCount(1);
         pathTransition.setOnFinished(e -> {

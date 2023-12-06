@@ -810,9 +810,6 @@ public static int numOfSumuolation = 0;
         Building133.setArcHeight(25);
         Building133.setArcWidth(25);
         Building133.setFill(Color.SALMON);
-    
-        
-        
         
 
             Group neighborhoodsGroup = new Group();
@@ -1061,13 +1058,14 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
             stopCurrentSimulation();
+            isStartClicked = true;
+
             DeliveryDriver.GasolineCost = 0;
             DeliveryDriver.totalDistance = 0;
 
             MainGUISimulation .CounterCostLabel.setText("$ 00,00");
             MainGUISimulation .CounterDistanceLabel.setText("00.00 Km");
            MainProgram.driver.createPathForPackages(MainProgram.PackagesPaths());
-            isStartClicked = true;
             secondsPassed = 0;
             MainGUISimulation .CounterTimeLabel.setText(formatTime(secondsPassed));
             startSimulation();
@@ -1255,37 +1253,36 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         return String.format("%s%.2f", "$" , cost ); // Replace "Currency" with your desired currency symbol or abbreviation
     }
 
-    public  void endSimulation() {
-     
+    public void endSimulation() {
+        if (!MainGUISimulation.isStartClicked) {
+            // Display a message or take appropriate action indicating that the simulation has not started.
+            System.out.println("Cannot end simulation before starting.");
+            return;
+        }
 
-    if (timer != null) {
-        timer.cancel();
+        // Your existing code for ending the simulation
+        if (timer != null) {
+            timer.cancel();
+        }
+
+        if (MainProgram.driver.pathTransition != null) {
+            Platform.runLater(() -> {
+                MainProgram.driver.pathTransition.stop();
+                MainProgram.driver.pathTransition.setPath(null);
+                MainProgram.driver.pathTransition.setCycleCount(1);
+                double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.PackagesPaths());
+                CounterDistanceLabel.setText(formatDistance(totalDistance));
+
+                double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths());
+                CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
+                MainProgram.driver.moveCarTo(MainProgram.PackagesPaths());
+                CounterTimeLabel.setText(formatTime(1010));
+
+                CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
+                isStartClicked = false; // Reset the flag after ending the simulation
+            });
+        }
     }
-
-    
-
-    if (MainProgram.driver.pathTransition != null) {
-        Platform.runLater(() -> {
-            MainProgram.driver.pathTransition.stop();
-            MainProgram.driver.pathTransition.setPath(null);
-            MainProgram.driver.pathTransition.setCycleCount(1);
-            double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.PackagesPaths());
-            CounterDistanceLabel.setText(formatDistance(totalDistance));
-            
-            double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths());
-            CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
-            MainProgram.driver.moveCarTo(MainProgram.PackagesPaths());
-            CounterTimeLabel.setText(formatTime(1010));
-
-            CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
-
-
-            
-
-
-        });
-    }
-}
     public  void restSumaltion(){
      if (timer != null) {
         timer.cancel();
