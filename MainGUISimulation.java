@@ -71,7 +71,7 @@ public static Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 
             // Create a group for car routes
             Group carRoutesGroup = new Group();
-            carRoutesGroup.getChildren().add(MainProgram.driver.getCar());
+            carRoutesGroup.getChildren().add(MainProgram.driver.car);
 
             Scene scene = new Scene(root , 1400, 700,Color.WHITE);
             Pane AllGroups = new Pane();
@@ -1081,9 +1081,8 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             stopCurrentSimulation();
             isStartClicked = true;
 
-            DeliveryDriver.GasolineCost = 0;
-            DeliveryDriver.totalDistance = 0;
-
+            MainProgram.driver.setGasolineCost(0);
+            MainProgram.driver.setDistance(0);
             MainGUISimulation .CounterCostLabel.setText("$ 00,00");
             MainGUISimulation .CounterDistanceLabel.setText("00.00 Km");
            MainProgram.driver.createPathForPackages(MainProgram.PackagesPaths());
@@ -1298,7 +1297,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                 double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths());
                 CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
                 MainProgram.driver.moveCarTo(MainProgram.PackagesPaths());
-                CounterTimeLabel.setText(formatTime(7370));
+                CounterTimeLabel.setText(formatTime(7350));
     
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                 isStartClicked = false; 

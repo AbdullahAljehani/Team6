@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -67,17 +69,26 @@ phase2Button.setStyle(
                             "-fx-background-repeat: no-repeat;");
 
         // Bind properties for dynamic resizing
-        titleLabel.prefWidthProperty().bind(borderPane.widthProperty());
-        titleLabel.prefHeightProperty().bind(borderPane.heightProperty().multiply(0.2)); 
-        gridPane.prefWidthProperty().bind(borderPane.widthProperty());
-        gridPane.prefHeightProperty().bind(borderPane.heightProperty().multiply(0.8)); 
+        DoubleProperty titleLabelWidth = titleLabel.prefWidthProperty();
+        ReadOnlyDoubleProperty borderPaneWidthProp = borderPane.widthProperty();
+        titleLabelWidth.bind(borderPaneWidthProp);
+
+        DoubleProperty titleLabelHeight = titleLabel.prefHeightProperty();
+        ReadOnlyDoubleProperty borderPaneHeightProp = borderPane.heightProperty();
+        titleLabelHeight.bind(borderPaneHeightProp.multiply(0.2));
+
+        DoubleProperty gridPaneWidth = gridPane.prefWidthProperty();
+        gridPaneWidth.bind(borderPaneWidthProp);
+
+        DoubleProperty gridPaneHeight = gridPane.prefHeightProperty();
+        gridPaneHeight.bind(borderPaneHeightProp.multiply(0.8));
+ 
 
         // Set minimum width and height for the stage
-        primaryStage.setMinWidth(400); // Set your desired minimum width (increased from 300)
-        primaryStage.setMinHeight(300); // Set your desired minimum height
-
+        primaryStage.setMinWidth(400); 
+        primaryStage.setMinHeight(300); 
         // Create Scene
-        Scene scene = new Scene(borderPane, 400, 300); // Adjusted the initial size
+        Scene scene = new Scene(borderPane, 400, 300); 
 
         // Set the scene to the stage
         primaryStage.setScene(scene);

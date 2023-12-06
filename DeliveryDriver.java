@@ -10,18 +10,15 @@ import javafx.util.Duration;
 
 public class DeliveryDriver {
     private List<Package> packages;
-    public int currentX;
-    public int currentY;
+    private int currentX;
+    private int currentY;
     public  Rectangle car;
     public  PathTransition pathTransition;
     private Path path;
-    public static double GasolineCost=0;
+    private  double gasolineCost;
     public double incrementGasoline;
     public double incrementDistance;
-    public static double totalDistance=0;
-
-    public boolean isSimulationRunning = false;
-    public Thread simulationThread;
+    private  double distance;
     public DeliveryDriver() {
         this.packages = new ArrayList<>(); 
         this.car = new Rectangle(322, 662, 15, 15);
@@ -30,15 +27,20 @@ public class DeliveryDriver {
         this.car.setFill(Color.RED);
             
     }
-    public Rectangle getCar() {
-        return car;
-    }
-    public void addPackage(Package aPackage) {
-        packages.add(aPackage);
+    public void setGasolineCost(double gasolineCost){
+        this.gasolineCost=gasolineCost;
     }
    
-    public static double getGasolineCost() {
-        return GasolineCost;
+    public  double getGasolineCost() {
+        return gasolineCost;
+    }
+
+    public void setDistance(double distance){
+        this.distance=distance;
+    }
+   
+    public  double getDistance() {
+        return distance;
     }
     public void setPackages(List<Package> packages) {
         this.packages = packages;
@@ -67,10 +69,10 @@ public class DeliveryDriver {
     }
 
     
-public static void updateGasolineCost(double increment) {
-    GasolineCost += increment;
-    System.out.println("GasolineCost "+GasolineCost);
+public  void updateGasolineCost(double increment) {
+    gasolineCost += increment;
 }
+
 public double calculateTotalDistance(List<List<SubstreetPart>> packages) {
     double totalDistance = 0.0;
 
@@ -143,36 +145,6 @@ public void moveCarTo(List<List<SubstreetPart>> packages) {
     }
 
 
-
-public Path generatePath(List<SubstreetPart> subStreetParts) {
-    Path path = new Path();
-
-    if (subStreetParts.isEmpty()) {
-        return path;
-    }
-
-    SubstreetPart currentPart = subStreetParts.get(0);
-    path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
-    
-    for (int i = 1; i < subStreetParts.size(); i++) {
-        SubstreetPart nextPart = subStreetParts.get(i);
-        path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
-
-         incrementDistance = currentPart.getDistanceTo(nextPart);
-         incrementGasoline = currentPart.calculateGasolineCost(nextPart);
-         GasolineCost += incrementGasoline ;
-         totalDistance+=incrementDistance;
-        currentPart = nextPart;
-        currentX = currentPart.getX();
-        currentY = currentPart.getY();
-        
-
-    }
-   
-
-    return path;
-}
-
 public void createPathForPackages(List<List<SubstreetPart>> packages) {
     if (packages == null || packages.isEmpty()) {
         return;
@@ -191,6 +163,35 @@ private void playPathTransitions(List<List<SubstreetPart>> packages, int index) 
 
 }
 
+public Path generatePath(List<SubstreetPart> subStreetParts) {
+    Path path = new Path();
+
+    if (subStreetParts.isEmpty()) {
+        return path;
+    }
+
+    SubstreetPart currentPart = subStreetParts.get(0);
+    path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
+    
+    for (int i = 1; i < subStreetParts.size(); i++) {
+        SubstreetPart nextPart = subStreetParts.get(i);
+        path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
+
+         incrementDistance = currentPart.getDistanceTo(nextPart);
+         incrementGasoline = currentPart.calculateGasolineCost(nextPart);
+         gasolineCost += incrementGasoline ;
+         distance+=incrementDistance;
+        currentPart = nextPart;
+        currentX = currentPart.getX();
+        currentY = currentPart.getY();
+        
+
+    }
+   
+
+    return path;
+}
+
 
 
 public void moveDriver(Path path, Runnable onFinish) {
@@ -201,8 +202,8 @@ public void moveDriver(Path path, Runnable onFinish) {
         pathTransition.setPath(path);
         pathTransition.setCycleCount(1);
         pathTransition.setOnFinished(e -> {
-            MainGUISimulation .CounterDistanceLabel.setText(MainGUISimulation .formatDistance(totalDistance));
-            MainGUISimulation .CounterCostLabel.setText(MainGUISimulation .formatGasolineCost(GasolineCost));
+            MainGUISimulation .CounterDistanceLabel.setText(MainGUISimulation .formatDistance(distance));
+            MainGUISimulation .CounterCostLabel.setText(MainGUISimulation .formatGasolineCost(gasolineCost));
             deliverPackage(currentX, currentY);
             onFinish.run();
 
@@ -221,10 +222,8 @@ public void deliverPackage(int currentX, int currentY) {
         if (!aPackage.isDelivered) {
             Building destinationBuilding = aPackage.getCustomer().getBuilding();
             
-            System.out.println("Package " + aPackage.getPackageId() + " isDelivered: " + aPackage.isDelivered);
             
             if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
-                System.out.println("get x " + destinationBuilding.getLocation().getX() + " get Y() " + destinationBuilding.getLocation().getY());
                 
                 for (Rectangle chosenBuilding : MainGUISimulation.ChosenBuilding) {
                     if (chosenBuilding.equals(destinationBuilding.getGuiElement())) {
