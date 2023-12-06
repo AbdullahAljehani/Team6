@@ -1,4 +1,6 @@
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.scene.Group;
@@ -54,6 +56,8 @@ public static Rectangle Building116 = new Rectangle(800, 540, 35, 35);
 public static Rectangle Building124 = new Rectangle(350, 605, 35, 35);
 public static Rectangle Building133 = new Rectangle(1010, 605, 35, 35);
 public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Building44,Building13,Building32,Building7,Building52,Building12,Building12,Building101,Building79,Building74,Building46,Building42,Building97,Building67,Building80,Building116,Building124,Building133};
+
+public static Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 
 
 
@@ -1073,6 +1077,7 @@ Start_button.setStyle(
 Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
+            resetChosenBuildingColors();
             stopCurrentSimulation();
             isStartClicked = true;
 
@@ -1325,6 +1330,37 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     
 }
 
+} 
+public static void initializeOriginalColors() {
+    originalBuildingColors.put(Building127, Color.SALMON);
+    originalBuildingColors.put(Building103, Color.SALMON);
+    originalBuildingColors.put(Building70, Color.BLUE);
+    originalBuildingColors.put(Building44, Color.GREY);
+    originalBuildingColors.put(Building13, Color.GREY);
+    originalBuildingColors.put(Building32,Color.GREY);
+    originalBuildingColors.put(Building7, Color.GREY);
+    originalBuildingColors.put(Building52, Color.GREY);
+    originalBuildingColors.put(Building12, Color.GREY);
+    originalBuildingColors.put(Building101, Color.SALMON);
+    originalBuildingColors.put(Building79, Color.BLUE);
+    originalBuildingColors.put(Building74, Color.BLUE);
+    originalBuildingColors.put(Building46, Color.GREY);
+    originalBuildingColors.put(Building42, Color.GREY);
+    originalBuildingColors.put(Building97, Color.SALMON);
+    originalBuildingColors.put(Building67, Color.BLUE);
+    originalBuildingColors.put(Building80, Color.BLUE);
+    originalBuildingColors.put(Building116, Color.SALMON);
+    originalBuildingColors.put(Building124, Color.SALMON);
+    originalBuildingColors.put(Building133, Color.SALMON);
+}
+public static void resetChosenBuildingColors() {
+    initializeOriginalColors();
+    for (Rectangle building : ChosenBuilding) {
+        Color originalColor = originalBuildingColors.get(building);
+        if (originalColor != null) {
+            building.setFill(originalColor);
+        }
+    }
 }
 }
     
