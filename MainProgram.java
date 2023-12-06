@@ -502,28 +502,28 @@ public class MainProgram {
       List<SubstreetPart> initialparts20= Arrays.asList(destinationBuilding124,intersection9_2,intersection9_3 , destinationBuilding133);
 
 
-      package1 = new Offical_paper(customer1, 1, initialparts1,4);
+      package1 = new Offical_paper(customer1, 1, initialparts1,10);
       package2 = new Normal(customer2, 2, initialparts2,2);
       package3= new Normal(customer3, 3, initialparts3,2);
-      package4 = new Offical_paper(customer4, 4, initialparts4,4);
+      package4 = new Offical_paper(customer4, 4, initialparts4,10);
 
       package5 = new Normal(customer5, 5, initialparts5,2);
-      package6 = new Offical_paper(customer6, 6, initialparts6,4);
+      package6 = new Offical_paper(customer6, 6, initialparts6,10);
       package7 = new Normal(customer7, 7, initialparts7,2);
       package8 = new Normal(customer8, 8, initialparts8,2);
-      package9 = new Offical_paper(customer9, 9, initialparts9,4);
+      package9 = new Offical_paper(customer9, 9, initialparts9,10);
       package10 = new Normal(customer10, 10, initialparts10,2);
-      package11 = new Offical_paper(customer11, 11, initialparts11,4);
+      package11 = new Offical_paper(customer11, 11, initialparts11,10);
       package12 = new Normal(customer12, 12, initialparts12,2);
-      package13 = new Offical_paper(customer13, 13, initialparts13,4);
+      package13 = new Offical_paper(customer13, 13, initialparts13,10);
       package14 = new Normal(customer14, 14, initialparts14,2);
       
       package15 = new Normal(customer15, 15, initialparts15,2);
-      package16 = new Offical_paper(customer16, 16, initialparts16,4);
+      package16 = new Offical_paper(customer16, 16, initialparts16,10);
       package17 = new Normal(customer17, 17, initialparts17,2);
-      package18 = new Offical_paper(customer18, 18, initialparts18,4);
+      package18 = new Offical_paper(customer18, 18, initialparts18,10);
       package19 = new Normal(customer19, 19, initialparts19,2);
-      package20 = new Offical_paper(customer20, 20, initialparts20,4);
+      package20 = new Offical_paper(customer20, 20, initialparts20,10);
 
 
 

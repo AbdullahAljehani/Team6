@@ -13,7 +13,6 @@ public class DeliveryDriver {
     private List<Package> packages;
     public int currentX;
     public int currentY;
-    private Substreet currentSubstreet;
     public  Rectangle car;
     public  PathTransition pathTransition;
     private Path path;
@@ -227,24 +226,28 @@ public void deliverPackage(int currentX, int currentY) {
             
             if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
                 System.out.println("get x " + destinationBuilding.getLocation().getX() + " get Y() " + destinationBuilding.getLocation().getY());
+                
                 for (Rectangle chosenBuilding : MainGUISimulation.ChosenBuilding) {
-                    System.out.println(MainGUISimulation.ChosenBuilding);
                     if (chosenBuilding.equals(destinationBuilding.getGuiElement())) {
                         destinationBuilding.getGuiElement().setFill(Color.GREEN);
                     }
                 }
               
                 int packageDelay = aPackage.delay;
-                PauseTransition pause = new PauseTransition(Duration.millis(packageDelay));
-
                 System.out.println("Package " + aPackage.getPackageId() + " delivered at building " + destinationBuilding.getBuildingNumber());
+                
+                try {
+                    Thread.sleep(packageDelay*500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                
                 aPackage.isDelivered = true;
                 System.out.println("Package " + aPackage.getPackageId() + " isDelivered updated to: " + aPackage.isDelivered);
 
                 if (hasNextPackage(aPackage) && aPackage.isDelivered) {
                     moveToNextPackage();
                 }
-                pause.play();
             } else {
                 System.out.println("Package " + aPackage.getPackageId() + " is already delivered.");
             }
