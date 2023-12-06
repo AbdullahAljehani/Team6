@@ -133,7 +133,7 @@ public void moveCarTo(List<List<SubstreetPart>> packages) {
              lastX = lastPart.getX();
              lastY = lastPart.getY();
 
-            // Do something with the coordinates (e.g., use lastX and lastY)
+            
         }
     
             double finalPointX  = lastX-  firstX;
@@ -168,7 +168,7 @@ public Path generatePath(List<SubstreetPart> subStreetParts) {
         currentPart = nextPart;
         currentX = currentPart.getX();
         currentY = currentPart.getY();
-        // System.out.println("currentX "+currentX+" currentY "+currentY);
+        
 
     }
    
@@ -229,14 +229,16 @@ public void moveDriver(Path path, Runnable onFinish) {
         for (Package aPackage : getPackages()) {
             if (!aPackage.isDelivered) {
                 Building destinationBuilding = aPackage.getCustomer().getBuilding();
+                
     
                 System.out.println("Package " + aPackage.getPackageId() + " isDelivered: " + aPackage.isDelivered);
-                System.out.println("currentX " + currentX + " currenty " + currentY);
                 
-                System.out.println("getx "+destinationBuilding.getLocation().getX()+" getY "+destinationBuilding.getLocation().getY());
-
                 if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
                     System.out.println("get x " + destinationBuilding.getLocation().getX() + " get Y() " + destinationBuilding.getLocation().getY());
+                    for (Rectangle chosenBuilding : MainGUISimulation.ChosenBuilding) {
+                        if (chosenBuilding.equals(destinationBuilding.getGuiElement())) {
+                            destinationBuilding.getGuiElement().setFill(Color.GREEN);
+                        }
                     if (aPackage instanceof Offical_paper && currentSubstreetPart != null) {
                         int substreetDelay = currentSubstreetPart.getDelay();
                         System.out.println("Official package detected. Introducing a delay of " + substreetDelay + " minutes on Substreet " + currentSubstreet.getStreetName());
@@ -262,6 +264,7 @@ public void moveDriver(Path path, Runnable onFinish) {
     
         System.out.println("No more packages assigned to the driver at the current position.");
     }
+}
     
     
    

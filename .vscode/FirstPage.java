@@ -60,16 +60,15 @@ titleLabel.setAlignment(Pos.CENTER);
         BorderPane.setAlignment(titleLabel, Pos.CENTER);
         borderPane.setCenter(gridPane);
 
-        // Set dark mode background image as a style
         borderPane.setStyle("-fx-background-image: url('BackgroundImage.jpg'); " +
                             "-fx-background-size: cover; " +
                             "-fx-background-repeat: no-repeat;");
 
         // Bind properties for dynamic resizing
         titleLabel.prefWidthProperty().bind(borderPane.widthProperty());
-        titleLabel.prefHeightProperty().bind(borderPane.heightProperty().multiply(0.2)); // Example: 20% of the height
+        titleLabel.prefHeightProperty().bind(borderPane.heightProperty().multiply(0.2)); 
         gridPane.prefWidthProperty().bind(borderPane.widthProperty());
-        gridPane.prefHeightProperty().bind(borderPane.heightProperty().multiply(0.8)); // Example: 80% of the height
+        gridPane.prefHeightProperty().bind(borderPane.heightProperty().multiply(0.8)); 
 
         // Set minimum width and height for the stage
         primaryStage.setMinWidth(400); // Set your desired minimum width (increased from 300)

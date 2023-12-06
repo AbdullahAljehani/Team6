@@ -396,30 +396,28 @@ public class MainProgram {
         city1.addNeighborhood(neighborhood2);
         city1.addNeighborhood(neighborhood3);
 
-         building127 = new Building(127,destinationBuilding127);
-         building103 = new Building(103,destinationBuilding103);
-         building70 = new Building(70,destinationBuilding70);
-         building44 = new Building(44,destinationBuilding44);
+         building127 = new Building(127,destinationBuilding127,MainGUISimulation.Building127);
+         building103 = new Building(103,destinationBuilding103,MainGUISimulation.Building103);
+         building70 = new Building(70,destinationBuilding70,MainGUISimulation.Building70);
+         building44 = new Building(44,destinationBuilding44,MainGUISimulation.Building44);
+        
+         building13 = new Building(13,destinationBuilding13,MainGUISimulation.Building13);
+        building32 = new Building(32,destinationBuilding32,MainGUISimulation.Building32);
+        building7 = new Building(7,destinationBuilding7,MainGUISimulation.Building7);
+        building52 = new Building(52,destinationBuilding52,MainGUISimulation.Building52);
+        building12 = new Building(12,destinationBuilding12,MainGUISimulation.Building12);
+        building101 = new Building(101,destinationBuilding101,MainGUISimulation.Building101);
+        building79 = new Building(79,destinationBuilding79,MainGUISimulation.Building79);
+        building74 = new Building(74,destinationBuilding74,MainGUISimulation.Building74);
+        building46 = new Building(46,destinationBuilding46,MainGUISimulation.Building46);
+        building42 = new Building(42,destinationBuilding42,MainGUISimulation.Building42);     
 
-
-
-        building13 = new Building(13,destinationBuilding13);
-        building32 = new Building(32,destinationBuilding32);
-        building7 = new Building(7,destinationBuilding7);
-        building52 = new Building(52,destinationBuilding52);
-        building12 = new Building(12,destinationBuilding12);
-        building101 = new Building(101,destinationBuilding101);
-        building79 = new Building(79,destinationBuilding79);
-        building74 = new Building(74,destinationBuilding74);
-        building46 = new Building(46,destinationBuilding46);
-        building42 = new Building(42,destinationBuilding42);     
-
-        building97 = new Building(97, destinationBuilding97);
-        building67= new Building(67, destinationBuilding67);
-        building80 = new Building(80, destinationBuilding80);
-        building116 = new Building(116, destinationBuilding116);
-        building124 = new Building(124, destinationBuilding124);
-        building133 = new Building(133, destinationBuilding133);
+        building97 = new Building(97, destinationBuilding97,MainGUISimulation.Building97);
+        building67 = new Building(97, destinationBuilding67,MainGUISimulation.Building67);
+        building80 = new Building(97, destinationBuilding80,MainGUISimulation.Building80);
+        building116 = new Building(97, destinationBuilding116,MainGUISimulation.Building116);
+        building124 = new Building(97, destinationBuilding124,MainGUISimulation.Building124);
+        building133 = new Building(97, destinationBuilding133,MainGUISimulation.Building133);
 
 
         customer1 = new Customer(1, building127);
@@ -444,7 +442,6 @@ public class MainProgram {
         customer18 =new Customer(18, building116);
         customer19 =new Customer(19, building124);
         customer20 =new Customer(20, building133);
-
 
 
         driver = new DeliveryDriver();
