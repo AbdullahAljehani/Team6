@@ -70,7 +70,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 
             // Create a group for car routes
             Group carRoutesGroup = new Group();
-             car = new Rectangle(322, 662, 15, 15);
+             car = new Rectangle(323, 642, 15, 15);
             car.setArcHeight(15);
             car.setArcWidth(15);
             car.setFill(Color.RED);
@@ -775,7 +775,8 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Warehouse_label.setFont(font);
         Warehouse_label.setFill(Color.BLACK);
         Rectangle Warehouse = new Rectangle(45, 600, 35, 35);
-
+        Warehouse.setArcHeight(25);
+        Warehouse.setArcWidth(25);
         Warehouse.setWidth(280);
         Warehouse.setHeight(75);
         Warehouse.setFill(Color.SILVER);
@@ -868,11 +869,20 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Text Street_9Lable = new Text(25,601, "9");
         Street_9Lable.setFont(font);
         Street_9Lable.setFill(Color.BLACK);
+        
+        
 
-        // Text Street_ALable = new Text(300,700, "A");
-        // Street_9Lable.setFont(font);
-        // Street_9Lable.setFill(Color.BLACK);
+        Text Street_ALable = new Text(322, 678, "A");
+        Street_ALable.setFont(font );
+        Street_ALable.setFill(Color.BLACK);
 
+        Text Street_BLable = new Text(592, 678, "B");
+        Street_BLable.setFont(font );
+        Street_BLable.setFill(Color.BLACK);
+
+        Text Street_CLable = new Text(851, 678, "C");
+        Street_CLable.setFont(font );
+        Street_CLable.setFill(Color.BLACK);
             Group neighborhoodsGroup = new Group();
             // Add homes to Neighborhood 1 group
             
@@ -891,7 +901,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             Group warehousesGroup = new Group();
             warehousesGroup.getChildren().addAll(Warehouse, Warehouse_label);
 
-            neighborhoodsGroup.getChildren().addAll(Street_1Lable,Street_2Lable,Street_3Lable,Street_4Lable,Street_5Lable,Street_6Lable,Street_7Lable,Street_8Lable,Street_9Lable,Neighbourhood_1,neighborhood1Group,Neighbourhood_2,neighborhood2Group,Neighbourhood_3,neighborhood3Group,warehousesGroup);
+            neighborhoodsGroup.getChildren().addAll(Street_CLable,Street_BLable,Street_ALable,Street_1Lable,Street_2Lable,Street_3Lable,Street_4Lable,Street_5Lable,Street_6Lable,Street_7Lable,Street_8Lable,Street_9Lable,Neighbourhood_1,neighborhood1Group,Neighbourhood_2,neighborhood2Group,Neighbourhood_3,neighborhood3Group,warehousesGroup);
             AllGroups.getChildren().add(neighborhoodsGroup);
     }
 
@@ -960,14 +970,14 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             
             //STREET A: 
             
-             Line Street_A = new Line(0, 0, 0, 670);
+             Line Street_A = new Line(0, 0, 0, 650);
             Street_A.setStrokeWidth(12);
             Street_A.setTranslateX(330);
             Street_A.setTranslateY(0);
             
             // White line inside street A
     
-            Line line_street_white1 = new Line(0, 0, 0, 670);
+            Line line_street_white1 = new Line(0, 0, 0, 650);
             line_street_white1.setStrokeWidth(12);
             line_street_white1.setStroke(Color.BLUE);
             line_street_white1.setTranslateX(330);
@@ -975,14 +985,14 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             
            
             // STREET B :
-             Line Street_B = new Line(0, 0, 0, 670);
+             Line Street_B = new Line(0, 0, 0, 650);
             Street_B.setStrokeWidth(12);
             Street_B.setTranslateX(600);
             Street_B.setTranslateY(0);
             
             
             // STREET C: 
-            Line Street_C = new Line(0, 0, 0, 670);
+            Line Street_C = new Line(0, 0, 0, 650);
             Street_C.setStrokeWidth(12);
             Street_C.setTranslateX(860);
             Street_C.setTranslateY(0);

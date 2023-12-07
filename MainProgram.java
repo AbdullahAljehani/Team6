@@ -275,13 +275,13 @@ public class MainProgram {
       EndOfStreet9= new Intersection ( 1050, 594);
 
       FirstOfStreetC= new Intersection ( 860, 0);
-      EndOfStreetC= new Intersection ( 860, 670);
+      EndOfStreetC= new Intersection ( 860, 650);
 
       FirstOfStreetB= new Intersection ( 600, 0);
-      EndOfStreetB= new Intersection ( 600, 670);
+      EndOfStreetB= new Intersection ( 600, 650);
 
       FirstOfStreetA= new Intersection ( 330, 0);
-      EndOfStreetA= new Intersection ( 330, 670);
+      EndOfStreetA= new Intersection ( 330, 650);
 
       destinationBuilding127= new Intersection (568,594);
       destinationBuilding103= new Intersection (900,461);
