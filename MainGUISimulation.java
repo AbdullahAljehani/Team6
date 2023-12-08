@@ -623,156 +623,156 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         // Neighbourhood 3 ( from Building 92 to Building 133  ) with 12 blocks include Warehouse :
         Text Neighbourhood_3 = new Text(1120, 550, "AlRabwah");
         Neighbourhood_3.setFont(font);
-        Neighbourhood_3.setFill(Color.SALMON);
+        Neighbourhood_3.setFill(Color.web("#C0392B"));
         
         // Neighbourhood_3 : BLOCK 1
         Rectangle Building92 = new Rectangle(50, 475, 35, 35);
         Building92.setArcHeight(25);
         Building92.setArcWidth(25);
-        Building92.setFill(Color.SALMON);
+        Building92.setFill(Color.web("#C0392B"));
         
         Rectangle Building93 = new Rectangle(125, 475, 35, 35);
         Building93.setArcHeight(25);
         Building93.setArcWidth(25);
-        Building93.setFill(Color.SALMON);
+        Building93.setFill(Color.web("#C0392B"));
         
         Rectangle Building94 = new Rectangle(200, 475, 35, 35);
         Building94.setArcHeight(25);
         Building94.setArcWidth(25);
-        Building94.setFill(Color.SALMON);
+        Building94.setFill(Color.web("#C0392B"));
         
         Rectangle Building95 = new Rectangle(270, 475, 35, 35);
         Building95.setArcHeight(25);
         Building95.setArcWidth(25);
-        Building95.setFill(Color.SALMON);
+        Building95.setFill(Color.web("#C0392B"));
         
         // Neighbourhood_3 : BLOCK 2
         Rectangle Building96 = new Rectangle(370, 475, 35, 35);
         Building96.setArcHeight(25);
         Building96.setArcWidth(25);
-        Building96.setFill(Color.SALMON);
+        Building96.setFill(Color.web("#C0392B"));
         
         
         Building97.setArcHeight(25);
         Building97.setArcWidth(25);
-        Building97.setFill(Color.SALMON);
+        Building97.setFill(Color.web("#C0392B"));
         
         Rectangle Building98 = new Rectangle(540, 475, 35, 35);
         Building98.setArcHeight(25);
         Building98.setArcWidth(25);
-        Building98.setFill(Color.SALMON);
+        Building98.setFill(Color.web("#C0392B"));
         
         // Neighbourhood_3 : BLOCK 3
         Rectangle Building99 = new Rectangle(630, 475, 35, 35);
         Building99.setArcHeight(25);
         Building99.setArcWidth(25);
-        Building99.setFill(Color.SALMON);
+        Building99.setFill(Color.web("#C0392B"));
         
         Rectangle Building100 = new Rectangle(690, 475, 35, 35);
         Building100.setArcHeight(25);
         Building100.setArcWidth(25);
-        Building100.setFill(Color.SALMON);
+        Building100.setFill(Color.web("#C0392B"));
         
         
         Building101.setArcHeight(25);
         Building101.setArcWidth(25);
-        Building101.setFill(Color.SALMON);
+        Building101.setFill(Color.web("#C0392B"));
         
         Rectangle Building102 = new Rectangle(810, 475, 35, 35);
         Building102.setArcHeight(25);
         Building102.setArcWidth(25);
-        Building102.setFill(Color.SALMON);
+        Building102.setFill(Color.web("#C0392B"));
         
         // Neighbourhood_3 : BLOCK 4
         Building103.setArcHeight(25);
         Building103.setArcWidth(25);
-        Building103.setFill(Color.SALMON);
+        Building103.setFill(Color.web("#C0392B"));
         
         Rectangle Building104 = new Rectangle(960, 475, 35, 35);
         Building104.setArcHeight(25);
         Building104.setArcWidth(25);
-        Building104.setFill(Color.SALMON);
+        Building104.setFill(Color.web("#C0392B"));
         
         Rectangle Building105 = new Rectangle(1020, 475, 35, 35);
         Building105.setArcHeight(25);
         Building105.setArcWidth(25);
-        Building105.setFill(Color.SALMON);
+        Building105.setFill(Color.web("#C0392B"));
         
         // Neighbourhood_3 : BLOCK 5
         Rectangle Building106 = new Rectangle(50, 540, 35, 35);
         Building106.setArcHeight(25);
         Building106.setArcWidth(25);
-        Building106.setFill(Color.SALMON);
+        Building106.setFill(Color.web("#C0392B"));
         
         Rectangle Building107 = new Rectangle(125, 540, 35, 35);
         Building107.setArcHeight(25);
         Building107.setArcWidth(25);
-        Building107.setFill(Color.SALMON);
+        Building107.setFill(Color.web("#C0392B"));
         
         Rectangle Building108 = new Rectangle(200, 540, 35, 35);
         Building108.setArcHeight(25);
         Building108.setArcWidth(25);
-        Building108.setFill(Color.SALMON);
+        Building108.setFill(Color.web("#C0392B"));
         
         Rectangle Building109 = new Rectangle(270, 540, 35, 35);
         Building109.setArcHeight(25);
         Building109.setArcWidth(25);
-        Building109.setFill(Color.SALMON);
+        Building109.setFill(Color.web("#C0392B"));
         
         // Neighbourhood_3 : BLOCK 6
         Rectangle Building110 = new Rectangle(355, 540, 35, 35);
         Building110.setArcHeight(25);
         Building110.setArcWidth(25);
-        Building110.setFill(Color.SALMON);
+        Building110.setFill(Color.web("#C0392B"));
         
         Rectangle Building111 = new Rectangle(425, 540, 35, 35);
         Building111.setArcHeight(25);
         Building111.setArcWidth(25);
-        Building111.setFill(Color.SALMON);
+        Building111.setFill(Color.web("#C0392B"));
         
         Rectangle Building112 = new Rectangle(490, 540, 35, 35);
         Building112.setArcHeight(25);
         Building112.setArcWidth(25);
-        Building112.setFill(Color.SALMON);
+        Building112.setFill(Color.web("#C0392B"));
         
         Rectangle Building113 = new Rectangle(550, 540, 35, 35);
         Building113.setArcHeight(25);
         Building113.setArcWidth(25);
-        Building113.setFill(Color.SALMON);
+        Building113.setFill(Color.web("#C0392B"));
         
         // Neighbourhood_3 : BLOCK 7
         
         Rectangle Building114 = new Rectangle(640, 540, 35, 35);
         Building114.setArcHeight(25);
         Building114.setArcWidth(25);
-        Building114.setFill(Color.SALMON);
+        Building114.setFill(Color.web("#C0392B"));
         
         Rectangle Building115 = new Rectangle(720, 540, 35, 35);
         Building115.setArcHeight(25);
         Building115.setArcWidth(25);
-        Building115.setFill(Color.SALMON);
+        Building115.setFill(Color.web("#C0392B"));
         
     
         Building116.setArcHeight(25);
         Building116.setArcWidth(25);
-        Building116.setFill(Color.SALMON); 
+        Building116.setFill(Color.web("#C0392B")); 
         
         // Neighbourhood_3 : BLOCK 8
         
         Rectangle Building117 = new Rectangle(890, 540, 35, 35);
         Building117.setArcHeight(25);
         Building117.setArcWidth(25);
-        Building117.setFill(Color.SALMON);
+        Building117.setFill(Color.web("#C0392B"));
         
         Rectangle Building118 = new Rectangle(955, 540, 35, 35);
         Building118.setArcHeight(25);
         Building118.setArcWidth(25);
-        Building118.setFill(Color.SALMON);
+        Building118.setFill(Color.web("#C0392B"));
         
         Rectangle Building119 = new Rectangle(1015, 540, 35, 35);
         Building119.setArcHeight(25);
         Building119.setArcWidth(25);
-        Building119.setFill(Color.SALMON);
+        Building119.setFill(Color.web("#C0392B"));
         
         // Neighbourhood_3 : BLOCK 9 for "Warehouse , which take Building from 120 to 123 "
         Text Warehouse_label = new Text(100,645,"Warehouse");
@@ -790,53 +790,53 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         
         Building124.setArcHeight(25);
         Building124.setArcWidth(25);
-        Building124.setFill(Color.SALMON);
+        Building124.setFill(Color.web("#C0392B"));
         
         Rectangle Building125 = new Rectangle(425, 605, 35, 35);
         Building125.setArcHeight(25);
         Building125.setArcWidth(25);
-        Building125.setFill(Color.SALMON);
+        Building125.setFill(Color.web("#C0392B"));
         
         Rectangle Building126 = new Rectangle(490, 605, 35, 35);
         Building126.setArcHeight(25);
         Building126.setArcWidth(25);
-        Building126.setFill(Color.SALMON);
+        Building126.setFill(Color.web("#C0392B"));
         
         Building127.setArcHeight(25);
         Building127.setArcWidth(25);
-        Building127.setFill(Color.SALMON);
+        Building127.setFill(Color.web("#C0392B"));
         
         // Neighbourhood_3 : BLOCK 11
         Rectangle Building128 = new Rectangle(635, 605, 35, 35);
         Building128.setArcHeight(25);
         Building128.setArcWidth(25);
-        Building128.setFill(Color.SALMON);
+        Building128.setFill(Color.web("#C0392B"));
         
         Rectangle Building129 = new Rectangle(710, 605, 35, 35);
         Building129.setArcHeight(25);
         Building129.setArcWidth(25);
-        Building129.setFill(Color.SALMON);
+        Building129.setFill(Color.web("#C0392B"));
         
         Rectangle Building130 = new Rectangle(785, 605, 35, 35);
         Building130.setArcHeight(25);
         Building130.setArcWidth(25);
-        Building130.setFill(Color.SALMON);
+        Building130.setFill(Color.web("#C0392B"));
         
         // Neighbourhood_3 : BLOCK 12
         Rectangle Building131 = new Rectangle(880, 605, 35, 35);
         Building131.setArcHeight(25);
         Building131.setArcWidth(25);
-        Building131.setFill(Color.SALMON);
+        Building131.setFill(Color.web("#C0392B"));
         
         Rectangle Building132 = new Rectangle(945, 605, 35, 35);
         Building132.setArcHeight(25);
         Building132.setArcWidth(25);
-        Building132.setFill(Color.SALMON);
+        Building132.setFill(Color.web("#C0392B"));
         
         
         Building133.setArcHeight(25);
         Building133.setArcWidth(25);
-        Building133.setFill(Color.SALMON);
+        Building133.setFill(Color.web("#C0392B"));
 
         Text Street_1Lable = new Text(25, 73, "1");
         Street_1Lable.setFont(font);
@@ -1016,27 +1016,28 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
     public void Labels (Pane AllGroups) {
         // For Time : 
         Rectangle timerRectangle = new Rectangle(1080,70,80, 40);
-        timerRectangle.setStroke(javafx.scene.paint.Color.SKYBLUE);
-        timerRectangle.setStrokeType(StrokeType.INSIDE);
+        timerRectangle.setStroke(Color.web("#000C40"));
         timerRectangle.setStrokeWidth(5);
+        timerRectangle.setFill(Color.web("#F0F2F0"));
         
         // For Distance : 
         Rectangle distanceRectangle = new Rectangle(1190,70,80, 40);
-        distanceRectangle.setStroke(javafx.scene.paint.Color.SKYBLUE);
-        distanceRectangle.setStrokeType(StrokeType.INSIDE);
+        distanceRectangle.setStroke(Color.web("#000C40"));
         distanceRectangle.setStrokeWidth(5);
+        distanceRectangle.setFill(Color.web("#F0F2F0"));
         
         // For Cost : 
         Rectangle costRectangle = new Rectangle(1080,140,80, 40);
-        costRectangle.setStroke(javafx.scene.paint.Color.SKYBLUE);
-        costRectangle.setStrokeType(StrokeType.INSIDE);
+        costRectangle.setStroke(Color.web("#000C40"));
         costRectangle.setStrokeWidth(5);
+        costRectangle.setFill(Color.web("#F0F2F0"));
+        
         
         // For No.Simulations : 
         Rectangle No_SimulationRectangle = new Rectangle(1190,140,80, 40);
-        No_SimulationRectangle.setStroke(javafx.scene.paint.Color.SKYBLUE);
-        No_SimulationRectangle.setStrokeType(StrokeType.INSIDE);
+        No_SimulationRectangle.setStroke(Color.web("#000C40"));
         No_SimulationRectangle.setStrokeWidth(5);
+        No_SimulationRectangle.setFill(Color.web("#F0F2F0"));
         
         // Time,distance,cost and No.Simulations Labels :
         
@@ -1047,24 +1048,30 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         timeLabel.setFont(Labelfont);
         timeLabel.setLayoutX(1100);
         timeLabel.setLayoutY(45);
+        timeLabel.setStyle("-fx-text-fill: #F0F2F0;");
         
         // For Distance :
         Label distanceLabel = new Label("Distance");
         distanceLabel.setFont(Labelfont);
         distanceLabel.setLayoutX(1200);
         distanceLabel.setLayoutY(45);
+        distanceLabel.setStyle("-fx-text-fill: #F0F2F0;");
         
         // For Cost :
         Label costLabel = new Label("Cost of gasoline");
         costLabel.setFont(Labelfont);
         costLabel.setLayoutX(1075);
         costLabel.setLayoutY(120);
+        costLabel.setStyle("-fx-text-fill: #F0F2F0;");
+
+        
         
         // For No_Simulations :
         Label No_SimulationLabel = new Label("Number of Simulations");
         No_SimulationLabel.setFont(Labelfont);
         No_SimulationLabel.setLayoutX(1190);
         No_SimulationLabel.setLayoutY(120);
+        No_SimulationLabel.setStyle("-fx-text-fill: #F0F2F0;");
       
 
       
@@ -1077,7 +1084,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Font CounterLabelfont = new Font(" Times New Roman",15);
         MainGUISimulation .CounterTimeLabel = new Label("00:00:00");
         CounterTimeLabel.setFont(CounterLabelfont);
-        CounterTimeLabel.setTextFill(Color.WHITE);
+        CounterTimeLabel.setTextFill(Color.web("#000C40"));
         CounterTimeLabel.setLayoutX(1090);
         CounterTimeLabel.setLayoutY(78);
         
@@ -1085,7 +1092,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         
         MainGUISimulation .CounterDistanceLabel = new Label("00.00 Km");
         CounterDistanceLabel.setFont(CounterLabelfont);
-        CounterDistanceLabel.setTextFill(Color.WHITE);
+        CounterDistanceLabel.setTextFill(Color.web("#000C40"));        
         CounterDistanceLabel.setLayoutX(1200);
         CounterDistanceLabel.setLayoutY(78);
         
@@ -1093,7 +1100,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         
         MainGUISimulation.CounterCostLabel = new Label("$ 00,00");
         CounterCostLabel.setFont(CounterLabelfont);
-        CounterCostLabel.setTextFill(Color.WHITE);
+        CounterCostLabel.setTextFill(Color.web("#000C40"));
         CounterCostLabel.setLayoutX(1095);
         CounterCostLabel.setLayoutY(150);
         
@@ -1101,7 +1108,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         
         MainGUISimulation .CounterNo_SimulationLabel = new Label("0");
         CounterNo_SimulationLabel.setFont(CounterLabelfont);
-        CounterNo_SimulationLabel.setTextFill(Color.WHITE);
+        CounterNo_SimulationLabel.setTextFill(Color.web("#000C40"));
         CounterNo_SimulationLabel.setLayoutX(1225);
         CounterNo_SimulationLabel.setLayoutY(150);
 
@@ -1127,8 +1134,7 @@ iconView.setFitWidth(30);
 iconView.setFitHeight(15);
 
 Start_button.setGraphic(iconView);
-
-
+Start_button.setStyle( "-fx-background-color: #F0F2F0; " );
 Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
@@ -1156,6 +1162,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         iconView2.setFitWidth(30);  
         iconView2.setFitHeight(15);
         Pause_button.setGraphic(iconView2);
+        Pause_button.setStyle( "-fx-background-color: #F0F2F0; " );
 
         Pause_button.setContentDisplay(ContentDisplay.CENTER);
                 
@@ -1176,8 +1183,9 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         iconView3.setFitWidth(30);  
         iconView3.setFitHeight(15); 
         End_button.setGraphic(iconView3);
+        End_button.setStyle( "-fx-background-color: #F0F2F0; " );
         End_button.setContentDisplay(ContentDisplay.CENTER);
-
+        
         End_button.setOnAction(e -> {endSimulation();});
 
         Button Back_button = new Button();
@@ -1189,6 +1197,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         iconView4.setFitWidth(30);  
         iconView4.setFitHeight(15); 
         Back_button.setGraphic(iconView4);
+        Back_button.setStyle( "-fx-background-color: #F0F2F0; " );
         Back_button.setContentDisplay(ContentDisplay.CENTER);
         
 
@@ -1375,8 +1384,8 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
 } 
 
 public  void initializeOriginalColors() {
-    originalBuildingColors.put(Building127, Color.SALMON);
-    originalBuildingColors.put(Building103, Color.SALMON);
+    originalBuildingColors.put(Building127, Color.web("#C0392B"));
+    originalBuildingColors.put(Building103, Color.web("#C0392B"));
     originalBuildingColors.put(Building70, Color.BLUE);
     originalBuildingColors.put(Building44, Color.GREY);
     originalBuildingColors.put(Building13, Color.GREY);
@@ -1384,17 +1393,17 @@ public  void initializeOriginalColors() {
     originalBuildingColors.put(Building7, Color.GREY);
     originalBuildingColors.put(Building52, Color.GREY);
     originalBuildingColors.put(Building12, Color.GREY);
-    originalBuildingColors.put(Building101, Color.SALMON);
+    originalBuildingColors.put(Building101, Color.web("#C0392B"));
     originalBuildingColors.put(Building79, Color.BLUE);
     originalBuildingColors.put(Building74, Color.BLUE);
     originalBuildingColors.put(Building46, Color.GREY);
     originalBuildingColors.put(Building42, Color.GREY);
-    originalBuildingColors.put(Building97, Color.SALMON);
+    originalBuildingColors.put(Building97, Color.web("#C0392B"));
     originalBuildingColors.put(Building67, Color.BLUE);
     originalBuildingColors.put(Building80, Color.BLUE);
-    originalBuildingColors.put(Building116, Color.SALMON);
-    originalBuildingColors.put(Building124, Color.SALMON);
-    originalBuildingColors.put(Building133, Color.SALMON);
+    originalBuildingColors.put(Building116, Color.web("#C0392B"));
+    originalBuildingColors.put(Building124, Color.web("#C0392B"));
+    originalBuildingColors.put(Building133, Color.web("#C0392B"));
 }
 public  void resetChosenBuildingColors() {
     initializeOriginalColors();
