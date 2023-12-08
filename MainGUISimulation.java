@@ -1418,6 +1418,8 @@ public static void openPhase2() {
     Stage newStage = new Stage();
     MainGUISimulation phase2 = new MainGUISimulation();
     phase2.start(newStage);
+
+    
 }
 }
     

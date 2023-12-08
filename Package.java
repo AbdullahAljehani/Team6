@@ -1,6 +1,7 @@
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Package  {
+public abstract class Package implements Cloneable {
     private Customer customer1;
     public boolean isDelivered;
     private int packageId;
@@ -15,7 +16,12 @@ public abstract class Package  {
         this.delay=delay;
         
     }
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
+    // Abstract method for creating a copy with a new path
+    public abstract Package copyWithNewPath(List<Intersection> newPath);
     public abstract void typeOfPackage();
 
     public int getPackageId() {
@@ -29,8 +35,11 @@ public abstract class Package  {
     public List<Intersection > getPath() {
         return path;
     }
-   
+   public void setPath(List<Intersection> path){
+    this.path = path;
+   }
 
+    }
 
 
     
@@ -38,4 +47,4 @@ public abstract class Package  {
 
    
     
-}
+
