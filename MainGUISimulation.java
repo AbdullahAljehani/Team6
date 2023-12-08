@@ -68,7 +68,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 
             StackPane root = new StackPane();
             root.setStyle(
-            "-fx-background: linear-gradient(to bottom, #000C40, #F0F2F0);" +
+            "-fx-background-color: linear-gradient(to bottom, #000C40, #F0F2F0);" +
             "-fx-background-size: cover;"
         );
 
@@ -80,7 +80,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             car.setFill(Color.RED);
             carRoutesGroup.getChildren().add(car);
 
-            Scene scene = new Scene(root , 1400, 700,Color.WHITE);
+            Scene scene = new Scene(root , 1400, 700);
             Pane AllGroups = new Pane();
             buildings(AllGroups);
             streets(AllGroups);
