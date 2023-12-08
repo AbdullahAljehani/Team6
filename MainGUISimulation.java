@@ -11,7 +11,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.*;
-import javafx.scene.shape.StrokeType;
 import javafx.scene.layout.Pane;
 import javafx.animation.Animation;
 import javafx.application.Application;

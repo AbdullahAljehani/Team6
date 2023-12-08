@@ -532,6 +532,37 @@ public class MainProgram {
 
       return packages;
     }
+    public static List<Package> createPackagesPhase2() {
+      List<Package> packages = new ArrayList<>();
+      List<Intersection > initialparts1 = Arrays.asList(EndOfStreetA,intersection9_1,destinationBuilding124);
+      List<Intersection > initialparts2 = Arrays.asList(destinationBuilding124,destinationBuilding127);
+      List<Intersection > initialparts3 = Arrays.asList(destinationBuilding127,intersection9_2,intersection8_2,intersection7_2,destinationBuilding97);
+      List<Intersection > initialparts4 = Arrays.asList(destinationBuilding97,intersection7_2,destinationBuilding101);
+      List<Intersection > initialparts5 = Arrays.asList(destinationBuilding101,intersection7_3,destinationBuilding103);
+      List<Intersection > initialparts6 = Arrays.asList(destinationBuilding103,intersection7_3,intersection8_3,destinationBuilding116);
+      List<Intersection > initialparts7 = Arrays.asList(destinationBuilding116,intersection8_3,intersection9_3,destinationBuilding133);
+
+      package19 = new Normal(customer19, 19, initialparts1,2);
+      package1 = new Offical_paper(customer1, 1, initialparts2,5);
+      package15 = new Normal(customer15, 15, initialparts3,2);
+      package10 = new Normal(customer10, 10, initialparts4,2);
+      package2 = new Normal(customer2, 2, initialparts5,2);
+      package18 = new Offical_paper(customer18, 18, initialparts6,5);
+      package20 = new Offical_paper(customer20, 20, initialparts7,5);
+
+
+      packages.add(package19);
+      packages.add(package1);
+      packages.add(package15);
+      packages.add(package10);
+      packages.add(package2);
+      packages.add(package18);
+      packages.add(package20);
+
+
+      return packages;
+
+  }
 
     public static List<List<Intersection >> PackagesPaths () {
         List<List<Intersection >> Packages = new ArrayList<>();
