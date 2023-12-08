@@ -71,6 +71,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             "-fx-background-color: linear-gradient(to bottom, #000C40, #F0F2F0);" +
             "-fx-background-size: cover;"
         );
+        
 
             // Create a group for car routes
             Group carRoutesGroup = new Group();
@@ -1413,6 +1414,11 @@ public  void resetChosenBuildingColors() {
             building.setFill(originalColor);
         }
     }
+}
+public static void openPhase2() {
+    Stage newStage = new Stage();
+    MainGUISimulation phase2 = new MainGUISimulation();
+    phase2.start(newStage);
 }
 }
     

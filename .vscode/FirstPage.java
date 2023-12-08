@@ -10,7 +10,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class FirstPage extends Application {
-    
+    public static boolean isPhase1Selected = false;
+    public static boolean isPhase2Selected = false;
    
 
     @Override
@@ -31,8 +32,18 @@ titleLabel.setAlignment(Pos.CENTER);
         Button phase1Button = new Button("Phase 1");     
         Button phase2Button = new Button("Phase 2");
         phase1Button.setOnAction(e -> {
+            isPhase1Selected = true;
+            
             openSimulationPage();
             primaryStage.close();
+
+        });
+        phase2Button.setOnAction(e -> {
+            isPhase2Selected = true;
+            
+            openSimulationPage();
+            primaryStage.close();
+
         });
         // Make buttons bigger
         phase1Button.setStyle(
@@ -102,5 +113,8 @@ phase2Button.setStyle(
         Stage stage = new Stage(); // Create a new stage
         SimulationPage.start(stage); // Call the start method of FirstPage, passing the new stage
     }
+
+    
+   
    
 }

@@ -214,75 +214,65 @@ public void moveDriver(Path path, Runnable onFinish) {
   
 
 public void deliverPackage(int currentX, int currentY) {
+    boolean deliveredPackageFound = false;
     for (Package aPackage : getPackages()) {
         if (!aPackage.isDelivered) {
             Building destinationBuilding = aPackage.getCustomer().getBuilding();
-            
-            
             if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
-                
+                aPackage.isDelivered = true;
+                deliveredPackageFound = true;
+
                 for (Rectangle chosenBuilding : MainGUISimulation.ChosenBuilding) {
                     if (chosenBuilding.equals(destinationBuilding.getGuiElement())) {
                         destinationBuilding.getGuiElement().setFill(Color.GREEN);
                     }
                 }
-              
+
                 int packageDelay = aPackage.delay;
                 System.out.println("Package " + aPackage.getPackageId() + " delivered at building " + destinationBuilding.getBuildingNumber());
-                
+
                 try {
-                    Thread.sleep(packageDelay*500);
+                    Thread.sleep(packageDelay * 500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                
-                aPackage.isDelivered = true;
-                System.out.println("Package " + aPackage.getPackageId() + " isDelivered updated to: " + aPackage.isDelivered);
 
                 if (hasNextPackage(aPackage) && aPackage.isDelivered) {
                     moveToNextPackage();
                 }
-            } else {
-                System.out.println("Package " + aPackage.getPackageId() + " is already delivered.");
             }
         }
     }
 
-    System.out.println("No more packages assigned to the driver at the current position.");
-}
-
-    
-    
-   
-   
-    
-    public void moveToNextPackage() {
-        for (int i = 0; i < getPackages().size(); i++) {
-            Package aPackage = getPackages().get(i);
-    
-            if (aPackage.isDelivered) {
-                int nextPackageIndex = i + 1;
-    
-                if (nextPackageIndex < getPackages().size()) {
-                    Package nextPackage = getPackages().get(nextPackageIndex);
-    
-                    if (!nextPackage.isDelivered) { 
-                        System.out.println("Driver assigned to the next package with ID: " + nextPackage.getPackageId());
-                        System.out.println("Package " + aPackage.getPackageId() + " marked as delivered");
-                        System.out.println("Package " + nextPackage.getPackageId() + " marked as not delivered");
-                    } else {
-                        System.out.println("Package " + nextPackage.getPackageId() + " is already marked as delivered");
-                    }
-                } else {
-                    System.out.println("No more packages assigned to the driver at the current position.");
-                }
-    
-                return;
-            }
-        }
-    
+    if (!deliveredPackageFound) {
         System.out.println("No more packages assigned to the driver at the current position.");
     }
+}
+
+public void moveToNextPackage() {
+    boolean nextPackageFound = false;
+    for (int i = 0; i < getPackages().size(); i++) {
+        Package currentPackage = getPackages().get(i);
+        if (currentPackage.isDelivered) {
+            for (int j = i + 1; j < getPackages().size(); j++) {
+                Package nextPackage = getPackages().get(j);
+                if (!nextPackage.isDelivered) {
+                    System.out.println("Driver assigned to the next package with ID: " + nextPackage.getPackageId());
+                    nextPackageFound = true;
+                    break;
+                }
+            }
+
+            if (nextPackageFound) {
+                break;
+            }
+        }
+    }
+
+    if (!nextPackageFound) {
+        System.out.println("No more packages assigned to the driver at the current position.");
+    }
+}
     private boolean hasNextPackage(Package currentPackage) {
         int currentIndex = getPackages().indexOf(currentPackage);
         return currentIndex < getPackages().size() - 1;
