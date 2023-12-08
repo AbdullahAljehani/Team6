@@ -22,7 +22,7 @@ public class FirstPage extends Application {
         Label titleLabel = new Label("Best Route to Deliver Packages");
 titleLabel.setStyle(
     "-fx-font-size: 22px; " +      // Font size
-    "-fx-text-fill: #B3C9D2; " +   // Blue text color
+    "-fx-text-fill: #F0F2F0; " +   // Blue text color
     "-fx-font-weight: bold;"       // Bold font
 );
 titleLabel.setAlignment(Pos.CENTER);
@@ -36,14 +36,14 @@ titleLabel.setAlignment(Pos.CENTER);
         });
         // Make buttons bigger
         phase1Button.setStyle(
-    "-fx-background-color: #0A8E22; " +
+    "-fx-background-color: #000C40; " +
     "-fx-text-fill: white; " +
     "-fx-font-size: 20px; " + // Increase font size
     "-fx-background-radius: 100 100 100 100;" // Set larger background radii (top-left, top-right, bottom-right, bottom-left)
 );
 
 phase2Button.setStyle(
-    "-fx-background-color: #01119B; " +
+    "-fx-background-color: #000C40; " +
     "-fx-text-fill: white; " +
     "-fx-font-size: 20px; " + // Increase font size
     "-fx-background-radius: 100 100 100 100;"
@@ -64,9 +64,10 @@ phase2Button.setStyle(
         BorderPane.setAlignment(titleLabel, Pos.CENTER);
         borderPane.setCenter(gridPane);
 
-        borderPane.setStyle("-fx-background-image: url('BackgroundImage.jpg'); " +
-                            "-fx-background-size: cover; " +
-                            "-fx-background-repeat: no-repeat;");
+        borderPane.setStyle(
+            "-fx-background: linear-gradient(to bottom, #000C40, #F0F2F0);" +
+            "-fx-background-size: cover;"
+        );
 
         // Bind properties for dynamic resizing
         DoubleProperty titleLabelWidth = titleLabel.prefWidthProperty();

@@ -67,6 +67,10 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 
 
             StackPane root = new StackPane();
+            root.setStyle(
+            "-fx-background: linear-gradient(to bottom, #000C40, #F0F2F0);" +
+            "-fx-background-size: cover;"
+        );
 
             // Create a group for car routes
             Group carRoutesGroup = new Group();
@@ -1115,6 +1119,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 Start_button.setPrefSize(60, 20);
 Start_button.setLayoutX(1050);
 Start_button.setLayoutY(15);
+
 
 Image Starticon = new Image(getClass().getResourceAsStream("StartButton.png"));
 ImageView iconView = new ImageView(Starticon);
