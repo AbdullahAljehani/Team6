@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.PathTransition;
+import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Path;
+import javafx.scene.shape.PathElement;
 import javafx.util.Duration;
 
 public class DeliveryDriver {
@@ -192,21 +194,50 @@ public Path generatePath(List<Intersection> subStreetParts) {
 
 public void moveDriver(Path path, Runnable onFinish) {
     if (!path.getElements().isEmpty() && MainGUISimulation.isStartClicked) {
-         pathTransition = new PathTransition();
+        double totalDistance = calculateTotalDistance(path.getElements());
+        
+        pathTransition = new PathTransition();
         pathTransition.setNode(MainGUISimulation.car);
-        pathTransition.setDuration(Duration.seconds(2));
-        pathTransition.setPath(path);
         pathTransition.setCycleCount(1);
+        pathTransition.setDuration(Duration.seconds(totalDistance / 250)); 
+
+        pathTransition.setPath(path);
         pathTransition.setOnFinished(e -> {
-            MainGUISimulation .CounterDistanceLabel.setText(MainGUISimulation .formatDistance(distance));
-            MainGUISimulation .CounterCostLabel.setText(MainGUISimulation .formatGasolineCost(gasolineCost));
+            MainGUISimulation.CounterDistanceLabel.setText(MainGUISimulation.formatDistance(distance));
+            MainGUISimulation.CounterCostLabel.setText(MainGUISimulation.formatGasolineCost(gasolineCost));
             deliverPackage(currentX, currentY);
             onFinish.run();
-
         });
-        
+
         pathTransition.play();
     }
+}
+
+private double calculateTotalDistance(ObservableList<PathElement> elements) {
+    double totalDistance = 0.0;
+
+    if (elements.size() >= 2) {
+        MoveTo moveTo = (MoveTo) elements.get(0);
+        double startX = moveTo.getX();
+        double startY = moveTo.getY();
+
+        for (int i = 1; i < elements.size(); i++) {
+            if (elements.get(i) instanceof LineTo) {
+                LineTo lineTo = (LineTo) elements.get(i);
+                double endX = lineTo.getX();
+                double endY = lineTo.getY();
+
+                double distance = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+                totalDistance += distance;
+
+                startX = endX;
+                startY = endY;
+            }
+        }
+    }
+
+    return totalDistance;
+    
 }
 
 
@@ -257,7 +288,6 @@ public void moveToNextPackage() {
             for (int j = i + 1; j < getPackages().size(); j++) {
                 Package nextPackage = getPackages().get(j);
                 if (!nextPackage.isDelivered) {
-                    System.out.println("Driver assigned to the next package with ID: " + nextPackage.getPackageId());
                     nextPackageFound = true;
                     break;
                 }
