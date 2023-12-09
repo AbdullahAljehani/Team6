@@ -16,12 +16,13 @@ public abstract class Package implements Cloneable {
         this.delay=delay;
         
     }
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Package(Package original, List<Intersection> newPath) {
+        this.customer1 = original.customer1;
+        this.packageId = original.packageId;
+        this.delay = original.delay;
+        this.path = new ArrayList<>(newPath);
     }
-
-    // Abstract method for creating a copy with a new path
-    public abstract Package copyWithNewPath(List<Intersection> newPath);
+   
     public abstract void typeOfPackage();
 
     public int getPackageId() {

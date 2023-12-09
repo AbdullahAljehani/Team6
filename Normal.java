@@ -6,9 +6,10 @@ public class Normal extends Package  {
         super(customer,  packageId,currentParts,delay);
 
     }
-    public Package copyWithNewPath(List<Intersection> newPath) {
-        return new Normal(this.getCustomer(), this.getPackageId(), newPath, this.delay);
+    public Normal(Normal original, List<Intersection> newPath) {
+        super(original, newPath);
     }
+   
     @Override
     public void typeOfPackage() {
         System.out.println("Place the package at the door of the building.");

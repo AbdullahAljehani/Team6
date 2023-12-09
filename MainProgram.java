@@ -200,12 +200,10 @@ public class MainProgram {
   
     public static void main(String[] args) {
     initializeObjects();
-      
-    // driver.setPackages(createPackages());
-     driver.setPackages(clonePackages(createPackages(),createPackagesPhase2()));
-       FirstPage.launch(FirstPage.class, args);
-
-  
+    driver.setPackages(copyPackagesWithPaths(createPackages(), createPackagesPhase2())); 
+    FirstPage.launch(FirstPage.class, args);
+   
+        
     }
 
 
@@ -452,23 +450,7 @@ public class MainProgram {
   
       
     }
-    public static List<Package> clonePackages(List<Package> originalPackages, List<List<Intersection>> newPaths) {
-      List<Package> clonedPackages = new ArrayList<>();
-  
-      for (int i = 0; i < originalPackages.size(); i++) {
-          Package original = originalPackages.get(i);
-          Package cloned = original.clone(); 
-  
-          if (i < newPaths.size()) {
-              cloned.setPath(newPaths.get(i));
-          }
-  
-          clonedPackages.add(cloned);
-      }
-  
-      return clonedPackages;
-  }
-  
+
   public static List<Package> createPackages() {
       // Create packages and initialize them with relevant information
       List<Package> packages = new ArrayList<>();
@@ -578,8 +560,7 @@ public class MainProgram {
       List<List<Intersection>> newPaths = Arrays.asList(
     initialparts11, initialparts21, initialparts31, initialparts41,initialparts51,initialparts61,initialparts71,initialparts33,initialparts44,initialparts66,initialparts77,initialparts88,initialparts99,initialparts111,initialparts122,initialparts133,initialparts144,initialparts166,initialparts177,initialparts55);
       return newPaths;
-  }
-
+    }
     public static List<List<Intersection >> PackagesPaths () {
         List<List<Intersection >> Packages = new ArrayList<>();
         Packages.add(package1.getPath());
@@ -609,7 +590,48 @@ public class MainProgram {
         return Packages;
 
     }
+    public static List<Package> copyPackagesWithPaths(List<Package> originalPackages, List<List<Intersection>> newPaths) {
+      List<Package> copiedPackages = new ArrayList<>();
+  
+      for (int i = 0; i < originalPackages.size(); i++) {
+          Package originalPackage = originalPackages.get(i);
+          List<Intersection> newPath = newPaths.get(i);
+  
+          if (originalPackage instanceof Normal) {
+              // If it's a Normal package, use the copy constructor with the new path
+              Normal originalNormal = (Normal) originalPackage;
+              Normal copiedNormal = new Normal(originalNormal, newPath);
+              copiedPackages.add(copiedNormal);
+  
+              // Print statements to check if the object is cloned correctly
+              System.out.println("Original Normal Package: " + originalNormal);
+              System.out.println("Copied Normal Package: " + copiedNormal);
+  
+              // Print the path and check if it's the same
+              System.out.println("Original Path: " + originalNormal.getPath());
+              System.out.println("Copied Path: " + copiedNormal.getPath());
+          } else if (originalPackage instanceof Offical_paper) {
+              // If it's an Offical_paper package, use the copy constructor with the new path
+              Offical_paper originalOfficialPaper = (Offical_paper) originalPackage;
+              Offical_paper copiedOfficialPaper = new Offical_paper(originalOfficialPaper, newPath);
+              copiedPackages.add(copiedOfficialPaper);
+  
+              // Print statements to check if the object is cloned correctly
+              System.out.println("Original Official Paper Package: " + originalOfficialPaper);
+              System.out.println("Copied Official Paper Package: " + copiedOfficialPaper);
+  
+              // Print the path and check if it's the same
+              System.out.println("Original Path: " + originalOfficialPaper.getPath());
+              System.out.println("Copied Path: " + copiedOfficialPaper.getPath());
+          }
+      }
+  
+      return copiedPackages;
+  }
+  
+  
 }
+
     
 
 
