@@ -195,12 +195,18 @@ public class MainProgram {
     private static Offical_paper package20;
 
     public static DeliveryDriver driver;
+    
+
 
 
   
     public static void main(String[] args) {
     initializeObjects();
-    driver.setPackages(copyPackagesWithPaths(createPackages(), createPackagesPhase2())); 
+    
+    //packages=copyPackagesWithPaths(createPackages(), createPackagesPhase2());
+    
+    
+    driver.setPackages(createpack()); 
     FirstPage.launch(FirstPage.class, args);
    
         
@@ -561,35 +567,15 @@ public class MainProgram {
     initialparts11, initialparts21, initialparts31, initialparts41,initialparts51,initialparts61,initialparts71,initialparts33,initialparts44,initialparts66,initialparts77,initialparts88,initialparts99,initialparts111,initialparts122,initialparts133,initialparts144,initialparts166,initialparts177,initialparts55);
       return newPaths;
     }
-    public static List<List<Intersection >> PackagesPaths () {
-        List<List<Intersection >> Packages = new ArrayList<>();
-        Packages.add(package1.getPath());
-        Packages.add(package2.getPath());
-        Packages.add(package3.getPath());
-        Packages.add(package4.getPath());
+    public static List<List<Intersection>> PackagesPaths(List<Package> packages) {
+      List<List<Intersection>> paths = new ArrayList<>();
 
-         Packages.add(package5.getPath());
-        Packages.add(package6.getPath());
-         Packages.add(package7.getPath());
-         Packages.add(package8.getPath());
-         Packages.add(package9.getPath());
-         Packages.add(package10.getPath());
-         Packages.add(package11.getPath());
-         Packages.add(package12.getPath());
-        Packages.add(package13.getPath());
-         Packages.add(package14.getPath());
+      for (Package aPackage : packages) {
+          paths.add(aPackage.getPath());
+      }
 
-        Packages.add(package15.getPath());
-        Packages.add(package16.getPath());
-        Packages.add(package17.getPath());
-        Packages.add(package18.getPath());
-        Packages.add(package19.getPath());
-        Packages.add(package20.getPath());
-
-
-        return Packages;
-
-    }
+      return paths;
+  }
     public static List<Package> copyPackagesWithPaths(List<Package> originalPackages, List<List<Intersection>> newPaths) {
       List<Package> copiedPackages = new ArrayList<>();
   
@@ -628,8 +614,23 @@ public class MainProgram {
   
       return copiedPackages;
   }
-  
-  
+  public static List<Package> createpack() {
+    List<Package> packages;
+
+    if (FirstPage.isPhase1Selected) {
+        packages = createPackages();
+    } else if (FirstPage.isPhase2Selected) {
+        packages = copyPackagesWithPaths(createPackages(), createPackagesPhase2());
+    } else {
+        // Handle other cases or set default behavior
+        packages = new ArrayList<>(); // Adjust as needed
+    }
+
+    // Set packages in the driver
+    driver.setPackages(packages);
+
+    return packages;
+}
 }
 
     

@@ -1146,7 +1146,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             MainProgram.driver.setDistance(0);
             MainGUISimulation .CounterCostLabel.setText("$ 00,00");
             MainGUISimulation .CounterDistanceLabel.setText("00.00 Km");
-           MainProgram.driver.createPathForPackages(MainProgram.PackagesPaths());
+            MainProgram.driver.createPathForPackages(MainProgram.PackagesPaths(MainProgram.createpack()));
             secondsPassed = 0;
             MainGUISimulation .CounterTimeLabel.setText(formatTime(secondsPassed));
             startSimulation();
@@ -1342,12 +1342,12 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                 MainProgram.driver.pathTransition.stop();
                 MainProgram.driver.pathTransition.setPath(null);
                 MainProgram.driver.pathTransition.setCycleCount(1);
-                double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.PackagesPaths());
+                double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.PackagesPaths(MainProgram.createpack()));
                 CounterDistanceLabel.setText(formatDistance(totalDistance));
     
-                double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths());
+                double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths(MainProgram.createpack()));
                 CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
-                MainProgram.driver.moveCarTo(MainProgram.PackagesPaths());
+                MainProgram.driver.moveCarTo(MainProgram.PackagesPaths(MainProgram.createpack()));
                 CounterTimeLabel.setText(formatTime(7350));
     
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
@@ -1373,7 +1373,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             MainProgram.driver.pathTransition.setCycleCount(1);
             CounterDistanceLabel.setText("00.00 Km");
             CounterCostLabel.setText("$ 00,00");
-            MainProgram.driver.moveCarTo(MainProgram.PackagesPaths());
+            MainProgram.driver.moveCarTo(MainProgram.PackagesPaths(MainProgram.createpack()));
             car.setTranslateX(0);
             car.setTranslateY(0);
 
