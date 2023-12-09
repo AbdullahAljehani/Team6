@@ -1,4 +1,4 @@
 public interface Reachable {
-    int getPhoneNumber();
+    String getPhoneNumber();
 }
  

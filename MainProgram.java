@@ -202,8 +202,7 @@ public class MainProgram {
   
     public static void main(String[] args) {
     initializeObjects();
-         
-    driver.setPackages(createpack()); 
+    driver.setPackages(createpack());
     FirstPage.launch(FirstPage.class, args);
    
         
@@ -446,65 +445,71 @@ public class MainProgram {
         customer19 =new Customer(19, building124);
         customer20 =new Customer(20, building133);
 
-
+        customer1.setPhoneNumber("0547284921");
+        customer4.setPhoneNumber("0582344568");
+        customer6.setPhoneNumber("0562230675");
+        customer9.setPhoneNumber("0582249571");
+        customer11.setPhoneNumber("0529345669");
+        customer13.setPhoneNumber("0552395539");
+        customer16.setPhoneNumber("0561148290");
+        customer18.setPhoneNumber("0592307883");
+        customer20.setPhoneNumber("0528405467");
+        
         driver = new DeliveryDriver();
-
-       
   
-      
     }
 
   public static List<Package> createPackages() {
-      // Create packages and initialize them with relevant information
+      
       List<Package> packages = new ArrayList<>();
-      List<Intersection > initialparts1 = Arrays.asList(EndOfStreetA,intersection9_1,destinationBuilding127);
-      List<Intersection > initialparts2 = Arrays.asList(destinationBuilding127,intersection9_2,intersection9_3,intersection8_3,intersection7_3,destinationBuilding103);
-      List<Intersection > initialparts3 = Arrays.asList(destinationBuilding103,intersection7_3,intersection7_2,intersection7_1,intersection6_1,destinationBuilding70);
-      List<Intersection > initialparts4 = Arrays.asList(destinationBuilding70,intersection6_1,intersection5_1,intersection4_1,destinationBuilding44);
+      List<Intersection > path1P1 = Arrays.asList(EndOfStreetA,intersection9_1,destinationBuilding127);
+      List<Intersection > path2P1 = Arrays.asList(destinationBuilding127,intersection9_2,intersection9_3,intersection8_3,intersection7_3,destinationBuilding103);
+      List<Intersection > path3P1 = Arrays.asList(destinationBuilding103,intersection7_3,intersection7_2,intersection7_1,intersection6_1,destinationBuilding70);
+      List<Intersection > path4P1 = Arrays.asList(destinationBuilding70,intersection6_1,intersection5_1,intersection4_1,destinationBuilding44);
 
-      List<Intersection > initialparts5= Arrays.asList(destinationBuilding44,intersection4_1,intersection3_1,intersection2_1,destinationBuilding13);
-      List<Intersection > initialparts6 = Arrays.asList(destinationBuilding13,intersection2_1,destinationBuilding32);
-      List<Intersection > initialparts7 = Arrays.asList(destinationBuilding32,intersection2_2,intersection2_2 , intersection1_2,destinationBuilding7);
-      List<Intersection > initialparts8 = Arrays.asList(destinationBuilding7,intersection1_2,intersection1_3 , intersection2_3,intersection3_3,destinationBuilding52);
+      List<Intersection > path5P1= Arrays.asList(destinationBuilding44,intersection4_1,intersection3_1,intersection2_1,destinationBuilding13);
+      List<Intersection > path6P1 = Arrays.asList(destinationBuilding13,intersection2_1,destinationBuilding32);
+      List<Intersection > path7P1 = Arrays.asList(destinationBuilding32,intersection2_2,intersection2_2 , intersection1_2,destinationBuilding7);
+      List<Intersection > path8P1 = Arrays.asList(destinationBuilding7,intersection1_2,intersection1_3 , intersection2_3,intersection3_3,destinationBuilding52);
       
-      List<Intersection > initialparts9 = Arrays.asList(destinationBuilding52,intersection3_3,intersection2_3 , intersection1_3,destinationBuilding12);
-      List<Intersection > initialparts10= Arrays.asList(destinationBuilding12,intersection1_3,intersection2_3 , intersection3_3,intersection4_3,intersection5_3,intersection6_3,intersection7_3,destinationBuilding101);
-      List<Intersection > initialparts11= Arrays.asList(destinationBuilding101,intersection7_3,intersection6_3 , destinationBuilding79);
-      List<Intersection > initialparts12= Arrays.asList(destinationBuilding79,intersection6_3,destinationBuilding74 );
+      List<Intersection > path9P1 = Arrays.asList(destinationBuilding52,intersection3_3,intersection2_3 , intersection1_3,destinationBuilding12);
+      List<Intersection > path10P1= Arrays.asList(destinationBuilding12,intersection1_3,intersection2_3 , intersection3_3,intersection4_3,intersection5_3,intersection6_3,intersection7_3,destinationBuilding101);
+      List<Intersection > path11P1= Arrays.asList(destinationBuilding101,intersection7_3,intersection6_3 , destinationBuilding79);
+      List<Intersection > path12P1= Arrays.asList(destinationBuilding79,intersection6_3,destinationBuilding74 );
       
-      List<Intersection > initialparts13= Arrays.asList(destinationBuilding74,intersection6_2,intersection5_2 , intersection4_2,destinationBuilding46);
-      List<Intersection > initialparts14= Arrays.asList(destinationBuilding46,intersection4_2,intersection4_1 , destinationBuilding42);
-      List<Intersection > initialparts15= Arrays.asList(destinationBuilding42,intersection4_1,intersection5_1 , intersection6_1,intersection7_1,destinationBuilding97);
-      List<Intersection > initialparts16= Arrays.asList(destinationBuilding97,intersection7_1,intersection6_1 , destinationBuilding67);
+      List<Intersection > path13P1= Arrays.asList(destinationBuilding74,intersection6_2,intersection5_2 , intersection4_2,destinationBuilding46);
+      List<Intersection > path14P1= Arrays.asList(destinationBuilding46,intersection4_2,intersection4_1 , destinationBuilding42);
+      List<Intersection > path15P1= Arrays.asList(destinationBuilding42,intersection4_1,intersection5_1 , intersection6_1,intersection7_1,destinationBuilding97);
+      List<Intersection > path16P1= Arrays.asList(destinationBuilding97,intersection7_1,intersection6_1 , destinationBuilding67);
       
-      List<Intersection > initialparts17= Arrays.asList(destinationBuilding67, destinationBuilding80);
-      List<Intersection > initialparts18= Arrays.asList(destinationBuilding80,intersection6_1,intersection7_1,intersection8_1,intersection8_2 , destinationBuilding116);
-      List<Intersection > initialparts19= Arrays.asList(destinationBuilding116,intersection8_3,intersection9_3 , intersection9_2,destinationBuilding124);
-      List<Intersection > initialparts20= Arrays.asList(destinationBuilding124,intersection9_2,intersection9_3 , destinationBuilding133);
+      List<Intersection > path17P1= Arrays.asList(destinationBuilding67, destinationBuilding80);
+      List<Intersection > path18P1= Arrays.asList(destinationBuilding80,intersection6_1,intersection7_1,intersection8_1,intersection8_2 , destinationBuilding116);
+      List<Intersection > path19P1= Arrays.asList(destinationBuilding116,intersection8_3,intersection9_3 , intersection9_2,destinationBuilding124);
+      List<Intersection > path20P1= Arrays.asList(destinationBuilding124,intersection9_2,intersection9_3 , destinationBuilding133);
 
 
-      package1 = new Offical_paper(customer1, 1, initialparts1,5);
-      package2 = new Normal(customer2, 2, initialparts2,2);
-      package3= new Normal(customer3, 3, initialparts3,2);
-      package4 = new Offical_paper(customer4, 4, initialparts4,5);
+      package1 = new Offical_paper(customer1, 1, path1P1,5);
+      package2 = new Normal(customer2, 2, path2P1,2);
+      package3= new Normal(customer3, 3, path3P1,2);
+      package4 = new Offical_paper(customer4, 4, path4P1,5);
 
-      package5 = new Normal(customer5, 5, initialparts5,2);
-      package6 = new Offical_paper(customer6, 6, initialparts6,5);
-      package7 = new Normal(customer7, 7, initialparts7,2);
-      package8 = new Normal(customer8, 8, initialparts8,2);
-      package9 = new Offical_paper(customer9, 9, initialparts9,5);
-      package10 = new Normal(customer10, 10, initialparts10,2);
-      package11 = new Offical_paper(customer11, 11, initialparts11,5);
-      package12 = new Normal(customer12, 12, initialparts12,2);
-      package13 = new Offical_paper(customer13, 13, initialparts13,5);
-      package14 = new Normal(customer14, 14, initialparts14,2);
+      package5 = new Normal(customer5, 5, path5P1,2);
+      package6 = new Offical_paper(customer6, 6, path6P1,5);
+      package7 = new Normal(customer7, 7, path7P1,2);
+      package8 = new Normal(customer8, 8, path8P1,2);
+      package9 = new Offical_paper(customer9, 9, path9P1,5);
+      package10 = new Normal(customer10, 10, path10P1,2);
+      package11 = new Offical_paper(customer11, 11, path11P1,5);
+      package12 = new Normal(customer12, 12, path12P1,2);
+      package13 = new Offical_paper(customer13, 13, path13P1,5);
+      package14 = new Normal(customer14, 14, path14P1,2);
       
-      package15 = new Normal(customer15, 15, initialparts15,2);
-      package16 = new Offical_paper(customer16, 16, initialparts16,5);
-      package17 = new Normal(customer17, 17, initialparts17,2);
-      package18 = new Offical_paper(customer18, 18, initialparts18,5);
-      package19 = new Normal(customer19, 19, initialparts19,2);
-      package20 = new Offical_paper(customer20, 20, initialparts20,5);
+      package15 = new Normal(customer15, 15, path15P1,2);
+      package16 = new Offical_paper(customer16, 16, path16P1,5);
+      package17 = new Normal(customer17, 17, path17P1,2);
+      package18 = new Offical_paper(customer18, 18, path18P1,5);
+      package19 = new Normal(customer19, 19, path19P1,2);
+      package20 = new Offical_paper(customer20, 20, path20P1,5);
 
 
 
@@ -535,37 +540,31 @@ public class MainProgram {
 
       return packages;
     }
-    public static List<List<Intersection >>createPackagesPhase2() {
-      List<Intersection > initialpart1 = Arrays.asList(EndOfStreetA,intersection9_1,destinationBuilding124);
-      List<Intersection > initialpart2 = Arrays.asList(destinationBuilding124,destinationBuilding127);
-      List<Intersection > initialpart3 = Arrays.asList(destinationBuilding127,intersection9_2,intersection8_2,intersection7_2,destinationBuilding97);
-      List<Intersection > initialpart4 = Arrays.asList(destinationBuilding97,intersection7_2,destinationBuilding101);
-      List<Intersection > initialpart5 = Arrays.asList(destinationBuilding101,intersection7_3,destinationBuilding103);
-      List<Intersection > initialpart6= Arrays.asList(destinationBuilding103,intersection7_3,intersection8_3,destinationBuilding116);
-      List<Intersection > initialpart7= Arrays.asList(destinationBuilding116,intersection8_3,intersection9_3,destinationBuilding133);
+    public static List<List<Intersection >>createPathPhase2() {
+      List<Intersection > path1P2 = Arrays.asList(EndOfStreetA,intersection9_1,destinationBuilding124);
+      List<Intersection > path2P2 = Arrays.asList(destinationBuilding124,destinationBuilding127);
+      List<Intersection > path3P2 = Arrays.asList(destinationBuilding127,intersection9_2,intersection8_2,intersection7_2,destinationBuilding97);
+      List<Intersection > path4P2 = Arrays.asList(destinationBuilding97,intersection7_2,destinationBuilding101);
+      List<Intersection > path5P2 = Arrays.asList(destinationBuilding101,intersection7_3,destinationBuilding103);
+      List<Intersection > path6P2= Arrays.asList(destinationBuilding103,intersection7_3,intersection8_3,destinationBuilding116);
+      List<Intersection > path7P2= Arrays.asList(destinationBuilding116,intersection8_3,intersection9_3,destinationBuilding133);
 
-  List<Intersection > initialpart8 = Arrays.asList(destinationBuilding133,intersection9_3,intersection8_3,intersection7_3,intersection6_3,destinationBuilding79);
-      List<Intersection > initialpart9 = Arrays.asList(destinationBuilding79,intersection6_3,intersection5_3,destinationBuilding74);
- List<Intersection > initialpart10 = Arrays.asList(destinationBuilding74,intersection5_2,destinationBuilding70);
-      List<Intersection > initialpart11 = Arrays.asList(destinationBuilding70,intersection5_1,intersection6_1 ,destinationBuilding67 );
-      List<Intersection > initialpart12 = Arrays.asList(destinationBuilding67, destinationBuilding80);
+    List<Intersection > path8P2 = Arrays.asList(destinationBuilding133,intersection9_3,intersection8_3,intersection7_3,intersection6_3,destinationBuilding79);
+      List<Intersection > path9P2 = Arrays.asList(destinationBuilding79,intersection6_3,destinationBuilding74);
+    List<Intersection > path10P2 = Arrays.asList(destinationBuilding74,intersection6_2,destinationBuilding70);
+      List<Intersection > path11P2 = Arrays.asList(destinationBuilding70,intersection6_1 ,destinationBuilding67 );
+      List<Intersection > path12P2 = Arrays.asList(destinationBuilding67, destinationBuilding80);
 
-      List<Intersection > initialpart13 = Arrays.asList(destinationBuilding80,intersection6_1,intersection5_1 , intersection4_1,destinationBuilding44);
- List<Intersection > initialpart14= Arrays.asList(destinationBuilding44,intersection4_1,destinationBuilding42);
-      List<Intersection > initialpart15= Arrays.asList(destinationBuilding42,intersection4_1,intersection3_1,destinationBuilding32 );
-      List<Intersection > initialpart16= Arrays.asList(destinationBuilding32,intersection3_2,destinationBuilding46);
-      List<Intersection > initialpart17= Arrays.asList(destinationBuilding46,intersection3_3, destinationBuilding52);
-      List<Intersection > initialpart18= Arrays.asList(destinationBuilding52,intersection3_3, intersection2_3,intersection1_3,destinationBuilding12);
-      
-      List<Intersection > initialpart19= Arrays.asList(destinationBuilding12, intersection1_3 ,intersection1_2,destinationBuilding7);
-      List<Intersection > initialpart20= Arrays.asList(destinationBuilding7,intersection1_1,destinationBuilding13);
-      List<List<Intersection>> newPaths = Arrays.asList(
-        initialpart1, initialpart2, initialpart3, initialpart4, initialpart5, initialpart6,
-        initialpart7, initialpart8, initialpart9, initialpart10, initialpart11, initialpart12,
-        initialpart13, initialpart14, initialpart15, initialpart16, initialpart17, initialpart18,
-        initialpart19, initialpart20
-);
+      List<Intersection > path13P2 = Arrays.asList(destinationBuilding80,intersection6_1,intersection5_1 , intersection4_1,destinationBuilding44);
+    List<Intersection > path14P2= Arrays.asList(destinationBuilding44,intersection4_1, destinationBuilding42);
+      List<Intersection > path15P2= Arrays.asList(destinationBuilding42,intersection4_1,intersection3_1,intersection2_1,destinationBuilding32 );
+      List<Intersection > path16P2= Arrays.asList(destinationBuilding32,intersection2_2,intersection3_2,intersection4_2,destinationBuilding46);
+      List<Intersection > path17P2= Arrays.asList(destinationBuilding46,intersection4_3,intersection3_3, destinationBuilding52);
+      List<Intersection > path18P2= Arrays.asList(destinationBuilding52,intersection3_3, intersection2_3,intersection1_3,destinationBuilding12);
+      List<Intersection > path19P2= Arrays.asList(destinationBuilding12, intersection1_3 ,intersection1_2,destinationBuilding7);
+      List<Intersection > path20P2= Arrays.asList(destinationBuilding7,intersection1_1,intersection2_1,destinationBuilding13);
 
+      List<List<Intersection>> newPaths = Arrays.asList(path1P2, path2P2, path3P2, path4P2, path5P2, path6P2, path7P2, path8P2,path9P2, path10P2, path11P2, path12P2, path13P2, path14P2, path15P2,path16P2, path17P2, path18P2, path19P2, path20P2);
 return newPaths;
 }
     public static List<List<Intersection>> PackagesPaths(List<Package> packages) {
@@ -606,13 +605,13 @@ return newPaths;
     if (FirstPage.isPhase1Selected) {
         packages = createPackages();
     } else if (FirstPage.isPhase2Selected) {
-        packages = copyPackagesWithPaths(createPackages(), createPackagesPhase2());
+        packages = copyPackagesWithPaths(createPackages(), createPathPhase2());
     } else {
-        // Handle other cases or set default behavior
-        packages = new ArrayList<>(); // Adjust as needed
+    
+        packages = new ArrayList<>();
     }
 
-    // Set packages in the driver
+    
     driver.setPackages(packages);
 
     return packages;
