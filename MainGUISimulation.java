@@ -1203,6 +1203,10 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
 
         Back_button.setOnAction(e -> {
             numOfSumuolation = 0;
+            FirstPage.isPhase1Selected=false;
+            FirstPage.isPhase2Selected=false;
+
+
             openFirstPage();
             restSumaltion();
             primaryStage.close();

@@ -202,10 +202,7 @@ public class MainProgram {
   
     public static void main(String[] args) {
     initializeObjects();
-    
-    //packages=copyPackagesWithPaths(createPackages(), createPackagesPhase2());
-    
-    
+         
     driver.setPackages(createpack()); 
     FirstPage.launch(FirstPage.class, args);
    
@@ -539,34 +536,38 @@ public class MainProgram {
       return packages;
     }
     public static List<List<Intersection >>createPackagesPhase2() {
-      List<Intersection > initialparts11 = Arrays.asList(EndOfStreetA,intersection9_1,destinationBuilding124);
-      List<Intersection > initialparts21 = Arrays.asList(destinationBuilding124,destinationBuilding127);
-      List<Intersection > initialparts31 = Arrays.asList(destinationBuilding127,intersection9_2,intersection8_2,intersection7_2,destinationBuilding97);
-      List<Intersection > initialparts41 = Arrays.asList(destinationBuilding97,intersection7_2,destinationBuilding101);
-      List<Intersection > initialparts51 = Arrays.asList(destinationBuilding101,intersection7_3,destinationBuilding103);
-      List<Intersection > initialparts61 = Arrays.asList(destinationBuilding103,intersection7_3,intersection8_3,destinationBuilding116);
-      List<Intersection > initialparts71 = Arrays.asList(destinationBuilding116,intersection8_3,intersection9_3,destinationBuilding133);
+      List<Intersection > initialpart1 = Arrays.asList(EndOfStreetA,intersection9_1,destinationBuilding124);
+      List<Intersection > initialpart2 = Arrays.asList(destinationBuilding124,destinationBuilding127);
+      List<Intersection > initialpart3 = Arrays.asList(destinationBuilding127,intersection9_2,intersection8_2,intersection7_2,destinationBuilding97);
+      List<Intersection > initialpart4 = Arrays.asList(destinationBuilding97,intersection7_2,destinationBuilding101);
+      List<Intersection > initialpart5 = Arrays.asList(destinationBuilding101,intersection7_3,destinationBuilding103);
+      List<Intersection > initialpart6= Arrays.asList(destinationBuilding103,intersection7_3,intersection8_3,destinationBuilding116);
+      List<Intersection > initialpart7= Arrays.asList(destinationBuilding116,intersection8_3,intersection9_3,destinationBuilding133);
 
-  List<Intersection > initialparts33 = Arrays.asList(destinationBuilding103,intersection7_3,intersection7_2,intersection7_1,intersection6_1,destinationBuilding70);
-      List<Intersection > initialparts44 = Arrays.asList(destinationBuilding70,intersection6_1,intersection5_1,intersection4_1,destinationBuilding44);
- List<Intersection > initialparts66 = Arrays.asList(destinationBuilding13,intersection2_1,destinationBuilding32);
-      List<Intersection > initialparts77 = Arrays.asList(destinationBuilding32,intersection2_2,intersection2_2 , intersection1_2,destinationBuilding7);
-      List<Intersection > initialparts88 = Arrays.asList(destinationBuilding7,intersection1_2,intersection1_3 , intersection2_3,intersection3_3,destinationBuilding52);
-      List<Intersection > initialparts99 = Arrays.asList(destinationBuilding52,intersection3_3,intersection2_3 , intersection1_3,destinationBuilding12);
+  List<Intersection > initialpart8 = Arrays.asList(destinationBuilding133,intersection9_3,intersection8_3,intersection7_3,intersection6_3,destinationBuilding79);
+      List<Intersection > initialpart9 = Arrays.asList(destinationBuilding79,intersection6_3,intersection5_3,destinationBuilding74);
+ List<Intersection > initialpart10 = Arrays.asList(destinationBuilding74,intersection5_2,destinationBuilding70);
+      List<Intersection > initialpart11 = Arrays.asList(destinationBuilding70,intersection5_1,intersection6_1 ,destinationBuilding67 );
+      List<Intersection > initialpart12 = Arrays.asList(destinationBuilding67, destinationBuilding80);
 
- List<Intersection > initialparts111= Arrays.asList(destinationBuilding101,intersection7_3,intersection6_3 , destinationBuilding79);
-      List<Intersection > initialparts122= Arrays.asList(destinationBuilding79,intersection6_3,destinationBuilding74 );
+      List<Intersection > initialpart13 = Arrays.asList(destinationBuilding80,intersection6_1,intersection5_1 , intersection4_1,destinationBuilding44);
+ List<Intersection > initialpart14= Arrays.asList(destinationBuilding44,intersection4_1,destinationBuilding42);
+      List<Intersection > initialpart15= Arrays.asList(destinationBuilding42,intersection4_1,intersection3_1,destinationBuilding32 );
+      List<Intersection > initialpart16= Arrays.asList(destinationBuilding32,intersection3_2,destinationBuilding46);
+      List<Intersection > initialpart17= Arrays.asList(destinationBuilding46,intersection3_3, destinationBuilding52);
+      List<Intersection > initialpart18= Arrays.asList(destinationBuilding52,intersection3_3, intersection2_3,intersection1_3,destinationBuilding12);
       
-      List<Intersection > initialparts133= Arrays.asList(destinationBuilding74,intersection6_2,intersection5_2 , intersection4_2,destinationBuilding46);
-      List<Intersection > initialparts144= Arrays.asList(destinationBuilding46,intersection4_2,intersection4_1 , destinationBuilding42);
-      List<Intersection > initialparts166= Arrays.asList(destinationBuilding97,intersection7_1,intersection6_1 , destinationBuilding67);
-      
-      List<Intersection > initialparts177= Arrays.asList(destinationBuilding67, destinationBuilding80);
-      List<Intersection > initialparts55= Arrays.asList(destinationBuilding44,intersection4_1,intersection3_1,intersection2_1,destinationBuilding13);
+      List<Intersection > initialpart19= Arrays.asList(destinationBuilding12, intersection1_3 ,intersection1_2,destinationBuilding7);
+      List<Intersection > initialpart20= Arrays.asList(destinationBuilding7,intersection1_1,destinationBuilding13);
       List<List<Intersection>> newPaths = Arrays.asList(
-    initialparts11, initialparts21, initialparts31, initialparts41,initialparts51,initialparts61,initialparts71,initialparts33,initialparts44,initialparts66,initialparts77,initialparts88,initialparts99,initialparts111,initialparts122,initialparts133,initialparts144,initialparts166,initialparts177,initialparts55);
-      return newPaths;
-    }
+        initialpart1, initialpart2, initialpart3, initialpart4, initialpart5, initialpart6,
+        initialpart7, initialpart8, initialpart9, initialpart10, initialpart11, initialpart12,
+        initialpart13, initialpart14, initialpart15, initialpart16, initialpart17, initialpart18,
+        initialpart19, initialpart20
+);
+
+return newPaths;
+}
     public static List<List<Intersection>> PackagesPaths(List<Package> packages) {
       List<List<Intersection>> paths = new ArrayList<>();
 
@@ -589,26 +590,11 @@ public class MainProgram {
               Normal copiedNormal = new Normal(originalNormal, newPath);
               copiedPackages.add(copiedNormal);
   
-              // Print statements to check if the object is cloned correctly
-              System.out.println("Original Normal Package: " + originalNormal);
-              System.out.println("Copied Normal Package: " + copiedNormal);
-  
-              // Print the path and check if it's the same
-              System.out.println("Original Path: " + originalNormal.getPath());
-              System.out.println("Copied Path: " + copiedNormal.getPath());
           } else if (originalPackage instanceof Offical_paper) {
-              // If it's an Offical_paper package, use the copy constructor with the new path
               Offical_paper originalOfficialPaper = (Offical_paper) originalPackage;
               Offical_paper copiedOfficialPaper = new Offical_paper(originalOfficialPaper, newPath);
               copiedPackages.add(copiedOfficialPaper);
   
-              // Print statements to check if the object is cloned correctly
-              System.out.println("Original Official Paper Package: " + originalOfficialPaper);
-              System.out.println("Copied Official Paper Package: " + copiedOfficialPaper);
-  
-              // Print the path and check if it's the same
-              System.out.println("Original Path: " + originalOfficialPaper.getPath());
-              System.out.println("Copied Path: " + copiedOfficialPaper.getPath());
           }
       }
   
