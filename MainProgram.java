@@ -201,7 +201,7 @@ public class MainProgram {
   
     public static void main(String[] args) {
     initializeObjects();
-    driver.setPackages(createpack());
+    driver.setPackages(initializePackages());
     FirstPage.launch(FirstPage.class, args);
    
     }
@@ -597,7 +597,7 @@ return newPaths;
   
       return copiedPackages;
   }
-  public static List<Package> createpack() {
+  public static List<Package> initializePackages() {
     List<Package> packages;
 
     if (FirstPage.isPhase1Selected) {
