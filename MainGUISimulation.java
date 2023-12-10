@@ -31,6 +31,7 @@ public static Label CounterCostLabel;
 public static Label CounterNo_SimulationLabel ;
 private  Timer timer;
 public  int secondsPassed = 0;
+MainProgram mainprogramInstance = new MainProgram();
 public static  boolean isStartClicked=true;
 public static boolean isPaused = false;
 public static int numOfSumuolation = 0;
@@ -1223,7 +1224,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     
 
     
-    public  void startSimulation() {
+    public void startSimulation() {
         // Cancel the existing timer if it's not null
         if (timer != null) {
             timer.cancel();
@@ -1239,15 +1240,22 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             @Override
             public void run() {
                 if (!isPaused) {
-                    secondsPassed+=10;
+                    secondsPassed += 10;
                     Platform.runLater(() -> {
-                        MainGUISimulation .CounterTimeLabel.setText(formatTime(secondsPassed));
+                        MainGUISimulation.CounterTimeLabel.setText(formatTime(secondsPassed));
                     });
                     if (allDelivered(MainProgram.driver)) {
                         System.out.println("All packages delivered. Simulation completed.");
                         Platform.runLater(() -> {
                             CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                         });
+    
+                        // Call calculateTotalDeliveryTime and update the label
+                        int totalDeliveryTime = mainprogramInstance.calculateTotalDeliveryTime(MainProgram.driver.getPackages());
+                        Platform.runLater(() -> {
+                            CounterTimeLabel.setText(formatTime(totalDeliveryTime));
+                        });
+    
                         timer.cancel();
                     }
                 }
@@ -1256,6 +1264,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     
         timer.schedule(simulationTask, 0, 100);
     }
+    
     private static void resetPackageDeliveryStatus() {
         for (Package aPackage : MainProgram.driver.getPackages()) {
             aPackage.isDelivered = false;
@@ -1352,7 +1361,9 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                 double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths(MainProgram.createpack()));
                 CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
                 MainProgram.driver.moveCarTo(MainProgram.PackagesPaths(MainProgram.createpack()));
-                CounterTimeLabel.setText(formatTime(7350));
+                
+                int totalDeliveryTime = mainprogramInstance.calculateTotalDeliveryTime(MainProgram.driver.getPackages());
+                CounterTimeLabel.setText(formatTime(totalDeliveryTime));
     
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                 isStartClicked = false; 

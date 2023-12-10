@@ -616,6 +616,50 @@ return newPaths;
 
     return packages;
 }
+
+public int calculateTotalDeliveryTime(List<Package> packages) {
+  int totalDeliveryTime = 0;
+  MainGUISimulation mainSimulation = new MainGUISimulation();
+  // Iterating through each package
+  for (Package aPackage : packages) {
+      // Getting the path for the package
+      List<Intersection> path = aPackage.getPath();
+
+      // Calculating the time for each street in the path
+      for (int i = 0; i < path.size() - 1; i++) {
+          Intersection currentIntersection = path.get(i);
+          Intersection nextIntersection = path.get(i + 1);
+
+          // Assuming you have a method getStreetTime(Intersection, Intersection) to get the time for each street
+          int streetTime = getStreetTime(currentIntersection, nextIntersection);
+
+          // Adding the delay for the package
+          streetTime += aPackage.getDelay();
+
+          // Adding the time for the current street to the total
+          totalDeliveryTime += streetTime;
+      }
+  }
+
+  // Adding the simulation time
+  totalDeliveryTime += mainSimulation.secondsPassed;
+
+  return totalDeliveryTime;
+}
+
+public int getStreetTime(Intersection from, Intersection to) {
+  // Use the existing getDistanceTo method to get the distance between intersections
+  double distance = from.getDistanceTo(to);
+
+  // Assuming a constant speed for simplicity
+  int averageSpeed = 70; // in km/h
+
+  // Calculate the time based on average speed
+  double timeInHours = distance / averageSpeed;
+
+  // Convert hours to seconds (you may adjust based on your simulation's time unit)
+  return (int) (timeInHours * 3600);
+}
 }
 
     

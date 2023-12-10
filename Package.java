@@ -40,6 +40,10 @@ public abstract class Package implements Cloneable {
     this.path = path;
    }
 
+   public int getDelay() {
+    return delay;
+   }
+
     }
 
 
