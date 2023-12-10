@@ -189,17 +189,23 @@ public Path generatePath(List<Intersection> subStreetParts) {
 
     return path;
 }
-
-
-
+public int cloool(){
+    double totdis = calculateTotalDistance(MainProgram.PackagesPaths(MainProgram.createpack()));
+    double tottime = 2940 + totdis*1000/35.2;
+    int totint = (int) tottime;
+    return totint;
+}
 public void moveDriver(Path path, Runnable onFinish) {
     if (!path.getElements().isEmpty() && MainGUISimulation.isStartClicked) {
         double totalDistance = calculateTotalDistance(path.getElements());
-        
+        System.out.println("totalDistance "+ totalDistance);
+        double speed = totalDistance/ 250 ; 
+        System.out.println("speed "+ speed);
+
         pathTransition = new PathTransition();
         pathTransition.setNode(MainGUISimulation.car);
         pathTransition.setCycleCount(1);
-        pathTransition.setDuration(Duration.seconds(totalDistance / 250)); 
+        pathTransition.setDuration(Duration.seconds(speed)); 
 
         pathTransition.setPath(path);
         pathTransition.setOnFinished(e -> {
@@ -239,10 +245,8 @@ private double calculateTotalDistance(ObservableList<PathElement> elements) {
     return totalDistance;
     
 }
-
-
     
-  
+
 
 public void deliverPackage(int currentX, int currentY) {
     boolean deliveredPackageFound = false;

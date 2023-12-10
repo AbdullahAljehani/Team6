@@ -12,7 +12,7 @@ public class Offical_paper extends Package  {
     }
     
     @Override
-    public void typeOfPackage() {
+    public void typeOfPackage() {   
         System.out.println("Deliver the package personally to the customer.");
 
     }
