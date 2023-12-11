@@ -33,14 +33,12 @@ titleLabel.setAlignment(Pos.CENTER);
         Button phase2Button = new Button("Phase 2");
         phase1Button.setOnAction(e -> {
             isPhase1Selected = true;
-            
             openSimulationPage();
             primaryStage.close();
 
         });
         phase2Button.setOnAction(e -> {
-            isPhase2Selected = true;
-            
+            isPhase2Selected = true;  
             openSimulationPage();
             primaryStage.close();
 

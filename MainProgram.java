@@ -171,28 +171,28 @@ public class MainProgram {
         
 
 
-    public static Offical_paper package1;
-    public static Normal package2;
-    public static Normal package3;
-    public static Offical_paper package4;
+    public static Package package1;
+    public static Package package2;
+    public static Package package3;
+    public static Package package4;
 
-    private static Normal package5;
-    private static Offical_paper package6;
-    private static Normal package7;
-    private static Normal package8;
-    private static Offical_paper package9;
-    private static Normal package10;
-    private static Offical_paper package11;
-    private static Normal package12;
-    private static Offical_paper package13;
-    private static Normal package14;
+    private static Package package5;
+    private static Package package6;
+    private static Package package7;
+    private static Package package8;
+    private static Package package9;
+    private static Package package10;
+    private static Package package11;
+    private static Package package12;
+    private static Package package13;
+    private static Package package14;
 
-    private static Normal package15;
-    private static Offical_paper package16;
-    private static Normal package17;
-    private static Offical_paper package18;
-    private static Normal package19;
-    private static Offical_paper package20;
+    private static Package package15;
+    private static Package package16;
+    private static Package package17;
+    private static Package package18;
+    private static Package package19;
+    private static Package package20;
 
     public static DeliveryDriver driver;
     
