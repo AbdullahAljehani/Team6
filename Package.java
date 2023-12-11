@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Package implements Cloneable {
+public abstract class Package  {
     private Customer customer1;
     public boolean isDelivered;
     private int packageId;
@@ -16,6 +16,7 @@ public abstract class Package implements Cloneable {
         this.delay=delay;
         
     }
+    // Shallow Copy
     public Package(Package original, List<Intersection> newPath) {
         this.customer1 = original.customer1;
         this.packageId = original.packageId;
@@ -23,7 +24,7 @@ public abstract class Package implements Cloneable {
         this.path = new ArrayList<>(newPath);
     }
    
-    public abstract void typeOfPackage();
+    public abstract String getPackageInformation();
 
     public int getPackageId() {
         return packageId;

@@ -12,18 +12,21 @@ public class Offical_paper extends Package  {
     }
     
     @Override
-    public void typeOfPackage() {   
-        System.out.println("Deliver the package personally to the customer.");
-
-    }
-    public String getPhoneNumber() {
-        return getCustomer().getPhoneNumber();
+    public String getPackageInformation() {
+        return "Package Information:\n" +
+                "Customer ID: " + getCustomer().getID() + "\n" +
+                "Type of Package: " + getTypeOfPackage() + "\n" +
+                "Building Number: " + getCustomer().getBuilding().getBuildingNumber() + "\n" +
+                "Is Delivered: " + isDelivered;
     }
     public void contactCustomer() {
-        String customerPhoneNumber = getPhoneNumber();
-        System.out.println("Contacting customer with phone number: " + customerPhoneNumber);
+            CustomerWithContact customerWithContact = (CustomerWithContact) getCustomer();
+            String customerPhoneNumber = customerWithContact.getPhoneNumber();
+            System.out.println("Contacting customer with phone number: " + customerPhoneNumber);
         
-        this.delay= delay-2;
+            this.delay= delay-2;
     }
-
+    private String getTypeOfPackage() {
+        return "OfficalPaper";
+    }
 }

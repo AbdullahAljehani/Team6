@@ -10,8 +10,15 @@ public class Normal extends Package  {
         super(original, newPath);
     }
    
-    @Override
-    public void typeOfPackage() {
-        System.out.println("Place the package at the door of the building.");
+    public String getPackageInformation() {
+        return "Package Information:\n" +
+                "Customer ID: " + getCustomer().getID() + "\n" +
+                "Type of Package: " + getTypeOfPackage() + "\n" +
+                "Building Number: " + getCustomer().getBuilding().getBuildingNumber() + "\n" +
+                "Is Delivered: " + isDelivered;
+    }
+    
+    private String getTypeOfPackage() {
+        return "Normal";
     }
 }

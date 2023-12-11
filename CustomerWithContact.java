@@ -1,20 +1,19 @@
-/*public class CustomerWithContact extends Customer implements Reachable {
-    private final int customerNumber;
+public class CustomerWithContact extends Customer implements Reachable {
+    private  String customerNumber;
 
-    // Constructor
-    public CustomerWithContact(int ID, Building building1, int customerNumber) {
+    public CustomerWithContact(int ID, Building building1,String customerNumber) {
         super(ID, building1); 
-        this.customerNumber = customerNumber;
+        this. customerNumber= customerNumber;
+        
     }
 
+   
+    
     @Override
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
 
         return customerNumber;
     }
 
-    public int getCustomerNumber() {
-        return customerNumber;
-    }
+    
 }
-*/

@@ -165,6 +165,18 @@ public class MainProgram {
     private static Customer customer18;
     private static Customer customer19;
     private static Customer customer20;
+    
+    private static CustomerWithContact cutomer1Withcontact;
+    private static CustomerWithContact cutomer4Withcontact;
+    private static CustomerWithContact cutomer6Withcontact;
+    private static CustomerWithContact cutomer9Withcontact;
+    private static CustomerWithContact cutomer11Withcontact;
+    private static CustomerWithContact cutomer13Withcontact;
+    private static CustomerWithContact cutomer16Withcontact;
+    private static CustomerWithContact cutomer18Withcontact;
+    private static CustomerWithContact cutomer20Withcontact;
+
+    
 
     
 
@@ -442,16 +454,18 @@ public class MainProgram {
         customer18 =new Customer(18, building116);
         customer19 =new Customer(19, building124);
         customer20 =new Customer(20, building133);
+        
+        cutomer1Withcontact= new CustomerWithContact(1, building127, "0547284921");
+        cutomer4Withcontact= new CustomerWithContact(4, building44, "0582344568");
+        cutomer6Withcontact= new CustomerWithContact(6, building32, "0562230675");
+        cutomer9Withcontact= new CustomerWithContact(9, building12, "0582249571");
+        cutomer11Withcontact= new CustomerWithContact(11, building79, "0529345669");
+        cutomer13Withcontact= new CustomerWithContact(13, building46, "0552395539");
+        cutomer16Withcontact= new CustomerWithContact(16, building67, "0561148290");
+        cutomer18Withcontact= new CustomerWithContact(18, building116, "0592307883");
+        cutomer20Withcontact= new CustomerWithContact(20, building133, "0528405467");
 
-        customer1.setPhoneNumber("0547284921");
-        customer4.setPhoneNumber("0582344568");
-        customer6.setPhoneNumber("0562230675");
-        customer9.setPhoneNumber("0582249571");
-        customer11.setPhoneNumber("0529345669");
-        customer13.setPhoneNumber("0552395539");
-        customer16.setPhoneNumber("0561148290");
-        customer18.setPhoneNumber("0592307883");
-        customer20.setPhoneNumber("0528405467");
+       
         
         driver = new DeliveryDriver();
   
@@ -484,33 +498,43 @@ public class MainProgram {
       List<Intersection > path18P1= Arrays.asList(destinationBuilding80,intersection6_1,intersection7_1,intersection8_1,intersection8_2 , destinationBuilding116);
       List<Intersection > path19P1= Arrays.asList(destinationBuilding116,intersection8_3,intersection9_3 , intersection9_2,destinationBuilding124);
       List<Intersection > path20P1= Arrays.asList(destinationBuilding124,intersection9_2,intersection9_3 , destinationBuilding133);
-
-
-      package1 = new Offical_paper(customer1, 1, path1P1,5);
+      
       package2 = new Normal(customer2, 2, path2P1,2);
       package3= new Normal(customer3, 3, path3P1,2);
-      package4 = new Offical_paper(customer4, 4, path4P1,5);
-
       package5 = new Normal(customer5, 5, path5P1,2);
-      package6 = new Offical_paper(customer6, 6, path6P1,5);
+      package7 = new Normal(customer7, 7, path7P1,2);
       package7 = new Normal(customer7, 7, path7P1,2);
       package8 = new Normal(customer8, 8, path8P1,2);
-      package9 = new Offical_paper(customer9, 9, path9P1,5);
       package10 = new Normal(customer10, 10, path10P1,2);
-      package11 = new Offical_paper(customer11, 11, path11P1,5);
       package12 = new Normal(customer12, 12, path12P1,2);
-      package13 = new Offical_paper(customer13, 13, path13P1,5);
       package14 = new Normal(customer14, 14, path14P1,2);
-      
       package15 = new Normal(customer15, 15, path15P1,2);
-      package16 = new Offical_paper(customer16, 16, path16P1,5);
       package17 = new Normal(customer17, 17, path17P1,2);
-      package18 = new Offical_paper(customer18, 18, path18P1,5);
       package19 = new Normal(customer19, 19, path19P1,2);
+
+      if(FirstPage.isPhase1Selected){
+
+      package1 = new Offical_paper(customer1, 1, path1P1,5);
+      package4 = new Offical_paper(customer4, 4, path4P1,5);
+      package6 = new Offical_paper(customer6, 6, path6P1,5);
+      package9 = new Offical_paper(customer9, 9, path9P1,5);
+      package11 = new Offical_paper(customer11, 11, path11P1,5);
+      package13 = new Offical_paper(customer13, 13, path13P1,5);
+      package16 = new Offical_paper(customer16, 16, path16P1,5);
+      package18 = new Offical_paper(customer18, 18, path18P1,5);
       package20 = new Offical_paper(customer20, 20, path20P1,5);
-
-
-
+}
+     else if(FirstPage.isPhase2Selected){
+      package1 = new Offical_paper(cutomer1Withcontact, 1, path1P1,5);
+      package4 = new Offical_paper(cutomer4Withcontact, 4, path4P1,5);
+      package6 = new Offical_paper(cutomer6Withcontact, 6, path6P1,5);
+      package9 = new Offical_paper(cutomer9Withcontact, 9, path9P1,5);
+      package11 = new Offical_paper(cutomer11Withcontact, 11, path11P1,5);
+      package13 = new Offical_paper(cutomer13Withcontact, 13, path13P1,5);
+      package16 = new Offical_paper(cutomer16Withcontact, 16, path16P1,5);
+      package18 = new Offical_paper(cutomer18Withcontact, 18, path18P1,5);
+      package20 = new Offical_paper(cutomer20Withcontact, 20, path20P1,5);
+}
       packages.add(package1);
       packages.add(package2);
       packages.add(package3);

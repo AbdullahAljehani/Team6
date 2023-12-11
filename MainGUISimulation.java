@@ -5,6 +5,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -15,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.animation.Animation;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
@@ -56,6 +58,7 @@ public static Rectangle Building124 = new Rectangle(350, 605, 35, 35);
 public static Rectangle Building133 = new Rectangle(1010, 605, 35, 35);
 public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Building44,Building13,Building32,Building7,Building52,Building12,Building12,Building101,Building79,Building74,Building46,Building42,Building97,Building67,Building80,Building116,Building124,Building133};
 public static Rectangle car ;
+public StackPane root;
 public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 
 
@@ -65,7 +68,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         primaryStage.setOnCloseRequest(windowEvent -> {Platform.exit();System.exit(0);});
 
 
-            StackPane root = new StackPane();
+             root = new StackPane();
             root.setStyle(
             "-fx-background-color: linear-gradient(to bottom, #000C40, #F0F2F0);" +
             "-fx-background-size: cover;"
@@ -109,6 +112,21 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building1.setArcWidth(20);
         Building1.setFill(Color.GREY);
         
+        Tooltip tooltip = new Tooltip("Building 1\nLocation: (50, 20)\nSize: 35x35");
+        Tooltip.install(Building1, tooltip);
+
+Building1.setOnMouseEntered(event -> {
+    // Show the tooltip when the mouse enters the building
+    tooltip.show(Building1, event.getScreenX(), event.getScreenY()+20 ); 
+});
+
+Building1.setOnMouseExited(event -> {
+    // Hide the tooltip when the mouse exits the building
+    tooltip.hide();
+});
+       
+        
+       
         Rectangle Building2 = new Rectangle(160, 20, 35, 35);
         Building2.setArcHeight(20);
         Building2.setArcWidth(20);
