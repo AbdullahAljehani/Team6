@@ -16,7 +16,6 @@ import javafx.scene.layout.Pane;
 import javafx.animation.Animation;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
@@ -38,35 +37,37 @@ public  int secondsPassed = 0;
 public static  boolean isStartClicked=true;
 public static boolean isPaused = false;
 public static int numOfSumuolation = 0;
-public static Rectangle  Building127 = new Rectangle(550, 605, 35, 35);
-public static Rectangle  Building103 = new Rectangle(890, 475, 35, 35);
+public static Rectangle Building127 = new Rectangle(550, 605, 35, 35);
+public static Rectangle Building103 = new Rectangle(890, 475, 35, 35);
 public static Rectangle Building70 = new Rectangle(370, 345, 35, 35);
 public static Rectangle Building44 = new Rectangle(360, 215, 35, 35);
 public static Rectangle Building13 = new Rectangle(50, 80, 35, 35);
 public static Rectangle Building32 = new Rectangle(490, 150, 35, 35);
 public static Rectangle Building7 = new Rectangle(550, 20, 35, 35);
 public static Rectangle Building52 = new Rectangle(1010, 215, 35, 35);
-public static Rectangle  Building12 = new Rectangle(970, 20, 35, 35);
+public static Rectangle Building12 = new Rectangle(970, 20, 35, 35);
 public static Rectangle Building101 = new Rectangle(750, 475, 35, 35);
-public static Rectangle  Building79 = new Rectangle(1010, 345, 35, 35);
+public static Rectangle Building79 = new Rectangle(1010, 345, 35, 35);
 public static Rectangle Building74 = new Rectangle(690, 345, 35, 35);
 public static Rectangle Building46 = new Rectangle(620, 215, 35, 35);
 public static Rectangle Building42 = new Rectangle(165, 215, 35, 35);
 public static Rectangle Building97 = new Rectangle(460, 475, 35, 35);
 public static Rectangle Building67 = new Rectangle(125, 345, 35, 35);
-public static Rectangle  Building80 = new Rectangle(50, 410, 35, 35);
+public static Rectangle Building80 = new Rectangle(50, 410, 35, 35);
 public static Rectangle Building116 = new Rectangle(800, 540, 35, 35);
 public static Rectangle Building124 = new Rectangle(350, 605, 35, 35);
 public static Rectangle Building133 = new Rectangle(1010, 605, 35, 35);
 public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Building44,Building13,Building32,Building7,Building52,Building12,Building12,Building101,Building79,Building74,Building46,Building42,Building97,Building67,Building80,Building116,Building124,Building133};
 public static Rectangle car ;
 public StackPane root;
+public static int totalTimeP1;
+public static int totalTimeP2;
 public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 
 
 
     public void start(Stage primaryStage) {
-    
+    MainProgram.createPackages();
         primaryStage.setOnCloseRequest(windowEvent -> {Platform.exit();System.exit(0);});
 
 
@@ -89,8 +90,8 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             AllGroups = new Pane();
             buildings(AllGroups);
             streets(AllGroups);
-            Labels(AllGroups);
-            Buttons(AllGroups,primaryStage);
+            Labels(AllGroups,FirstPage.isPhase2Selected);            
+            Buttons(AllGroups,primaryStage); 
             AllGroups.getChildren().addAll(carRoutesGroup);
 
             root.getChildren().add(AllGroups);
@@ -113,20 +114,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building1.setArcHeight(20);
         Building1.setArcWidth(20);
         Building1.setFill(Color.GREY);
-        
-        Tooltip tooltip = new Tooltip("Building 1\nLocation: (50, 20)\nSize: 35x35");
-        Tooltip.install(Building1, tooltip);
-
-Building1.setOnMouseEntered(event -> {
-    // Show the tooltip when the mouse enters the building
-    tooltip.show(Building1, event.getScreenX(), event.getScreenY()+20 ); 
-});
-
-Building1.setOnMouseExited(event -> {
-    // Hide the tooltip when the mouse exits the building
-    tooltip.hide();
-});
-       
+         
         
        
         Rectangle Building2 = new Rectangle(160, 20, 35, 35);
@@ -158,6 +146,20 @@ Building1.setOnMouseExited(event -> {
         Building7.setArcHeight(25);
         Building7.setArcWidth(25);
         Building7.setFill(Color.GREY);
+        Tooltip tooltipBuilding7 = new Tooltip(MainProgram.package7.getPackageInformation());
+        Tooltip.install(Building7, tooltipBuilding7);
+        
+        Building7.setOnMouseEntered(event -> {
+            // Show the tooltip only if the mouse is within the building bounds
+            if (Building7.contains(event.getX(), event.getY())) {
+                tooltipBuilding7.show(Building7, event.getScreenX(), event.getScreenY() + 20);
+            }
+        });
+        
+        Building7.setOnMouseExited(event -> {
+            // Hide the tooltip
+            tooltipBuilding7.hide();
+        });
         
         // Neighbourhood_1 : BLOCK 3
         Rectangle Building8 = new Rectangle(640, 20, 35, 35);
@@ -195,6 +197,20 @@ Building1.setOnMouseExited(event -> {
         Building13.setArcHeight(25);
         Building13.setArcWidth(25);
         Building13.setFill(Color.GREY);
+        Tooltip tooltipBuilding13 = new Tooltip(MainProgram.package5.getPackageInformation());
+        Tooltip.install(Building13, tooltipBuilding13);
+        
+        Building13.setOnMouseEntered(event -> {
+            // Show the tooltip only if the mouse is within the building bounds
+            if (Building13.contains(event.getX(), event.getY())) {
+                tooltipBuilding13.show(Building13, event.getScreenX(), event.getScreenY() + 20);
+            }
+        });
+        
+        Building13.setOnMouseExited(event -> {
+            // Hide the tooltip
+            tooltipBuilding13.hide();
+        });
         
         Rectangle Building14 = new Rectangle(125, 80, 35, 35);
         Building14.setArcHeight(25);
@@ -297,6 +313,20 @@ Building1.setOnMouseExited(event -> {
         Building32.setArcHeight(25);
         Building32.setArcWidth(25);
         Building32.setFill(Color.GREY);
+        Tooltip tooltipBuilding32 = new Tooltip(MainProgram.package6.getPackageInformation());
+        Tooltip.install(Building32, tooltipBuilding32);
+        
+        Building32.setOnMouseEntered(event -> {
+            // Show the tooltip only if the mouse is within the building bounds
+            if (Building32.contains(event.getX(), event.getY())) {
+                tooltipBuilding32.show(Building32, event.getScreenX(), event.getScreenY() + 20);
+            }
+        });
+        
+        Building32.setOnMouseExited(event -> {
+            // Hide the tooltip
+            tooltipBuilding32.hide();
+        });
         
         Rectangle Building33 = new Rectangle(550, 150, 35, 35);
         Building33.setArcHeight(25);
@@ -367,6 +397,20 @@ Building1.setOnMouseExited(event -> {
         Building44.setHeight(35);
         Building44.setWidth(80);
         Building44.setFill(Color.GREY);
+        Tooltip tooltipBuilding44 = new Tooltip(MainProgram.package4.getPackageInformation());
+        Tooltip.install(Building44, tooltipBuilding44);
+        
+        Building44.setOnMouseEntered(event -> {
+            // Show the tooltip only if the mouse is within the building bounds
+            if (Building44.contains(event.getX(), event.getY())) {
+                tooltipBuilding44.show(Building44, event.getScreenX(), event.getScreenY() + 20);
+            }
+        });
+        
+        Building44.setOnMouseExited(event -> {
+            // Hide the tooltip
+            tooltipBuilding44.hide();
+        });
         
         Rectangle Building45 = new Rectangle(495, 215, 35, 35);
         Building45.setArcHeight(25);
@@ -522,6 +566,21 @@ Building1.setOnMouseExited(event -> {
         Building70.setArcHeight(25);
         Building70.setArcWidth(25);
         Building70.setFill(Color.BLUE);
+        
+        Tooltip tooltipBuilding70 = new Tooltip(MainProgram.package3.getPackageInformation());
+        Tooltip.install(Building70, tooltipBuilding70);
+        
+        Building70.setOnMouseEntered(event -> {
+            // Show the tooltip only if the mouse is within the building bounds
+            if (Building70.contains(event.getX(), event.getY())) {
+                tooltipBuilding70.show(Building70, event.getScreenX(), event.getScreenY() + 20);
+            }
+        });
+        
+        Building70.setOnMouseExited(event -> {
+            // Hide the tooltip
+            tooltipBuilding70.hide();
+        });
         
         Rectangle Building71 = new Rectangle(460, 345, 35, 35);
         Building71.setArcHeight(25);
@@ -707,6 +766,20 @@ Building1.setOnMouseExited(event -> {
         Building103.setArcHeight(25);
         Building103.setArcWidth(25);
         Building103.setFill(Color.web("#C0392B"));
+        Tooltip tooltipBuilding103 = new Tooltip(MainProgram.package2.getPackageInformation());
+        Tooltip.install(Building103, tooltipBuilding103);
+        
+        Building103.setOnMouseEntered(event -> {
+            // Show the tooltip only if the mouse is within the building bounds
+            if (Building103.contains(event.getX(), event.getY())) {
+                tooltipBuilding103.show(Building103, event.getScreenX(), event.getScreenY() + 20);
+            }
+        });
+        
+        Building103.setOnMouseExited(event -> {
+            // Hide the tooltip
+            tooltipBuilding103.hide();
+        });
         
         Rectangle Building104 = new Rectangle(960, 475, 35, 35);
         Building104.setArcHeight(25);
@@ -825,6 +898,22 @@ Building1.setOnMouseExited(event -> {
         Building127.setArcHeight(25);
         Building127.setArcWidth(25);
         Building127.setFill(Color.web("#C0392B"));
+        Tooltip tooltipBuilding127 = new Tooltip(MainProgram.package1.getPackageInformation());
+        Tooltip.install(Building1, tooltipBuilding127);
+        
+        Building127.setOnMouseEntered(event -> {
+            // Show the tooltip only if the mouse is within the building bounds
+            if (Building127.contains(event.getX(), event.getY())) {
+                tooltipBuilding127.show(Building127, event.getScreenX(), event.getScreenY() + 20);
+            }
+        });
+        
+        Building127.setOnMouseExited(event -> {
+            // Hide the tooltip
+            tooltipBuilding127.hide();
+        });
+      
+        
         
         // Neighbourhood_3 : BLOCK 11
         Rectangle Building128 = new Rectangle(635, 605, 35, 35);
@@ -1033,7 +1122,7 @@ Building1.setOnMouseExited(event -> {
         
         }
 
-    public void Labels (Pane AllGroups) {
+    public void Labels (Pane AllGroups, Boolean isPhase1Selected) {
         // For Time : 
         Rectangle timerRectangle = new Rectangle(1080,65,80, 40);
         timerRectangle.setStroke(Color.web("#000C40"));
@@ -1096,14 +1185,6 @@ Building1.setOnMouseExited(event -> {
         No_SimulationLabel.setLayoutX(1190);
         No_SimulationLabel.setLayoutY(110);
         No_SimulationLabel.setStyle("-fx-text-fill: #F0F2F0;");
-      
-        Label percent_LabelP2 = new Label("percent_LabelP2");
-        percent_LabelP2.setFont(Labelfont);
-        percent_LabelP2.setLayoutX(1140);
-        percent_LabelP2.setLayoutY(175);
-        percent_LabelP2.setStyle("-fx-text-fill: #F0F2F0;");
-      
-
         
         // Time,distance and cost Counter Labels :
         
@@ -1114,7 +1195,7 @@ Building1.setOnMouseExited(event -> {
         CounterTimeLabel.setFont(CounterLabelfont);
         CounterTimeLabel.setTextFill(Color.web("#000C40"));
         CounterTimeLabel.setLayoutX(1090);
-        CounterTimeLabel.setLayoutY(70);
+        CounterTimeLabel.setLayoutY(75);
         
         // For Distance :
         
@@ -1122,7 +1203,7 @@ Building1.setOnMouseExited(event -> {
         CounterDistanceLabel.setFont(CounterLabelfont);
         CounterDistanceLabel.setTextFill(Color.web("#000C40"));        
         CounterDistanceLabel.setLayoutX(1200);
-        CounterDistanceLabel.setLayoutY(70);
+        CounterDistanceLabel.setLayoutY(75);
         
         // For Cost :
         
@@ -1140,18 +1221,36 @@ Building1.setOnMouseExited(event -> {
         CounterNo_SimulationLabel.setLayoutX(1225);
         CounterNo_SimulationLabel.setLayoutY(140);
 
-        percentLabelP2 = new Label("%0");
+        percentLabelP2 = new Label("00.00%");
         percentLabelP2.setFont(CounterLabelfont);
         percentLabelP2.setTextFill(Color.web("#000C40"));
-        percentLabelP2.setLayoutX(1170);
+        percentLabelP2.setLayoutX(1160);
         percentLabelP2.setLayoutY(205);
 
-         Group labelsGroup = new Group();
-            labelsGroup.getChildren().addAll(timeLabel, distanceLabel,costLabel,No_SimulationLabel,timerRectangle,distanceRectangle,costRectangle,No_SimulationRectangle,xx,percent_LabelP2);
-            Group counterLabelsGroup = new Group();
-                counterLabelsGroup.getChildren().addAll( percentLabelP2,CounterTimeLabel, CounterDistanceLabel,CounterCostLabel,CounterNo_SimulationLabel);
+        Rectangle percentRectangle = new Rectangle(1140,195,80, 40);
+        percentRectangle.setStroke(Color.web("#000C40"));
+        percentRectangle.setStrokeWidth(5);
+        percentRectangle.setFill(Color.web("#F0F2F0"));
 
-        AllGroups.getChildren().addAll(labelsGroup,counterLabelsGroup);
+        Label percent_LabelP2 = new Label("Percent Improvement");
+        percent_LabelP2.setFont(Labelfont);
+        percent_LabelP2.setLayoutX(1120);
+        percent_LabelP2.setLayoutY(175);
+        percent_LabelP2.setStyle("-fx-text-fill: #F0F2F0;");
+
+         Group labelsGroup = new Group();
+            labelsGroup.getChildren().addAll(timeLabel, distanceLabel,costLabel,No_SimulationLabel,timerRectangle,distanceRectangle,costRectangle,No_SimulationRectangle);
+            Group counterLabelsGroup = new Group();
+                counterLabelsGroup.getChildren().addAll( CounterTimeLabel, CounterDistanceLabel,CounterCostLabel,CounterNo_SimulationLabel);
+            Group   percentLabelsGroup = new Group();
+                percentLabelsGroup.getChildren().addAll(percent_LabelP2,percentRectangle,percentLabelP2);
+
+                if (!FirstPage.isPhase2Selected) {
+                                AllGroups.getChildren().addAll(labelsGroup,counterLabelsGroup);
+                }else{
+                            AllGroups.getChildren().addAll(labelsGroup,counterLabelsGroup,percentLabelsGroup);
+
+                }
     }
 
     public void Buttons (Pane AllGroups,Stage primaryStage) {
@@ -1179,6 +1278,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             MainProgram.driver.setDistance(0);
             CounterCostLabel.setText("$ 00,00");
             CounterDistanceLabel.setText("00.00 Km");
+            percentLabelP2.setText("00.00%");
             MainProgram.driver.createPathForPackages(MainProgram.PackagesPaths(MainProgram.initializePackages()));
             secondsPassed = 0;
             CounterTimeLabel.setText(formatTime(secondsPassed));
@@ -1255,7 +1355,37 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     }
     
 
-    
+    public double calculatePercentImprovement() {
+        
+
+        double percentImprovement = 0.0;
+
+        // Ensure totalTimeP1 isn't zero to avoid division by zero
+        if (totalTimeP1 != 0) {
+            percentImprovement = (((double) totalTimeP1 - totalTimeP2) / totalTimeP1) * 100;
+        } else {
+            
+            System.err.println("totalTimeP1 is zero. Cannot calculate percent improvement.");
+        }
+
+        System.out.println(percentImprovement);
+
+        return percentImprovement;
+    }
+
+
+
+    public void calculateTotalTimeForAllPhases(){
+        if (FirstPage.isPhase1Selected) {
+
+                    totalTimeP1 = MainProgram.driver.culclateTotalTime(); // Calculate total time separately
+                   
+                } else if (FirstPage.isPhase2Selected) {
+                    // Similarly, calculate total time separately for phase 2
+                    totalTimeP2 = MainProgram.driver.culclateTotalTime(); // Calculate total time separately
+                   
+                } }
+
     public void startSimulation() {
         // Cancel the existing timer if it's not null
         if (timer != null) {
@@ -1278,8 +1408,11 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                     });
                     if (allDelivered(MainProgram.driver)) {
                         System.out.println("All packages delivered. Simulation completed.");
+                        calculateTotalTimeForAllPhases();
                         Platform.runLater(() -> {
                             CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
+                            percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
+
                         });
     
 
@@ -1359,6 +1492,9 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     public static String formatGasolineCost(double cost) {
         return String.format("%s%.2f", "$" , cost ); // Replace "Currency" with your desired currency symbol or abbreviation
     }
+    public static String formatPercent(double percent) {
+        return String.format("%.2f%%", percent); // Formats the double as a percentage with two decimal places
+    }
     
     private void openFirstPage() {
         FirstPage firstPage = new FirstPage(); 
@@ -1390,6 +1526,9 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                 CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
                 MainProgram.driver.moveCarTo(MainProgram.PackagesPaths(MainProgram.initializePackages()));
                 CounterTimeLabel.setText(formatTime(MainProgram.driver.culclateTotalTime()));
+                calculateTotalTimeForAllPhases(); 
+                percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
+
     
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                 isStartClicked = false; 

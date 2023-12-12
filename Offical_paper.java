@@ -16,9 +16,8 @@ public class Offical_paper extends Package  {
         return "Package Information:\n" +
                 "Customer ID: " + getCustomer().getID() + "\n" +
                 "Type of Package: " + getTypeOfPackage() + "\n" +
-                "Building Number: " + getCustomer().getBuilding().getBuildingNumber() + "\n" +
-                "Is Delivered: " + isDelivered;
-    }
+                "Building Number: " + getCustomer().getBuilding().getBuildingNumber() ;
+                }
     public void contactCustomer() {
             CustomerWithContact customerWithContact = (CustomerWithContact) getCustomer();
             String customerPhoneNumber = customerWithContact.getPhoneNumber();

@@ -176,41 +176,31 @@ public class MainProgram {
     private static CustomerWithContact cutomer18Withcontact;
     private static CustomerWithContact cutomer20Withcontact;
 
-    
-
-    
-
-        
-
-
     public static Package package1;
     public static Package package2;
     public static Package package3;
     public static Package package4;
 
-    private static Package package5;
-    private static Package package6;
-    private static Package package7;
-    private static Package package8;
-    private static Package package9;
-    private static Package package10;
-    private static Package package11;
-    private static Package package12;
-    private static Package package13;
-    private static Package package14;
+    public static Package package5;
+    public static Package package6;
+    public static Package package7;
+    public static Package package8;
+    public static Package package9;
+    public static Package package10;
+    public static Package package11;
+    public static Package package12;
+    public static Package package13;
+    public static Package package14;
 
-    private static Package package15;
-    private static Package package16;
-    private static Package package17;
-    private static Package package18;
-    private static Package package19;
-    private static Package package20;
-
-    public static DeliveryDriver driver;
+    public static Package package15;
+    public static Package package16;
+    public static Package package17;
+    public static Package package18;
+    public static Package package19;
+    public static Package package20;
     
+    public static DeliveryDriver driver;
 
-
-  
     public static void main(String[] args) {
     initializeObjects();
     driver.setPackages(initializePackages());
@@ -514,7 +504,7 @@ public class MainProgram {
       package19 = new Normal(customer19, 19, path19P1,2);
 
       if(FirstPage.isPhase1Selected){
-
+      
       package1 = new Offical_paper(customer1, 1, path1P1,5);
       package4 = new Offical_paper(customer4, 4, path4P1,5);
       package6 = new Offical_paper(customer6, 6, path6P1,5);
@@ -524,6 +514,7 @@ public class MainProgram {
       package16 = new Offical_paper(customer16, 16, path16P1,5);
       package18 = new Offical_paper(customer18, 18, path18P1,5);
       package20 = new Offical_paper(customer20, 20, path20P1,5);
+      
 }
      else if(FirstPage.isPhase2Selected){
       package1 = new Offical_paper(cutomer1Withcontact, 1, path1P1,5);
