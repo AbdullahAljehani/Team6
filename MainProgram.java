@@ -201,14 +201,7 @@ public class MainProgram {
     
     public static DeliveryDriver driver;
 
-    public static void main(String[] args) {
-    initializeObjects();
-    driver.setPackages(initializePackages());
-    FirstPage.launch(FirstPage.class, args);
-   
-    }
-
-
+    
     public static void initializeObjects() {
       
         streetA = new Substreet('A', 10.0, 80);
@@ -416,11 +409,11 @@ public class MainProgram {
         building42 = new Building(42,destinationBuilding42,MainGUISimulation.Building42);     
 
         building97 = new Building(97, destinationBuilding97,MainGUISimulation.Building97);
-        building67 = new Building(97, destinationBuilding67,MainGUISimulation.Building67);
-        building80 = new Building(97, destinationBuilding80,MainGUISimulation.Building80);
-        building116 = new Building(97, destinationBuilding116,MainGUISimulation.Building116);
-        building124 = new Building(97, destinationBuilding124,MainGUISimulation.Building124);
-        building133 = new Building(97, destinationBuilding133,MainGUISimulation.Building133);
+        building67 = new Building(67, destinationBuilding67,MainGUISimulation.Building67);
+        building80 = new Building(80, destinationBuilding80,MainGUISimulation.Building80);
+        building116 = new Building(116, destinationBuilding116,MainGUISimulation.Building116);
+        building124 = new Building(124, destinationBuilding124,MainGUISimulation.Building124);
+        building133 = new Building(133, destinationBuilding133,MainGUISimulation.Building133);
 
 
         customer1 = new Customer(1, building127);

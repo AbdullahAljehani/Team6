@@ -14,7 +14,7 @@ public class Normal extends Package  {
         return "Package Information:\n" +
                 "Customer ID: " + getCustomer().getID() + "\n" +
                 "Type of Package: " + getTypeOfPackage() + "\n" +
-                "Building Number: " + getCustomer().getBuilding().getBuildingNumber() ;
+                "Building Number: " + getCustomer().getBuilding().getBuildingNumber() ; 
               }
     
     private String getTypeOfPackage() {

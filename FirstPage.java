@@ -112,7 +112,11 @@ phase2Button.setStyle(
         SimulationPage.start(stage); // Call the start method of FirstPage, passing the new stage
     }
 
-    
+    public static void main(String[] args) {
+        MainProgram.initializeObjects();
+        MainProgram.driver.setPackages(MainProgram.initializePackages());
+        launch(args);
+    }
    
    
 }
