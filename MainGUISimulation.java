@@ -37,27 +37,27 @@ public  int secondsPassed = 0;
 public static  boolean isStartClicked=true;
 public static boolean isPaused = false;
 public static int numOfSumuolation = 0;
-public static Rectangle Building127 = new Rectangle(550, 605, 35, 35);
-public static Rectangle Building103 = new Rectangle(890, 475, 35, 35);
-public static Rectangle Building70 = new Rectangle(370, 345, 35, 35);
-public static Rectangle Building44 = new Rectangle(360, 215, 35, 35);
-public static Rectangle Building13 = new Rectangle(50, 80, 35, 35);
-public static Rectangle Building32 = new Rectangle(490, 150, 35, 35);
-public static Rectangle Building7 = new Rectangle(550, 20, 35, 35);
-public static Rectangle Building52 = new Rectangle(1010, 215, 35, 35);
-public static Rectangle Building12 = new Rectangle(970, 20, 35, 35);
-public static Rectangle Building101 = new Rectangle(750, 475, 35, 35);
-public static Rectangle Building79 = new Rectangle(1010, 345, 35, 35);
-public static Rectangle Building74 = new Rectangle(690, 345, 35, 35);
-public static Rectangle Building46 = new Rectangle(620, 215, 35, 35);
-public static Rectangle Building42 = new Rectangle(165, 215, 35, 35);
-public static Rectangle Building97 = new Rectangle(460, 475, 35, 35);
-public static Rectangle Building67 = new Rectangle(125, 345, 35, 35);
-public static Rectangle Building80 = new Rectangle(50, 410, 35, 35);
-public static Rectangle Building116 = new Rectangle(800, 540, 35, 35);
-public static Rectangle Building124 = new Rectangle(350, 605, 35, 35);
-public static Rectangle Building133 = new Rectangle(1010, 605, 35, 35);
-public static Rectangle ChosenBuilding[]= {Building127,Building103,Building70,Building44,Building13,Building32,Building7,Building52,Building12,Building12,Building101,Building79,Building74,Building46,Building42,Building97,Building67,Building80,Building116,Building124,Building133};
+public static Rectangle Building127  ;
+public static Rectangle Building103  ;
+public static Rectangle Building70  ;
+public static Rectangle Building44 ;
+public static Rectangle Building13 ; 
+public static Rectangle Building32 ; 
+public static Rectangle Building7 ;
+public static Rectangle Building52 ;
+public static Rectangle Building12 ;
+public static Rectangle Building101  ;
+public static Rectangle Building79  ;
+public static Rectangle Building74 ;
+public static Rectangle Building46 ;
+public static Rectangle Building42  ;
+public static Rectangle Building97 ;
+public static Rectangle Building67  ;
+public static Rectangle Building80 ;
+public static Rectangle Building116  ;
+public static Rectangle Building124 ;
+public static Rectangle Building133  ;
+public static Rectangle ChosenBuilding[]= initializeBuildingDelivery();
 public static Rectangle car ;
 public StackPane root;
 public static int totalTimeP1;
@@ -65,11 +65,10 @@ public static int totalTimeP2;
 public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 
 
-
     public void start(Stage primaryStage) {
     MainProgram.createPackages();
         primaryStage.setOnCloseRequest(windowEvent -> {Platform.exit();System.exit(0);});
-
+        
 
             root = new StackPane();
             root.setStyle(
@@ -100,6 +99,36 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             primaryStage.setScene(scene );
             primaryStage.show();
     }
+
+
+ public static Rectangle[] initializeBuildingDelivery() {
+     Building127 = new Rectangle(550, 605, 35, 35);
+     Building103 = new Rectangle(890, 475, 35, 35);
+     Building70 = new Rectangle(370, 345, 35, 35);
+    Building44 = new Rectangle(360, 215, 35, 35);
+     Building13 = new Rectangle(50, 80, 35, 35);
+     Building32 = new Rectangle(490, 150, 35, 35);
+     Building7 = new Rectangle(550, 20, 35, 35);
+     Building52 = new Rectangle(1010, 215, 35, 35);
+     Building12 = new Rectangle(970, 20, 35, 35);
+     Building101 = new Rectangle(750, 475, 35, 35);
+     Building79 = new Rectangle(1010, 345, 35, 35);
+     Building74 = new Rectangle(690, 345, 35, 35);
+     Building46 = new Rectangle(620, 215, 35, 35);
+     Building42 = new Rectangle(165, 215, 35, 35);
+     Building97 = new Rectangle(460, 475, 35, 35);
+     Building67 = new Rectangle(125, 345, 35, 35);
+     Building80 = new Rectangle(50, 410, 35, 35);
+     Building116 = new Rectangle(800, 540, 35, 35);
+     Building124 = new Rectangle(350, 605, 35, 35);
+     Building133 = new Rectangle(1010, 605, 35, 35);
+
+    Rectangle[] chosenBuildings = { Building127, Building103, Building70, Building44, Building13, Building32, Building7,
+            Building52, Building12, Building101, Building79, Building74, Building46, Building42, Building97,
+            Building67, Building80, Building116, Building124,Building133 };
+            
+    return chosenBuildings;
+}
 
     public void buildings(Pane AllGroups){
     
