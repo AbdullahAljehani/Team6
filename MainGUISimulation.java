@@ -31,6 +31,7 @@ private static Label CounterTimeLabel;
 public static Label CounterDistanceLabel;
 public static Label CounterCostLabel;
 public static Label CounterNo_SimulationLabel ;
+public static Label percentLabelP2;
 private static Pane AllGroups;
 private  Timer timer;
 public  int secondsPassed = 0;
@@ -93,16 +94,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             AllGroups.getChildren().addAll(carRoutesGroup);
 
             root.getChildren().add(AllGroups);
-            primaryStage.widthProperty().addListener((obs, oldVal, newVal) -> {
-                // Adjust GUI elements based on the new width
-                updateLayout(primaryStage.getWidth(),primaryStage.getHeight());
-            });
-    
-            primaryStage.heightProperty().addListener((obs, oldVal, newVal) -> {
-                // Adjust GUI elements based on the new height
-                updateLayout(primaryStage.getWidth(),primaryStage.getHeight());
-            });
-        // Set the stage title and show the scene
+
             primaryStage.setTitle("GUI Simulation");
             primaryStage.setScene(scene );
             primaryStage.show();
@@ -110,7 +102,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 
     public void buildings(Pane AllGroups){
     
-    Text Neighbourhood_1 = new Text(1090, 230, "Alhamdaniya");
+    Text Neighbourhood_1 = new Text(1090, 260, "Alhamdaniya");
         Font font = new Font("Times New Roman",25);
         Neighbourhood_1.setFont(font);
         Neighbourhood_1.setFill(Color.GREY);
@@ -422,7 +414,7 @@ Building1.setOnMouseExited(event -> {
         
         // Neighbourhood 2 ( from Building 53 to Building 91 ) with 12 blocks :
         
-        Text Neighbourhood_2 = new Text(1120, 400, "Almanar");
+        Text Neighbourhood_2 = new Text(1090, 450, "Almanar");
         Neighbourhood_2.setFont(font);
         Neighbourhood_2.setFill(Color.BLUE);
         Neighbourhood_2.setFill(Color.BLUE);
@@ -649,7 +641,7 @@ Building1.setOnMouseExited(event -> {
         Building91.setFill(Color.BLUE);
         
         // Neighbourhood 3 ( from Building 92 to Building 133  ) with 12 blocks include Warehouse :
-        Text Neighbourhood_3 = new Text(1120, 550, "AlRabwah");
+        Text Neighbourhood_3 = new Text(1090, 630, "AlRabwah");
         Neighbourhood_3.setFont(font);
         Neighbourhood_3.setFill(Color.web("#C0392B"));
         
@@ -1043,30 +1035,34 @@ Building1.setOnMouseExited(event -> {
 
     public void Labels (Pane AllGroups) {
         // For Time : 
-        Rectangle timerRectangle = new Rectangle(1080,70,80, 40);
+        Rectangle timerRectangle = new Rectangle(1080,65,80, 40);
         timerRectangle.setStroke(Color.web("#000C40"));
         timerRectangle.setStrokeWidth(5);
         timerRectangle.setFill(Color.web("#F0F2F0"));
         
         // For Distance : 
-        Rectangle distanceRectangle = new Rectangle(1190,70,80, 40);
+        Rectangle distanceRectangle = new Rectangle(1190,65,80, 40);
         distanceRectangle.setStroke(Color.web("#000C40"));
         distanceRectangle.setStrokeWidth(5);
         distanceRectangle.setFill(Color.web("#F0F2F0"));
         
         // For Cost : 
-        Rectangle costRectangle = new Rectangle(1080,140,80, 40);
+        Rectangle costRectangle = new Rectangle(1080,130,75, 40);
         costRectangle.setStroke(Color.web("#000C40"));
         costRectangle.setStrokeWidth(5);
         costRectangle.setFill(Color.web("#F0F2F0"));
         
         
         // For No.Simulations : 
-        Rectangle No_SimulationRectangle = new Rectangle(1190,140,80, 40);
+        Rectangle No_SimulationRectangle = new Rectangle(1190,130,80, 40);
         No_SimulationRectangle.setStroke(Color.web("#000C40"));
         No_SimulationRectangle.setStrokeWidth(5);
         No_SimulationRectangle.setFill(Color.web("#F0F2F0"));
         
+        Rectangle xx = new Rectangle(1140,195,80, 40);
+        xx.setStroke(Color.web("#000C40"));
+        xx.setStrokeWidth(5);
+        xx.setFill(Color.web("#F0F2F0"));
         // Time,distance,cost and No.Simulations Labels :
         
         // For Time : 
@@ -1089,7 +1085,7 @@ Building1.setOnMouseExited(event -> {
         Label costLabel = new Label("Cost of gasoline");
         costLabel.setFont(Labelfont);
         costLabel.setLayoutX(1075);
-        costLabel.setLayoutY(120);
+        costLabel.setLayoutY(110);
         costLabel.setStyle("-fx-text-fill: #F0F2F0;");
 
         
@@ -1098,10 +1094,14 @@ Building1.setOnMouseExited(event -> {
         Label No_SimulationLabel = new Label("Number of Simulations");
         No_SimulationLabel.setFont(Labelfont);
         No_SimulationLabel.setLayoutX(1190);
-        No_SimulationLabel.setLayoutY(120);
+        No_SimulationLabel.setLayoutY(110);
         No_SimulationLabel.setStyle("-fx-text-fill: #F0F2F0;");
       
-
+        Label percent_LabelP2 = new Label("percent_LabelP2");
+        percent_LabelP2.setFont(Labelfont);
+        percent_LabelP2.setLayoutX(1140);
+        percent_LabelP2.setLayoutY(175);
+        percent_LabelP2.setStyle("-fx-text-fill: #F0F2F0;");
       
 
         
@@ -1114,15 +1114,15 @@ Building1.setOnMouseExited(event -> {
         CounterTimeLabel.setFont(CounterLabelfont);
         CounterTimeLabel.setTextFill(Color.web("#000C40"));
         CounterTimeLabel.setLayoutX(1090);
-        CounterTimeLabel.setLayoutY(78);
+        CounterTimeLabel.setLayoutY(70);
         
         // For Distance :
         
-        MainGUISimulation .CounterDistanceLabel = new Label("00.00 Km");
+        MainGUISimulation.CounterDistanceLabel = new Label("00.00 Km");
         CounterDistanceLabel.setFont(CounterLabelfont);
         CounterDistanceLabel.setTextFill(Color.web("#000C40"));        
         CounterDistanceLabel.setLayoutX(1200);
-        CounterDistanceLabel.setLayoutY(78);
+        CounterDistanceLabel.setLayoutY(70);
         
         // For Cost :
         
@@ -1130,7 +1130,7 @@ Building1.setOnMouseExited(event -> {
         CounterCostLabel.setFont(CounterLabelfont);
         CounterCostLabel.setTextFill(Color.web("#000C40"));
         CounterCostLabel.setLayoutX(1095);
-        CounterCostLabel.setLayoutY(150);
+        CounterCostLabel.setLayoutY(140);
         
         // For No_Simulations:
         
@@ -1138,13 +1138,18 @@ Building1.setOnMouseExited(event -> {
         CounterNo_SimulationLabel.setFont(CounterLabelfont);
         CounterNo_SimulationLabel.setTextFill(Color.web("#000C40"));
         CounterNo_SimulationLabel.setLayoutX(1225);
-        CounterNo_SimulationLabel.setLayoutY(150);
+        CounterNo_SimulationLabel.setLayoutY(140);
 
+        percentLabelP2 = new Label("%0");
+        percentLabelP2.setFont(CounterLabelfont);
+        percentLabelP2.setTextFill(Color.web("#000C40"));
+        percentLabelP2.setLayoutX(1170);
+        percentLabelP2.setLayoutY(205);
 
          Group labelsGroup = new Group();
-            labelsGroup.getChildren().addAll(timeLabel, distanceLabel,costLabel,No_SimulationLabel,timerRectangle,distanceRectangle,costRectangle,No_SimulationRectangle);
+            labelsGroup.getChildren().addAll(timeLabel, distanceLabel,costLabel,No_SimulationLabel,timerRectangle,distanceRectangle,costRectangle,No_SimulationRectangle,xx,percent_LabelP2);
             Group counterLabelsGroup = new Group();
-                counterLabelsGroup.getChildren().addAll( CounterTimeLabel, CounterDistanceLabel,CounterCostLabel,CounterNo_SimulationLabel);
+                counterLabelsGroup.getChildren().addAll( percentLabelP2,CounterTimeLabel, CounterDistanceLabel,CounterCostLabel,CounterNo_SimulationLabel);
 
         AllGroups.getChildren().addAll(labelsGroup,counterLabelsGroup);
     }
@@ -1172,11 +1177,11 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
 
             MainProgram.driver.setGasolineCost(0);
             MainProgram.driver.setDistance(0);
-            MainGUISimulation .CounterCostLabel.setText("$ 00,00");
-            MainGUISimulation .CounterDistanceLabel.setText("00.00 Km");
+            CounterCostLabel.setText("$ 00,00");
+            CounterDistanceLabel.setText("00.00 Km");
             MainProgram.driver.createPathForPackages(MainProgram.PackagesPaths(MainProgram.initializePackages()));
             secondsPassed = 0;
-            MainGUISimulation .CounterTimeLabel.setText(formatTime(secondsPassed));
+            CounterTimeLabel.setText(formatTime(secondsPassed));
             startSimulation();
             isPaused = false;
         });
@@ -1269,7 +1274,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                 if (!isPaused) {
                     secondsPassed += 10;
                     Platform.runLater(() -> {
-                        MainGUISimulation.CounterTimeLabel.setText(formatTime(secondsPassed));
+                        CounterTimeLabel.setText(formatTime(secondsPassed));
                     });
                     if (allDelivered(MainProgram.driver)) {
                         System.out.println("All packages delivered. Simulation completed.");
@@ -1362,7 +1367,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     }
     
     public void endSimulation() {
-        if (!MainGUISimulation.isStartClicked) {
+        if (!isStartClicked) {
             // Display a message or take appropriate action indicating that the simulation has not started.
             System.out.println("Cannot end simulation before starting.");
             return;
@@ -1388,7 +1393,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                 isStartClicked = false; 
-                for (Rectangle chosenBuilding : MainGUISimulation.ChosenBuilding) {
+                for (Rectangle chosenBuilding : ChosenBuilding) {
                     chosenBuilding.setFill(Color.GREEN);
                 }
             });
@@ -1458,13 +1463,7 @@ public static void openPhase2() {
     
 }
 
-private void updateLayout(double newWidth, double newHeight) {
-    // Adjust your layout based on the new window size
-    double scaleFactor = Math.min(newWidth / 1600.0, newHeight / 800.0);
 
-    AllGroups.setScaleX(scaleFactor);
-    AllGroups.setScaleY(scaleFactor);
-}
 }
     
     

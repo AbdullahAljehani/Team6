@@ -220,6 +220,7 @@ public class MainProgram {
 
 
     public static void initializeObjects() {
+      
         streetA = new Substreet('A', 10.0, 80);
         streetB = new Substreet('B', 10.0, 80);
         streetC = new Substreet('C', 10.0, 80);
