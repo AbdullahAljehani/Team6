@@ -16,101 +16,101 @@ public class MainProgram {
     private static Substreet street8;
     private static Substreet street9;
     
-    public static Intersection  FirstOfStreet1;
-    public static Intersection  EndOfStreet1;
+    private static Intersection  FirstOfStreet1;
+    private static Intersection  EndOfStreet1;
     
-    public static Intersection  FirstOfStreet2;
-    public static Intersection  EndOfStreet2;
+    private static Intersection  FirstOfStreet2;
+    private static Intersection  EndOfStreet2;
     
-    public static Intersection  FirstOfStreet3;
-    public static Intersection  EndOfStreet3;
+    private static Intersection  FirstOfStreet3;
+    private static Intersection  EndOfStreet3;
     
-    public static Intersection  FirstOfStreet4;
-    public static Intersection  EndOfStreet4;
+    private static Intersection  FirstOfStreet4;
+    private static Intersection  EndOfStreet4;
     
-    public static Intersection  FirstOfStreet5;
-    public static Intersection  EndOfStreet5;
+    private static Intersection  FirstOfStreet5;
+    private static Intersection  EndOfStreet5;
     
 
-   public static Intersection  FirstOfStreet6;
-   public static Intersection  EndOfStreet6;
+   private static Intersection  FirstOfStreet6;
+   private static Intersection  EndOfStreet6;
     
-   public static Intersection  FirstOfStreet7;
-   public static Intersection  EndOfStreet7;
+   private static Intersection  FirstOfStreet7;
+   private static Intersection  EndOfStreet7;
     
-   public static Intersection  FirstOfStreet8;
-   public static Intersection  EndOfStreet8;
+   private static Intersection  FirstOfStreet8;
+   private static Intersection  EndOfStreet8;
     
-   public static Intersection  FirstOfStreet9;
-   public static Intersection  EndOfStreet9;
+   private static Intersection  FirstOfStreet9;
+   private static Intersection  EndOfStreet9;
 
-   public static Intersection  FirstOfStreetA;
-   public static Intersection  EndOfStreetA;
+   private static Intersection  FirstOfStreetA;
+   private static Intersection  EndOfStreetA;
 
-   public static Intersection  FirstOfStreetB;
-   public static Intersection  EndOfStreetB;
+   private static Intersection  FirstOfStreetB;
+   private static Intersection  EndOfStreetB;
 
-   public static Intersection  FirstOfStreetC;
-   public static Intersection  EndOfStreetC;
+   private static Intersection  FirstOfStreetC;
+   private static Intersection  EndOfStreetC;
 
-    public static Intersection  intersection1_1;
-    public static Intersection  intersection1_2;
-    public static Intersection  intersection1_3;
+    private static Intersection  intersection1_1;
+    private static Intersection  intersection1_2;
+    private static Intersection  intersection1_3;
     
-    public static Intersection  intersection2_1;
-    public static Intersection  intersection2_2;
-    public static Intersection  intersection2_3;
+    private static Intersection  intersection2_1;
+    private static Intersection  intersection2_2;
+    private static Intersection  intersection2_3;
 
-    public static Intersection  intersection3_1;
-    public static Intersection  intersection3_2;
-    public static Intersection  intersection3_3;
+    private static Intersection  intersection3_1;
+    private static Intersection  intersection3_2;
+    private static Intersection  intersection3_3;
 
-    public static Intersection  intersection4_1;
-    public static Intersection  intersection4_2;
-    public static Intersection  intersection4_3;
+    private static Intersection  intersection4_1;
+    private static Intersection  intersection4_2;
+    private static Intersection  intersection4_3;
 
-    public static Intersection  intersection5_1;
-    public static Intersection  intersection5_2;
-    public static Intersection  intersection5_3;
+    private static Intersection  intersection5_1;
+    private static Intersection  intersection5_2;
+    private static Intersection  intersection5_3;
 
-    public static Intersection  intersection6_1;
-    public static Intersection  intersection6_2;
-    public static Intersection  intersection6_3;
+    private static Intersection  intersection6_1;
+    private static Intersection  intersection6_2;
+    private static Intersection  intersection6_3;
 
-    public static Intersection  intersection7_1;
-    public static Intersection  intersection7_2;
-    public static Intersection  intersection7_3;
+    private static Intersection  intersection7_1;
+    private static Intersection  intersection7_2;
+    private static Intersection  intersection7_3;
 
-    public static Intersection  intersection8_1;
-    public static Intersection  intersection8_2;
-    public static Intersection  intersection8_3;
+    private static Intersection  intersection8_1;
+    private static Intersection  intersection8_2;
+    private static Intersection  intersection8_3;
 
-    public static Intersection  intersection9_1;
-    public static Intersection  intersection9_2;
-    public static Intersection  intersection9_3;
+    private static Intersection  intersection9_1;
+    private static Intersection  intersection9_2;
+    private static Intersection  intersection9_3;
     
-    public static Intersection  destinationBuilding127;
-    public static Intersection  destinationBuilding103;
-    public static Intersection  destinationBuilding70;
-    public static Intersection  destinationBuilding44;
+    private static Intersection  destinationBuilding127;
+    private static Intersection  destinationBuilding103;
+    private static Intersection  destinationBuilding70;
+    private static Intersection  destinationBuilding44;
 
-    public static Intersection  destinationBuilding13;
-    public static Intersection  destinationBuilding32;
-    public static Intersection  destinationBuilding7;
-    public static Intersection  destinationBuilding52;
-    public static Intersection  destinationBuilding12;
-    public static Intersection  destinationBuilding101;
-    public static Intersection  destinationBuilding79;
-    public static Intersection  destinationBuilding74;
-    public static Intersection  destinationBuilding46;
-    public static Intersection  destinationBuilding42;
+    private static Intersection  destinationBuilding13;
+    private static Intersection  destinationBuilding32;
+    private static Intersection  destinationBuilding7;
+    private static Intersection  destinationBuilding52;
+    private static Intersection  destinationBuilding12;
+    private static Intersection  destinationBuilding101;
+    private static Intersection  destinationBuilding79;
+    private static Intersection  destinationBuilding74;
+    private static Intersection  destinationBuilding46;
+    private static Intersection  destinationBuilding42;
 
-    public static Intersection  destinationBuilding97;
-    public static Intersection  destinationBuilding67;
-    public static Intersection  destinationBuilding80;
-    public static Intersection  destinationBuilding116;
-    public static Intersection  destinationBuilding124;
-    public static Intersection  destinationBuilding133;
+    private static Intersection  destinationBuilding97;
+    private static Intersection  destinationBuilding67;
+    private static Intersection  destinationBuilding80;
+    private static Intersection  destinationBuilding116;
+    private static Intersection  destinationBuilding124;
+    private static Intersection  destinationBuilding133;
 
 
 
@@ -121,8 +121,8 @@ public class MainProgram {
 
     private static City city1;
 
-    public static Building building127;
-    public static Building building103;
+    private static Building building127;
+    private static Building building103;
     private static Building building70;
     private static Building building44;
 
@@ -144,12 +144,12 @@ public class MainProgram {
     private static Building building124;
     private static Building building133;
 
-    public static Customer customer1;
-    public static Customer customer2;
-    public static Customer customer3;
+    private static Customer customer1;
+    private static Customer customer2;
+    private static Customer customer3;
     private static Customer customer4;
 
-    public static Customer customer5;
+    private static Customer customer5;
     private static Customer customer6;
     private static Customer customer7;
     private static Customer customer8;
@@ -600,6 +600,7 @@ return newPaths;
               Offical_paper originalOfficialPaper = (Offical_paper) originalPackage;
               Offical_paper copiedOfficialPaper = new Offical_paper(originalOfficialPaper, newPath);
               copiedPackages.add(copiedOfficialPaper);
+              copiedOfficialPaper.contactCustomer();
   
           }
       }

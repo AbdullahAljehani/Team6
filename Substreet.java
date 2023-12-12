@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 
-public class Substreet {
-    private ArrayList<Building> buildingRight;
-    private ArrayList<Building> buildingLeft;
+public class Substreet { 
     private char streetName;
     private double distance;
     private int speedLimit;
@@ -11,8 +9,7 @@ public class Substreet {
     
 
     public Substreet(char streetName, double distance, int speedLimit) {
-        this.buildingRight = new ArrayList<>();
-        this.buildingLeft = new ArrayList<>();
+       
         this.parts = new ArrayList<>();
         this.streetName = streetName;
         this.distance = distance;
@@ -20,13 +17,6 @@ public class Substreet {
         
     }
     
-    public void addBuildingRight(Building building) {
-        buildingRight.add(building);
-    }
-
-    public void addBuildingLeft(Building building) {
-        buildingLeft.add(building);
-    }
 
     public char getStreetName() {
         return this.streetName;
@@ -40,16 +30,6 @@ public class Substreet {
         return this.speedLimit;
     }
 
-   
-
-
-    public ArrayList<Building> getBuildingRight() {
-        return new ArrayList<>(buildingRight);
-    }
-
-    public ArrayList<Building> getBuildingLeft() {
-        return new ArrayList<>(buildingLeft);
-    }
     public void addPart(Intersection  part) {
         parts.add(part);
     }

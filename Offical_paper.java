@@ -13,17 +13,19 @@ public class Offical_paper extends Package  {
     
     @Override
     public String getPackageInformation() {
+        Customer customer = getCustomer();
+        String phoneNumber = (customer instanceof CustomerWithContact) ?
+                ((CustomerWithContact) customer).getPhoneNumber() : "N/A";
+    
         return "Package Information:\n" +
-                "Customer ID: " + getCustomer().getID() + "\n" +
+                "Package ID: " + getPackageId() + "\n" +
+                "Customer ID: " + customer.getID() + "\n" +
                 "Type of Package: " + getTypeOfPackage() + "\n" +
-                "Building Number: " + getCustomer().getBuilding().getBuildingNumber() ;
-                }
+                "Building Number: " + customer.getBuilding().getBuildingNumber() + "\n" +
+                "Customer Phone Number: " + phoneNumber;
+    }
     public void contactCustomer() {
-            CustomerWithContact customerWithContact = (CustomerWithContact) getCustomer();
-            String customerPhoneNumber = customerWithContact.getPhoneNumber();
-            System.out.println("Contacting customer with phone number: " + customerPhoneNumber);
-        
-            this.delay= delay-2;
+        this.delay= delay-2;
     }
     private String getTypeOfPackage() {
         return "OfficalPaper";
