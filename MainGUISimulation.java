@@ -31,6 +31,7 @@ private static Label CounterTimeLabel;
 public static Label CounterDistanceLabel;
 public static Label CounterCostLabel;
 public static Label CounterNo_SimulationLabel ;
+private static Pane AllGroups;
 private  Timer timer;
 public  int secondsPassed = 0;
 public static  boolean isStartClicked=true;
@@ -68,7 +69,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         primaryStage.setOnCloseRequest(windowEvent -> {Platform.exit();System.exit(0);});
 
 
-             root = new StackPane();
+            root = new StackPane();
             root.setStyle(
             "-fx-background-color: linear-gradient(to bottom, #000C40, #F0F2F0);" +
             "-fx-background-size: cover;"
@@ -84,7 +85,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             carRoutesGroup.getChildren().add(car);
 
             Scene scene = new Scene(root , 1400, 700);
-            Pane AllGroups = new Pane();
+            AllGroups = new Pane();
             buildings(AllGroups);
             streets(AllGroups);
             Labels(AllGroups);
@@ -92,6 +93,15 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             AllGroups.getChildren().addAll(carRoutesGroup);
 
             root.getChildren().add(AllGroups);
+            primaryStage.widthProperty().addListener((obs, oldVal, newVal) -> {
+                // Adjust GUI elements based on the new width
+                updateLayout(primaryStage.getWidth(),primaryStage.getHeight());
+            });
+    
+            primaryStage.heightProperty().addListener((obs, oldVal, newVal) -> {
+                // Adjust GUI elements based on the new height
+                updateLayout(primaryStage.getWidth(),primaryStage.getHeight());
+            });
         // Set the stage title and show the scene
             primaryStage.setTitle("GUI Simulation");
             primaryStage.setScene(scene );
@@ -1446,6 +1456,14 @@ public static void openPhase2() {
     phase2.start(newStage);
 
     
+}
+
+private void updateLayout(double newWidth, double newHeight) {
+    // Adjust your layout based on the new window size
+    double scaleFactor = Math.min(newWidth / 1600.0, newHeight / 800.0);
+
+    AllGroups.setScaleX(scaleFactor);
+    AllGroups.setScaleY(scaleFactor);
 }
 }
     
