@@ -184,6 +184,7 @@ for (Package singlePackage : packages) {
     int totalTimrCast = (int) totalTime;
     return totalTimrCast;
 }
+
 public void moveDriver(Path path, Runnable onFinish,int delay) {
     if (!path.getElements().isEmpty() && MainGUISimulation.isStartClicked) {
         double totalDistance = calculateTotalDistance(path.getElements());
@@ -289,7 +290,8 @@ private void moveToNextPackage() {
         System.out.println("No more packages assigned to the driver at the current position.");
     }
 }
-    private boolean hasNextPackage(Package currentPackage) {
+    
+private boolean hasNextPackage(Package currentPackage) {
         int currentIndex = getPackages().indexOf(currentPackage);
         return currentIndex < getPackages().size() - 1;
     }
