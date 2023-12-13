@@ -85,18 +85,29 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             car.setFill(Color.RED);
             carRoutesGroup.getChildren().add(car);
 
-            Scene scene = new Scene(root , 1400, 700);
             AllGroups = new Pane();
             buildings(AllGroups);
             streets(AllGroups);
             Labels(AllGroups,FirstPage.isPhase2Selected);            
             Buttons(AllGroups,primaryStage); 
             AllGroups.getChildren().addAll(carRoutesGroup);
-
+            AllGroups.layoutBoundsProperty().addListener((obs, oldBounds, newBounds) -> {
+                // Set a minimum size based on content (adjust these values as needed)
+                double minimumWidth = newBounds.getWidth();
+                double minimumHeight = newBounds.getHeight();
+        
+                // Set the minimum size
+                AllGroups.setMinWidth(minimumWidth);
+                AllGroups.setMinHeight(minimumHeight);
+            });
+            double baseWidth = 1600.0;
+            double baseHeight = 800.0;
+            AllGroups.scaleXProperty().bind(primaryStage.widthProperty().divide(baseWidth));
+            AllGroups.scaleYProperty().bind(primaryStage.heightProperty().divide(baseHeight));
             root.getChildren().add(AllGroups);
-
+            Scene scene = new Scene(root , 1400, 700);
             primaryStage.setTitle("GUI Simulation");
-            primaryStage.setScene(scene );
+            primaryStage.setScene(scene);
             primaryStage.show();
     }
 
