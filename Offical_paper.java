@@ -2,8 +2,8 @@ import java.util.List;
 
 public class Offical_paper extends Package  {
 
-    public Offical_paper(Customer customer,  int packageId,List<Intersection > currentParts,int delay) {
-        super(customer, packageId,currentParts,delay);
+    public Offical_paper(Customer customer,  int packageId,List<Intersection > path,int delay) {
+        super(customer, packageId,path,delay);
 
     }
     public Offical_paper(Offical_paper original, List<Intersection> newPath) {

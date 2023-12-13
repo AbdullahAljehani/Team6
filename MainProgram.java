@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainProgram {
-    public static Substreet streetA;
+    private static Substreet streetA;
     private static Substreet streetB;
     private static Substreet streetC;
     private static Substreet street1;

@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.PathTransition;
 import javafx.animation.PauseTransition;
@@ -20,11 +19,8 @@ public class DeliveryDriver {
     private double incrementGasoline;
     private double incrementDistance;
     private  double distance;
-    public DeliveryDriver() {
-        this.packages = new ArrayList<>(); 
+    public boolean isTransitionPaused = false;
 
-            
-    }
     public void setGasolineCost(double gasolineCost){
         this.gasolineCost=gasolineCost;
     }
@@ -62,11 +58,17 @@ public double calculateTotalDistance(List<List<Intersection>> packages) {
 
     return totalDistance;
 }
-private int delayByIndex(int index ){
-    packages = getPackages();
-    int delay = packages.get(index).delay;
-    return delay;
+
+private int delayByIndex(int index) {
+    List<Package> packages = getPackages();
+    if (index >= 0 && index < packages.size()) {
+        return packages.get(index).delay;
+    } else {
+        System.out.println("Index is out of bounds.");
+        return 0; 
+    }
 }
+
 
 public double calculateTotalGasolineCost(List<List<Intersection>> packages) {
     double totalGasolineCost = 0.0;
@@ -141,27 +143,27 @@ private void playPathTransitions(List<List<Intersection>> packages, int index) {
 
 }
 
-private Path generatePath(List<Intersection> subStreetParts) {
+private Path generatePath(List<Intersection> intersections) {
     Path path = new Path();
 
-    if (subStreetParts.isEmpty()) {
+    if (intersections.isEmpty()) {
         return path;
     }
 
-    Intersection currentPart = subStreetParts.get(0);
-    path.getElements().add(new MoveTo(currentPart.getX(), currentPart.getY()));
+    Intersection currentintersection = intersections.get(0);
+    path.getElements().add(new MoveTo(currentintersection.getX(), currentintersection.getY()));
     
-    for (int i = 1; i < subStreetParts.size(); i++) {
-        Intersection nextPart = subStreetParts.get(i);
-        path.getElements().add(new LineTo(nextPart.getX(), nextPart.getY()));
+    for (int i = 1; i < intersections.size(); i++) {
+        Intersection nextintersection = intersections.get(i);
+        path.getElements().add(new LineTo(nextintersection.getX(), nextintersection.getY()));
 
-         incrementDistance = currentPart.getDistanceTo(nextPart);
-         incrementGasoline = currentPart.calculateGasolineCost(nextPart);
+         incrementDistance = currentintersection.getDistanceTo(nextintersection);
+         incrementGasoline = currentintersection.calculateGasolineCost(nextintersection);
          gasolineCost += incrementGasoline ;
          distance+=incrementDistance;
-        currentPart = nextPart;
-        currentX = currentPart.getX();
-        currentY = currentPart.getY();
+        currentintersection = nextintersection;
+        currentX = currentintersection.getX();
+        currentY = currentintersection.getY();
         
 
     }
@@ -199,12 +201,15 @@ public void moveDriver(Path path, Runnable onFinish,int delay) {
             MainGUISimulation.CounterDistanceLabel.setText(MainGUISimulation.formatDistance(distance));
             MainGUISimulation.CounterCostLabel.setText(MainGUISimulation.formatGasolineCost(gasolineCost));
             PauseTransition pauseTransition = new PauseTransition(Duration.seconds(delay/2));
-            
+
             pauseTransition.setOnFinished(event -> {
                 deliverPackage(currentX, currentY);
                 onFinish.run();
+                isTransitionPaused = false; 
             });
             pauseTransition.play();
+            isTransitionPaused = true; 
+
         });
 
         pathTransition.play();

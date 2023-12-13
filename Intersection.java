@@ -26,9 +26,9 @@ public class Intersection  {
     
 
   
-    public double getDistanceTo(Intersection  nextPart) {
-        double deltaX = Math.abs(this.getX() - nextPart.getX());
-        double deltaY = Math.abs(this.getY() - nextPart.getY());
+    public double getDistanceTo(Intersection nextIntersection) {
+        double deltaX = Math.abs(this.getX() - nextIntersection.getX());
+        double deltaY = Math.abs(this.getY() - nextIntersection.getY());
     
         double pixelToKmConversionFactor = 0.01; 
         double distanceInKm = (deltaX + deltaY)*pixelToKmConversionFactor;
@@ -36,9 +36,9 @@ public class Intersection  {
         return distanceInKm;
     }
     
-    public double calculateGasolineCost(Intersection  nextPart) {
+    public double calculateGasolineCost(Intersection nextIntersection) {
         double costPerKilometer = 2.5; 
-        return  getDistanceTo(nextPart) * costPerKilometer;
+        return  getDistanceTo(nextIntersection) * costPerKilometer;
     }
 
 
