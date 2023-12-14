@@ -2934,6 +2934,7 @@ Start_button.setStyle( "-fx-background-color: #F0F2F0; " );
 Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
+            if (!MainProgram.driver.isTransitionPaused) {
             resetChosenBuildingColors();
             stopCurrentSimulation();
             isStartClicked = true;
@@ -2948,6 +2949,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             CounterTimeLabel.setText(formatTime(secondsPassed));
             startSimulation();
             isPaused = false;
+            }
         });
                 
         Button Pause_button = new Button();
@@ -2964,11 +2966,13 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         Pause_button.setContentDisplay(ContentDisplay.CENTER);
                 
         Pause_button.setOnAction(e -> {
+            if (!MainProgram.driver.isTransitionPaused) {
+
             if (isPaused) {
                 resumeSimulation();
             } else {
                 pauseSimulation();
-            }
+            }}
         });
         
         Button End_button = new Button();
@@ -2983,8 +2987,12 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         End_button.setStyle( "-fx-background-color: #F0F2F0; " );
         End_button.setContentDisplay(ContentDisplay.CENTER);
         
-        End_button.setOnAction(e -> {endSimulation();});
-
+        End_button.setOnAction(e -> {
+            if (!MainProgram.driver.isTransitionPaused) {
+                endSimulation();
+            }
+        });
+        
         Button Back_button = new Button();
         Back_button.setPrefSize(60, 20);
         Back_button.setLayoutX(1275);
@@ -3064,6 +3072,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                     });
                     if (allDelivered(MainProgram.driver)) {
                         System.out.println("All packages delivered. Simulation completed.");
+                        MainProgram.driver.isTransitionPaused = false;
                         calculateTotalTimeForAllPhases();
                         isStartClicked=false;
                         Platform.runLater(() -> {
@@ -3189,6 +3198,8 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                 isStartClicked = false; 
+                MainProgram.driver.isTransitionPaused = false;
+
                 for (Rectangle chosenBuilding : ChosenBuilding) {
                     chosenBuilding.setFill(Color.GREEN);
                 }

@@ -21,11 +21,11 @@ public class FirstPage extends Application {
 
         // Create label
         Label titleLabel = new Label("Best Route to Deliver Packages");
-titleLabel.setStyle(
-    "-fx-font-size: 22px; " +      // Font size
-    "-fx-text-fill: #F0F2F0; " +   // Blue text color
-    "-fx-font-weight: bold;"       // Bold font
-);
+        titleLabel.setStyle(
+            "-fx-font-size: 22px; " +      // Font size
+            "-fx-text-fill: #F0F2F0; " +   // Blue text color
+            "-fx-font-weight: bold;"       // Bold font
+        );
 titleLabel.setAlignment(Pos.CENTER);
 
         // Create buttons
