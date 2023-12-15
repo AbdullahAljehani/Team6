@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainProgram {
 
@@ -34,7 +36,7 @@ public class MainProgram {
    private static Intersection  EndOfStreet9;
 
    private static Intersection  FirstOfStreetA;
-   private static Intersection  EndOfStreetA;
+   public static Intersection  EndOfStreetA;
 
    private static Intersection  FirstOfStreetB;
    private static Intersection  EndOfStreetB;
@@ -74,14 +76,14 @@ public class MainProgram {
     private static Intersection  intersection8_2;
     private static Intersection  intersection8_3;
 
-    private static Intersection  intersection9_1;
+    public static Intersection  intersection9_1;
     private static Intersection  intersection9_2;
     private static Intersection  intersection9_3;
     
-    private static Intersection  destinationBuilding127;
+    public static Intersection  destinationBuilding127;
     private static Intersection  destinationBuilding103;
     private static Intersection  destinationBuilding70;
-    private static Intersection  destinationBuilding44;
+    public static Intersection  destinationBuilding44;
 
     private static Intersection  destinationBuilding13;
     private static Intersection  destinationBuilding32;
@@ -98,7 +100,7 @@ public class MainProgram {
     private static Intersection  destinationBuilding67;
     private static Intersection  destinationBuilding80;
     private static Intersection  destinationBuilding116;
-    private static Intersection  destinationBuilding124;
+    public static Intersection  destinationBuilding124;
     private static Intersection  destinationBuilding133;
 
 
@@ -187,6 +189,67 @@ public class MainProgram {
     
     public static void initializeObjects() {
      
+
+
+
+
+   
+         building127 = new Building(127,destinationBuilding127,MainGUISimulation.Building127);
+         building103 = new Building(103,destinationBuilding103,MainGUISimulation.Building103);
+         building70 = new Building(70,destinationBuilding70,MainGUISimulation.Building70);
+         building44 = new Building(44,destinationBuilding44,MainGUISimulation.Building44);
+        
+         building13 = new Building(13,destinationBuilding13,MainGUISimulation.Building13);
+        building32 = new Building(32,destinationBuilding32,MainGUISimulation.Building32);
+        building7 = new Building(7,destinationBuilding7,MainGUISimulation.Building7);
+        building52 = new Building(52,destinationBuilding52,MainGUISimulation.Building52);
+        building12 = new Building(12,destinationBuilding12,MainGUISimulation.Building12);
+        building101 = new Building(101,destinationBuilding101,MainGUISimulation.Building101);
+        building79 = new Building(79,destinationBuilding79,MainGUISimulation.Building79);
+        building74 = new Building(74,destinationBuilding74,MainGUISimulation.Building74);
+        building46 = new Building(46,destinationBuilding46,MainGUISimulation.Building46);
+        building42 = new Building(42,destinationBuilding42,MainGUISimulation.Building42);     
+
+        building97 = new Building(97, destinationBuilding97,MainGUISimulation.Building97);
+        building67 = new Building(67, destinationBuilding67,MainGUISimulation.Building67);
+        building80 = new Building(80, destinationBuilding80,MainGUISimulation.Building80);
+        building116 = new Building(116, destinationBuilding116,MainGUISimulation.Building116);
+        building124 = new Building(124, destinationBuilding124,MainGUISimulation.Building124);
+        building133 = new Building(133, destinationBuilding133,MainGUISimulation.Building133);
+
+
+        customer1 = new Customer(1, building127);
+        customer2 = new Customer(2, building103);
+        customer3 = new Customer(3, building70);
+        customer4 = new Customer(4, building44);
+
+        customer5 = new Customer(5, building13);
+        customer6 = new Customer(6, building32);
+        customer7 = new Customer(7, building7);
+        customer8 = new Customer(8, building52);
+        customer9 = new Customer(9, building12);
+        customer10 = new Customer(10, building101);
+        customer11 = new Customer(11, building79);
+        customer12 = new Customer(12, building74);
+        customer13 = new Customer(13, building46);
+        customer14 = new Customer(14, building42);
+
+        customer15 =new Customer(15, building97);
+        customer16 =new Customer(16, building67);
+        customer17 =new Customer(17, building80);
+        customer18 =new Customer(18, building116);
+        customer19 =new Customer(19, building124);
+        customer20 =new Customer(20, building133);
+        
+        cutomer1Withcontact= new CustomerWithContact(1, building127, "0547284921");
+        cutomer4Withcontact= new CustomerWithContact(4, building44, "0582344568");
+        cutomer6Withcontact= new CustomerWithContact(6, building32, "0562230675");
+        cutomer9Withcontact= new CustomerWithContact(9, building12, "0582249571");
+        cutomer11Withcontact= new CustomerWithContact(11, building79, "0529345669");
+        cutomer13Withcontact= new CustomerWithContact(13, building46, "0552395539");
+        cutomer16Withcontact= new CustomerWithContact(16, building67, "0561148290");
+        cutomer18Withcontact= new CustomerWithContact(18, building116, "0592307883");
+        cutomer20Withcontact= new CustomerWithContact(20, building133, "0528405467");
       FirstOfStreet1= new Intersection ( 35, 66);
       intersection1_1= new Intersection ( 330, 66);
       intersection1_2= new Intersection ( 600, 66);
@@ -248,95 +311,46 @@ public class MainProgram {
 
       FirstOfStreetA= new Intersection ( 330, 0);
       EndOfStreetA= new Intersection ( 330, 650);
-
-      destinationBuilding127= new Intersection (568,594);
-      destinationBuilding103= new Intersection (900,461);
-      destinationBuilding70= new Intersection (390,395);
-      destinationBuilding44= new Intersection (400,265);
-      
-      destinationBuilding13=new Intersection (68,130);
-      destinationBuilding32=new Intersection (508,130);
-      destinationBuilding7=new Intersection (568,66);
-      destinationBuilding52=new Intersection (1028,197);
-      destinationBuilding12=new Intersection (1010,66);
-      destinationBuilding101=new Intersection (768,461);
-      destinationBuilding79=new Intersection (1028,395);
-      destinationBuilding74=new Intersection (708,395);
-      destinationBuilding46=new Intersection (638,265);
-      destinationBuilding42=new Intersection (183,265);
-
-      destinationBuilding97=new Intersection (478,461);
-      destinationBuilding67=new Intersection (143,395);
-      destinationBuilding80=new Intersection (68,395);
-      destinationBuilding116=new Intersection (818,527);
-      destinationBuilding124=new Intersection (368,594);
-      destinationBuilding133=new Intersection (1028,594);
-
-
-   
-         building127 = new Building(127,destinationBuilding127,MainGUISimulation.Building127);
-         building103 = new Building(103,destinationBuilding103,MainGUISimulation.Building103);
-         building70 = new Building(70,destinationBuilding70,MainGUISimulation.Building70);
-         building44 = new Building(44,destinationBuilding44,MainGUISimulation.Building44);
-        
-         building13 = new Building(13,destinationBuilding13,MainGUISimulation.Building13);
-        building32 = new Building(32,destinationBuilding32,MainGUISimulation.Building32);
-        building7 = new Building(7,destinationBuilding7,MainGUISimulation.Building7);
-        building52 = new Building(52,destinationBuilding52,MainGUISimulation.Building52);
-        building12 = new Building(12,destinationBuilding12,MainGUISimulation.Building12);
-        building101 = new Building(101,destinationBuilding101,MainGUISimulation.Building101);
-        building79 = new Building(79,destinationBuilding79,MainGUISimulation.Building79);
-        building74 = new Building(74,destinationBuilding74,MainGUISimulation.Building74);
-        building46 = new Building(46,destinationBuilding46,MainGUISimulation.Building46);
-        building42 = new Building(42,destinationBuilding42,MainGUISimulation.Building42);     
-
-        building97 = new Building(97, destinationBuilding97,MainGUISimulation.Building97);
-        building67 = new Building(67, destinationBuilding67,MainGUISimulation.Building67);
-        building80 = new Building(80, destinationBuilding80,MainGUISimulation.Building80);
-        building116 = new Building(116, destinationBuilding116,MainGUISimulation.Building116);
-        building124 = new Building(124, destinationBuilding124,MainGUISimulation.Building124);
-        building133 = new Building(133, destinationBuilding133,MainGUISimulation.Building133);
-
-
-        customer1 = new Customer(1, building127);
-        customer2 = new Customer(2, building103);
-        customer3 = new Customer(3, building70);
-        customer4 = new Customer(4, building44);
-
-        customer5 = new Customer(5, building13);
-        customer6 = new Customer(6, building32);
-        customer7 = new Customer(7, building7);
-        customer8 = new Customer(8, building52);
-        customer9 = new Customer(9, building12);
-        customer10 = new Customer(10, building101);
-        customer11 = new Customer(11, building79);
-        customer12 = new Customer(12, building74);
-        customer13 = new Customer(13, building46);
-        customer14 = new Customer(14, building42);
-
-        customer15 =new Customer(15, building97);
-        customer16 =new Customer(16, building67);
-        customer17 =new Customer(17, building80);
-        customer18 =new Customer(18, building116);
-        customer19 =new Customer(19, building124);
-        customer20 =new Customer(20, building133);
-        
-        cutomer1Withcontact= new CustomerWithContact(1, building127, "0547284921");
-        cutomer4Withcontact= new CustomerWithContact(4, building44, "0582344568");
-        cutomer6Withcontact= new CustomerWithContact(6, building32, "0562230675");
-        cutomer9Withcontact= new CustomerWithContact(9, building12, "0582249571");
-        cutomer11Withcontact= new CustomerWithContact(11, building79, "0529345669");
-        cutomer13Withcontact= new CustomerWithContact(13, building46, "0552395539");
-        cutomer16Withcontact= new CustomerWithContact(16, building67, "0561148290");
-        cutomer18Withcontact= new CustomerWithContact(18, building116, "0592307883");
-        cutomer20Withcontact= new CustomerWithContact(20, building133, "0528405467");
-
        
-        
+               destinationBuilding127 = new Intersection(568, 594);
+       destinationBuilding103 = new Intersection(900, 461);
+       destinationBuilding70 = new Intersection(390, 395);
+       destinationBuilding44 = new Intersection(400, 265);
+       destinationBuilding13 = new Intersection(68, 130);
+       destinationBuilding32 = new Intersection(508, 130);
+       destinationBuilding7 = new Intersection(568, 66);
+       destinationBuilding52 = new Intersection(1028, 197);
+       destinationBuilding12 = new Intersection(1010, 66);
+       destinationBuilding101 = new Intersection(768, 461);
+       destinationBuilding79 = new Intersection(1028, 395);
+       destinationBuilding74 = new Intersection(708, 395);
+       destinationBuilding46 = new Intersection(638, 265);
+       destinationBuilding42 = new Intersection(183, 265);
+       destinationBuilding97 = new Intersection(478, 461);
+       destinationBuilding67 = new Intersection(143, 395);
+       destinationBuilding80 = new Intersection(68, 395);
+       destinationBuilding116 = new Intersection(818, 527);
+       destinationBuilding124 = new Intersection(368, 594);
+       destinationBuilding133 = new Intersection(1028, 594);
         driver = new DeliveryDriver();
   
     }
+    
+ public static Map<Intersection, List<Intersection>> createGraph() {
 
+    Map<Intersection, List<Intersection>> graph = new HashMap<>();
+
+    List<Intersection> neighborsOfEndA = Arrays.asList(intersection9_1);
+        List<Intersection> neighborsOf9_1 = Arrays.asList(intersection9_2,destinationBuilding127,FirstOfStreet9,destinationBuilding124);
+
+
+    graph.put(EndOfStreetA, neighborsOfEndA);
+    graph.put(intersection9_1, neighborsOf9_1);
+
+
+    return graph;
+}
+ 
   public static List<Package> createPackages() {
       
       List<Package> packages = new ArrayList<>();
