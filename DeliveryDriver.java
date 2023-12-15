@@ -125,15 +125,47 @@ public void moveCarTo(List<List<Intersection>> packages) {
             MainGUISimulation.car.setTranslateY(finalPointY);
         }
     }
-
-    public void moveCarToDestination() {
-        int delay = delayByIndex(0);
-        List<Intersection> nearestIntersections = findShortestPath(MainProgram.createGraph(),MainProgram.EndOfStreetA,MainProgram.destinationBuilding124 );
-        Path path = generatePath(nearestIntersections);
-        moveDriver(path, () -> {
-            
-        }, delay);
+    public void moveCarToDestination(List<Intersection> destinations) {
+        if (destinations.size() < 2) {
+            // Handle cases where there are insufficient destinations
+            return;
+        }
+    
+        moveCarSequentially(destinations, 0);
     }
+    
+    private void moveCarSequentially(List<Intersection> destinations, int index) {
+        if (index >= destinations.size() - 1) {
+            // Reached the end of destinations
+            return;
+        }
+    
+        Intersection start = destinations.get(index);
+        Intersection destination = destinations.get(index + 1);
+        System.out.println(start);
+        System.out.println(destination);
+
+        int delay = delayByIndex(index);
+    
+        List<Intersection> nearestIntersections = findShortestPath(MainProgram.createGraph(), start, destination);
+        Path path = generatePath(nearestIntersections);
+    
+        moveDriver(path, () -> moveCarSequentially(destinations, index + 1), delay);
+    }
+    
+    public List<List<Intersection>> gg(List<Intersection> destinations) {
+        List<List<Intersection>> paths = new ArrayList<>();
+    
+        for (int i = 0; i < destinations.size() - 1; i++) {
+            Intersection start = destinations.get(i);
+            Intersection destination = destinations.get(i + 1);
+            List<Intersection> nearestIntersections = findShortestPath(MainProgram.createGraph(), start, destination); 
+            paths.add(nearestIntersections);
+        }
+    
+        return paths;
+    }
+    
     
 
 public static List<Intersection> findShortestPath(Map<Intersection, List<Intersection>> graph,
