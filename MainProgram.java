@@ -5,16 +5,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javafx.scene.shape.Rectangle;
+
 public class MainProgram {
     
     public static DeliveryDriver driver;
 
-    
+
     public static void initializeObjects() {
         List<CustomerWithContact> randomCustomers = generateRandomCustomersWithContact();
     
         generateRandomPackages(randomCustomers);   
-        
+
         driver = new DeliveryDriver();
   
     }
@@ -22,8 +24,8 @@ public class MainProgram {
       List<Intersection> destinations = new ArrayList<>();
 
         // Destination Buildings with names
-        Intersection destinationBuilding127 = new Intersection(568, 594, "127");
-        Intersection destinationBuilding124 = new Intersection(368, 594, "124");
+        Intersection destinationBuilding123 = new Intersection(568, 594, "123");
+        Intersection destinationBuilding120 = new Intersection(368, 594, "120");
         Intersection destinationBuilding103 = new Intersection(900, 461, "103");
         Intersection destinationBuilding70 = new Intersection(390, 395, "70");
         Intersection destinationBuilding44 = new Intersection(400, 265, "44");
@@ -41,12 +43,12 @@ public class MainProgram {
         Intersection destinationBuilding67 = new Intersection(143, 395, "67");
         Intersection destinationBuilding80 = new Intersection(68, 395, "80");
         Intersection destinationBuilding116 = new Intersection(818, 527, "116");
-        Intersection destinationBuilding133 = new Intersection(1028, 594, "133");
+        Intersection destinationBuilding129 = new Intersection(1028, 594, "129");
         Intersection warehouse = new Intersection(330, 650, "Warehouse");
 
       
        destinations.addAll(Arrays.asList(warehouse,
-       destinationBuilding124, destinationBuilding127,
+       destinationBuilding120, destinationBuilding123,
        destinationBuilding103, destinationBuilding70,
        destinationBuilding44, destinationBuilding13,
        destinationBuilding32, destinationBuilding7,
@@ -55,7 +57,7 @@ public class MainProgram {
        destinationBuilding74, destinationBuilding46,
        destinationBuilding42, destinationBuilding97,
        destinationBuilding67, destinationBuilding80,
-       destinationBuilding116, destinationBuilding133
+       destinationBuilding116, destinationBuilding129
 ));
 
   
@@ -289,125 +291,7 @@ public static  List<List<Intersection>> crcintersections(){
       
       return intersections;
     }
-//   public static List<Package> createPackages() {
-      
-//       List<Package> packages = new ArrayList<>();
-//       List<Intersection > path1P1 = Arrays.asList(EndOfStreetA,intersection9_1,destinationBuilding127);
-//       List<Intersection > path2P1 = Arrays.asList(destinationBuilding127,intersection9_2,intersection9_3,intersection8_3,intersection7_3,destinationBuilding103);
-//       List<Intersection > path3P1 = Arrays.asList(destinationBuilding103,intersection7_3,intersection7_2,intersection7_1,intersection6_1,destinationBuilding70);
-//       List<Intersection > path4P1 = Arrays.asList(destinationBuilding70,intersection6_1,intersection5_1,intersection4_1,destinationBuilding44);
 
-//       List<Intersection > path5P1= Arrays.asList(destinationBuilding44,intersection4_1,intersection3_1,intersection2_1,destinationBuilding13);
-//       List<Intersection > path6P1 = Arrays.asList(destinationBuilding13,intersection2_1,destinationBuilding32);
-//       List<Intersection > path7P1 = Arrays.asList(destinationBuilding32,intersection2_2,intersection2_2 , intersection1_2,destinationBuilding7);
-//       List<Intersection > path8P1 = Arrays.asList(destinationBuilding7,intersection1_2,intersection1_3 , intersection2_3,intersection3_3,destinationBuilding52);
-      
-//       List<Intersection > path9P1 = Arrays.asList(destinationBuilding52,intersection3_3,intersection2_3 , intersection1_3,destinationBuilding12);
-//       List<Intersection > path10P1= Arrays.asList(destinationBuilding12,intersection1_3,intersection2_3 , intersection3_3,intersection4_3,intersection5_3,intersection6_3,intersection7_3,destinationBuilding101);
-//       List<Intersection > path11P1= Arrays.asList(destinationBuilding101,intersection7_3,intersection6_3 , destinationBuilding79);
-//       List<Intersection > path12P1= Arrays.asList(destinationBuilding79,intersection6_3,destinationBuilding74 );
-      
-//       List<Intersection > path13P1= Arrays.asList(destinationBuilding74,intersection6_2,intersection5_2 , intersection4_2,destinationBuilding46);
-//       List<Intersection > path14P1= Arrays.asList(destinationBuilding46,intersection4_2,intersection4_1 , destinationBuilding42);
-//       List<Intersection > path15P1= Arrays.asList(destinationBuilding42,intersection4_1,intersection5_1 , intersection6_1,intersection7_1,destinationBuilding97);
-//       List<Intersection > path16P1= Arrays.asList(destinationBuilding97,intersection7_1,intersection6_1 , destinationBuilding67);
-      
-//       List<Intersection > path17P1= Arrays.asList(destinationBuilding67, destinationBuilding80);
-//       List<Intersection > path18P1= Arrays.asList(destinationBuilding80,intersection6_1,intersection7_1,intersection8_1,intersection8_2 , destinationBuilding116);
-//       List<Intersection > path19P1= Arrays.asList(destinationBuilding116,intersection8_3,intersection9_3 , intersection9_2,destinationBuilding124);
-//       List<Intersection > path20P1= Arrays.asList(destinationBuilding124,intersection9_2,intersection9_3 , destinationBuilding133);
-      
-//       package2 = new Normal(customer2, 2, path2P1,2);
-//       package3= new Normal(customer3, 3, path3P1,2);
-//       package5 = new Normal(customer5, 5, path5P1,2);
-//       package7 = new Normal(customer7, 7, path7P1,2);
-//       package7 = new Normal(customer7, 7, path7P1,2);
-//       package8 = new Normal(customer8, 8, path8P1,2);
-//       package10 = new Normal(customer10, 10, path10P1,2);
-//       package12 = new Normal(customer12, 12, path12P1,2);
-//       package14 = new Normal(customer14, 14, path14P1,2);
-//       package15 = new Normal(customer15, 15, path15P1,2);
-//       package17 = new Normal(customer17, 17, path17P1,2);
-//       package19 = new Normal(customer19, 19, path19P1,2);
-
-//       if(FirstPage.isPhase1Selected){
-      
-//       package1 = new Offical_paper(customer1, 1, path1P1,5);
-//       package4 = new Offical_paper(customer4, 4, path4P1,5);
-//       package6 = new Offical_paper(customer6, 6, path6P1,5);
-//       package9 = new Offical_paper(customer9, 9, path9P1,5);
-//       package11 = new Offical_paper(customer11, 11, path11P1,5);
-//       package13 = new Offical_paper(customer13, 13, path13P1,5);
-//       package16 = new Offical_paper(customer16, 16, path16P1,5);
-//       package18 = new Offical_paper(customer18, 18, path18P1,5);
-//       package20 = new Offical_paper(customer20, 20, path20P1,5);
-      
-// }
-//      else if(FirstPage.isPhase2Selected){
-//       package1 = new Offical_paper(cutomer1Withcontact, 1, path1P1,5);
-//       package4 = new Offical_paper(cutomer4Withcontact, 4, path4P1,5);
-//       package6 = new Offical_paper(cutomer6Withcontact, 6, path6P1,5);
-//       package9 = new Offical_paper(cutomer9Withcontact, 9, path9P1,5);
-//       package11 = new Offical_paper(cutomer11Withcontact, 11, path11P1,5);
-//       package13 = new Offical_paper(cutomer13Withcontact, 13, path13P1,5);
-//       package16 = new Offical_paper(cutomer16Withcontact, 16, path16P1,5);
-//       package18 = new Offical_paper(cutomer18Withcontact, 18, path18P1,5);
-//       package20 = new Offical_paper(cutomer20Withcontact, 20, path20P1,5);
-// }
-//       packages.add(package1);
-//       packages.add(package2);
-//       packages.add(package3);
-//       packages.add(package4);
-
-//       packages.add(package5);
-//       packages.add(package6);
-//       packages.add(package7);
-//       packages.add(package8);
-//       packages.add(package9);
-//       packages.add(package10);
-//       packages.add(package11);
-//       packages.add(package12);
-//       packages.add(package13);
-//       packages.add(package14);
-      
-//       packages.add(package15);
-//       packages.add(package16);
-//       packages.add(package17);
-//       packages.add(package18);
-//       packages.add(package19);
-//       packages.add(package20);
-
-
-
-//       return packages;
-//     }
-//     public static List<List<Intersection >>createPathPhase2() {
-//       List<Intersection > path1P2 = Arrays.asList(EndOfStreetA,intersection9_1,destinationBuilding124);
-//       List<Intersection > path2P2 = Arrays.asList(destinationBuilding124,destinationBuilding127);
-//       List<Intersection > path3P2 = Arrays.asList(destinationBuilding127,intersection9_2,intersection8_2,intersection7_2,destinationBuilding97);
-//       List<Intersection > path4P2 = Arrays.asList(destinationBuilding97,intersection7_2,destinationBuilding101);
-//       List<Intersection > path5P2 = Arrays.asList(destinationBuilding101,intersection7_3,destinationBuilding103);
-//       List<Intersection > path6P2= Arrays.asList(destinationBuilding103,intersection7_3,intersection8_3,destinationBuilding116);
-//       List<Intersection > path7P2= Arrays.asList(destinationBuilding116,intersection8_3,intersection9_3,destinationBuilding133);
-
-//     List<Intersection > path8P2 = Arrays.asList(destinationBuilding133,intersection9_3,intersection8_3,intersection7_3,intersection6_3,destinationBuilding79);
-//       List<Intersection > path9P2 = Arrays.asList(destinationBuilding79,intersection6_3,destinationBuilding74);
-//     List<Intersection > path10P2 = Arrays.asList(destinationBuilding74,intersection6_2,destinationBuilding70);
-//       List<Intersection > path11P2 = Arrays.asList(destinationBuilding70,intersection6_1 ,destinationBuilding67 );
-//       List<Intersection > path12P2 = Arrays.asList(destinationBuilding67, destinationBuilding80);
-
-//       List<Intersection > path13P2 = Arrays.asList(destinationBuilding80,intersection6_1,intersection5_1 , intersection4_1,destinationBuilding44);
-//     List<Intersection > path14P2= Arrays.asList(destinationBuilding44,intersection4_1, destinationBuilding42);
-//       List<Intersection > path15P2= Arrays.asList(destinationBuilding42,intersection4_1,intersection3_1,intersection2_1,destinationBuilding32 );
-//       List<Intersection > path16P2= Arrays.asList(destinationBuilding32,intersection2_2,intersection3_2,intersection4_2,destinationBuilding46);
-//       List<Intersection > path17P2= Arrays.asList(destinationBuilding46,intersection4_3,intersection3_3, destinationBuilding52);
-//       List<Intersection > path18P2= Arrays.asList(destinationBuilding52,intersection3_3, intersection2_3,intersection1_3,destinationBuilding12);
-//       List<Intersection > path19P2= Arrays.asList(destinationBuilding12, intersection1_3 ,intersection1_2,destinationBuilding7);
-//       List<Intersection > path20P2= Arrays.asList(destinationBuilding7,intersection1_1,intersection2_1,destinationBuilding13);
-
-//       List<List<Intersection>> newPaths = Arrays.asList(path1P2, path2P2, path3P2, path4P2, path5P2, path6P2, path7P2, path8P2,path9P2, path10P2, path11P2, path12P2, path13P2, path14P2, path15P2,path16P2, path17P2, path18P2, path19P2, path20P2);
-// return newPaths;
-// }
     public static List<List<Intersection>> PackagesPaths(List<Package> packages) {
       List<List<Intersection>> paths = new ArrayList<>();
 
@@ -441,66 +325,47 @@ public static  List<List<Intersection>> crcintersections(){
   
   //     return copiedPackages;
   // }
-//   public static List<Package> initializePackages() {
-//     List<Package> packages;
-
-//     if (FirstPage.isPhase1Selected) {
-//         packages = createPackages();
-//     } else if (FirstPage.isPhase2Selected) {
-//         packages = copyPackagesWithPaths(createPackages(), createPathPhase2());
-//     } else {
-    
-//         packages = new ArrayList<>();
-//     }
-
-    
-//     driver.setPackages(packages);
-
-//     return packages;
-// }
-
-
-
-
-
-
+  
 
 public static List<Building> Allbuildings() {
-  List<Intersection> destination = destinationBuildings();
-  List<Building> buildings = new ArrayList<>();
+    List<Intersection> destination = destinationBuildings();
+    List<Building> buildings = new ArrayList<>();
+    MainGUISimulation.buildings(MainGUISimulation.AllGroups);
 
-   buildings.add(new Building(127,destination.get(2),MainGUISimulation.Building127));
-   buildings.add(new Building(103,destination.get(1),MainGUISimulation.Building103));
-   buildings.add(new Building(70,destination.get(20),MainGUISimulation.Building70));
-   buildings.add(new Building(44,destination.get(11),MainGUISimulation.Building44));
-  
-  buildings.add(new Building(13,destination.get(7),MainGUISimulation.Building13));
-  buildings.add(new Building(32,destination.get(9),MainGUISimulation.Building32));
-  buildings.add(new Building(7,destination.get(13),MainGUISimulation.Building7));
-  buildings.add(new Building(52,destination.get(14),MainGUISimulation.Building52));
-  buildings.add(new Building(12,destination.get(4),MainGUISimulation.Building12));
-  buildings.add(new Building(101,destination.get(6),MainGUISimulation.Building101));
-  buildings.add(new Building(79,destination.get(15),MainGUISimulation.Building79));
-  buildings.add(new Building(74,destination.get(16),MainGUISimulation.Building74));
-  buildings.add(new Building(46,destination.get(12),MainGUISimulation.Building46));
-  buildings.add(new Building(42,destination.get(10),MainGUISimulation.Building42));     
+    for (int i = 1; i < destination.size(); i++) {
+        
+        // Get the building name from destination.get(12)
+        String buildingName = destination.get(i).getName();
 
-  buildings.add(new Building(97, destination.get(17),MainGUISimulation.Building97));
-  buildings.add(new Building(67, destination.get(18),MainGUISimulation.Building67));
-  buildings.add(new Building(80, destination.get(19),MainGUISimulation.Building80));
-  buildings.add(new Building(116, destination.get(3),MainGUISimulation.Building116));
-  buildings.add(new Building(124, destination.get(1),MainGUISimulation.Building124));
-  buildings.add(new Building(133, destination.get(8),MainGUISimulation.Building133));
+        // Convert buildingName to an integer
+        int buildingIndex = Integer.parseInt(buildingName);
 
-  return buildings;
+        // Get the MainGUISimulation.Building object using the buildingIndex
+        Rectangle buildingInfo = MainGUISimulation.buildings.get(buildingIndex - 1);
 
-  }
+        buildings.add(new Building(
+                buildingIndex,
+                destination.get(i),
+                buildingInfo
+        ));
+    }
+    printBuildingInfo(buildings);
+    return buildings;
+}
 
-
+public static void printBuildingInfo(List<Building> buildings) {
+    for (Building building : buildings) {
+        System.out.println("Building Number: " + building.getBuildingNumber());
+        System.out.println("Destination: " + building.getLocation().getName());
+        // Assuming Building class has appropriate methods to retrieve information
+        System.out.println("Building Information: " + building.getGuiElement()); 
+        System.out.println("------------------------------------------");
+    }
+}
 public static List<CustomerWithContact> generateRandomCustomersWithContact() {
         List<CustomerWithContact> randomCustomersWithContact = new ArrayList<>();
         List<Building> allBuildings = Allbuildings();
-    
+    System.out.println(allBuildings);
         // Keep track of assigned buildings and phone numbers
         List<Building> assignedBuildings = new ArrayList<>();
         List<String> assignedPhoneNumbers = new ArrayList<>();
