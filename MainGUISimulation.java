@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,32 +40,14 @@ public  int secondsPassed = 0;
 public static  boolean isStartClicked=true;
 public static boolean isPaused = false;
 public static int numOfSumuolation = 0;
-public static Rectangle Building127  ;
-public static Rectangle Building103  ;
-public static Rectangle Building70  ;
-public static Rectangle Building44 ;
-public static Rectangle Building13 ; 
-public static Rectangle Building32 ; 
-public static Rectangle Building7 ;
-public static Rectangle Building52 ;
-public static Rectangle Building12 ;
-public static Rectangle Building101  ;
-public static Rectangle Building79  ;
-public static Rectangle Building74 ;
-public static Rectangle Building46 ;
-public static Rectangle Building42  ;
-public static Rectangle Building97 ;
-public static Rectangle Building67  ;
-public static Rectangle Building80 ;
-public static Rectangle Building116  ;
-public static Rectangle Building124 ;
-public static Rectangle Building133  ;
+
 public static Rectangle ChosenBuilding[]= initializeBuildingDelivery();
 public static Rectangle car ;
 public StackPane root;
 public static int totalTimeP1;
 public static int totalTimeP2;
 public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
+List<Rectangle> buildings ;
 
 
     public void start(Stage primaryStage) {
@@ -105,37 +89,17 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 
 
  public static Rectangle[] initializeBuildingDelivery() {
-     Building127 = new Rectangle(550, 605, 35, 35);
-     Building103 = new Rectangle(890, 475, 35, 35);
-     Building70 = new Rectangle(370, 345, 35, 35);
-    Building44 = new Rectangle(360, 215, 35, 35);
-     Building13 = new Rectangle(50, 80, 35, 35);
-     Building32 = new Rectangle(490, 150, 35, 35);
-     Building7 = new Rectangle(550, 20, 35, 35);
-     Building52 = new Rectangle(1010, 215, 35, 35);
-     Building12 = new Rectangle(970, 20, 35, 35);
-     Building101 = new Rectangle(750, 475, 35, 35);
-     Building79 = new Rectangle(1010, 345, 35, 35);
-     Building74 = new Rectangle(690, 345, 35, 35);
-     Building46 = new Rectangle(620, 215, 35, 35);
-     Building42 = new Rectangle(165, 215, 35, 35);
-     Building97 = new Rectangle(460, 475, 35, 35);
-     Building67 = new Rectangle(125, 345, 35, 35);
-     Building80 = new Rectangle(50, 410, 35, 35);
-     Building116 = new Rectangle(800, 540, 35, 35);
-     Building124 = new Rectangle(350, 605, 35, 35);
-     Building133 = new Rectangle(1010, 605, 35, 35);
+    
+    
 
-    Rectangle[] chosenBuildings = { Building127, Building103, Building70, Building44, Building13, Building32, Building7,
-            Building52, Building12, Building101, Building79, Building74, Building46, Building42, Building97,
-            Building67, Building80, Building116, Building124,Building133 };
+    Rectangle[] chosenBuildings = {};
             
     return chosenBuildings;
 }
 
     public void buildings(Pane AllGroups){
     
-    Text Neighbourhood_1 = new Text(1090, 260, "Alhamdaniya");
+        Text Neighbourhood_1 = new Text(1090, 260, "Alhamdaniya");
         Font font = new Font("Times New Roman",25);
         Neighbourhood_1.setFont(font);
         Neighbourhood_1.setFill(Color.GREY);
@@ -253,7 +217,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             tooltipBuilding6.hide();
         }); 
         
-        
+         Rectangle Building7 = new Rectangle(550, 20, 35, 35);
          Building7.setArcHeight(25);
          Building7.setArcWidth(25);
          Building7.setFill(Color.GREY);
@@ -348,7 +312,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             tooltipBuilding11.hide();
         });
         
-       
+        Rectangle Building12 = new Rectangle(970, 20, 35, 35);
         Building12.setArcHeight(25);
         Building12.setArcWidth(25);
         Building12.setHeight(35);
@@ -370,7 +334,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         // });
         
         // Neighbourhood_1 : BLOCK 5
-        
+        Rectangle Building13 = new Rectangle(50, 80, 35, 35);
         Building13.setArcHeight(25);
         Building13.setArcWidth(25);
         Building13.setFill(Color.GREY);
@@ -722,7 +686,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             tooltipBuilding31.hide();
         });
         
-        
+        Rectangle Building32 = new Rectangle(490, 150, 35, 35);
         Building32.setArcHeight(25);
         Building32.setArcWidth(25);
         Building32.setFill(Color.GREY);
@@ -911,7 +875,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             tooltipBuilding41.hide();
         });
         
-        
+        Rectangle Building42 = new Rectangle(165, 215, 35, 35);
         Building42.setArcHeight(25);
         Building42.setArcWidth(25);
         Building42.setFill(Color.GREY);
@@ -950,7 +914,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         
         // Neighbourhood_1 : BLOCK 14 
         
-  
+        Rectangle Building44 = new Rectangle(360, 215, 35, 35);
         Building44.setArcHeight(25);
         Building44.setArcWidth(25);
         Building44.setHeight(35);
@@ -992,7 +956,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         });
         
         // Neighbourhood_1 : BLOCK 15 
-        
+        Rectangle Building46 = new Rectangle(620, 215, 35, 35);
         Building46 .setArcHeight(25);
         Building46.setArcWidth(25);
         Building46.setFill(Color.GREY);
@@ -1103,7 +1067,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             tooltipBuilding51.hide();
         });
         
-        
+        Rectangle Building52 = new Rectangle(1010, 215, 35, 35);
         Building52.setArcHeight(25);
         Building52.setArcWidth(25);
         Building52.setFill(Color.GREY);
@@ -1395,7 +1359,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             tooltipBuilding66.hide();
         });
         
-        
+        Rectangle Building67 = new Rectangle(125, 345, 35, 35);
         Building67.setArcHeight(25);
         Building67.setArcWidth(25);
         Building67.setFill(Color.BLUE);
@@ -1452,7 +1416,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         
         // Neighbourhood_2 : BLOCK 6
         
-         
+        Rectangle Building70 = new Rectangle(370, 345, 35, 35);
         Building70.setArcHeight(25);
         Building70.setArcWidth(25);
         Building70.setFill(Color.BLUE);
@@ -1529,7 +1493,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         });
         
         
-        
+        Rectangle Building74 = new Rectangle(690, 345, 35, 35);
         Building74.setArcHeight(25);
         Building74.setArcWidth(25);
         Building74.setFill(Color.BLUE);
@@ -1622,7 +1586,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             tooltipBuilding78.hide();
         });
         
-       
+        Rectangle Building79 = new Rectangle(1010, 345, 35, 35);
         Building79.setArcHeight(25);
         Building79.setArcWidth(25);
         Building79.setFill(Color.BLUE);
@@ -1642,7 +1606,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         // });
         
         // Neighbourhood_2 : BLOCK 9
-       
+        Rectangle Building80 = new Rectangle(50, 410, 35, 35);
         Building80.setArcHeight(25);
         Building80.setArcWidth(25);
         Building80.setFill(Color.BLUE);
@@ -1969,7 +1933,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             tooltipBuilding96.hide();
         });
         
-        
+        Rectangle Building97 = new Rectangle(460, 475, 35, 35);
         Building97.setArcHeight(25);
         Building97.setArcWidth(25);
         Building97.setFill(Color.web("#C0392B"));
@@ -2046,7 +2010,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             tooltipBuilding100.hide();
         });
         
-        
+        Rectangle Building101 = new Rectangle(750, 475, 35, 35);
         Building101.setArcHeight(25);
         Building101.setArcWidth(25);
         Building101.setFill(Color.web("#C0392B"));
@@ -2084,6 +2048,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         });
         
         // Neighbourhood_3 : BLOCK 4
+        Rectangle Building103 = new Rectangle(890, 475, 35, 35);
         Building103.setArcHeight(25);
         Building103.setArcWidth(25);
         Building103.setFill(Color.web("#C0392B"));
@@ -2323,7 +2288,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             // Hide the tooltip
             tooltipBuilding115.hide();
         });
-    
+        Rectangle Building116 = new Rectangle(800, 540, 35, 35);
         Building116.setArcHeight(25);
         Building116.setArcWidth(25);
         Building116.setFill(Color.web("#C0392B"));
@@ -2424,7 +2389,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         
         // Neighbourhood_3 : BLOCK 10 
         
-        
+        Rectangle Building124 = new Rectangle(350, 605, 35, 35);
         Building124.setArcHeight(25);
         Building124.setArcWidth(25);
         Building124.setFill(Color.web("#C0392B"));
@@ -2479,10 +2444,10 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         //     // Hide the tooltip
         //     tooltipBuilding126.hide();
         // });
-        
-        // Building127.setArcHeight(25);
-        // Building127.setArcWidth(25);
-        // Building127.setFill(Color.web("#C0392B"));
+         Rectangle Building127 = new Rectangle(550, 605, 35, 35);
+         Building127.setArcHeight(25);
+         Building127.setArcWidth(25);
+         Building127.setFill(Color.web("#C0392B"));
         // Tooltip tooltipBuilding127 = new Tooltip(MainProgram.package1.getPackageInformation());
         // Tooltip.install(Building127, tooltipBuilding127);
         
@@ -2591,12 +2556,12 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             // Hide the tooltip
             tooltipBuilding132.hide();
         });
-        
-        
-        // Building133.setArcHeight(25);
-        // Building133.setArcWidth(25);
-        // Building133.setFill(Color.web("#C0392B"));
-        // Tooltip tooltipBuilding133 = new Tooltip(MainProgram.package20.getPackageInformation());
+    
+         Rectangle Building133 = new Rectangle(1010, 605, 35, 35);
+         Building133.setArcHeight(25);
+         Building133.setArcWidth(25);
+         Building133.setFill(Color.web("#C0392B"));
+         //Tooltip tooltipBuilding133 = new Tooltip(MainProgram.package20.getPackageInformation());
         // Tooltip.install(Building133, tooltipBuilding133);
         
         // Building133.setOnMouseEntered(event -> {
@@ -2675,10 +2640,10 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
             
             Group neighborhood3Group = new Group();
             neighborhood3Group.getChildren().addAll(Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Warehouse,Warehouse_label,Building124,Building125,Building126,Building127,Building128,Building129,Building130,Building131,Building132,Building133);
-
+  
             Group warehousesGroup = new Group();
             warehousesGroup.getChildren().addAll(Warehouse, Warehouse_label);
-
+    buildings= Arrays.asList(Building1 ,Building2 , Building3 , Building4 ,Building5,Building6,Building7,Building8,Building9,Building10,Building11,Building12,Building13,Building14,Building15,Building16,Building17,Building18,Building19,Building20,Building21,Building22,Building23,Building24,Building25,Building26,Building27,Building28,Building29,Building30,Building31,Building32,Building33,Building34,Building35,Building36,Building37,Building38,Building39,Building40,Building41,Building42,Building43,Building44,Building45,Building46,Building47,Building48,Building49,Building50,Building51,Building52,Building53,Building54,Building55,Building56,Building57,Building58,Building59,Building60,Building61,Building62,Building63,Building64,Building65,Building66,Building67,Building68,Building69,Building70,Building71,Building72,Building73,Building74,Building75,Building76,Building77,Building78,Building79,Building80,Building81,Building82,Building83,Building84,Building85,Building86,Building87,Building88,Building89,Building90,Building91,Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Building124,Building125,Building126,Building127,Building128,Building129,Building130,Building131,Building132,Building133);
             neighborhoodsGroup.getChildren().addAll(Street_CLable,Street_BLable,Street_ALable,Street_1Lable,Street_2Lable,Street_3Lable,Street_4Lable,Street_5Lable,Street_6Lable,Street_7Lable,Street_8Lable,Street_9Lable,Neighbourhood_1,neighborhood1Group,Neighbourhood_2,neighborhood2Group,Neighbourhood_3,neighborhood3Group,warehousesGroup);
             AllGroups.getChildren().add(neighborhoodsGroup);
     }
@@ -2951,7 +2916,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
             if (!MainProgram.driver.isTransitionPaused) {
-            resetChosenBuildingColors();
+            // resetChosenBuildingColors();
             stopCurrentSimulation();
             isStartClicked = true;
 
@@ -3275,37 +3240,37 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
 
 } 
 
-public  void initializeOriginalColors() {
-    originalBuildingColors.put(Building127, Color.web("#C0392B"));
-    originalBuildingColors.put(Building103, Color.web("#C0392B"));
-    originalBuildingColors.put(Building70, Color.BLUE);
-    originalBuildingColors.put(Building44, Color.GREY);
-    originalBuildingColors.put(Building13, Color.GREY);
-    originalBuildingColors.put(Building32,Color.GREY);
-    originalBuildingColors.put(Building7, Color.GREY);
-    originalBuildingColors.put(Building52, Color.GREY);
-    originalBuildingColors.put(Building12, Color.GREY);
-    originalBuildingColors.put(Building101, Color.web("#C0392B"));
-    originalBuildingColors.put(Building79, Color.BLUE);
-    originalBuildingColors.put(Building74, Color.BLUE);
-    originalBuildingColors.put(Building46, Color.GREY);
-    originalBuildingColors.put(Building42, Color.GREY);
-    originalBuildingColors.put(Building97, Color.web("#C0392B"));
-    originalBuildingColors.put(Building67, Color.BLUE);
-    originalBuildingColors.put(Building80, Color.BLUE);
-    originalBuildingColors.put(Building116, Color.web("#C0392B"));
-    originalBuildingColors.put(Building124, Color.web("#C0392B"));
-    originalBuildingColors.put(Building133, Color.web("#C0392B"));
-}
-public  void resetChosenBuildingColors() {
-    initializeOriginalColors();
-    for (Rectangle building : ChosenBuilding) {
-        Color originalColor = originalBuildingColors.get(building);
-        if (originalColor != null) {
-            building.setFill(originalColor);
-        }
-    }
-}
+// public  void initializeOriginalColors() {
+//     originalBuildingColors.put(Building127, Color.web("#C0392B"));
+//     originalBuildingColors.put(Building103, Color.web("#C0392B"));
+//     originalBuildingColors.put(Building70, Color.BLUE);
+//     originalBuildingColors.put(Building44, Color.GREY);
+//     originalBuildingColors.put(Building13, Color.GREY);
+//     originalBuildingColors.put(Building32,Color.GREY);
+//     originalBuildingColors.put(Building7, Color.GREY);
+//     originalBuildingColors.put(Building52, Color.GREY);
+//     originalBuildingColors.put(Building12, Color.GREY);
+//     originalBuildingColors.put(Building101, Color.web("#C0392B"));
+//     originalBuildingColors.put(Building79, Color.BLUE);
+//     originalBuildingColors.put(Building74, Color.BLUE);
+//     originalBuildingColors.put(Building46, Color.GREY);
+//     originalBuildingColors.put(Building42, Color.GREY);
+//     originalBuildingColors.put(Building97, Color.web("#C0392B"));
+//     originalBuildingColors.put(Building67, Color.BLUE);
+//     originalBuildingColors.put(Building80, Color.BLUE);
+//     originalBuildingColors.put(Building116, Color.web("#C0392B"));
+//     originalBuildingColors.put(Building124, Color.web("#C0392B"));
+//     originalBuildingColors.put(Building133, Color.web("#C0392B"));
+// }
+    // public  void resetChosenBuildingColors() {
+    //     initializeOriginalColors();
+    //     for (Rectangle building : ChosenBuilding) {
+    //         Color originalColor = originalBuildingColors.get(building);
+    //         if (originalColor != null) {
+    //             building.setFill(originalColor);
+    //         }
+    //     }
+    // }
 public static void openPhase2() {
     Stage newStage = new Stage();
     MainGUISimulation phase2 = new MainGUISimulation();
