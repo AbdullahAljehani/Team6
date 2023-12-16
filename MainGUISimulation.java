@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -40,15 +39,33 @@ public  int secondsPassed = 0;
 public static  boolean isStartClicked=true;
 public static boolean isPaused = false;
 public static int numOfSumuolation = 0;
-
+public static Rectangle Building124  ;
+public static Rectangle Building103  ;
+public static Rectangle Building70  ;
+public static Rectangle Building44 ;
+public static Rectangle Building13 ; 
+public static Rectangle Building32 ; 
+public static Rectangle Building7 ;
+public static Rectangle Building52 ;
+public static Rectangle Building12 ;
+public static Rectangle Building101  ;
+public static Rectangle Building79  ;
+public static Rectangle Building74 ;
+public static Rectangle Building46 ;
+public static Rectangle Building42  ;
+public static Rectangle Building97 ;
+public static Rectangle Building67  ;
+public static Rectangle Building80 ;
+public static Rectangle Building116  ;
+public static Rectangle Building121 ;
+public static Rectangle Building130  ;
 public static Rectangle ChosenBuilding[]= initializeBuildingDelivery();
 public static Rectangle car ;
 public StackPane root;
 public static int totalTimeP1;
 public static int totalTimeP2;
 public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
-List<Rectangle> buildings ;
-
+public static List<Rectangle> buildings ;
 
     public void start(Stage primaryStage) {
     // MainProgram.createPackages();
@@ -89,17 +106,37 @@ List<Rectangle> buildings ;
 
 
  public static Rectangle[] initializeBuildingDelivery() {
-    
-    
+     Building124 = new Rectangle(550, 605, 35, 35);
+     Building103 = new Rectangle(890, 475, 35, 35);
+     Building70 = new Rectangle(370, 345, 35, 35);
+    Building44 = new Rectangle(360, 215, 35, 35);
+     Building13 = new Rectangle(50, 80, 35, 35);
+     Building32 = new Rectangle(490, 150, 35, 35);
+     Building7 = new Rectangle(550, 20, 35, 35);
+     Building52 = new Rectangle(1010, 215, 35, 35);
+     Building12 = new Rectangle(970, 20, 35, 35);
+     Building101 = new Rectangle(750, 475, 35, 35);
+     Building79 = new Rectangle(1010, 345, 35, 35);
+     Building74 = new Rectangle(690, 345, 35, 35);
+     Building46 = new Rectangle(620, 215, 35, 35);
+     Building42 = new Rectangle(165, 215, 35, 35);
+     Building97 = new Rectangle(460, 475, 35, 35);
+     Building67 = new Rectangle(125, 345, 35, 35);
+     Building80 = new Rectangle(50, 410, 35, 35);
+     Building116 = new Rectangle(800, 540, 35, 35);
+     Building121 = new Rectangle(350, 605, 35, 35);
+     Building130 = new Rectangle(1010, 605, 35, 35);
 
-    Rectangle[] chosenBuildings = {};
+    Rectangle[] chosenBuildings = { Building124, Building103, Building70, Building44, Building13, Building32, Building7,
+            Building52, Building12, Building101, Building79, Building74, Building46, Building42, Building97,
+            Building67, Building80, Building116, Building121,Building130 };
             
     return chosenBuildings;
 }
 
     public void buildings(Pane AllGroups){
     
-        Text Neighbourhood_1 = new Text(1090, 260, "Alhamdaniya");
+    Text Neighbourhood_1 = new Text(1090, 260, "Alhamdaniya");
         Font font = new Font("Times New Roman",25);
         Neighbourhood_1.setFont(font);
         Neighbourhood_1.setFill(Color.GREY);
@@ -217,7 +254,7 @@ List<Rectangle> buildings ;
             tooltipBuilding6.hide();
         }); 
         
-         Rectangle Building7 = new Rectangle(550, 20, 35, 35);
+        
          Building7.setArcHeight(25);
          Building7.setArcWidth(25);
          Building7.setFill(Color.GREY);
@@ -312,7 +349,7 @@ List<Rectangle> buildings ;
             tooltipBuilding11.hide();
         });
         
-        Rectangle Building12 = new Rectangle(970, 20, 35, 35);
+       
         Building12.setArcHeight(25);
         Building12.setArcWidth(25);
         Building12.setHeight(35);
@@ -334,7 +371,7 @@ List<Rectangle> buildings ;
         // });
         
         // Neighbourhood_1 : BLOCK 5
-        Rectangle Building13 = new Rectangle(50, 80, 35, 35);
+        
         Building13.setArcHeight(25);
         Building13.setArcWidth(25);
         Building13.setFill(Color.GREY);
@@ -686,7 +723,7 @@ List<Rectangle> buildings ;
             tooltipBuilding31.hide();
         });
         
-        Rectangle Building32 = new Rectangle(490, 150, 35, 35);
+        
         Building32.setArcHeight(25);
         Building32.setArcWidth(25);
         Building32.setFill(Color.GREY);
@@ -875,7 +912,7 @@ List<Rectangle> buildings ;
             tooltipBuilding41.hide();
         });
         
-        Rectangle Building42 = new Rectangle(165, 215, 35, 35);
+        
         Building42.setArcHeight(25);
         Building42.setArcWidth(25);
         Building42.setFill(Color.GREY);
@@ -914,7 +951,7 @@ List<Rectangle> buildings ;
         
         // Neighbourhood_1 : BLOCK 14 
         
-        Rectangle Building44 = new Rectangle(360, 215, 35, 35);
+  
         Building44.setArcHeight(25);
         Building44.setArcWidth(25);
         Building44.setHeight(35);
@@ -956,7 +993,7 @@ List<Rectangle> buildings ;
         });
         
         // Neighbourhood_1 : BLOCK 15 
-        Rectangle Building46 = new Rectangle(620, 215, 35, 35);
+        
         Building46 .setArcHeight(25);
         Building46.setArcWidth(25);
         Building46.setFill(Color.GREY);
@@ -1067,7 +1104,7 @@ List<Rectangle> buildings ;
             tooltipBuilding51.hide();
         });
         
-        Rectangle Building52 = new Rectangle(1010, 215, 35, 35);
+        
         Building52.setArcHeight(25);
         Building52.setArcWidth(25);
         Building52.setFill(Color.GREY);
@@ -1359,7 +1396,7 @@ List<Rectangle> buildings ;
             tooltipBuilding66.hide();
         });
         
-        Rectangle Building67 = new Rectangle(125, 345, 35, 35);
+        
         Building67.setArcHeight(25);
         Building67.setArcWidth(25);
         Building67.setFill(Color.BLUE);
@@ -1416,7 +1453,7 @@ List<Rectangle> buildings ;
         
         // Neighbourhood_2 : BLOCK 6
         
-        Rectangle Building70 = new Rectangle(370, 345, 35, 35);
+         
         Building70.setArcHeight(25);
         Building70.setArcWidth(25);
         Building70.setFill(Color.BLUE);
@@ -1493,7 +1530,7 @@ List<Rectangle> buildings ;
         });
         
         
-        Rectangle Building74 = new Rectangle(690, 345, 35, 35);
+        
         Building74.setArcHeight(25);
         Building74.setArcWidth(25);
         Building74.setFill(Color.BLUE);
@@ -1586,7 +1623,7 @@ List<Rectangle> buildings ;
             tooltipBuilding78.hide();
         });
         
-        Rectangle Building79 = new Rectangle(1010, 345, 35, 35);
+       
         Building79.setArcHeight(25);
         Building79.setArcWidth(25);
         Building79.setFill(Color.BLUE);
@@ -1606,7 +1643,7 @@ List<Rectangle> buildings ;
         // });
         
         // Neighbourhood_2 : BLOCK 9
-        Rectangle Building80 = new Rectangle(50, 410, 35, 35);
+       
         Building80.setArcHeight(25);
         Building80.setArcWidth(25);
         Building80.setFill(Color.BLUE);
@@ -1933,7 +1970,7 @@ List<Rectangle> buildings ;
             tooltipBuilding96.hide();
         });
         
-        Rectangle Building97 = new Rectangle(460, 475, 35, 35);
+        
         Building97.setArcHeight(25);
         Building97.setArcWidth(25);
         Building97.setFill(Color.web("#C0392B"));
@@ -2010,7 +2047,7 @@ List<Rectangle> buildings ;
             tooltipBuilding100.hide();
         });
         
-        Rectangle Building101 = new Rectangle(750, 475, 35, 35);
+        
         Building101.setArcHeight(25);
         Building101.setArcWidth(25);
         Building101.setFill(Color.web("#C0392B"));
@@ -2048,7 +2085,6 @@ List<Rectangle> buildings ;
         });
         
         // Neighbourhood_3 : BLOCK 4
-        Rectangle Building103 = new Rectangle(890, 475, 35, 35);
         Building103.setArcHeight(25);
         Building103.setArcWidth(25);
         Building103.setFill(Color.web("#C0392B"));
@@ -2288,7 +2324,7 @@ List<Rectangle> buildings ;
             // Hide the tooltip
             tooltipBuilding115.hide();
         });
-        Rectangle Building116 = new Rectangle(800, 540, 35, 35);
+    
         Building116.setArcHeight(25);
         Building116.setArcWidth(25);
         Building116.setFill(Color.web("#C0392B"));
@@ -2389,11 +2425,66 @@ List<Rectangle> buildings ;
         
         // Neighbourhood_3 : BLOCK 10 
         
-        Rectangle Building124 = new Rectangle(350, 605, 35, 35);
-        Building124.setArcHeight(25);
-        Building124.setArcWidth(25);
-        Building124.setFill(Color.web("#C0392B"));
-        // Tooltip tooltipBuilding124 = new Tooltip(MainProgram.package19.getPackageInformation());
+        
+        Building121.setArcHeight(25);
+        Building121.setArcWidth(25);
+        Building121.setFill(Color.web("#C0392B"));
+        // Tooltip tooltipBuilding121 = new Tooltip(MainProgram.package19.getPackageInformation());
+        // Tooltip.install(Building121, tooltipBuilding121);
+        
+        // Building121.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building121.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding121.show(Building121, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
+        
+        // Building121.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding121.hide();
+        // }); 
+        
+        
+        Rectangle Building122 = new Rectangle(425, 605, 35, 35);
+        Building122.setArcHeight(25);
+        Building122.setArcWidth(25);
+        Building122.setFill(Color.web("#C0392B"));
+         Tooltip tooltipBuilding122 = new Tooltip("Building Number: 125");
+        Tooltip.install(Building122, tooltipBuilding122); 
+        Building122.setOnMouseEntered(event -> {
+            // Show the tooltip only if the mouse is within the building bounds
+            if (Building122.contains(event.getX(), event.getY())) {
+                tooltipBuilding122.show(Building122, event.getScreenX(), event.getScreenY() + 20);
+            }
+        });
+        
+        Building122.setOnMouseExited(event -> {
+            // Hide the tooltip
+            tooltipBuilding122.hide();
+        });
+        
+        Rectangle Building123 = new Rectangle(490, 605, 35, 35);
+        Building123.setArcHeight(25);
+        Building123.setArcWidth(25);
+        Building123.setFill(Color.web("#C0392B"));
+        // Tooltip tooltipBuilding123 = new Tooltip("Building Number: 126");
+        // Tooltip.install(Building123, tooltipBuilding123); 
+        // Building123.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building123.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding123.show(Building123, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
+        
+        // Building123.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding123.hide();
+        // });
+        
+        // Building124.setArcHeight(25);
+        // Building124.setArcWidth(25);
+        // Building124.setFill(Color.web("#C0392B"));
+        // Tooltip tooltipBuilding124 = new Tooltip(MainProgram.package1.getPackageInformation());
         // Tooltip.install(Building124, tooltipBuilding124);
         
         // Building124.setOnMouseEntered(event -> {
@@ -2406,14 +2497,16 @@ List<Rectangle> buildings ;
         // Building124.setOnMouseExited(event -> {
         //     // Hide the tooltip
         //     tooltipBuilding124.hide();
-        // }); 
+        // });
+      
         
         
-        Rectangle Building125 = new Rectangle(425, 605, 35, 35);
+        // Neighbourhood_3 : BLOCK 11
+        Rectangle Building125 = new Rectangle(635, 605, 35, 35);
         Building125.setArcHeight(25);
         Building125.setArcWidth(25);
         Building125.setFill(Color.web("#C0392B"));
-         Tooltip tooltipBuilding125 = new Tooltip("Building Number: 125");
+         Tooltip tooltipBuilding125 = new Tooltip("Building Number: 128");
         Tooltip.install(Building125, tooltipBuilding125); 
         Building125.setOnMouseEntered(event -> {
             // Show the tooltip only if the mouse is within the building bounds
@@ -2427,50 +2520,48 @@ List<Rectangle> buildings ;
             tooltipBuilding125.hide();
         });
         
-        Rectangle Building126 = new Rectangle(490, 605, 35, 35);
+        Rectangle Building126 = new Rectangle(710, 605, 35, 35);
         Building126.setArcHeight(25);
         Building126.setArcWidth(25);
         Building126.setFill(Color.web("#C0392B"));
-        // Tooltip tooltipBuilding126 = new Tooltip("Building Number: 126");
-        // Tooltip.install(Building126, tooltipBuilding126); 
-        // Building126.setOnMouseEntered(event -> {
-        //     // Show the tooltip only if the mouse is within the building bounds
-        //     if (Building126.contains(event.getX(), event.getY())) {
-        //         tooltipBuilding126.show(Building126, event.getScreenX(), event.getScreenY() + 20);
-        //     }
-        // });
+        Tooltip tooltipBuilding126 = new Tooltip("Building Number: 129");
+        Tooltip.install(Building126, tooltipBuilding126); 
+        Building126.setOnMouseEntered(event -> {
+            // Show the tooltip only if the mouse is within the building bounds
+            if (Building126.contains(event.getX(), event.getY())) {
+                tooltipBuilding126.show(Building126, event.getScreenX(), event.getScreenY() + 20);
+            }
+        });
         
-        // Building126.setOnMouseExited(event -> {
-        //     // Hide the tooltip
-        //     tooltipBuilding126.hide();
-        // });
-         Rectangle Building127 = new Rectangle(550, 605, 35, 35);
-         Building127.setArcHeight(25);
-         Building127.setArcWidth(25);
-         Building127.setFill(Color.web("#C0392B"));
-        // Tooltip tooltipBuilding127 = new Tooltip(MainProgram.package1.getPackageInformation());
-        // Tooltip.install(Building127, tooltipBuilding127);
+        Building126.setOnMouseExited(event -> {
+            // Hide the tooltip
+            tooltipBuilding126.hide();
+        });
         
-        // Building127.setOnMouseEntered(event -> {
-        //     // Show the tooltip only if the mouse is within the building bounds
-        //     if (Building127.contains(event.getX(), event.getY())) {
-        //         tooltipBuilding127.show(Building127, event.getScreenX(), event.getScreenY() + 20);
-        //     }
-        // });
+        Rectangle Building127 = new Rectangle(785, 605, 35, 35);
+        Building127.setArcHeight(25);
+        Building127.setArcWidth(25);
+        Building127.setFill(Color.web("#C0392B"));
+        Tooltip tooltipBuilding127 = new Tooltip("Building Number: 130");
+        Tooltip.install(Building127, tooltipBuilding127); 
+        Building127.setOnMouseEntered(event -> {
+            // Show the tooltip only if the mouse is within the building bounds
+            if (Building127.contains(event.getX(), event.getY())) {
+                tooltipBuilding127.show(Building127, event.getScreenX(), event.getScreenY() + 20);
+            }
+        });
         
-        // Building127.setOnMouseExited(event -> {
-        //     // Hide the tooltip
-        //     tooltipBuilding127.hide();
-        // });
-      
+        Building127.setOnMouseExited(event -> {
+            // Hide the tooltip
+            tooltipBuilding127.hide();
+        });
         
-        
-        // Neighbourhood_3 : BLOCK 11
-        Rectangle Building128 = new Rectangle(635, 605, 35, 35);
+        // Neighbourhood_3 : BLOCK 12
+        Rectangle Building128 = new Rectangle(880, 605, 35, 35);
         Building128.setArcHeight(25);
         Building128.setArcWidth(25);
         Building128.setFill(Color.web("#C0392B"));
-         Tooltip tooltipBuilding128 = new Tooltip("Building Number: 128");
+         Tooltip tooltipBuilding128 = new Tooltip("Building Number: 131");
         Tooltip.install(Building128, tooltipBuilding128); 
         Building128.setOnMouseEntered(event -> {
             // Show the tooltip only if the mouse is within the building bounds
@@ -2484,11 +2575,11 @@ List<Rectangle> buildings ;
             tooltipBuilding128.hide();
         });
         
-        Rectangle Building129 = new Rectangle(710, 605, 35, 35);
+        Rectangle Building129 = new Rectangle(945, 605, 35, 35);
         Building129.setArcHeight(25);
         Building129.setArcWidth(25);
         Building129.setFill(Color.web("#C0392B"));
-        Tooltip tooltipBuilding129 = new Tooltip("Building Number: 129");
+        Tooltip tooltipBuilding129 = new Tooltip("Building Number: 132");
         Tooltip.install(Building129, tooltipBuilding129); 
         Building129.setOnMouseEntered(event -> {
             // Show the tooltip only if the mouse is within the building bounds
@@ -2502,78 +2593,23 @@ List<Rectangle> buildings ;
             tooltipBuilding129.hide();
         });
         
-        Rectangle Building130 = new Rectangle(785, 605, 35, 35);
-        Building130.setArcHeight(25);
-        Building130.setArcWidth(25);
-        Building130.setFill(Color.web("#C0392B"));
-        Tooltip tooltipBuilding130 = new Tooltip("Building Number: 130");
-        Tooltip.install(Building130, tooltipBuilding130); 
-        Building130.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building130.contains(event.getX(), event.getY())) {
-                tooltipBuilding130.show(Building130, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
         
-        Building130.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding130.hide();
-        });
+        // Building130.setArcHeight(25);
+        // Building130.setArcWidth(25);
+        // Building130.setFill(Color.web("#C0392B"));
+        // Tooltip tooltipBuilding130 = new Tooltip(MainProgram.package20.getPackageInformation());
+        // Tooltip.install(Building130, tooltipBuilding130);
         
-        // Neighbourhood_3 : BLOCK 12
-        Rectangle Building131 = new Rectangle(880, 605, 35, 35);
-        Building131.setArcHeight(25);
-        Building131.setArcWidth(25);
-        Building131.setFill(Color.web("#C0392B"));
-         Tooltip tooltipBuilding131 = new Tooltip("Building Number: 131");
-        Tooltip.install(Building131, tooltipBuilding131); 
-        Building131.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building131.contains(event.getX(), event.getY())) {
-                tooltipBuilding131.show(Building131, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
-        
-        Building131.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding131.hide();
-        });
-        
-        Rectangle Building132 = new Rectangle(945, 605, 35, 35);
-        Building132.setArcHeight(25);
-        Building132.setArcWidth(25);
-        Building132.setFill(Color.web("#C0392B"));
-        Tooltip tooltipBuilding132 = new Tooltip("Building Number: 132");
-        Tooltip.install(Building132, tooltipBuilding132); 
-        Building132.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building132.contains(event.getX(), event.getY())) {
-                tooltipBuilding132.show(Building132, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
-        
-        Building132.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding132.hide();
-        });
-    
-         Rectangle Building133 = new Rectangle(1010, 605, 35, 35);
-         Building133.setArcHeight(25);
-         Building133.setArcWidth(25);
-         Building133.setFill(Color.web("#C0392B"));
-         //Tooltip tooltipBuilding133 = new Tooltip(MainProgram.package20.getPackageInformation());
-        // Tooltip.install(Building133, tooltipBuilding133);
-        
-        // Building133.setOnMouseEntered(event -> {
+        // Building130.setOnMouseEntered(event -> {
         //     // Show the tooltip only if the mouse is within the building bounds
-        //     if (Building133.contains(event.getX(), event.getY())) {
-        //         tooltipBuilding133.show(Building133, event.getScreenX(), event.getScreenY() + 20);
+        //     if (Building130.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding130.show(Building130, event.getScreenX(), event.getScreenY() + 20);
         //     }
         // });
         
-        // Building133.setOnMouseExited(event -> {
+        // Building130.setOnMouseExited(event -> {
         //     // Hide the tooltip
-        //     tooltipBuilding133.hide();
+        //     tooltipBuilding130.hide();
         // }); 
         
 
@@ -2639,11 +2675,11 @@ List<Rectangle> buildings ;
             // Add homes to Neighborhood 3 group
             
             Group neighborhood3Group = new Group();
-            neighborhood3Group.getChildren().addAll(Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Warehouse,Warehouse_label,Building124,Building125,Building126,Building127,Building128,Building129,Building130,Building131,Building132,Building133);
-  
+            neighborhood3Group.getChildren().addAll(Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Warehouse,Warehouse_label,Building121,Building122,Building123,Building124,Building125,Building126,Building127,Building128,Building129,Building130);
+
             Group warehousesGroup = new Group();
             warehousesGroup.getChildren().addAll(Warehouse, Warehouse_label);
-    buildings= Arrays.asList(Building1 ,Building2 , Building3 , Building4 ,Building5,Building6,Building7,Building8,Building9,Building10,Building11,Building12,Building13,Building14,Building15,Building16,Building17,Building18,Building19,Building20,Building21,Building22,Building23,Building24,Building25,Building26,Building27,Building28,Building29,Building30,Building31,Building32,Building33,Building34,Building35,Building36,Building37,Building38,Building39,Building40,Building41,Building42,Building43,Building44,Building45,Building46,Building47,Building48,Building49,Building50,Building51,Building52,Building53,Building54,Building55,Building56,Building57,Building58,Building59,Building60,Building61,Building62,Building63,Building64,Building65,Building66,Building67,Building68,Building69,Building70,Building71,Building72,Building73,Building74,Building75,Building76,Building77,Building78,Building79,Building80,Building81,Building82,Building83,Building84,Building85,Building86,Building87,Building88,Building89,Building90,Building91,Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Building124,Building125,Building126,Building127,Building128,Building129,Building130,Building131,Building132,Building133);
+            buildings= Arrays.asList(Building1 ,Building2 , Building3 , Building4 ,Building5,Building6,Building7,Building8,Building9,Building10,Building11,Building12,Building13,Building14,Building15,Building16,Building17,Building18,Building19,Building20,Building21,Building22,Building23,Building24,Building25,Building26,Building27,Building28,Building29,Building30,Building31,Building32,Building33,Building34,Building35,Building36,Building37,Building38,Building39,Building40,Building41,Building42,Building43,Building44,Building45,Building46,Building47,Building48,Building49,Building50,Building51,Building52,Building53,Building54,Building55,Building56,Building57,Building58,Building59,Building60,Building61,Building62,Building63,Building64,Building65,Building66,Building67,Building68,Building69,Building70,Building71,Building72,Building73,Building74,Building75,Building76,Building77,Building78,Building79,Building80,Building81,Building82,Building83,Building84,Building85,Building86,Building87,Building88,Building89,Building90,Building91,Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Building121,Building122,Building123,Building124,Building125,Building126,Building127,Building128,Building129,Building130);
             neighborhoodsGroup.getChildren().addAll(Street_CLable,Street_BLable,Street_ALable,Street_1Lable,Street_2Lable,Street_3Lable,Street_4Lable,Street_5Lable,Street_6Lable,Street_7Lable,Street_8Lable,Street_9Lable,Neighbourhood_1,neighborhood1Group,Neighbourhood_2,neighborhood2Group,Neighbourhood_3,neighborhood3Group,warehousesGroup);
             AllGroups.getChildren().add(neighborhoodsGroup);
     }
@@ -2916,7 +2952,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
             if (!MainProgram.driver.isTransitionPaused) {
-            // resetChosenBuildingColors();
+            resetChosenBuildingColors();
             stopCurrentSimulation();
             isStartClicked = true;
 
@@ -3240,37 +3276,37 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
 
 } 
 
-// public  void initializeOriginalColors() {
-//     originalBuildingColors.put(Building127, Color.web("#C0392B"));
-//     originalBuildingColors.put(Building103, Color.web("#C0392B"));
-//     originalBuildingColors.put(Building70, Color.BLUE);
-//     originalBuildingColors.put(Building44, Color.GREY);
-//     originalBuildingColors.put(Building13, Color.GREY);
-//     originalBuildingColors.put(Building32,Color.GREY);
-//     originalBuildingColors.put(Building7, Color.GREY);
-//     originalBuildingColors.put(Building52, Color.GREY);
-//     originalBuildingColors.put(Building12, Color.GREY);
-//     originalBuildingColors.put(Building101, Color.web("#C0392B"));
-//     originalBuildingColors.put(Building79, Color.BLUE);
-//     originalBuildingColors.put(Building74, Color.BLUE);
-//     originalBuildingColors.put(Building46, Color.GREY);
-//     originalBuildingColors.put(Building42, Color.GREY);
-//     originalBuildingColors.put(Building97, Color.web("#C0392B"));
-//     originalBuildingColors.put(Building67, Color.BLUE);
-//     originalBuildingColors.put(Building80, Color.BLUE);
-//     originalBuildingColors.put(Building116, Color.web("#C0392B"));
-//     originalBuildingColors.put(Building124, Color.web("#C0392B"));
-//     originalBuildingColors.put(Building133, Color.web("#C0392B"));
-// }
-    // public  void resetChosenBuildingColors() {
-    //     initializeOriginalColors();
-    //     for (Rectangle building : ChosenBuilding) {
-    //         Color originalColor = originalBuildingColors.get(building);
-    //         if (originalColor != null) {
-    //             building.setFill(originalColor);
-    //         }
-    //     }
-    // }
+public  void initializeOriginalColors() {
+    originalBuildingColors.put(Building124, Color.web("#C0392B"));
+    originalBuildingColors.put(Building103, Color.web("#C0392B"));
+    originalBuildingColors.put(Building70, Color.BLUE);
+    originalBuildingColors.put(Building44, Color.GREY);
+    originalBuildingColors.put(Building13, Color.GREY);
+    originalBuildingColors.put(Building32,Color.GREY);
+    originalBuildingColors.put(Building7, Color.GREY);
+    originalBuildingColors.put(Building52, Color.GREY);
+    originalBuildingColors.put(Building12, Color.GREY);
+    originalBuildingColors.put(Building101, Color.web("#C0392B"));
+    originalBuildingColors.put(Building79, Color.BLUE);
+    originalBuildingColors.put(Building74, Color.BLUE);
+    originalBuildingColors.put(Building46, Color.GREY);
+    originalBuildingColors.put(Building42, Color.GREY);
+    originalBuildingColors.put(Building97, Color.web("#C0392B"));
+    originalBuildingColors.put(Building67, Color.BLUE);
+    originalBuildingColors.put(Building80, Color.BLUE);
+    originalBuildingColors.put(Building116, Color.web("#C0392B"));
+    originalBuildingColors.put(Building121, Color.web("#C0392B"));
+    originalBuildingColors.put(Building130, Color.web("#C0392B"));
+}
+public  void resetChosenBuildingColors() {
+    initializeOriginalColors();
+    for (Rectangle building : ChosenBuilding) {
+        Color originalColor = originalBuildingColors.get(building);
+        if (originalColor != null) {
+            building.setFill(originalColor);
+        }
+    }
+}
 public static void openPhase2() {
     Stage newStage = new Stage();
     MainGUISimulation phase2 = new MainGUISimulation();
