@@ -68,7 +68,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 public static List<Rectangle> buildings ;
 
     public void start(Stage primaryStage) {
-    // MainProgram.createPackages();
+        MainProgram.initializeObjects();
         primaryStage.setOnCloseRequest(windowEvent -> {Platform.exit();System.exit(0);});
         
 
