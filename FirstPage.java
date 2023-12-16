@@ -113,7 +113,6 @@ phase2Button.setStyle(
     }
 
     public static void main(String[] args) {
-        MainProgram.initializeObjects();
         // MainProgram.driver.setPackages(MainProgram.initializePackages());
         launch(args);
     }
