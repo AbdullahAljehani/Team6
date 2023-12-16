@@ -125,34 +125,6 @@ public void moveCarTo(List<List<Intersection>> packages) {
             MainGUISimulation.car.setTranslateY(finalPointY);
         }
     }
-    public void moveCarToDestination(List<Intersection> destinations) {
-        if (destinations.size() < 2) {
-            // Handle cases where there are insufficient destinations
-            return;
-        }
-    
-        moveCarSequentially(destinations, 0);
-    }
-    
-    private void moveCarSequentially(List<Intersection> destinations, int index) {
-        if (index >= destinations.size() - 1) {
-            // Reached the end of destinations
-            return;
-        }
-    
-        Intersection start = destinations.get(index);
-        Intersection destination = destinations.get(index + 1);
-        System.out.println(start);
-        System.out.println(destination);
-
-        int delay = delayByIndex(index);
-    
-        List<Intersection> nearestIntersections = findShortestPath(MainProgram.createGraph(), start, destination);
-        Path path = generatePath(nearestIntersections);
-    
-        moveDriver(path, () -> moveCarSequentially(destinations, index + 1), delay);
-    }
-    
     public List<List<Intersection>> gg(List<Intersection> destinations) {
         List<List<Intersection>> paths = new ArrayList<>();
     
@@ -160,13 +132,12 @@ public void moveCarTo(List<List<Intersection>> packages) {
             Intersection start = destinations.get(i);
             Intersection destination = destinations.get(i + 1);
             List<Intersection> nearestIntersections = findShortestPath(MainProgram.createGraph(), start, destination); 
+            System.out.println("Dddddc "+nearestIntersections);
             paths.add(nearestIntersections);
         }
     
         return paths;
     }
-    
-    
 
 public static List<Intersection> findShortestPath(Map<Intersection, List<Intersection>> graph,
                                                   Intersection start,
@@ -221,30 +192,52 @@ public static List<Intersection> findShortestPath(Map<Intersection, List<Interse
     return shortestPath;
 }
 
-private Path generatePath(List<Intersection> shortestPath) {
+public void createPathForPackages(List<List<Intersection>> packages) {
+    if (packages == null || packages.isEmpty()) {
+        return;
+    }
+
+    playPathTransitions(packages, 0);
+}
+
+private void playPathTransitions(List<List<Intersection>> packages, int index) {
+    if (index >= packages.size()) {
+        return;
+    }
+    int delay = delayByIndex(index);
+    Path path = generatePath(packages.get(index));
+    moveDriver(path, () -> playPathTransitions(packages, index + 1),delay);
+
+}
+
+private Path generatePath(List<Intersection> intersections) {
     Path path = new Path();
 
-    if (shortestPath.isEmpty()) {
+    if (intersections.isEmpty()) {
         return path;
     }
 
-    Intersection currentIntersection = shortestPath.get(0);
-    path.getElements().add(new MoveTo(currentIntersection.getX(), currentIntersection.getY()));
+    Intersection currentintersection = intersections.get(0);
+    path.getElements().add(new MoveTo(currentintersection.getX(), currentintersection.getY()));
+    
+    for (int i = 1; i < intersections.size(); i++) {
+        Intersection nextintersection = intersections.get(i);
+        path.getElements().add(new LineTo(nextintersection.getX(), nextintersection.getY()));
 
-    for (int i = 1; i < shortestPath.size(); i++) {
-        Intersection nextIntersection = shortestPath.get(i);
-        path.getElements().add(new LineTo(nextIntersection.getX(), nextIntersection.getY()));
+         incrementDistance = currentintersection.getDistanceTo(nextintersection);
+         incrementGasoline = currentintersection.calculateGasolineCost(nextintersection);
+         gasolineCost += incrementGasoline ;
+         distance+=incrementDistance;
+        currentintersection = nextintersection;
+        currentX = currentintersection.getX();
+        currentY = currentintersection.getY();
+        
 
-        // Your existing logic for calculations between intersections goes here
-        // Example: incrementDistance, incrementGasoline, etc.
-
-        // Update the current intersection
-        currentIntersection = nextIntersection;
     }
+   
 
     return path;
 }
-
 public int culclateTotalTime(){
     int totalDelay=0;
     List<Package> packages = getPackages();
@@ -275,7 +268,7 @@ public void moveDriver(Path path, Runnable onFinish,int delay) {
             PauseTransition pauseTransition = new PauseTransition(Duration.seconds(delay/2));
 
             pauseTransition.setOnFinished(event -> {
-                // deliverPackage(currentX, currentY);
+                //deliverPackage(currentX, currentY);
                 onFinish.run();
                 isTransitionPaused = false; 
             });
@@ -287,6 +280,7 @@ public void moveDriver(Path path, Runnable onFinish,int delay) {
         pathTransition.play();
     }
 }
+
 
 private double calculateTotalDistance(ObservableList<PathElement> elements) {
     double totalDistance = 0.0;

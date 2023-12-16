@@ -2934,7 +2934,6 @@ Start_button.setStyle( "-fx-background-color: #F0F2F0; " );
 Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
-            if (!MainProgram.driver.isTransitionPaused) {
             resetChosenBuildingColors();
             stopCurrentSimulation();
             isStartClicked = true;
@@ -2944,12 +2943,12 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             CounterCostLabel.setText("$ 00,00");
             CounterDistanceLabel.setText("00.00 Km");
             percentLabelP2.setText("00.00%");
-            MainProgram.driver.moveCarToDestination(MainProgram.destinationBuildings());
+            MainProgram.driver.createPathForPackages(MainProgram.driver.gg(MainProgram.destinationBuildings()));
             secondsPassed = 0;
             CounterTimeLabel.setText(formatTime(secondsPassed));
-            startSimulation();
+            //  startSimulation();
             isPaused = false;
-            }
+           
         });
                 
         Button Pause_button = new Button();

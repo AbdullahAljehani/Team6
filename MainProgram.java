@@ -22,7 +22,6 @@ public class MainProgram {
     private static Intersection  FirstOfStreet5;
     private static Intersection  EndOfStreet5;
     
-
    private static Intersection  FirstOfStreet6;
    private static Intersection  EndOfStreet6;
     
@@ -77,7 +76,7 @@ public class MainProgram {
     private static Intersection  intersection8_3;
 
     public static Intersection  intersection9_1;
-    private static Intersection  intersection9_2;
+    public static Intersection  intersection9_2;
     private static Intersection  intersection9_3;
     
     public static Intersection  destinationBuilding127;
@@ -188,11 +187,7 @@ public class MainProgram {
 
     
     public static void initializeObjects() {
-     
-
-
-
-
+    
    
          building127 = new Building(127,destinationBuilding127,MainGUISimulation.Building127);
          building103 = new Building(103,destinationBuilding103,MainGUISimulation.Building103);
@@ -312,7 +307,7 @@ public class MainProgram {
       FirstOfStreetA= new Intersection ( 330, 0);
       EndOfStreetA= new Intersection ( 330, 650);
        
-               destinationBuilding127 = new Intersection(568, 594);
+       destinationBuilding127 = new Intersection(568, 594);
        destinationBuilding103 = new Intersection(900, 461);
        destinationBuilding70 = new Intersection(390, 395);
        destinationBuilding44 = new Intersection(400, 265);
@@ -335,22 +330,172 @@ public class MainProgram {
         driver = new DeliveryDriver();
   
     }
-    
- public static Map<Intersection, List<Intersection>> createGraph() {
+    public static List<Intersection> destinationBuildings() {
+      List<Intersection> destinations = new ArrayList<>();
+  
 
+ 
+       destinationBuilding127 = new Intersection(568, 594);
+        destinationBuilding124 = new Intersection(368, 594);
+       destinationBuilding103 = new Intersection(900, 461);
+       destinationBuilding70 = new Intersection(390, 395);
+       destinationBuilding44 = new Intersection(400, 265);
+       destinationBuilding13 = new Intersection(68, 130);
+       destinationBuilding32 = new Intersection(508, 130);
+       destinationBuilding7 = new Intersection(568, 66);
+       destinationBuilding52 = new Intersection(1028, 197);
+       destinationBuilding12 = new Intersection(1010, 66);
+       destinationBuilding101 = new Intersection(768, 461);
+       destinationBuilding79 = new Intersection(1028, 395);
+       destinationBuilding74 = new Intersection(708, 395);
+       destinationBuilding46 = new Intersection(638, 265);
+       destinationBuilding42 = new Intersection(183, 265);
+       destinationBuilding97 = new Intersection(478, 461);
+       destinationBuilding67 = new Intersection(143, 395);
+       destinationBuilding80 = new Intersection(68, 395);
+       destinationBuilding116 = new Intersection(818, 527);
+       destinationBuilding133 = new Intersection(1028, 594); 
+             EndOfStreetA= new Intersection ( 330, 650);
+       intersection9_2= new Intersection ( 600, 594);
+      EndOfStreet9= new Intersection ( 1050, 594);
+
+      destinations.addAll(Arrays.asList(EndOfStreetA
+              , destinationBuilding97,destinationBuilding116,destinationBuilding101,destinationBuilding127,destinationBuilding124
+      ));
+  
+      return destinations;
+  }
+  public static Map<Intersection, List<Intersection>> createGraph() {
     Map<Intersection, List<Intersection>> graph = new HashMap<>();
 
+    // #Relation for Street 9
     List<Intersection> neighborsOfEndA = Arrays.asList(intersection9_1);
-        List<Intersection> neighborsOf9_1 = Arrays.asList(intersection9_2,destinationBuilding127,FirstOfStreet9,destinationBuilding124);
+    List<Intersection> neighborsOf9_1 = Arrays.asList(destinationBuilding124, destinationBuilding127, intersection9_2, FirstOfStreet9, intersection8_1);
+    List<Intersection> neighborsOf9_2 = Arrays.asList(destinationBuilding124,destinationBuilding127,intersection9_3, intersection9_1, intersection8_2);
+    List<Intersection> neighborsOf9_3 = Arrays.asList( EndOfStreet9, intersection9_2, intersection8_3);
+    List<Intersection> neighborsOfFirst9 = Arrays.asList(intersection9_1);
+    List<Intersection> neighborsOfEnd9 = Arrays.asList(intersection9_3);
+    List<Intersection> neighborsOfBuild124 = Arrays.asList(intersection9_2,intersection9_1,destinationBuilding127);
+    List<Intersection> neighborsOfBuild127 = Arrays.asList(intersection9_2,intersection9_1,destinationBuilding124);
+   
+    // #Relation for Street 8
+
+    List<Intersection> neighborsOf8_1 = Arrays.asList( intersection8_2, FirstOfStreet8, intersection7_1,intersection9_1);
+    List<Intersection> neighborsOf8_2 = Arrays.asList(intersection8_3, intersection8_1, intersection7_2,destinationBuilding116,intersection9_2);
+    List<Intersection> neighborsOf8_3 = Arrays.asList( EndOfStreet8, intersection8_2, intersection7_3,destinationBuilding116,intersection9_3);
+    List<Intersection> neighborsOfFirst8 = Arrays.asList(intersection8_1);
+    List<Intersection> neighborsOfEnd8 = Arrays.asList(intersection8_3);
+    List<Intersection> neighborsOfBuild116 = Arrays.asList(intersection8_2,intersection8_3);
+
+    // #Relation for Street 7
+
+    List<Intersection> neighborsOf7_1 = Arrays.asList( intersection7_2, FirstOfStreet7, intersection6_1,destinationBuilding97,intersection8_1);
+    List<Intersection> neighborsOf7_2 = Arrays.asList(intersection7_3, intersection7_1, intersection6_2,destinationBuilding97,destinationBuilding101,intersection8_2);
+    List<Intersection> neighborsOf7_3 = Arrays.asList( EndOfStreet7, intersection7_2, intersection6_3,destinationBuilding101,destinationBuilding103,intersection8_3);
+    List<Intersection> neighborsOfFirst7 = Arrays.asList(intersection7_1);
+    List<Intersection> neighborsOfEnd7 = Arrays.asList(intersection7_3);
+    List<Intersection> neighborsOfBuild97 = Arrays.asList(intersection7_2,intersection7_1);
+    List<Intersection> neighborsOfBuild101 = Arrays.asList(intersection7_2,intersection7_3);
+    List<Intersection> neighborsOfBuild103 = Arrays.asList(EndOfStreet7,intersection7_3);
 
 
     graph.put(EndOfStreetA, neighborsOfEndA);
     graph.put(intersection9_1, neighborsOf9_1);
+    graph.put(intersection9_2, neighborsOf9_2);
+    graph.put(intersection9_3, neighborsOf9_3);
+    graph.put(FirstOfStreet9, neighborsOfFirst9);
+    graph.put(EndOfStreet9, neighborsOfEnd9);
+    graph.put(destinationBuilding124, neighborsOfBuild124);
+    graph.put(destinationBuilding127, neighborsOfBuild127);
 
+    graph.put(intersection8_1, neighborsOf8_1);
+    graph.put(intersection8_2, neighborsOf8_2);
+    graph.put(intersection8_3, neighborsOf8_3);
+    graph.put(FirstOfStreet8, neighborsOfFirst8);
+    graph.put(EndOfStreet8, neighborsOfEnd8);
+    graph.put(destinationBuilding116, neighborsOfBuild116);
+
+    graph.put(intersection7_1, neighborsOf7_1);
+    graph.put(intersection7_2, neighborsOf7_2);
+    graph.put(intersection7_3, neighborsOf7_3);
+    graph.put(FirstOfStreet7, neighborsOfFirst7);
+    graph.put(EndOfStreet7, neighborsOfEnd7);
+    graph.put(destinationBuilding97, neighborsOfBuild97);
+    graph.put(destinationBuilding101, neighborsOfBuild101);
+    graph.put(destinationBuilding103, neighborsOfBuild103);
+    
+    // #Relation for Street 8
 
     return graph;
 }
  
+public static List<Intersection> crcintersections(){
+
+  List<Intersection> intersections = new ArrayList<>();
+
+      // FirstOfStreet1= new Intersection ( 35, 66);
+      // intersection1_1= new Intersection ( 330, 66);
+      // intersection1_2= new Intersection ( 600, 66);
+      // intersection1_3= new Intersection (860, 66);
+      // EndOfStreet1= new Intersection ( 1050, 66);
+      // FirstOfStreet2= new Intersection ( 35, 130);
+      // intersection2_1= new Intersection ( 330, 130);
+      // intersection2_2= new Intersection ( 600, 130);
+      // intersection2_3= new Intersection (860, 130);
+      // EndOfStreet2= new Intersection ( 1050, 130);
+
+      // FirstOfStreet3= new Intersection ( 35, 197);
+      // intersection3_1= new Intersection ( 330, 197);
+      // intersection3_2= new Intersection ( 600, 197);
+      // intersection3_3= new Intersection (860, 197);
+      // EndOfStreet3= new Intersection ( 1050, 197);
+
+      // FirstOfStreet4= new Intersection ( 35, 265);
+      // intersection4_1= new Intersection ( 330, 265);
+      // intersection4_2= new Intersection ( 600, 265);
+      // intersection4_3= new Intersection (860, 265);
+      // EndOfStreet4= new Intersection ( 1050, 265);
+
+      // FirstOfStreet5= new Intersection ( 35, 330);
+      // intersection5_1= new Intersection ( 330, 330);
+      // intersection5_2= new Intersection ( 600, 330);
+      // intersection5_3= new Intersection (860, 330);
+      // EndOfStreet5= new Intersection ( 1050, 330);
+
+      // FirstOfStreet6= new Intersection ( 35, 395);
+      // intersection6_1= new Intersection ( 330, 395);
+      // intersection6_2= new Intersection ( 600, 395);
+      // intersection6_3= new Intersection (860, 395);
+      // EndOfStreet6= new Intersection ( 1050, 395);
+  
+      // FirstOfStreet7= new Intersection ( 35, 461);
+      // intersection7_1= new Intersection ( 330, 461);
+      // intersection7_2= new Intersection ( 600, 461);
+      // intersection7_3= new Intersection (860, 461);
+      // EndOfStreet7= new Intersection ( 1050, 461);
+
+      // FirstOfStreet8= new Intersection ( 35, 527);
+      // intersection8_1= new Intersection ( 330, 527);
+      // intersection8_2= new Intersection ( 600, 527);
+      // intersection8_3= new Intersection (860, 527);
+      // EndOfStreet8= new Intersection ( 1050, 527);
+  
+       FirstOfStreet9= new Intersection ( 35, 594);
+      intersection9_1= new Intersection ( 330, 594);
+      // intersection9_3= new Intersection (860, 594);
+      // EndOfStreet9= new Intersection ( 1050, 594);
+
+      // FirstOfStreetC= new Intersection ( 860, 0);
+      // EndOfStreetC= new Intersection ( 860, 650);
+
+      // FirstOfStreetB= new Intersection ( 600, 0);
+      // EndOfStreetB= new Intersection ( 600, 650);
+
+      FirstOfStreetA= new Intersection ( 330, 0);
+      EndOfStreetA= new Intersection ( 330, 650);
+      intersections= Arrays.asList(EndOfStreetA,FirstOfStreet1,intersection1_1,intersection1_2,intersection1_3,intersection2_1,intersection2_2,intersection2_3,intersection3_1,intersection3_2,intersection3_3,intersection4_1,intersection4_2,intersection4_3,intersection5_1,intersection5_2,intersection5_3,FirstOfStreet6,intersection6_1,intersection6_2,intersection6_3,EndOfStreet6,FirstOfStreet7,intersection7_1,intersection7_2,intersection7_3,EndOfStreet7,FirstOfStreet8,intersection8_1,intersection8_2,intersection8_3,EndOfStreet8,FirstOfStreet9,intersection9_1,intersection9_3,EndOfStreet9,FirstOfStreetC,EndOfStreetC,FirstOfStreetB,EndOfStreetB,FirstOfStreetA);
+      return intersections;
+    }
   public static List<Package> createPackages() {
       
       List<Package> packages = new ArrayList<>();

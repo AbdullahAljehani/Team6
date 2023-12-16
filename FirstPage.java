@@ -109,7 +109,7 @@ phase2Button.setStyle(
     private void openSimulationPage() {
         MainGUISimulation  SimulationPage = new MainGUISimulation (); // Create an instance of FirstPage
         Stage stage = new Stage(); // Create a new stage
-        SimulationPage.start(stage); // Call the start me   thod of FirstPage, passing the new stage
+        SimulationPage.start(stage); // Call the start method of FirstPage, passing the new stage
     }
 
     public static void main(String[] args) {
