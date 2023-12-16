@@ -1,4 +1,12 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.stream.Collectors;
+
 import javafx.animation.PathTransition;
 import javafx.animation.PauseTransition;
 import javafx.collections.ObservableList;
@@ -117,7 +125,72 @@ public void moveCarTo(List<List<Intersection>> packages) {
             MainGUISimulation.car.setTranslateY(finalPointY);
         }
     }
+    public List<List<Intersection>> gg(List<Intersection> destinations) {
+        List<List<Intersection>> paths = new ArrayList<>();
+    
+        for (int i = 0; i < destinations.size() - 1; i++) {
+            Intersection start = destinations.get(i);
+            Intersection destination = destinations.get(i + 1);
+            List<Intersection> nearestIntersections = findShortestPath(MainProgram.createGraph(), start, destination); 
+            System.out.println("Dddddc "+nearestIntersections);
+            paths.add(nearestIntersections);
+        }
+    
+        return paths;
+    }
 
+public static List<Intersection> findShortestPath(Map<Intersection, List<Intersection>> graph,
+                                                  Intersection start,
+                                                  Intersection destination) {
+    Map<Intersection, Double> distance = new HashMap<>();
+    Map<Intersection, Intersection> previous = new HashMap<>();
+    PriorityQueue<Intersection> pq = new PriorityQueue<>(Comparator.comparingDouble(distance::get));
+
+    // Initialize distances
+    for (Intersection intersection : graph.keySet()) {
+        distance.put(intersection, Double.MAX_VALUE);
+    }
+    distance.put(start, 0.0);
+    pq.offer(start);
+
+    while (!pq.isEmpty()) {
+        Intersection current = pq.poll();
+
+        if (current.equals(destination)) {
+            break; // Found the shortest path to destination
+        }
+
+        double currentDistance = distance.get(current);
+
+        for (Intersection neighbor : graph.getOrDefault(current, new ArrayList<>())) {
+            
+            double newDistance = currentDistance + current.getDistanceTo(neighbor);
+
+            // Debugging print statements
+            System.out.println("Current: " + current);
+            System.out.println("Neighbor: " + neighbor);
+            
+            if (newDistance < distance.getOrDefault(neighbor, Double.MAX_VALUE)) {
+                distance.put(neighbor, newDistance);
+                previous.put(neighbor, current);
+                pq.offer(neighbor);
+            }
+            
+        }
+    }
+
+    // Reconstruct the shortest path
+    List<Intersection> shortestPath = new ArrayList<>();
+    Intersection current = destination;
+    while (previous.containsKey(current)) {
+        shortestPath.add(current);
+        current = previous.get(current);
+    }
+    shortestPath.add(start);
+    Collections.reverse(shortestPath);
+
+    return shortestPath;
+}
 
 public void createPathForPackages(List<List<Intersection>> packages) {
     if (packages == null || packages.isEmpty()) {
@@ -195,7 +268,7 @@ public void moveDriver(Path path, Runnable onFinish,int delay) {
             PauseTransition pauseTransition = new PauseTransition(Duration.seconds(delay/2));
 
             pauseTransition.setOnFinished(event -> {
-                deliverPackage(currentX, currentY);
+                //deliverPackage(currentX, currentY);
                 onFinish.run();
                 isTransitionPaused = false; 
             });
@@ -207,6 +280,7 @@ public void moveDriver(Path path, Runnable onFinish,int delay) {
         pathTransition.play();
     }
 }
+
 
 private double calculateTotalDistance(ObservableList<PathElement> elements) {
     double totalDistance = 0.0;
@@ -234,62 +308,55 @@ private double calculateTotalDistance(ObservableList<PathElement> elements) {
     return totalDistance;
     
 }
-    
+}  
 
 
-private void deliverPackage(int currentX, int currentY) {
-    boolean deliveredPackageFound = false;
-    for (Package aPackage : getPackages()) {
-        if (!aPackage.isDelivered) {
-            Building destinationBuilding = aPackage.getCustomer().getBuilding();
-            if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
-                aPackage.isDelivered = true;
-                deliveredPackageFound = true;
+// private void deliverPackage(int currentX, int currentY) {
+//     boolean deliveredPackageFound = false;
+//     for (Package aPackage : getPackages()) {
+//         if (!aPackage.isDelivered) {
+//             Building destinationBuilding = aPackage.getCustomer().getBuilding();
+//             if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
+//                 aPackage.isDelivered = true;
+//                 deliveredPackageFound = true;
 
-                for (Rectangle chosenBuilding : MainGUISimulation.ChosenBuilding) {
-                    if (chosenBuilding.equals(destinationBuilding.getGuiElement())) {
-                        destinationBuilding.getGuiElement().setFill(Color.GREEN);
-                    }
-                }
+//                 for (Rectangle chosenBuilding : MainGUISimulation.ChosenBuilding) {
+//                     if (chosenBuilding.equals(destinationBuilding.getGuiElement())) {
+//                         destinationBuilding.getGuiElement().setFill(Color.GREEN);
+//                     }
+//                 }
 
-                if (hasNextPackage(aPackage) && aPackage.isDelivered) {
-                    moveToNextPackage();
-                }
-            }
-        }
-    }
+//                 if (hasNextPackage(aPackage) && aPackage.isDelivered) {
+//                     moveToNextPackage();
+//                 }
+//             }
+//         }
+//     }
 
-    if (!deliveredPackageFound) {
-        System.out.println("No more packages assigned to the driver at the current position.");
-    }
-}
+//     if (!deliveredPackageFound) {
+//         System.out.println("No more packages assigned to the driver at the current position.");
+//     }
+// }
 
-private void moveToNextPackage() {
-    boolean nextPackageFound = false;
-    for (int i = 0; i < getPackages().size(); i++) {
-        Package currentPackage = getPackages().get(i);
-        if (currentPackage.isDelivered) {
-            for (int j = i + 1; j < getPackages().size(); j++) {
-                Package nextPackage = getPackages().get(j);
-                if (!nextPackage.isDelivered) {
-                    nextPackageFound = true;
-                    break;
-                }
-            }
+// private void moveToNextPackage() {
+//     boolean nextPackageFound = false;
+//     for (int i = 0; i < getPackages().size(); i++) {
+//         Package currentPackage = getPackages().get(i);
+//         if (currentPackage.isDelivered) {
+//             for (int j = i + 1; j < getPackages().size(); j++) {
+//                 Package nextPackage = getPackages().get(j);
+//                 if (!nextPackage.isDelivered) {
+//                     nextPackageFound = true;
+//                     break;
+//                 }
+//             }
 
-            if (nextPackageFound) {
-                break;
-            }
-        }
-    }
+//             if (nextPackageFound) {
+//                 break;
+//             }
+//         }
+//     }
 
-    if (!nextPackageFound) {
-        System.out.println("No more packages assigned to the driver at the current position.");
-    }
-}
-    
-private boolean hasNextPackage(Package currentPackage) {
-        int currentIndex = getPackages().indexOf(currentPackage);
-        return currentIndex < getPackages().size() - 1;
-    }
-}
+//     if (!nextPackageFound) {
+//         System.out.println("No more packages assigned to the driver at the current position.");
+//     }

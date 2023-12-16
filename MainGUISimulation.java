@@ -2924,7 +2924,7 @@ Start_button.setLayoutX(1050);
 Start_button.setLayoutY(15);
 
 
-Image Starticon = new Image(getClass().getResourceAsStream("StartButton.png"));
+Image Starticon = new Image("StartButton.png");
 ImageView iconView = new ImageView(Starticon);
 iconView.setFitWidth(30);
 iconView.setFitHeight(15);
@@ -2943,11 +2943,12 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             CounterCostLabel.setText("$ 00,00");
             CounterDistanceLabel.setText("00.00 Km");
             percentLabelP2.setText("00.00%");
-            MainProgram.driver.createPathForPackages(MainProgram.PackagesPaths(MainProgram.initializePackages()));
+            MainProgram.driver.createPathForPackages(MainProgram.driver.gg(MainProgram.destinationBuildings()));
             secondsPassed = 0;
             CounterTimeLabel.setText(formatTime(secondsPassed));
-            startSimulation();
+            //  startSimulation();
             isPaused = false;
+           
         });
                 
         Button Pause_button = new Button();
@@ -2964,11 +2965,13 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         Pause_button.setContentDisplay(ContentDisplay.CENTER);
                 
         Pause_button.setOnAction(e -> {
+            if (!MainProgram.driver.isTransitionPaused) {
+
             if (isPaused) {
                 resumeSimulation();
             } else {
                 pauseSimulation();
-            }
+            }}
         });
         
         Button End_button = new Button();
@@ -2983,8 +2986,12 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         End_button.setStyle( "-fx-background-color: #F0F2F0; " );
         End_button.setContentDisplay(ContentDisplay.CENTER);
         
-        End_button.setOnAction(e -> {endSimulation();});
-
+        End_button.setOnAction(e -> {
+            if (!MainProgram.driver.isTransitionPaused) {
+                endSimulation();
+            }
+        });
+        
         Button Back_button = new Button();
         Back_button.setPrefSize(60, 20);
         Back_button.setLayoutX(1275);
@@ -3064,6 +3071,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                     });
                     if (allDelivered(MainProgram.driver)) {
                         System.out.println("All packages delivered. Simulation completed.");
+                        MainProgram.driver.isTransitionPaused = false;
                         calculateTotalTimeForAllPhases();
                         isStartClicked=false;
                         Platform.runLater(() -> {
@@ -3189,6 +3197,8 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                 isStartClicked = false; 
+                MainProgram.driver.isTransitionPaused = false;
+
                 for (Rectangle chosenBuilding : ChosenBuilding) {
                     chosenBuilding.setFill(Color.GREEN);
                 }
