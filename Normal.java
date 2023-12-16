@@ -1,13 +1,13 @@
-import java.util.List;
+
 
 public class Normal extends Package  {
 
-    public Normal(Customer customer, int packageId,List<Intersection > path,int delay) {
-        super(customer,  packageId,path,delay);
+    public Normal(Customer customer, int packageId,int delay) {
+        super(customer,  packageId,delay);
 
     }
-    public Normal(Normal original, List<Intersection> newPath) {
-        super(original, newPath);
+    public Normal(Normal original) {
+        super(original);
     }
    
     public String getPackageInformation() {

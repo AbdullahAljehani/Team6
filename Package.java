@@ -8,20 +8,18 @@ public abstract class Package  {
     private List<Intersection > path;
     public int delay;
 
-    public Package (Customer customer1,  int packageId,List<Intersection > path,int delay) {
+    public Package (Customer customer1,  int packageId,int delay) {
         this.customer1 = customer1;
         this.isDelivered = false;
         this.packageId = packageId;
-        this.path = path;
         this.delay=delay;
         
     }
     // Shallow Copy
-    public Package(Package original, List<Intersection> newPath) {
+    public Package(Package original) {
         this.customer1 = original.customer1;
         this.packageId = original.packageId;
         this.delay = original.delay;
-        this.path = new ArrayList<>(newPath);
     }
    
     public abstract String getPackageInformation();
@@ -40,8 +38,6 @@ public abstract class Package  {
    public void setPath(List<Intersection> path){
     this.path = path;
    }
-
-
 
     }
 
