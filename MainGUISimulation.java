@@ -34,7 +34,7 @@ public static Label CounterDistanceLabel;
 public static Label CounterCostLabel;
 public static Label CounterNo_SimulationLabel ;
 public static Label percentLabelP2;
-private static Pane AllGroups;
+public static Pane AllGroups= new Pane();
 private  Timer timer;
 public  int secondsPassed = 0;
 public static  boolean isStartClicked=true;
@@ -70,7 +70,7 @@ public static List<Rectangle> buildings ;
             carRoutesGroup.getChildren().add(car);
 
             Scene scene = new Scene(root , 1400, 700);
-            AllGroups = new Pane();
+            
             buildings(AllGroups);
             streets(AllGroups);
             Labels(AllGroups,FirstPage.isPhase2Selected);            
@@ -89,7 +89,7 @@ public static List<Rectangle> buildings ;
 
 
 
-    public void buildings(Pane AllGroups){
+    public static void buildings(Pane AllGroups){
     
         Text Neighbourhood_1 = new Text(1090, 260, "Alhamdaniya");
         Font font = new Font("Times New Roman",25);
@@ -2634,7 +2634,7 @@ public static List<Rectangle> buildings ;
   
             Group warehousesGroup = new Group();
             warehousesGroup.getChildren().addAll(Warehouse, Warehouse_label);
-            buildings= Arrays.asList(Building1 ,Building2 , Building3 , Building4 ,Building5,Building6,Building7,Building8,Building9,Building10,Building11,Building12,Building13,Building14,Building15,Building16,Building17,Building18,Building19,Building20,Building21,Building22,Building23,Building24,Building25,Building26,Building27,Building28,Building29,Building30,Building31,Building32,Building33,Building34,Building35,Building36,Building37,Building38,Building39,Building40,Building41,Building42,Building43,Building44,Building45,Building46,Building47,Building48,Building49,Building50,Building51,Building52,Building53,Building54,Building55,Building56,Building57,Building58,Building59,Building60,Building61,Building62,Building63,Building64,Building65,Building66,Building67,Building68,Building69,Building70,Building71,Building72,Building73,Building74,Building75,Building76,Building77,Building78,Building79,Building80,Building81,Building82,Building83,Building84,Building85,Building86,Building87,Building88,Building89,Building90,Building91,Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Building120,Building121,Building122,Building123,Building124,Building125,Building126,Building127,Building128,Building129);
+    buildings= Arrays.asList(Building1 ,Building2 , Building3 , Building4 ,Building5,Building6,Building7,Building8,Building9,Building10,Building11,Building12,Building13,Building14,Building15,Building16,Building17,Building18,Building19,Building20,Building21,Building22,Building23,Building24,Building25,Building26,Building27,Building28,Building29,Building30,Building31,Building32,Building33,Building34,Building35,Building36,Building37,Building38,Building39,Building40,Building41,Building42,Building43,Building44,Building45,Building46,Building47,Building48,Building49,Building50,Building51,Building52,Building53,Building54,Building55,Building56,Building57,Building58,Building59,Building60,Building61,Building62,Building63,Building64,Building65,Building66,Building67,Building68,Building69,Building70,Building71,Building72,Building73,Building74,Building75,Building76,Building77,Building78,Building79,Building80,Building81,Building82,Building83,Building84,Building85,Building86,Building87,Building88,Building89,Building90,Building91,Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Building120,Building121,Building122,Building123,Building124,Building125,Building126,Building127,Building128,Building129);
             neighborhoodsGroup.getChildren().addAll(Street_CLable,Street_BLable,Street_ALable,Street_1Lable,Street_2Lable,Street_3Lable,Street_4Lable,Street_5Lable,Street_6Lable,Street_7Lable,Street_8Lable,Street_9Lable,Neighbourhood_1,neighborhood1Group,Neighbourhood_2,neighborhood2Group,Neighbourhood_3,neighborhood3Group,warehousesGroup);
             AllGroups.getChildren().add(neighborhoodsGroup);
     }

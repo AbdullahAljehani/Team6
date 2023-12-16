@@ -204,6 +204,7 @@ private void playPathTransitions(List<List<Intersection>> packages, int index) {
     }
     // int delay = delayByIndex(index);
     Path path = generatePath(packages.get(index));
+    System.out.println(path);
     moveDriver(path, () -> playPathTransitions(packages, index + 1));
 
 }
@@ -260,6 +261,7 @@ public void moveDriver(Path path, Runnable onFinish) {
         pathTransition.setCycleCount(1);
         pathTransition.setDuration(Duration.seconds(duration));
         pathTransition.setPath(path);
+        System.out.println("aaa "+path);
         pathTransition.setOnFinished(e -> {
             MainGUISimulation.CounterDistanceLabel.setText(MainGUISimulation.formatDistance(distance));
             MainGUISimulation.CounterCostLabel.setText(MainGUISimulation.formatGasolineCost(gasolineCost));
@@ -299,62 +301,62 @@ private double calculateTotalDistance(ObservableList<PathElement> elements) {
     return totalDistance;
     
 }
-
-
-
-private void deliverPackage(int currentX, int currentY) {
-    boolean deliveredPackageFound = false;
-    for (Package aPackage : getPackages()) {
-        if (!aPackage.isDelivered) {
-            Building destinationBuilding = aPackage.getCustomer().getBuilding();
-            if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
-                aPackage.isDelivered = true;
-                deliveredPackageFound = true;
-
-                for (Rectangle chosenBuilding : MainGUISimulation.ChosenBuilding) {
-                    if (chosenBuilding.equals(destinationBuilding.getGuiElement())) {
-                        destinationBuilding.getGuiElement().setFill(Color.GREEN);
-                    }
-                }
-
-                if (hasNextPackage(aPackage) && aPackage.isDelivered) {
-                    moveToNextPackage();
-                }
-            }
-        }
-    }
-
-    if (!deliveredPackageFound) {
-        System.out.println("No more packages assigned to the driver at the current position.");
-    }
 }
 
-private void moveToNextPackage() {
-    boolean nextPackageFound = false;
-    for (int i = 0; i < getPackages().size(); i++) {
-        Package currentPackage = getPackages().get(i);
-        if (currentPackage.isDelivered) {
-            for (int j = i + 1; j < getPackages().size(); j++) {
-                Package nextPackage = getPackages().get(j);
-                if (!nextPackage.isDelivered) {
-                    nextPackageFound = true;
-                    break;
-                }
-            }
 
-            if (nextPackageFound) {
-                break;
-            }
-        }
-    }
+// private void deliverPackage(int currentX, int currentY) {
+//     boolean deliveredPackageFound = false;
+//     for (Package aPackage : getPackages()) {
+//         if (!aPackage.isDelivered) {
+//             Building destinationBuilding = aPackage.getCustomer().getBuilding();
+//             if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
+//                 aPackage.isDelivered = true;
+//                 deliveredPackageFound = true;
 
-    if (!nextPackageFound) {
-        System.out.println("No more packages assigned to the driver at the current position.");
-    }
-}
+//                 for (Rectangle chosenBuilding : MainGUISimulation.ChosenBuilding) {
+//                     if (chosenBuilding.equals(destinationBuilding.getGuiElement())) {
+//                         destinationBuilding.getGuiElement().setFill(Color.GREEN);
+//                     }
+//                 }
 
-private boolean hasNextPackage(Package currentPackage) {
-        int currentIndex = getPackages().indexOf(currentPackage);
-        return currentIndex < getPackages().size() - 1;
-    }
-}
+//                 if (hasNextPackage(aPackage) && aPackage.isDelivered) {
+//                     moveToNextPackage();
+//                 }
+//             }
+//         }
+//     }
+
+//     if (!deliveredPackageFound) {
+//         System.out.println("No more packages assigned to the driver at the current position.");
+//     }
+// }
+
+// private void moveToNextPackage() {
+//     boolean nextPackageFound = false;
+//     for (int i = 0; i < getPackages().size(); i++) {
+//         Package currentPackage = getPackages().get(i);
+//         if (currentPackage.isDelivered) {
+//             for (int j = i + 1; j < getPackages().size(); j++) {
+//                 Package nextPackage = getPackages().get(j);
+//                 if (!nextPackage.isDelivered) {
+//                     nextPackageFound = true;
+//                     break;
+//                 }
+//             }
+
+//             if (nextPackageFound) {
+//                 break;
+//             }
+//         }
+//     }
+
+//     if (!nextPackageFound) {
+//         System.out.println("No more packages assigned to the driver at the current position.");
+//     }
+// }
+
+// private boolean hasNextPackage(Package currentPackage) {
+//         int currentIndex = getPackages().indexOf(currentPackage);
+//         return currentIndex < getPackages().size() - 1;
+//     }
+// }
