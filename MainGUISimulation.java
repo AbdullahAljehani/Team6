@@ -17,6 +17,7 @@ import javafx.animation.Animation;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.layout.StackPane;
@@ -66,7 +67,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 
 
     public void start(Stage primaryStage) {
-    MainProgram.createPackages();
+    // MainProgram.createPackages();
         primaryStage.setOnCloseRequest(windowEvent -> {Platform.exit();System.exit(0);});
         
 
@@ -253,23 +254,23 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         }); 
         
         
-        Building7.setArcHeight(25);
-        Building7.setArcWidth(25);
-        Building7.setFill(Color.GREY);
-        Tooltip tooltipBuilding7 = new Tooltip(MainProgram.package7.getPackageInformation());
-        Tooltip.install(Building7, tooltipBuilding7);
+         Building7.setArcHeight(25);
+         Building7.setArcWidth(25);
+         Building7.setFill(Color.GREY);
+        // // Tooltip tooltipBuilding7 = new Tooltip(MainProgram.package7.getPackageInformation());
+        // Tooltip.install(Building7, tooltipBuilding7);
         
-        Building7.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building7.contains(event.getX(), event.getY())) {
-                tooltipBuilding7.show(Building7, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building7.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building7.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding7.show(Building7, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building7.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding7.hide();
-        });
+        // Building7.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding7.hide();
+        // });
         
         // Neighbourhood_1 : BLOCK 3
         Rectangle Building8 = new Rectangle(640, 20, 35, 35);
@@ -353,40 +354,40 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building12.setHeight(35);
         Building12.setWidth(70);
         Building12.setFill(Color.GREY);
-        Tooltip tooltipBuilding12 = new Tooltip(MainProgram.package9.getPackageInformation());
-        Tooltip.install(Building12, tooltipBuilding12);
+        // Tooltip tooltipBuilding12 = new Tooltip(MainProgram.package9.getPackageInformation());
+        // Tooltip.install(Building12, tooltipBuilding12);
         
-        Building12.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building12.contains(event.getX(), event.getY())) {
-                tooltipBuilding12.show(Building12, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building12.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building12.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding12.show(Building12, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building12.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding12.hide();
-        });
+        // Building12.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding12.hide();
+        // });
         
         // Neighbourhood_1 : BLOCK 5
         
         Building13.setArcHeight(25);
         Building13.setArcWidth(25);
         Building13.setFill(Color.GREY);
-        Tooltip tooltipBuilding13 = new Tooltip(MainProgram.package5.getPackageInformation());
-        Tooltip.install(Building13, tooltipBuilding13);
+        // Tooltip tooltipBuilding13 = new Tooltip(MainProgram.package5.getPackageInformation());
+        // Tooltip.install(Building13, tooltipBuilding13);
         
-        Building13.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building13.contains(event.getX(), event.getY())) {
-                tooltipBuilding13.show(Building13, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building13.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building13.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding13.show(Building13, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building13.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding13.hide();
-        });
+        // Building13.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding13.hide();
+        // });
         
         Rectangle Building14 = new Rectangle(125, 80, 35, 35);
         Building14.setArcHeight(25);
@@ -725,21 +726,21 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building32.setArcHeight(25);
         Building32.setArcWidth(25);
         Building32.setFill(Color.GREY);
-        Tooltip tooltipBuilding32 = new Tooltip(MainProgram.package6.getPackageInformation());
-        Tooltip.install(Building32, tooltipBuilding32);
+        // Tooltip tooltipBuilding32 = new Tooltip(MainProgram.package6.getPackageInformation());
+        // Tooltip.install(Building32, tooltipBuilding32);
         
         
-        Building32.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building32.contains(event.getX(), event.getY())) {
-                tooltipBuilding32.show(Building32, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building32.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building32.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding32.show(Building32, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building32.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding32.hide();
-        });
+        // Building32.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding32.hide();
+        // });
         
         Rectangle Building33 = new Rectangle(550, 150, 35, 35);
         Building33.setArcHeight(25);
@@ -914,20 +915,20 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building42.setArcHeight(25);
         Building42.setArcWidth(25);
         Building42.setFill(Color.GREY);
-        Tooltip tooltipBuilding42 = new Tooltip(MainProgram.package14.getPackageInformation());
-        Tooltip.install(Building42, tooltipBuilding42);
+        // Tooltip tooltipBuilding42 = new Tooltip(MainProgram.package14.getPackageInformation());
+        // Tooltip.install(Building42, tooltipBuilding42);
         
-        Building42.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building42.contains(event.getX(), event.getY())) {
-                tooltipBuilding42.show(Building42, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building42.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building42.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding42.show(Building42, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building42.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding42.hide();
-        });
+        // Building42.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding42.hide();
+        // });
         
         Rectangle Building43 = new Rectangle(270, 215, 35, 35);
         Building43.setArcHeight(25);
@@ -955,20 +956,20 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building44.setHeight(35);
         Building44.setWidth(80);
         Building44.setFill(Color.GREY);
-        Tooltip tooltipBuilding44 = new Tooltip(MainProgram.package4.getPackageInformation());
-        Tooltip.install(Building44, tooltipBuilding44);
+        // Tooltip tooltipBuilding44 = new Tooltip(MainProgram.package4.getPackageInformation());
+        // Tooltip.install(Building44, tooltipBuilding44);
         
-        Building44.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building44.contains(event.getX(), event.getY())) {
-                tooltipBuilding44.show(Building44, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building44.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building44.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding44.show(Building44, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building44.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding44.hide();
-        });
+        // Building44.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding44.hide();
+        // });
         
         Rectangle Building45 = new Rectangle(495, 215, 35, 35);
         Building45.setArcHeight(25);
@@ -995,20 +996,20 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building46 .setArcHeight(25);
         Building46.setArcWidth(25);
         Building46.setFill(Color.GREY);
-         Tooltip tooltipBuilding46 = new Tooltip(MainProgram.package13.getPackageInformation());
-        Tooltip.install(Building46, tooltipBuilding46);
+        //  Tooltip tooltipBuilding46 = new Tooltip(MainProgram.package13.getPackageInformation());
+        // Tooltip.install(Building46, tooltipBuilding46);
         
-        Building46.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building46.contains(event.getX(), event.getY())) {
-                tooltipBuilding46.show(Building46, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building46.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building46.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding46.show(Building46, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building46.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding46.hide();
-        });
+        // Building46.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding46.hide();
+        // });
         
         Rectangle Building47 = new Rectangle(680, 215, 35, 35);
         Building47.setArcHeight(25);
@@ -1106,20 +1107,20 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building52.setArcHeight(25);
         Building52.setArcWidth(25);
         Building52.setFill(Color.GREY);
-        Tooltip tooltipBuilding52 = new Tooltip(MainProgram.package8.getPackageInformation());
-        Tooltip.install(Building52, tooltipBuilding52);
+        // Tooltip tooltipBuilding52 = new Tooltip(MainProgram.package8.getPackageInformation());
+        // Tooltip.install(Building52, tooltipBuilding52);
         
-        Building52.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building52.contains(event.getX(), event.getY())) {
-                tooltipBuilding52.show(Building52, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building52.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building52.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding52.show(Building52, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building52.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding52.hide();
-        });
+        // Building52.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding52.hide();
+        // });
         
         // Neighbourhood 2 ( from Building 53 to Building 91 ) with 12 blocks :
         
@@ -1398,20 +1399,20 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building67.setArcHeight(25);
         Building67.setArcWidth(25);
         Building67.setFill(Color.BLUE);
-        Tooltip tooltipBuilding67 = new Tooltip(MainProgram.package16.getPackageInformation());
-        Tooltip.install(Building67, tooltipBuilding67);
+        // Tooltip tooltipBuilding67 = new Tooltip(MainProgram.package16.getPackageInformation());
+        // Tooltip.install(Building67, tooltipBuilding67);
         
-        Building67.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building67.contains(event.getX(), event.getY())) {
-                tooltipBuilding67.show(Building67, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building67.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building67.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding67.show(Building67, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building67.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding67.hide();
-        });
+        // Building67.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding67.hide();
+        // });
         
         Rectangle Building68 = new Rectangle(200, 345, 35, 35);
         Building68.setArcHeight(25);
@@ -1456,20 +1457,20 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building70.setArcWidth(25);
         Building70.setFill(Color.BLUE);
         
-        Tooltip tooltipBuilding70 = new Tooltip(MainProgram.package3.getPackageInformation());
-        Tooltip.install(Building70, tooltipBuilding70);
+        // Tooltip tooltipBuilding70 = new Tooltip(MainProgram.package3.getPackageInformation());
+        // Tooltip.install(Building70, tooltipBuilding70);
         
-        Building70.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building70.contains(event.getX(), event.getY())) {
-                tooltipBuilding70.show(Building70, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building70.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building70.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding70.show(Building70, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building70.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding70.hide();
-        });
+        // Building70.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding70.hide();
+        // });
         
         Rectangle Building71 = new Rectangle(460, 345, 35, 35);
         Building71.setArcHeight(25);
@@ -1532,20 +1533,20 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building74.setArcHeight(25);
         Building74.setArcWidth(25);
         Building74.setFill(Color.BLUE);
-        Tooltip tooltipBuilding74 = new Tooltip(MainProgram.package12.getPackageInformation());
-        Tooltip.install(Building74, tooltipBuilding74);
+        // Tooltip tooltipBuilding74 = new Tooltip(MainProgram.package12.getPackageInformation());
+        // Tooltip.install(Building74, tooltipBuilding74);
         
-        Building74.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building74.contains(event.getX(), event.getY())) {
-                tooltipBuilding74.show(Building74, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building74.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building74.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding74.show(Building74, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building74.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding74.hide();
-        });
+        // Building74.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding74.hide();
+        // });
         
         Rectangle Building75 = new Rectangle(750, 345, 35, 35);
         Building75.setArcHeight(25);
@@ -1625,40 +1626,40 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building79.setArcHeight(25);
         Building79.setArcWidth(25);
         Building79.setFill(Color.BLUE);
-        Tooltip tooltipBuilding79 = new Tooltip(MainProgram.package11.getPackageInformation());
-        Tooltip.install(Building79, tooltipBuilding79);
+        // Tooltip tooltipBuilding79 = new Tooltip(MainProgram.package11.getPackageInformation());
+        // Tooltip.install(Building79, tooltipBuilding79);
         
-        Building79.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building79.contains(event.getX(), event.getY())) {
-                tooltipBuilding79.show(Building79, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building79.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building79.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding79.show(Building79, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building79.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding79.hide();
-        });
+        // Building79.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding79.hide();
+        // });
         
         // Neighbourhood_2 : BLOCK 9
        
         Building80.setArcHeight(25);
         Building80.setArcWidth(25);
         Building80.setFill(Color.BLUE);
-         Tooltip tooltipBuilding80 = new Tooltip(MainProgram.package17.getPackageInformation());
-        Tooltip.install(Building80, tooltipBuilding80);
+        //  Tooltip tooltipBuilding80 = new Tooltip(MainProgram.package17.getPackageInformation());
+        // Tooltip.install(Building80, tooltipBuilding80);
         
-        Building80.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building80.contains(event.getX(), event.getY())) {
-                tooltipBuilding80.show(Building80, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building80.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building80.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding80.show(Building80, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building80.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding80.hide();
-        });
+        // Building80.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding80.hide();
+        // });
         
         Rectangle Building81 = new Rectangle(165, 410, 35, 35);
         Building81.setArcHeight(25);
@@ -1972,21 +1973,21 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building97.setArcHeight(25);
         Building97.setArcWidth(25);
         Building97.setFill(Color.web("#C0392B"));
-        Tooltip tooltipBuilding97 = new Tooltip(MainProgram.package15.getPackageInformation());
-        Tooltip.install(Building97, tooltipBuilding97);
+        // Tooltip tooltipBuilding97 = new Tooltip(MainProgram.package15.getPackageInformation());
+        // Tooltip.install(Building97, tooltipBuilding97);
         
         
-        Building97.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building97.contains(event.getX(), event.getY())) {
-                tooltipBuilding97.show(Building97, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building97.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building97.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding97.show(Building97, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building97.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding97.hide();
-        });
+        // Building97.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding97.hide();
+        // });
         
         
         Rectangle Building98 = new Rectangle(540, 475, 35, 35);
@@ -2049,20 +2050,20 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building101.setArcHeight(25);
         Building101.setArcWidth(25);
         Building101.setFill(Color.web("#C0392B"));
-        Tooltip tooltipBuilding101 = new Tooltip(MainProgram.package10.getPackageInformation());
-        Tooltip.install(Building101, tooltipBuilding101);
+        // Tooltip tooltipBuilding101 = new Tooltip(MainProgram.package10.getPackageInformation());
+        // Tooltip.install(Building101, tooltipBuilding101);
         
-        Building101.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building101.contains(event.getX(), event.getY())) {
-                tooltipBuilding101.show(Building101, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building101.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building101.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding101.show(Building101, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building101.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding101.hide();
-        });
+        // Building101.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding101.hide();
+        // });
         
         Rectangle Building102 = new Rectangle(810, 475, 35, 35);
         Building102.setArcHeight(25);
@@ -2086,20 +2087,20 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building103.setArcHeight(25);
         Building103.setArcWidth(25);
         Building103.setFill(Color.web("#C0392B"));
-        Tooltip tooltipBuilding103 = new Tooltip(MainProgram.package2.getPackageInformation());
-        Tooltip.install(Building103, tooltipBuilding103);
+        // Tooltip tooltipBuilding103 = new Tooltip(MainProgram.package2.getPackageInformation());
+        // Tooltip.install(Building103, tooltipBuilding103);
         
-        Building103.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building103.contains(event.getX(), event.getY())) {
-                tooltipBuilding103.show(Building103, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building103.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building103.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding103.show(Building103, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building103.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding103.hide();
-        });
+        // Building103.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding103.hide();
+        // });
         
         Rectangle Building104 = new Rectangle(960, 475, 35, 35);
         Building104.setArcHeight(25);
@@ -2326,20 +2327,20 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building116.setArcHeight(25);
         Building116.setArcWidth(25);
         Building116.setFill(Color.web("#C0392B"));
-        Tooltip tooltipBuilding116 = new Tooltip(MainProgram.package18.getPackageInformation());
-        Tooltip.install(Building116, tooltipBuilding116);
+        // Tooltip tooltipBuilding116 = new Tooltip(MainProgram.package18.getPackageInformation());
+        // Tooltip.install(Building116, tooltipBuilding116);
         
-        Building116.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building116.contains(event.getX(), event.getY())) {
-                tooltipBuilding116.show(Building116, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building116.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building116.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding116.show(Building116, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building116.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding116.hide();
-        }); 
+        // Building116.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding116.hide();
+        // }); 
         
         // Neighbourhood_3 : BLOCK 8
         
@@ -2427,20 +2428,20 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building124.setArcHeight(25);
         Building124.setArcWidth(25);
         Building124.setFill(Color.web("#C0392B"));
-        Tooltip tooltipBuilding124 = new Tooltip(MainProgram.package19.getPackageInformation());
-        Tooltip.install(Building124, tooltipBuilding124);
+        // Tooltip tooltipBuilding124 = new Tooltip(MainProgram.package19.getPackageInformation());
+        // Tooltip.install(Building124, tooltipBuilding124);
         
-        Building124.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building124.contains(event.getX(), event.getY())) {
-                tooltipBuilding124.show(Building124, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building124.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building124.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding124.show(Building124, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building124.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding124.hide();
-        }); 
+        // Building124.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding124.hide();
+        // }); 
         
         
         Rectangle Building125 = new Rectangle(425, 605, 35, 35);
@@ -2465,37 +2466,37 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         Building126.setArcHeight(25);
         Building126.setArcWidth(25);
         Building126.setFill(Color.web("#C0392B"));
-        Tooltip tooltipBuilding126 = new Tooltip("Building Number: 126");
-        Tooltip.install(Building126, tooltipBuilding126); 
-        Building126.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building126.contains(event.getX(), event.getY())) {
-                tooltipBuilding126.show(Building126, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Tooltip tooltipBuilding126 = new Tooltip("Building Number: 126");
+        // Tooltip.install(Building126, tooltipBuilding126); 
+        // Building126.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building126.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding126.show(Building126, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building126.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding126.hide();
-        });
+        // Building126.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding126.hide();
+        // });
         
-        Building127.setArcHeight(25);
-        Building127.setArcWidth(25);
-        Building127.setFill(Color.web("#C0392B"));
-        Tooltip tooltipBuilding127 = new Tooltip(MainProgram.package1.getPackageInformation());
-        Tooltip.install(Building127, tooltipBuilding127);
+        // Building127.setArcHeight(25);
+        // Building127.setArcWidth(25);
+        // Building127.setFill(Color.web("#C0392B"));
+        // Tooltip tooltipBuilding127 = new Tooltip(MainProgram.package1.getPackageInformation());
+        // Tooltip.install(Building127, tooltipBuilding127);
         
-        Building127.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building127.contains(event.getX(), event.getY())) {
-                tooltipBuilding127.show(Building127, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building127.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building127.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding127.show(Building127, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building127.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding127.hide();
-        });
+        // Building127.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding127.hide();
+        // });
       
         
         
@@ -2592,23 +2593,23 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         });
         
         
-        Building133.setArcHeight(25);
-        Building133.setArcWidth(25);
-        Building133.setFill(Color.web("#C0392B"));
-        Tooltip tooltipBuilding133 = new Tooltip(MainProgram.package20.getPackageInformation());
-        Tooltip.install(Building133, tooltipBuilding133);
+        // Building133.setArcHeight(25);
+        // Building133.setArcWidth(25);
+        // Building133.setFill(Color.web("#C0392B"));
+        // Tooltip tooltipBuilding133 = new Tooltip(MainProgram.package20.getPackageInformation());
+        // Tooltip.install(Building133, tooltipBuilding133);
         
-        Building133.setOnMouseEntered(event -> {
-            // Show the tooltip only if the mouse is within the building bounds
-            if (Building133.contains(event.getX(), event.getY())) {
-                tooltipBuilding133.show(Building133, event.getScreenX(), event.getScreenY() + 20);
-            }
-        });
+        // Building133.setOnMouseEntered(event -> {
+        //     // Show the tooltip only if the mouse is within the building bounds
+        //     if (Building133.contains(event.getX(), event.getY())) {
+        //         tooltipBuilding133.show(Building133, event.getScreenX(), event.getScreenY() + 20);
+        //     }
+        // });
         
-        Building133.setOnMouseExited(event -> {
-            // Hide the tooltip
-            tooltipBuilding133.hide();
-        }); 
+        // Building133.setOnMouseExited(event -> {
+        //     // Hide the tooltip
+        //     tooltipBuilding133.hide();
+        // }); 
         
 
         Text Street_1Lable = new Text(25, 73, "1");
@@ -2891,17 +2892,32 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
         percentLabelP2.setLayoutX(1160);
         percentLabelP2.setLayoutY(205);
 
-        Rectangle percentRectangle = new Rectangle(1140,195,80, 40);
+        Rectangle percentRectangle = new Rectangle(1075,195,80, 40);
         percentRectangle.setStroke(Color.web("#000C40"));
         percentRectangle.setStrokeWidth(5);
         percentRectangle.setFill(Color.web("#F0F2F0"));
 
         Label percent_LabelP2 = new Label("Percent Improvement");
         percent_LabelP2.setFont(Labelfont);
-        percent_LabelP2.setLayoutX(1120);
+        percent_LabelP2.setLayoutX(1075);
         percent_LabelP2.setLayoutY(175);
         percent_LabelP2.setStyle("-fx-text-fill: #F0F2F0;");
 
+        //bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+        
+        Rectangle Ideal_rectangle = new Rectangle(1190, 150, 150, 35);
+        Ideal_rectangle.setFill(Color.BLACK);
+        Ideal_rectangle.setStroke(Color.BLUE);
+
+        Text Ideal_text = new Text("Ideal time: 1:00:00");
+        Ideal_text.setFill(Color.WHITE);
+        Ideal_text.setFont(Font.font("Arial", 13)); 
+        Ideal_text.setTextAlignment(TextAlignment.CENTER);
+        Ideal_text.setX(Ideal_rectangle.getX() + Ideal_rectangle.getWidth() / 1.25 - Ideal_text.getLayoutBounds().getWidth() / 1.25);
+        Ideal_text.setY(Ideal_rectangle.getY() + Ideal_rectangle.getHeight() / 1.25 - Ideal_text.getLayoutBounds().getHeight() / 1.25);
+        Group Ideal_group = new Group();
+        Ideal_group.getChildren().addAll(Ideal_text , Ideal_rectangle);
+        //bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
          Group labelsGroup = new Group();
             labelsGroup.getChildren().addAll(timeLabel, distanceLabel,costLabel,No_SimulationLabel,timerRectangle,distanceRectangle,costRectangle,No_SimulationRectangle);
             Group counterLabelsGroup = new Group();
@@ -2910,7 +2926,7 @@ public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
                 percentLabelsGroup.getChildren().addAll(percent_LabelP2,percentRectangle,percentLabelP2);
 
                 if (!FirstPage.isPhase2Selected) {
-                                AllGroups.getChildren().addAll(labelsGroup,counterLabelsGroup);
+                                AllGroups.getChildren().addAll(labelsGroup,counterLabelsGroup , Ideal_text);
                 }else{
                             AllGroups.getChildren().addAll(labelsGroup,counterLabelsGroup,percentLabelsGroup);
 
@@ -2924,7 +2940,7 @@ Start_button.setLayoutX(1050);
 Start_button.setLayoutY(15);
 
 
-Image Starticon = new Image("StartButton.png");
+Image Starticon = new Image(getClass().getResourceAsStream("StartButton.png"));
 ImageView iconView = new ImageView(Starticon);
 iconView.setFitWidth(30);
 iconView.setFitHeight(15);
@@ -2934,6 +2950,7 @@ Start_button.setStyle( "-fx-background-color: #F0F2F0; " );
 Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
+            if (!MainProgram.driver.isTransitionPaused) {
             resetChosenBuildingColors();
             stopCurrentSimulation();
             isStartClicked = true;
@@ -2943,12 +2960,12 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             CounterCostLabel.setText("$ 00,00");
             CounterDistanceLabel.setText("00.00 Km");
             percentLabelP2.setText("00.00%");
-            MainProgram.driver.createPathForPackages(MainProgram.driver.gg(MainProgram.destinationBuildings()));
+            MainProgram.driver.createPathForPackages(MainProgram.driver.gg(MainProgram.destinationBuildings()));            
             secondsPassed = 0;
             CounterTimeLabel.setText(formatTime(secondsPassed));
-            //  startSimulation();
+            //startSimulation();
             isPaused = false;
-           
+            }
         });
                 
         Button Pause_button = new Button();
@@ -2987,6 +3004,8 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         End_button.setContentDisplay(ContentDisplay.CENTER);
         
         End_button.setOnAction(e -> {
+
+            
             if (!MainProgram.driver.isTransitionPaused) {
                 endSimulation();
             }
@@ -3033,21 +3052,28 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             percentImprovement = (((double) totalTimeP1 - totalTimeP2) / totalTimeP1) * 100;
         } else {
             
-            System.err.println("Error: Cannot calculate percent improvement before starting Phase 1");        }
-
+        
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Start phase 2 befor 1 ERROR");
+            alert.setHeaderText("There are error, read dwon!!!");
+            alert.setContentText("Error: Cannot calculate percent improvement before starting Phase 1");
+            alert.showAndWait();
+        
+        }
+            
         return percentImprovement;
     }
 
-    public void calculateTotalTimeForAllPhases(){
-        if (FirstPage.isPhase1Selected) {
+    // public void calculateTotalTimeForAllPhases(){
+    //     if (FirstPage.isPhase1Selected) {
 
-                    totalTimeP1 = MainProgram.driver.culclateTotalTime(); // Calculate total time separately
+    //                 totalTimeP1 = MainProgram.driver.culclateTotalTime(); // Calculate total time separately
                    
-                } else if (FirstPage.isPhase2Selected) {
-                    // Similarly, calculate total time separately for phase 2
-                    totalTimeP2 = MainProgram.driver.culclateTotalTime(); // Calculate total time separately
+    //             } else if (FirstPage.isPhase2Selected) {
+    //                 // Similarly, calculate total time separately for phase 2
+    //                 totalTimeP2 = MainProgram.driver.culclateTotalTime(); // Calculate total time separately
                    
-                } }
+    //             } }
 
     public void startSimulation() {
         // Cancel the existing timer if it's not null
@@ -3070,13 +3096,18 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                         CounterTimeLabel.setText(formatTime(secondsPassed));
                     });
                     if (allDelivered(MainProgram.driver)) {
-                        System.out.println("All packages delivered. Simulation completed.");
-                        MainProgram.driver.isTransitionPaused = false;
-                        calculateTotalTimeForAllPhases();
-                        isStartClicked=false;
-                        Platform.runLater(() -> {
-                            CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
-                            percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
+                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                         alert.setTitle("FINISH");
+                         alert.setHeaderText("THE SIMULATION IS DONE");
+                         alert.setContentText("Have a nice day!");
+                         alert.showAndWait();
+
+                         MainProgram.driver.isTransitionPaused = false;
+                        //  calculateTotalTimeForAllPhases();
+                         isStartClicked=false;
+                         Platform.runLater(() -> {
+                         CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
+                         percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
 
                         });
     
@@ -3169,12 +3200,17 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     
     public void endSimulation() {
         if (!isStartClicked) {
-            // Display a message or take appropriate action indicating that the simulation has not started.
-            System.out.println("Cannot end simulation before starting.");
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("End simulation");
+            alert.setHeaderText("Cannot end simulation before starting.");
+            alert.setContentText("--------------");
+
+            alert.showAndWait();
+
             return;
         }
     
-        // Your existing code for ending the simulation
         if (timer != null) {
             timer.cancel();
         }
@@ -3184,21 +3220,30 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                 MainProgram.driver.pathTransition.stop();
                 MainProgram.driver.pathTransition.setPath(null);
                 MainProgram.driver.pathTransition.setCycleCount(1);
-                double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.PackagesPaths(MainProgram.initializePackages()));
-                CounterDistanceLabel.setText(formatDistance(totalDistance));
+                // double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.PackagesPaths(MainProgram.initializePackages()));
+                // CounterDistanceLabel.setText(formatDistance(totalDistance));
     
-                double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths(MainProgram.initializePackages()));
-                CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
-                MainProgram.driver.moveCarTo(MainProgram.PackagesPaths(MainProgram.initializePackages()));
-                CounterTimeLabel.setText(formatTime(MainProgram.driver.culclateTotalTime()));
-                calculateTotalTimeForAllPhases(); 
+                // double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths(MainProgram.initializePackages()));
+                // CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
+                // MainProgram.driver.moveCarTo(MainProgram.PackagesPaths(MainProgram.initializePackages()));
+                // CounterTimeLabel.setText(formatTime(MainProgram.driver.culclateTotalTime()));
+                // calculateTotalTimeForAllPhases(); 
                 percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
 
     
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                 isStartClicked = false; 
                 MainProgram.driver.isTransitionPaused = false;
-
+                Platform.runLater(() -> {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("FINISH");
+                    alert.setHeaderText("THE SIMULATION IS DONE");
+                    alert.setContentText("Have a nice day!");
+                    alert.showAndWait();
+                });
+                
+               
+                
                 for (Rectangle chosenBuilding : ChosenBuilding) {
                     chosenBuilding.setFill(Color.GREEN);
                 }
@@ -3220,7 +3265,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             MainProgram.driver.pathTransition.setCycleCount(1);
             CounterDistanceLabel.setText("00.00 Km");
             CounterCostLabel.setText("$ 00,00");
-            MainProgram.driver.moveCarTo(MainProgram.PackagesPaths(MainProgram.initializePackages()));
+            // MainProgram.driver.moveCarTo(MainProgram.PackagesPaths(MainProgram.initializePackages()));
             car.setTranslateX(0);
             car.setTranslateY(0);
 
