@@ -67,15 +67,18 @@ public double calculateTotalDistance(List<List<Intersection>> packages) {
     return totalDistance;
 }
 
-// private int delayByIndex(int index) {
-//     List<Package> packages = getPackages();
-//     if (index >= 0 && index < packages.size()) {
-//         return packages.get(index).delay;
-//     } else {
-//         System.out.println("Index is out of bounds.");
-//         return 0; 
-//     }
-// }
+private int delayByIndex(int index) {
+           List<CustomerWithContact> randomCustomers = MainProgram.generateRandomCustomersWithContact();
+
+    List<Package> Packages = MainProgram.generateRandomPackages(randomCustomers);
+
+    if (index >= 0 && index < Packages.size()) {
+        return Packages.get(index).delay;
+    } else {
+        System.out.println("Index is out of bounds.");
+        return 0; 
+    }
+}
 
 
 public double calculateTotalGasolineCost(List<List<Intersection>> packages) {
@@ -202,10 +205,10 @@ private void playPathTransitions(List<List<Intersection>> packages, int index) {
     if (index >= packages.size()) {
         return;
     }
-    // int delay = delayByIndex(index);
+     int delay = delayByIndex(index);
     Path path = generatePath(packages.get(index));
     System.out.println(path);
-    moveDriver(path, () -> playPathTransitions(packages, index + 1));
+    moveDriver(path, () -> playPathTransitions(packages, index + 1),delay);
 
 }
 
@@ -239,37 +242,48 @@ private Path generatePath(List<Intersection> intersections) {
 }
 // public int culclateTotalTime(){
 //     int totalDelay=0;
+    
 //     List<Package> packages = getPackages();
 // for (Package singlePackage : packages) {
     
 //     totalDelay+=singlePackage.delay*60;
 // }
     
-//     // double totalDistance = calculateTotalDistance(MainProgram.PackagesPaths(MainProgram.initializePackages()));
+//      double totalDistance = calculateTotalDistance(MainProgram.PackagesPaths(MainProgram.initializePackages()));
 //     double totalDourtion=35.896; // Scale factor used to predict the total time 
 //     double totalTime = totalDelay + totalDistance*1000/totalDourtion; // Multiplying by 1000 to convert totalDistance from kilometers to meters
 //     int totalTimrCast = (int) totalTime;
 //     return totalTimrCast;
 // }
 
-public void moveDriver(Path path, Runnable onFinish) {
+public void moveDriver(Path path, Runnable onFinish,int delay) {
     if (!path.getElements().isEmpty() && MainGUISimulation.isStartClicked) {
         double totalDistance = calculateTotalDistance(path.getElements());
         double duration = totalDistance / 250;
-        PathTransition pathTransition = new PathTransition();
+        pathTransition = new PathTransition();
         pathTransition.setNode(MainGUISimulation.car);
         pathTransition.setCycleCount(1);
-        pathTransition.setDuration(Duration.seconds(duration));
+        pathTransition.setDuration(Duration.seconds(duration)); 
         pathTransition.setPath(path);
-        System.out.println("aaa "+path);
         pathTransition.setOnFinished(e -> {
             MainGUISimulation.CounterDistanceLabel.setText(MainGUISimulation.formatDistance(distance));
             MainGUISimulation.CounterCostLabel.setText(MainGUISimulation.formatGasolineCost(gasolineCost));
-            onFinish.run();
+            PauseTransition pauseTransition = new PauseTransition(Duration.seconds(delay/2));
+
+            pauseTransition.setOnFinished(event -> {
+                deliverPackage(currentX, currentY);
+                onFinish.run();
+                isTransitionPaused = false; 
+            });
+            pauseTransition.play();
+            isTransitionPaused = true; 
+
         });
+
         pathTransition.play();
     }
 }
+
 
 // Add your calculateTotalDistance, formatDistance, and formatGasolineCost methods here
 
@@ -301,62 +315,67 @@ private double calculateTotalDistance(ObservableList<PathElement> elements) {
     return totalDistance;
     
 }
+
+
+
+private void deliverPackage(int currentX, int currentY) {
+    boolean deliveredPackageFound = false;
+    List<CustomerWithContact> randomCustomers = MainProgram.generateRandomCustomersWithContact();
+
+    List<Package> Packages = MainProgram.generateRandomPackages(randomCustomers);
+    for (Package aPackage : Packages) {
+        if (!aPackage.isDelivered) {
+            Building destinationBuilding = aPackage.getCustomer().getBuilding();
+            if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
+                aPackage.isDelivered = true;
+                deliveredPackageFound = true;
+
+
+                        destinationBuilding.getGuiElement().setFill(Color.GREEN);
+                    }
+                }
+
+                if (hasNextPackage(aPackage) && aPackage.isDelivered) {
+                    moveToNextPackage();
+                }
+            }
+        
+    
+
+    if (!deliveredPackageFound) {
+        System.out.println("No more packages assigned to the driver at the current position.");
+    }
+
+}
+private void moveToNextPackage() {
+    boolean nextPackageFound = false;
+    for (int i = 0; i < getPackages().size(); i++) {
+        Package currentPackage = getPackages().get(i);
+        if (currentPackage.isDelivered) {
+            for (int j = i + 1; j < getPackages().size(); j++) {
+                Package nextPackage = getPackages().get(j);
+                if (!nextPackage.isDelivered) {
+                    nextPackageFound = true;
+                    break;
+                }
+            }
+
+            if (nextPackageFound) {
+                break;
+            }
+        }
+    }
+
+    if (!nextPackageFound) {
+        System.out.println("No more packages assigned to the driver at the current position.");
+    }
 }
 
+private boolean hasNextPackage(Package currentPackage) {
+        List<CustomerWithContact> randomCustomers = MainProgram.generateRandomCustomersWithContact();
 
-// private void deliverPackage(int currentX, int currentY) {
-//     boolean deliveredPackageFound = false;
-//     for (Package aPackage : getPackages()) {
-//         if (!aPackage.isDelivered) {
-//             Building destinationBuilding = aPackage.getCustomer().getBuilding();
-//             if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
-//                 aPackage.isDelivered = true;
-//                 deliveredPackageFound = true;
-
-//                 for (Rectangle chosenBuilding : MainGUISimulation.ChosenBuilding) {
-//                     if (chosenBuilding.equals(destinationBuilding.getGuiElement())) {
-//                         destinationBuilding.getGuiElement().setFill(Color.GREEN);
-//                     }
-//                 }
-
-//                 if (hasNextPackage(aPackage) && aPackage.isDelivered) {
-//                     moveToNextPackage();
-//                 }
-//             }
-//         }
-//     }
-
-//     if (!deliveredPackageFound) {
-//         System.out.println("No more packages assigned to the driver at the current position.");
-//     }
-// }
-
-// private void moveToNextPackage() {
-//     boolean nextPackageFound = false;
-//     for (int i = 0; i < getPackages().size(); i++) {
-//         Package currentPackage = getPackages().get(i);
-//         if (currentPackage.isDelivered) {
-//             for (int j = i + 1; j < getPackages().size(); j++) {
-//                 Package nextPackage = getPackages().get(j);
-//                 if (!nextPackage.isDelivered) {
-//                     nextPackageFound = true;
-//                     break;
-//                 }
-//             }
-
-//             if (nextPackageFound) {
-//                 break;
-//             }
-//         }
-//     }
-
-//     if (!nextPackageFound) {
-//         System.out.println("No more packages assigned to the driver at the current position.");
-//     }
-// }
-
-// private boolean hasNextPackage(Package currentPackage) {
-//         int currentIndex = getPackages().indexOf(currentPackage);
-//         return currentIndex < getPackages().size() - 1;
-//     }
-// }
+    List<Package> Packages = MainProgram.generateRandomPackages(randomCustomers);
+        int currentIndex = Packages.indexOf(currentPackage);
+        return currentIndex < Packages.size() - 1;
+    }
+}

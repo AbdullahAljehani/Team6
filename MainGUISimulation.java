@@ -2907,7 +2907,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
             if (!MainProgram.driver.isTransitionPaused) {
-            // resetChosenBuildingColors();
+            //  resetChosenBuildingColors();
             stopCurrentSimulation();
             isStartClicked = true;
 
@@ -2919,7 +2919,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             MainProgram.driver.createPathForPackages(MainProgram.driver.gg(MainProgram.destinationBuildings()));            
             secondsPassed = 0;
             CounterTimeLabel.setText(formatTime(secondsPassed));
-            //startSimulation();
+            startSimulation();
             isPaused = false;
             }
         });
@@ -3038,7 +3038,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         }
     
         // Reset the delivery status of packages
-        resetPackageDeliveryStatus();
+        // resetPackageDeliveryStatus();
     
         // Create a new timer
         timer = new Timer();
