@@ -40,8 +40,9 @@ public  int secondsPassed = 0;
 public static  boolean isStartClicked=true;
 public static boolean isPaused = false;
 public static int numOfSumuolation = 0;
-
 public static Rectangle car ;
+
+// public static Rectangle car ;
 public StackPane root;
 public static int totalTimeP1;
 public static int totalTimeP2;
@@ -63,7 +64,7 @@ public static List<Rectangle> buildings ;
 
             // Create a group for car routes
             Group carRoutesGroup = new Group();
-             car = new Rectangle(323, 642, 15, 15);
+            car = new Rectangle(323, 642, 15, 15);
             car.setArcHeight(15);
             car.setArcWidth(15);
             car.setFill(Color.RED);
@@ -2906,7 +2907,6 @@ Start_button.setStyle( "-fx-background-color: #F0F2F0; " );
 Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
-            if (!MainProgram.driver.isTransitionPaused) {
             //  resetChosenBuildingColors();
             stopCurrentSimulation();
             isStartClicked = true;
@@ -2919,9 +2919,9 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             MainProgram.driver.createPathForPackages(MainProgram.driver.gg(MainProgram.destinationBuildings()));            
             secondsPassed = 0;
             CounterTimeLabel.setText(formatTime(secondsPassed));
-            startSimulation();
+            // startSimulation();
             isPaused = false;
-            }
+            
         });
                 
         Button Pause_button = new Button();
@@ -2938,13 +2938,12 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         Pause_button.setContentDisplay(ContentDisplay.CENTER);
                 
         Pause_button.setOnAction(e -> {
-            if (!MainProgram.driver.isTransitionPaused) {
 
             if (isPaused) {
                 resumeSimulation();
             } else {
                 pauseSimulation();
-            }}
+            }
         });
         
         Button End_button = new Button();
@@ -2962,9 +2961,8 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         End_button.setOnAction(e -> {
 
             
-            if (!MainProgram.driver.isTransitionPaused) {
                 endSimulation();
-            }
+            
         });
         
         Button Back_button = new Button();
@@ -2980,7 +2978,6 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         Back_button.setContentDisplay(ContentDisplay.CENTER);
         
         Back_button.setOnAction(e -> {
-            if (!MainProgram.driver.isTransitionPaused) {
                 numOfSumuolation = 0;
                 FirstPage.isPhase1Selected = false;
                 FirstPage.isPhase2Selected = false;
@@ -2988,7 +2985,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                 openFirstPage();
                 restSumaltion();
                 primaryStage.close();
-            }
+            
         });
 
         Group buttonsGroup = new Group ();
@@ -3038,7 +3035,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         }
     
         // Reset the delivery status of packages
-        // resetPackageDeliveryStatus();
+         resetPackageDeliveryStatus();
     
         // Create a new timer
         timer = new Timer();
@@ -3058,7 +3055,6 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                          alert.setContentText("Have a nice day!");
                          alert.showAndWait();
 
-                         MainProgram.driver.isTransitionPaused = false;
                         //  calculateTotalTimeForAllPhases();
                          isStartClicked=false;
                          Platform.runLater(() -> {
@@ -3079,7 +3075,9 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     }
     
     private static void resetPackageDeliveryStatus() {
-        for (Package aPackage : MainProgram.driver.getPackages()) {
+                List<Package> Packages = MainProgram.packages;
+
+        for (Package aPackage : Packages) {
             aPackage.isDelivered = false;
         }
     }
@@ -3109,9 +3107,9 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     }
 
     public static boolean allDelivered(DeliveryDriver driver) {
-        List<Package> packages = driver.getPackages();
+        List<Package> Packages = MainProgram.packages;
         
-        for (Package aPackage : packages) {
+        for (Package aPackage : Packages) {
             if (aPackage != null) {
                 if (!aPackage.isDelivered) {
                     return false;
@@ -3189,7 +3187,6 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                 isStartClicked = false; 
-                MainProgram.driver.isTransitionPaused = false;
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("FINISH");

@@ -27,7 +27,6 @@ public class DeliveryDriver {
     private double incrementGasoline;
     private double incrementDistance;
     private  double distance;
-    public boolean isTransitionPaused = false;
 
     public void setGasolineCost(double gasolineCost){
         this.gasolineCost=gasolineCost;
@@ -68,9 +67,7 @@ public double calculateTotalDistance(List<List<Intersection>> packages) {
 }
 
 private int delayByIndex(int index) {
-           List<CustomerWithContact> randomCustomers = MainProgram.generateRandomCustomersWithContact();
-
-    List<Package> Packages = MainProgram.generateRandomPackages(randomCustomers);
+    List<Package> Packages = MainProgram.packages;
 
     if (index >= 0 && index < Packages.size()) {
         return Packages.get(index).delay;
@@ -273,10 +270,8 @@ public void moveDriver(Path path, Runnable onFinish,int delay) {
             pauseTransition.setOnFinished(event -> {
                 deliverPackage(currentX, currentY);
                 onFinish.run();
-                isTransitionPaused = false; 
             });
             pauseTransition.play();
-            isTransitionPaused = true; 
 
         });
 
@@ -320,9 +315,8 @@ private double calculateTotalDistance(ObservableList<PathElement> elements) {
 
 private void deliverPackage(int currentX, int currentY) {
     boolean deliveredPackageFound = false;
-    List<CustomerWithContact> randomCustomers = MainProgram.generateRandomCustomersWithContact();
+    List<Package> Packages = MainProgram.packages;
 
-    List<Package> Packages = MainProgram.generateRandomPackages(randomCustomers);
     for (Package aPackage : Packages) {
         if (!aPackage.isDelivered) {
             Building destinationBuilding = aPackage.getCustomer().getBuilding();
@@ -372,9 +366,8 @@ private void moveToNextPackage() {
 }
 
 private boolean hasNextPackage(Package currentPackage) {
-        List<CustomerWithContact> randomCustomers = MainProgram.generateRandomCustomersWithContact();
+    List<Package> Packages = MainProgram.packages;
 
-    List<Package> Packages = MainProgram.generateRandomPackages(randomCustomers);
         int currentIndex = Packages.indexOf(currentPackage);
         return currentIndex < Packages.size() - 1;
     }
