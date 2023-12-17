@@ -13,7 +13,7 @@ public class MainProgram {
 
 
     public static void initializeObjects() {
-        List<CustomerWithContact> randomCustomers = generateRandomCustomersWithContact();
+        List<Customer> randomCustomers = generateRandomCustomers();
     
         generateRandomPackages(randomCustomers);   
 
@@ -72,120 +72,171 @@ public class MainProgram {
     List<Intersection> neighborsOfEndA = Arrays.asList(intersections.get(8).get(1));
     List<Intersection> neighborsOf9_1 = Arrays.asList(destinations.get(1), destinations.get(2), intersections.get(8).get(2), intersections.get(8).get(0), intersections.get(7).get(1));
     List<Intersection> neighborsOf9_2 = Arrays.asList(destinations.get(1),destinations.get(2),intersections.get(8).get(3), intersections.get(8).get(1), intersections.get(7).get(2));
-    List<Intersection> neighborsOf9_3 = Arrays.asList( intersections.get(8).get(4), intersections.get(8).get(2), intersections.get(7).get(3));
+    List<Intersection> neighborsOf9_3 = Arrays.asList( intersections.get(8).get(4), intersections.get(8).get(2), intersections.get(7).get(3),destinations.get(20));
     List<Intersection> neighborsOfFirst9 = Arrays.asList(intersections.get(8).get(1));
-    List<Intersection> neighborsOfEnd9 = Arrays.asList(intersections.get(8).get(3));
-    List<Intersection> neighborsOfBuild124 = Arrays.asList(intersections.get(8).get(2),intersections.get(8).get(1),destinations.get(2));
-    List<Intersection> neighborsOfBuild127 = Arrays.asList(intersections.get(8).get(2),intersections.get(8).get(1),destinations.get(1));
+    List<Intersection> neighborsOfEnd9 = Arrays.asList(intersections.get(8).get(3),destinations.get(20));
+    List<Intersection> neighborsOfBuild120 = Arrays.asList(intersections.get(8).get(2),intersections.get(8).get(1),destinations.get(2));
+    List<Intersection> neighborsOfBuild123 = Arrays.asList(intersections.get(8).get(2),intersections.get(8).get(1),destinations.get(1));
+    List<Intersection> neighborsOfBuild129 = Arrays.asList(intersections.get(8).get(2),intersections.get(8).get(4));
+
    
     // #Relation for Street 8
 
-    // List<Intersection> neighborsOf8_1 = Arrays.asList( intersection8_2, FirstOfStreet8, intersection7_1,intersection9_1);
-    // List<Intersection> neighborsOf8_2 = Arrays.asList(intersection8_3, intersection8_1, intersection7_2,destinationBuilding116,intersection9_2);
-    // List<Intersection> neighborsOf8_3 = Arrays.asList( EndOfStreet8, intersection8_2, intersection7_3,destinationBuilding116,intersection9_3);
-    // List<Intersection> neighborsOfFirst8 = Arrays.asList(intersection8_1);
-    // List<Intersection> neighborsOfEnd8 = Arrays.asList(intersection8_3);
-    // List<Intersection> neighborsOfBuild116 = Arrays.asList(intersection8_2,intersection8_3);
+    List<Intersection> neighborsOf8_1 = Arrays.asList( intersections.get(7).get(2), intersections.get(7).get(0), intersections.get(6).get(1),intersections.get(8).get(1));
+    List<Intersection> neighborsOf8_2 = Arrays.asList(intersections.get(7).get(4), intersections.get(7).get(1), intersections.get(6).get(2),destinations.get(19),intersections.get(8).get(2));
+    List<Intersection> neighborsOf8_3 = Arrays.asList( intersections.get(7).get(4), intersections.get(7).get(2), intersections.get(6).get(3),destinations.get(19),intersections.get(8).get(3));
+    List<Intersection> neighborsOfFirst8 = Arrays.asList(intersections.get(7).get(1));
+    List<Intersection> neighborsOfEnd8 = Arrays.asList(intersections.get(7).get(3));
+    List<Intersection> neighborsOfBuild116 = Arrays.asList(intersections.get(7).get(2),intersections.get(7).get(3));
 
     // // #Relation for Street 7
 
-    // List<Intersection> neighborsOf7_1 = Arrays.asList( intersection7_2, FirstOfStreet7, intersection6_1,destinationBuilding97,intersection8_1);
-    // List<Intersection> neighborsOf7_2 = Arrays.asList(intersection7_3, intersection7_1, intersection6_2,destinationBuilding97,destinationBuilding101,intersection8_2);
-    // List<Intersection> neighborsOf7_3 = Arrays.asList( EndOfStreet7, intersection7_2, intersection6_3,destinationBuilding101,destinationBuilding103,intersection8_3);
-    // List<Intersection> neighborsOfFirst7 = Arrays.asList(intersection7_1);
-    // List<Intersection> neighborsOfEnd7 = Arrays.asList(intersection7_3);
-    // List<Intersection> neighborsOfBuild97 = Arrays.asList(intersection7_2,intersection7_1);
-    // List<Intersection> neighborsOfBuild101 = Arrays.asList(intersection7_2,intersection7_3);
-    // List<Intersection> neighborsOfBuild103 = Arrays.asList(EndOfStreet7,intersection7_3);
+    List<Intersection> neighborsOf7_1 = Arrays.asList( intersections.get(6).get(2), intersections.get(6).get(0), intersections.get(5).get(1),destinations.get(16),intersections.get(7).get(1));
+    List<Intersection> neighborsOf7_2 = Arrays.asList(intersections.get(6).get(3), intersections.get(6).get(1), intersections.get(5).get(2),destinations.get(16),destinations.get(11),intersections.get(7).get(2));
+    List<Intersection> neighborsOf7_3 = Arrays.asList( intersections.get(6).get(4), intersections.get(6).get(4), intersections.get(5).get(3),destinations.get(11),destinations.get(3),intersections.get(7).get(3));
+    List<Intersection> neighborsOfFirst7 = Arrays.asList(intersections.get(6).get(1));
+    List<Intersection> neighborsOfEnd7 = Arrays.asList(intersections.get(6).get(3));
+    List<Intersection> neighborsOfBuild97 = Arrays.asList(intersections.get(6).get(2),intersections.get(6).get(1));
+    List<Intersection> neighborsOfBuild101 = Arrays.asList(intersections.get(6).get(2),intersections.get(6).get(3));
+    List<Intersection> neighborsOfBuild103 = Arrays.asList(intersections.get(6).get(4),intersections.get(6).get(3));
 
     // // #Relation for Street 6
 
-    // List<Intersection> neighborsOf6_1 = Arrays.asList( intersection6_2, FirstOfStreet6, intersection5_1,destinationBuilding80,intersection7_1,destinationBuilding67,destinationBuilding70);
-    // List<Intersection> neighborsOf6_2 = Arrays.asList(destinationBuilding74,destinationBuilding70,intersection6_3, intersection6_1, intersection5_2,intersection7_2);
-    // List<Intersection> neighborsOf6_3 = Arrays.asList( destinationBuilding79,destinationBuilding74,EndOfStreet6, intersection6_2, intersection5_3,intersection7_3);
-    // List<Intersection> neighborsOfFirst6 = Arrays.asList(intersection6_1,destinationBuilding80);
-    // List<Intersection> neighborsOfEnd6 = Arrays.asList(intersection6_3);
-    // List<Intersection> neighborsOfBuild80 = Arrays.asList(FirstOfStreet6,intersection6_1,destinationBuilding67);
-    // List<Intersection> neighborsOfBuild67 = Arrays.asList(FirstOfStreet6,intersection6_1,destinationBuilding80);
-    // List<Intersection> neighborsOfBuild70 = Arrays.asList(intersection6_1,intersection6_2);
-    // List<Intersection> neighborsOfBuild74 = Arrays.asList(intersection6_2,intersection6_3);
-    // List<Intersection> neighborsOfBuild79 = Arrays.asList(EndOfStreet6,intersection6_3);
+    List<Intersection> neighborsOf6_1 = Arrays.asList( intersections.get(5).get(2), intersections.get(5).get(0), intersections.get(4).get(1),destinations.get(18),intersections.get(6).get(1),destinations.get(17),destinations.get(4));
+    List<Intersection> neighborsOf6_2 = Arrays.asList(destinations.get(13),destinations.get(4),intersections.get(5).get(3), intersections.get(5).get(1), intersections.get(4).get(2),intersections.get(6).get(2));
+    List<Intersection> neighborsOf6_3 = Arrays.asList( destinations.get(12),destinations.get(13),intersections.get(5).get(4), intersections.get(5).get(2), intersections.get(4).get(3),intersections.get(6).get(3));
+    List<Intersection> neighborsOfFirst6 = Arrays.asList(intersections.get(5).get(1),destinations.get(18));
+    List<Intersection> neighborsOfEnd6 = Arrays.asList(intersections.get(5).get(3));
+    List<Intersection> neighborsOfBuild80 = Arrays.asList(intersections.get(5).get(0),intersections.get(5).get(1),destinations.get(17));
+    List<Intersection> neighborsOfBuild67 = Arrays.asList(intersections.get(5).get(0),intersections.get(5).get(1),destinations.get(18));
+    List<Intersection> neighborsOfBuild70 = Arrays.asList(intersections.get(5).get(1),intersections.get(5).get(2));
+    List<Intersection> neighborsOfBuild74 = Arrays.asList(intersections.get(5).get(2),intersections.get(5).get(3));
+    List<Intersection> neighborsOfBuild79 = Arrays.asList(intersections.get(5).get(4),intersections.get(5).get(3));
 
     // // #Relation for Street 5
-    // List<Intersection> neighborsOf5_1 = Arrays.asList( intersection5_2, FirstOfStreet5, intersection4_1,intersection6_1);
-    // List<Intersection> neighborsOf5_2 = Arrays.asList(intersection5_3, intersection5_1, intersection4_2,intersection6_2);
-    // List<Intersection> neighborsOf5_3 = Arrays.asList( EndOfStreet5, intersection5_2, intersection6_3,intersection4_3);
-    // List<Intersection> neighborsOfFirst5 = Arrays.asList(intersection5_1);
-    // List<Intersection> neighborsOfEnd5 = Arrays.asList(intersection5_3);
+    List<Intersection> neighborsOf5_1 = Arrays.asList( intersections.get(4).get(2), intersections.get(4).get(0), intersections.get(3).get(1),intersections.get(5).get(1));
+    List<Intersection> neighborsOf5_2 = Arrays.asList(intersections.get(4).get(1), intersections.get(4).get(1), intersections.get(3).get(2),intersections.get(5).get(2));
+    List<Intersection> neighborsOf5_3 = Arrays.asList( intersections.get(4).get(4), intersections.get(4).get(2), intersections.get(5).get(3),intersections.get(3).get(3));
+    List<Intersection> neighborsOfFirst5 = Arrays.asList(intersections.get(4).get(1));
+    List<Intersection> neighborsOfEnd5 = Arrays.asList(intersections.get(4).get(3));
      
     // // #Relation for Street 4
 
-    // List<Intersection> neighborsOf4_1 = Arrays.asList( intersection4_2, FirstOfStreet4, intersection3_1,intersection5_1,destinationBuilding42,destinationBuilding44);
-    // List<Intersection> neighborsOf4_2 = Arrays.asList(intersection4_3, intersection4_1, intersection3_2,intersection5_2,destinationBuilding44,destinationBuilding46);
-    // List<Intersection> neighborsOf4_3 = Arrays.asList( EndOfStreet4, intersection4_2, intersection5_3,intersection3_3,destinationBuilding46,destinationBuilding52);
-    // List<Intersection> neighborsOfFirst4 = Arrays.asList(intersection4_1);
-    // List<Intersection> neighborsOfEnd4 = Arrays.asList(intersection4_3);
-    // List<Intersection> neighborsOfBuild42 = Arrays.asList(intersection4_1,FirstOfStreet4);
-    // List<Intersection> neighborsOfBuild44 = Arrays.asList(intersection4_1,intersection4_2);
-    // List<Intersection> neighborsOfBuild46 = Arrays.asList(intersection4_2,intersection4_3);
-    // List<Intersection> neighborsOfBuild52 = Arrays.asList(intersection4_3,EndOfStreet4);
+    List<Intersection> neighborsOf4_1 = Arrays.asList( intersections.get(3).get(2), intersections.get(3).get(0), intersections.get(2).get(1),intersections.get(4).get(1),destinations.get(15),destinations.get(5));
+    List<Intersection> neighborsOf4_2 = Arrays.asList(intersections.get(3).get(3), intersections.get(3).get(1), intersections.get(2).get(2),intersections.get(4).get(2),destinations.get(5),destinations.get(14));
+    List<Intersection> neighborsOf4_3 = Arrays.asList( intersections.get(3).get(4), intersections.get(3).get(2), intersections.get(4).get(3),intersections.get(2).get(3),destinations.get(14));
+    List<Intersection> neighborsOfFirst4 = Arrays.asList(intersections.get(3).get(1));
+    List<Intersection> neighborsOfEnd4 = Arrays.asList(intersections.get(3).get(3));
+    List<Intersection> neighborsOfBuild42 = Arrays.asList(intersections.get(3).get(1),intersections.get(3).get(0));
+    List<Intersection> neighborsOfBuild44 = Arrays.asList(intersections.get(3).get(1),intersections.get(3).get(2));
+    List<Intersection> neighborsOfBuild46 = Arrays.asList(intersections.get(3).get(2),intersections.get(3).get(3));
+
+  // // #Relation for Street 3
+
+    List<Intersection> neighborsOf3_1 = Arrays.asList( intersections.get(2).get(2), intersections.get(2).get(0), intersections.get(1).get(1),intersections.get(3).get(1),destinations.get(7));
+    List<Intersection> neighborsOf3_2 = Arrays.asList(intersections.get(2).get(3), intersections.get(2).get(1), intersections.get(1).get(2),intersections.get(3).get(2),destinations.get(7));
+    List<Intersection> neighborsOf3_3 = Arrays.asList( intersections.get(2).get(4), intersections.get(2).get(2), intersections.get(3).get(3),intersections.get(1).get(3),destinations.get(9));
+    List<Intersection> neighborsOfFirst3 = Arrays.asList(intersections.get(2).get(1));
+    List<Intersection> neighborsOfEnd3 = Arrays.asList(intersections.get(2).get(3));
+    List<Intersection> neighborsOfBuild32 = Arrays.asList(intersections.get(2).get(1),intersections.get(2).get(2));
+    List<Intersection> neighborsOfBuild52 = Arrays.asList(intersections.get(2).get(3),intersections.get(2).get(4));
+    
+  // // #Relation for Street 2
+
+    List<Intersection> neighborsOf2_1 = Arrays.asList( intersections.get(1).get(2), intersections.get(1).get(0), intersections.get(0).get(1),intersections.get(2).get(1),destinations.get(6));
+    List<Intersection> neighborsOf2_2 = Arrays.asList(intersections.get(1).get(3), intersections.get(1).get(1), intersections.get(0).get(2),intersections.get(2).get(2));
+    List<Intersection> neighborsOf2_3 = Arrays.asList( intersections.get(1).get(4), intersections.get(1).get(2), intersections.get(2).get(3),intersections.get(0).get(3));
+    List<Intersection> neighborsOfFirst2 = Arrays.asList(intersections.get(1).get(1));
+    List<Intersection> neighborsOfEnd2 = Arrays.asList(intersections.get(1).get(3));
+    List<Intersection> neighborsOfBuild13 = Arrays.asList(intersections.get(1).get(0),intersections.get(1).get(1));
+ 
+    // // #Relation for Street 1
+    
+    List<Intersection> neighborsOf1_1 = Arrays.asList( intersections.get(0).get(2), intersections.get(0).get(0),intersections.get(1).get(1),destinations.get(8));
+    List<Intersection> neighborsOf1_2 = Arrays.asList(intersections.get(0).get(3), intersections.get(0).get(1),intersections.get(1).get(2),destinations.get(8));
+    List<Intersection> neighborsOf1_3 = Arrays.asList( intersections.get(0).get(4), intersections.get(0).get(2), intersections.get(1).get(3),destinations.get(10));
+    List<Intersection> neighborsOfFirst1 = Arrays.asList(intersections.get(1).get(1));
+    List<Intersection> neighborsOfEnd1 = Arrays.asList(intersections.get(1).get(3),destinations.get(10));
+    List<Intersection> neighborsOfBuild7 = Arrays.asList(intersections.get(0).get(1),intersections.get(0).get(2));
+    List<Intersection> neighborsOfBuild12 = Arrays.asList(intersections.get(0).get(3),intersections.get(0).get(4));
 
 
-
-
-
-
-    graph.put(destinations.get(2), neighborsOfEndA);
+    graph.put(destinations.get(0), neighborsOfEndA);
     graph.put(intersections.get(8).get(1), neighborsOf9_1);
     graph.put(intersections.get(8).get(2), neighborsOf9_2);
     graph.put(intersections.get(8).get(3), neighborsOf9_3);
     graph.put(intersections.get(8).get(1), neighborsOfFirst9);
     graph.put(intersections.get(8).get(4), neighborsOfEnd9);
-    graph.put(destinations.get(1), neighborsOfBuild124);
-    graph.put(destinations.get(2), neighborsOfBuild127);
+    graph.put(destinations.get(1), neighborsOfBuild120);
+    graph.put(destinations.get(2), neighborsOfBuild123);
+    graph.put(destinations.get(20), neighborsOfBuild129);
+ 
 
-    // graph.put(intersection8_1, neighborsOf8_1);
-    // graph.put(intersection8_2, neighborsOf8_2);
-    // graph.put(intersection8_3, neighborsOf8_3);
-    // graph.put(FirstOfStreet8, neighborsOfFirst8);
-    // graph.put(EndOfStreet8, neighborsOfEnd8);
-    // graph.put(destinationBuilding116, neighborsOfBuild116);
+    graph.put(intersections.get(7).get(1), neighborsOf8_1);
+    graph.put(intersections.get(7).get(2), neighborsOf8_2);
+    graph.put(intersections.get(7).get(3), neighborsOf8_3);
+    graph.put(intersections.get(7).get(0), neighborsOfFirst8);
+    graph.put(intersections.get(7).get(4), neighborsOfEnd8);
+    graph.put(destinations.get(19), neighborsOfBuild116);
 
-    // graph.put(intersection7_1, neighborsOf7_1);
-    // graph.put(intersection7_2, neighborsOf7_2);
-    // graph.put(intersection7_3, neighborsOf7_3);
-    // graph.put(FirstOfStreet7, neighborsOfFirst7);
-    // graph.put(EndOfStreet7, neighborsOfEnd7);
-    // graph.put(destinationBuilding97, neighborsOfBuild97);
-    // graph.put(destinationBuilding101, neighborsOfBuild101);
-    // graph.put(destinationBuilding103, neighborsOfBuild103);
+    graph.put(intersections.get(6).get(1), neighborsOf7_1);
+    graph.put(intersections.get(6).get(2), neighborsOf7_2);
+    graph.put(intersections.get(6).get(3), neighborsOf7_3);
+    graph.put(intersections.get(6).get(0), neighborsOfFirst7);
+    graph.put(intersections.get(6).get(4), neighborsOfEnd7);
+    graph.put(destinations.get(16), neighborsOfBuild97);
+    graph.put(destinations.get(11), neighborsOfBuild101);
+    graph.put(destinations.get(3), neighborsOfBuild103);
 
-    // graph.put(intersection6_1, neighborsOf6_1);
-    // graph.put(intersection6_2, neighborsOf6_2);
-    // graph.put(intersection6_3, neighborsOf6_3);
-    // graph.put(FirstOfStreet6, neighborsOfFirst6);
-    // graph.put(EndOfStreet6, neighborsOfEnd6);
-    // graph.put(destinationBuilding80, neighborsOfBuild80);
-    // graph.put(destinationBuilding67, neighborsOfBuild67);
-    // graph.put(destinationBuilding70, neighborsOfBuild70);
-    // graph.put(destinationBuilding74, neighborsOfBuild74);
-    // graph.put(destinationBuilding79, neighborsOfBuild79);
+    graph.put(intersections.get(5).get(1), neighborsOf6_1);
+    graph.put(intersections.get(5).get(2), neighborsOf6_2);
+    graph.put(intersections.get(5).get(3), neighborsOf6_3);
+    graph.put(intersections.get(5).get(0), neighborsOfFirst6);
+    graph.put(intersections.get(5).get(4), neighborsOfEnd6);
+    graph.put(destinations.get(18), neighborsOfBuild80);
+    graph.put(destinations.get(17), neighborsOfBuild67);
+    graph.put(destinations.get(4), neighborsOfBuild70);
+    graph.put(destinations.get(13), neighborsOfBuild74);
+    graph.put(destinations.get(12), neighborsOfBuild79);
 
-    // graph.put(intersection5_1, neighborsOf5_1);
-    // graph.put(intersection5_2, neighborsOf5_2);
-    // graph.put(intersection5_3, neighborsOf5_3);
-    // graph.put(FirstOfStreet5, neighborsOfFirst5);
-    // graph.put(EndOfStreet5, neighborsOfEnd5);
+    graph.put(intersections.get(4).get(1), neighborsOf5_1);
+    graph.put(intersections.get(4).get(2), neighborsOf5_2);
+    graph.put(intersections.get(4).get(3), neighborsOf5_3);
+    graph.put(intersections.get(4).get(0), neighborsOfFirst5);
+    graph.put(intersections.get(4).get(4), neighborsOfEnd5);
 
-    // graph.put(intersection4_1, neighborsOf4_1);
-    // graph.put(intersection4_2, neighborsOf4_2);
-    // graph.put(intersection4_3, neighborsOf4_3);
-    // graph.put(FirstOfStreet4, neighborsOfFirst4);
-    // graph.put(EndOfStreet4, neighborsOfEnd4);
-    // graph.put(destinationBuilding42, neighborsOfBuild42);
-    // graph.put(destinationBuilding44, neighborsOfBuild44);
-    // graph.put(destinationBuilding46, neighborsOfBuild46);
-    // graph.put(destinationBuilding52, neighborsOfBuild52);
+    graph.put(intersections.get(3).get(1), neighborsOf4_1);
+    graph.put(intersections.get(3).get(2), neighborsOf4_2);
+    graph.put(intersections.get(3).get(3), neighborsOf4_3);
+    graph.put(intersections.get(3).get(0), neighborsOfFirst4);
+    graph.put(intersections.get(3).get(4), neighborsOfEnd4);
+    graph.put(destinations.get(15), neighborsOfBuild42);
+    graph.put(destinations.get(5), neighborsOfBuild44);
+    graph.put(destinations.get(14), neighborsOfBuild46);
+    
+
+    graph.put(intersections.get(2).get(1), neighborsOf3_1);
+    graph.put(intersections.get(2).get(2), neighborsOf3_2);
+    graph.put(intersections.get(2).get(3), neighborsOf3_3);
+    graph.put(intersections.get(2).get(1), neighborsOfFirst3);
+    graph.put(intersections.get(2).get(4), neighborsOfEnd3);
+    graph.put(destinations.get(9), neighborsOfBuild52);
+    graph.put(destinations.get(7), neighborsOfBuild32);
+    
+    graph.put(intersections.get(1).get(1), neighborsOf2_1);
+    graph.put(intersections.get(1).get(2), neighborsOf2_2);
+    graph.put(intersections.get(1).get(3), neighborsOf2_3);
+    graph.put(intersections.get(1).get(1), neighborsOfFirst2);
+    graph.put(intersections.get(1).get(4), neighborsOfEnd2);
+    graph.put(destinations.get(6), neighborsOfBuild13);
+
+    graph.put(intersections.get(0).get(1), neighborsOf1_1);
+    graph.put(intersections.get(0).get(2), neighborsOf1_2);
+    graph.put(intersections.get(0).get(3), neighborsOf1_3);
+    graph.put(intersections.get(0).get(1), neighborsOfFirst1);
+    graph.put(intersections.get(0).get(4), neighborsOfEnd1);
+    graph.put(destinations.get(8), neighborsOfBuild7);
+    graph.put(destinations.get(10), neighborsOfBuild12);
     
     
 
@@ -301,30 +352,29 @@ public static  List<List<Intersection>> crcintersections(){
 
       return paths;
   }
-  //   public static List<Package> copyPackagesWithPaths(List<Package> originalPackages, List<List<Intersection>> newPaths) {
-  //     List<Package> copiedPackages = new ArrayList<>();
+    public static List<Package> copyPackagesWithPaths(List<Package> originalPackages) {
+       List<Package> copiedPackages = new ArrayList<>();
   
-  //     for (int i = 0; i < originalPackages.size(); i++) {
-  //         Package originalPackage = originalPackages.get(i);
-  //         List<Intersection> newPath = newPaths.get(i);
+      for (int i = 0; i < originalPackages.size(); i++) {
+          Package originalPackage = originalPackages.get(i);
   
-  //         if (originalPackage instanceof Normal) {
-  //             // If it's a Normal package, use the copy constructor with the new path
-  //             Normal originalNormal = (Normal) originalPackage;
-  //             Normal copiedNormal = new Normal(originalNormal, newPath);
-  //             copiedPackages.add(copiedNormal);
+          if (originalPackage instanceof Normal) {
+              // If it's a Normal package, use the copy constructor with the new path
+              Normal originalNormal = (Normal) originalPackage;
+              Normal copiedNormal = new Normal(originalNormal);
+              copiedPackages.add(copiedNormal);
   
-  //         } else if (originalPackage instanceof Offical_paper) {
-  //             Offical_paper originalOfficialPaper = (Offical_paper) originalPackage;
-  //             Offical_paper copiedOfficialPaper = new Offical_paper(originalOfficialPaper, newPath);
-  //             copiedPackages.add(copiedOfficialPaper);
-  //             copiedOfficialPaper.contactCustomer();
+          } else if (originalPackage instanceof Offical_paper) {
+              Offical_paper originalOfficialPaper = (Offical_paper) originalPackage;
+              Offical_paper copiedOfficialPaper = new Offical_paper(originalOfficialPaper);
+              copiedPackages.add(copiedOfficialPaper);
+              copiedOfficialPaper.contactCustomer();
   
-  //         }
-  //     }
+          }
+      }
   
-  //     return copiedPackages;
-  // }
+      return copiedPackages;
+  }
   
 
 public static List<Building> Allbuildings() {
@@ -349,24 +399,14 @@ public static List<Building> Allbuildings() {
                 buildingInfo
         ));
     }
-    printBuildingInfo(buildings);
     return buildings;
 }
 
-public static void printBuildingInfo(List<Building> buildings) {
-    for (Building building : buildings) {
-        System.out.println("Building Number: " + building.getBuildingNumber());
-        System.out.println("Destination: " + building.getLocation().getName());
-        // Assuming Building class has appropriate methods to retrieve information
-        System.out.println("Building Information: " + building.getGuiElement()); 
-        System.out.println("------------------------------------------");
-    }
-}
-public static List<CustomerWithContact> generateRandomCustomersWithContact() {
-        List<CustomerWithContact> randomCustomersWithContact = new ArrayList<>();
+
+public static List<Customer> generateRandomCustomers() {
+        List<Customer> randomCustomersWithContact = new ArrayList<>();
         List<Building> allBuildings = Allbuildings();
     System.out.println(allBuildings);
-        // Keep track of assigned buildings and phone numbers
         List<Building> assignedBuildings = new ArrayList<>();
         List<String> assignedPhoneNumbers = new ArrayList<>();
     
@@ -381,7 +421,6 @@ public static List<CustomerWithContact> generateRandomCustomersWithContact() {
             // Generate a random phone number
             String phoneNumber = generateRandomPhoneNumber();
     
-            // Check if the building and phone number are not already assigned
             if (!assignedBuildings.contains(randomBuilding) && !assignedPhoneNumbers.contains(phoneNumber)) {
                 CustomerWithContact customer = new CustomerWithContact(customerId, randomBuilding, phoneNumber);
                 randomCustomersWithContact.add(customer);
@@ -400,11 +439,11 @@ private static String generateRandomPhoneNumber() {
         return "05" + (10000000 + new Random().nextInt(90000000));
     }
 
-    public static List<Package> generateRandomPackages(List<CustomerWithContact> randomCustomers) {
+    public static List<Package> generateRandomPackages(List<Customer> randomCustomers) {
         List<Package> randomPackages = new ArrayList<>();
         Random random = new Random();
     
-        for (CustomerWithContact randomCustomer : randomCustomers) {
+        for (Customer randomCustomer : randomCustomers) {
             int randomPackageType = random.nextInt(2); // 0 for Normal, 1 for Official Paper
             int delay;
     

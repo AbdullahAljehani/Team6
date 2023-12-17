@@ -1,4 +1,3 @@
-import java.util.List;
 
 public class Offical_paper extends Package  {
 
@@ -6,7 +5,7 @@ public class Offical_paper extends Package  {
         super(customer, packageId,delay);
 
     }
-    public Offical_paper(Offical_paper original, List<Intersection> newPath) {
+    public Offical_paper(Offical_paper original) {
         super(original);
         contactCustomer();
     }
