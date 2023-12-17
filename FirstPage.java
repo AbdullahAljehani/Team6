@@ -1,3 +1,5 @@
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ReadOnlyDoubleProperty;
@@ -113,7 +115,59 @@ phase2Button.setStyle(
     }
 
     public static void main(String[] args) {
-        // MainProgram.driver.setPackages(MainProgram.initializePackages());
+        // // MainProgram.driver.setPackages(MainProgram.initializePackages());
+        // List<Customer> randomCustomers = MainProgram.generateRandomCustomers();
+    
+        // // Generate random packages and assign them to customers
+        // MainProgram.generateRandomPackages(randomCustomers);
+    
+        // // Print the details of each random customer and their assigned packages
+        // for (Customer customer : randomCustomers) {
+        //     System.out.println("Customer ID: " + customer.getID());
+        //     System.out.println("Building ID: " + customer.getBuilding());
+    
+        //     // Print the details of assigned packages
+        //     List<Package> assignedPackages = customer.getAssignedPackages();
+        //     if (!assignedPackages.isEmpty()) {
+        //         System.out.println("\tAssigned Packages:");
+        //         for (Package assignedPackage : assignedPackages) {
+        //             System.out.println("\t\tPackage ID: " + assignedPackage.getPackageId());
+        //             System.out.println("\t\tPackage Type: " + assignedPackage.getClass().getSimpleName());
+        //             System.out.println("\t\tDelay: " + assignedPackage.delay);
+        //             System.out.println();
+        //         }
+        //     } else {
+        //         System.out.println("\tNo packages assigned.");
+        //     }
+    
+        //     // Add a line to separate each customer's information
+        //     System.out.println("----------------------------------------");
+        // }
+
+        //     // Copy packages and print details of copied packages
+        //     List<Package> originalPackages = MainProgram.generateRandomPackages(randomCustomers);
+        //     List<Package> copiedPackages = MainProgram.copyPackagesWithPaths(originalPackages);
+
+        //     // Print details of original packages
+        //     for (Package originalPackage : originalPackages) {
+        //         System.out.println("Original Package Details:");
+        //         System.out.println(originalPackage.getPackageInformation());
+        //         System.out.println("----------------------------------------");
+        //     }
+
+        //     // Print details of copied packages
+        //     for (Package copiedPackage : copiedPackages) {
+        //         System.out.println("Copied Package Details:");
+        //         if (copiedPackage instanceof Offical_paper) {
+        //             Offical_paper copiedOfficalPaper = (Offical_paper) copiedPackage;
+        //             copiedOfficalPaper.printPackageDetails();
+        //         } else {
+        //             System.out.println(copiedPackage.getPackageInformation());
+        //         }
+        //         System.out.println("----------------------------------------");
+        //     }
+
+MainProgram.initializeObjects();
         launch(args);
     }
    

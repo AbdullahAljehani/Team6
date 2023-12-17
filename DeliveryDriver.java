@@ -132,10 +132,10 @@ public void moveCarTo(List<List<Intersection>> packages) {
             Intersection start = destinations.get(i);
             Intersection destination = destinations.get(i + 1);
             List<Intersection> nearestIntersections = findShortestPath(MainProgram.createGraph(), start, destination); 
-            System.out.println("Dddddc "+nearestIntersections);
+           
             paths.add(nearestIntersections);
         }
-    
+
         return paths;
     }
 
@@ -202,7 +202,7 @@ private void playPathTransitions(List<List<Intersection>> packages, int index) {
     if (index >= packages.size()) {
         return;
     }
-     int delay = delayByIndex(index);
+    int delay = delayByIndex(index);
     Path path = generatePath(packages.get(index));
     System.out.println(path);
     moveDriver(path, () -> playPathTransitions(packages, index + 1),delay);
@@ -230,6 +230,7 @@ private Path generatePath(List<Intersection> intersections) {
         currentintersection = nextintersection;
         currentX = currentintersection.getX();
         currentY = currentintersection.getY();
+        System.out.println("aaa"+currentX);
         
 
     }
@@ -316,13 +317,16 @@ private double calculateTotalDistance(ObservableList<PathElement> elements) {
 private void deliverPackage(int currentX, int currentY) {
     boolean deliveredPackageFound = false;
     List<Package> Packages = MainProgram.packages;
+  
 
     for (Package aPackage : Packages) {
         if (!aPackage.isDelivered) {
             Building destinationBuilding = aPackage.getCustomer().getBuilding();
+            // System.out.println("Delivering Package - X: " + destinationBuilding.getLocation().getX() +"Current x"+currentX+", Y: " + destinationBuilding.getLocation().getY()+"Current y"+currentY);
             if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
                 aPackage.isDelivered = true;
                 deliveredPackageFound = true;
+                
 
 
                         destinationBuilding.getGuiElement().setFill(Color.GREEN);

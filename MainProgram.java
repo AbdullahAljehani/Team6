@@ -10,15 +10,17 @@ import javafx.scene.shape.Rectangle;
 public class MainProgram {
     
     public static DeliveryDriver driver;
-
+    public static List<Customer> customers= generateRandomCustomers();
+    public static List<Package>  packages =  generateRandomPackages(customers);
 
     public static void initializeObjects() {
-        List<Customer> randomCustomers = generateRandomCustomers();
     
-        generateRandomPackages(randomCustomers);   
-
-        driver = new DeliveryDriver();
-  
+      driver = new DeliveryDriver();
+     customers= generateRandomCustomers();
+       generateRandomPackages(customers); 
+      destinationBuildings();
+      createGraph();
+      crcintersections();
     }
     public static List<Intersection> destinationBuildings() {
       List<Intersection> destinations = new ArrayList<>();
@@ -343,38 +345,30 @@ public static  List<List<Intersection>> crcintersections(){
       return intersections;
     }
 
-    public static List<List<Intersection>> PackagesPaths(List<Package> packages) {
-      List<List<Intersection>> paths = new ArrayList<>();
+    
+  public static List<Package> copyPackagesWithPaths(List<Package> originalPackages) {
+    List<Package> copiedPackages = new ArrayList<>();
 
-      for (Package aPackage : packages) {
-          paths.add(aPackage.getPath());
-      }
+    for (int i = 0; i < originalPackages.size(); i++) {
+        Package originalPackage = originalPackages.get(i);
 
-      return paths;
-  }
-    public static List<Package> copyPackagesWithPaths(List<Package> originalPackages) {
-       List<Package> copiedPackages = new ArrayList<>();
-  
-      for (int i = 0; i < originalPackages.size(); i++) {
-          Package originalPackage = originalPackages.get(i);
-  
-          if (originalPackage instanceof Normal) {
-              // If it's a Normal package, use the copy constructor with the new path
-              Normal originalNormal = (Normal) originalPackage;
-              Normal copiedNormal = new Normal(originalNormal);
-              copiedPackages.add(copiedNormal);
-  
-          } else if (originalPackage instanceof Offical_paper) {
-              Offical_paper originalOfficialPaper = (Offical_paper) originalPackage;
-              Offical_paper copiedOfficialPaper = new Offical_paper(originalOfficialPaper);
-              copiedPackages.add(copiedOfficialPaper);
-              copiedOfficialPaper.contactCustomer();
-  
-          }
-      }
-  
-      return copiedPackages;
-  }
+         if (originalPackage instanceof Normal) {
+             // If it's a Normal package, use the copy constructor with the new path
+             Normal originalNormal = (Normal) originalPackage;
+            Normal copiedNormal = new Normal(originalNormal);
+            copiedPackages.add(copiedNormal);
+
+        } // copyPackagesWithPaths method
+        else if (originalPackage instanceof Offical_paper) {
+            Offical_paper originalOfficialPaper = (Offical_paper) originalPackage;
+            Offical_paper copiedOfficialPaper = new Offical_paper(originalOfficialPaper);
+            copiedOfficialPaper.setDelay(3);  // Set the new delay directly
+            copiedPackages.add(copiedOfficialPaper);
+        }
+     }
+
+     return copiedPackages;
+}
   
 
 public static List<Building> Allbuildings() {
@@ -404,72 +398,67 @@ public static List<Building> Allbuildings() {
 
 
 public static List<Customer> generateRandomCustomers() {
-        List<Customer> randomCustomersWithContact = new ArrayList<>();
-        List<Building> allBuildings = Allbuildings();
-    System.out.println(allBuildings);
-        List<Building> assignedBuildings = new ArrayList<>();
-        List<String> assignedPhoneNumbers = new ArrayList<>();
-    
-        Random random = new Random();
-        int customerId = 1;
-    
-        // Generate 20 unique random customers
-        while (randomCustomersWithContact.size() < 20) {
-            int randomBuildingIndex = random.nextInt(allBuildings.size());
-            Building randomBuilding = allBuildings.get(randomBuildingIndex);
-    
-            // Generate a random phone number
-            String phoneNumber = generateRandomPhoneNumber();
-    
-            if (!assignedBuildings.contains(randomBuilding) && !assignedPhoneNumbers.contains(phoneNumber)) {
-                CustomerWithContact customer = new CustomerWithContact(customerId, randomBuilding, phoneNumber);
-                randomCustomersWithContact.add(customer);
-                assignedBuildings.add(randomBuilding);
-                assignedPhoneNumbers.add(phoneNumber);
-                customerId++;
-            }
-        }
-    
-        return randomCustomersWithContact;
-    }
+  List<Customer> randomCustomers = new ArrayList<>();
+  List<Building> allBuildings = Allbuildings();
 
-private static String generateRandomPhoneNumber() {
-        // Implement your logic to generate a random phone number
-        // For example, you can concatenate random digits
-        return "05" + (10000000 + new Random().nextInt(90000000));
-    }
+  // Keep track of assigned buildings
+  List<Building> assignedBuildings = new ArrayList<>();
 
-    public static List<Package> generateRandomPackages(List<Customer> randomCustomers) {
-        List<Package> randomPackages = new ArrayList<>();
-        Random random = new Random();
-    
-        for (Customer randomCustomer : randomCustomers) {
-            int randomPackageType = random.nextInt(2); // 0 for Normal, 1 for Official Paper
-            int delay;
-    
-            // Set constant delays based on package type
-            if (randomPackageType == 0) {
-                delay = 2; // Normal package delay
-            } else {
-                delay = 5; // Official Paper delay
-            }
-    
-            int packageId = random.nextInt(20) + 1; // Random package ID between 1 and 20
-    
-            Package newPackage;
-            if (randomPackageType == 0) {
-                newPackage = new Normal(randomCustomer, packageId, delay);
-            } else {
-                newPackage = new Offical_paper(randomCustomer, packageId, delay);
-            }
-    
-            randomCustomer.addAssignedPackage(newPackage); // Add the assigned package to the customer
-            randomPackages.add(newPackage);
-        }
-    
-        return randomPackages;
-    }
- }
+  Random random = new Random();
+  int customerId = 1;
+
+  // Generate 20 unique random customers
+  while (randomCustomers.size() < 20) {
+      int randomBuildingIndex = random.nextInt(allBuildings.size());
+      Building randomBuilding = allBuildings.get(randomBuildingIndex);
+
+      // Check if the building is not already assigned
+      if (!assignedBuildings.contains(randomBuilding)) {
+          Customer customer = new Customer(customerId, randomBuilding);
+          randomCustomers.add(customer);
+          assignedBuildings.add(randomBuilding);
+          customerId++;
+      }
+  }
+
+  return randomCustomers;
+}
+
+
+
+    public static List<Package>  generateRandomPackages(List<Customer> customers) {
+      List<Package> randomPackages = new ArrayList<>();
+      Random random = new Random();
+  
+      for (Customer customer : customers) {
+          int packageType = random.nextInt(2); // 0 for Normal, 1 for Official Paper
+          int delay = (packageType == 0) ? 2 : 5; // 2 for Normal, 5 for Official Paper
+  
+          int packageId;
+          do {
+              packageId = random.nextInt(20) + 1; // Random package ID from 1 to 20
+          } while (isPackageIdUsed(randomPackages, packageId));
+  
+          Package newPackage = (packageType == 0)
+                  ? new Normal(customer, packageId, delay)
+                  : new Offical_paper(customer, packageId, delay);
+  
+          customer.addAssignedPackage(newPackage);
+          randomPackages.add(newPackage);
+      }
+
+      return randomPackages;
+  }
+  
+  private static boolean isPackageIdUsed(List<Package> packages, int packageId) {
+      for (Package p : packages) {
+          if (p.getPackageId() == packageId) {
+              return true;
+          }
+      }
+      return false;
+  }
+}
 
     
 
