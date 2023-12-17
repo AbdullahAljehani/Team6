@@ -27,7 +27,9 @@ public abstract class Package  {
     public int getPackageId() {
         return packageId;
     }
-
+    public void setCustomer(Customer customer) {
+        this.customer1 = customer;
+    }
     public Customer getCustomer() {
         return customer1;
     }

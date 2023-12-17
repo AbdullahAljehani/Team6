@@ -11,6 +11,9 @@ public class Customer {
         this.building = building;
         this.assignedPackages = new ArrayList<>();
     }
+    public Customer(Customer original) {
+        this(original.getID(), original.getBuilding());
+    }
 
     public Building getBuilding() {
         return building;

@@ -152,6 +152,7 @@ phase2Button.setStyle(
         //     for (Package originalPackage : originalPackages) {
         //         System.out.println("Original Package Details:");
         //         System.out.println(originalPackage.getPackageInformation());
+        //          System.out.println("delay"+originalPackage.delay);
         //         System.out.println("----------------------------------------");
         //     }
 
@@ -160,7 +161,6 @@ phase2Button.setStyle(
         //         System.out.println("Copied Package Details:");
         //         if (copiedPackage instanceof Offical_paper) {
         //             Offical_paper copiedOfficalPaper = (Offical_paper) copiedPackage;
-        //             copiedOfficalPaper.printPackageDetails();
         //         } else {
         //             System.out.println(copiedPackage.getPackageInformation());
         //         }

@@ -1,13 +1,15 @@
+public class Offical_paper extends Package {
 
-
-public class Offical_paper extends Package  {
-
-    public Offical_paper(Customer customer,  int packageId,int delay) {
-        super(customer, packageId,delay);
-
+    public Offical_paper(Customer customer, int packageId, int delay) {
+        super(customer, packageId, delay);
     }
+
     public Offical_paper(Offical_paper original) {
         super(original);
+        // Change the customer to CustomerWithContact if it's not already
+        if (!(getCustomer() instanceof CustomerWithContact)) {
+            setCustomer(new CustomerWithContact(getCustomer()));
+        }
         contactCustomer();
     }
 
@@ -26,20 +28,12 @@ public class Offical_paper extends Package  {
     }
 
     public void contactCustomer() {
-        this.delay = 3;  // Set the new delay directly
+        this.delay = delay - 2;
     }
-
-    // Offical_paper class
-    public void setDelay(int newDelay) {
-    this.delay = newDelay;
-}
 
     private String getTypeOfPackage() {
         return "OfficalPaper";
     }
 
-    public void printPackageDetails() {
-        System.out.println(getPackageInformation());
-        System.out.println("New Delay for Offical_paper: " + delay);
-    }
+    
 }

@@ -150,18 +150,21 @@ public static List<Intersection> findShortestPath(Map<Intersection, List<Interse
     }
     distance.put(start, 0.0);
     pq.offer(start);
-
     while (!pq.isEmpty()) {
         Intersection current = pq.poll();
-
         if (current.equals(destination)) {
-            break; // Found the shortest path to destination
+            break; 
         }
 
         double currentDistance = distance.get(current);
+        //  System.out.println("Grapha: " + graph.getOrDefault(current, new ArrayList<>()));
+        //  System.out.println("Neighbors: " + graph.get(current));
+        // System.out.println("current: " + current);
+        //  System.out.println("graph: " + graph);
+
+
 
         for (Intersection neighbor : graph.getOrDefault(current, new ArrayList<>())) {
-            
             double newDistance = currentDistance + current.getDistanceTo(neighbor);
 
             // Debugging print statements
@@ -211,7 +214,6 @@ private void playPathTransitions(List<List<Intersection>> packages, int index) {
 
 private Path generatePath(List<Intersection> intersections) {
     Path path = new Path();
-
     if (intersections.isEmpty()) {
         return path;
     }
@@ -230,7 +232,7 @@ private Path generatePath(List<Intersection> intersections) {
         currentintersection = nextintersection;
         currentX = currentintersection.getX();
         currentY = currentintersection.getY();
-        System.out.println("aaa"+currentX);
+       
         
 
     }
