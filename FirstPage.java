@@ -167,7 +167,7 @@ phase2Button.setStyle(
         //         System.out.println("----------------------------------------");
         //     }
 
-MainProgram.initializeObjects();
+        MainProgram.initializeObjects();
         launch(args);
     }
    

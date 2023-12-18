@@ -131,7 +131,8 @@ public void moveCarTo(List<List<Intersection>> packages) {
         for (int i = 0; i < destinations.size() - 1; i++) {
             Intersection start = destinations.get(i);
             Intersection destination = destinations.get(i + 1);
-            List<Intersection> nearestIntersections = findShortestPath(MainProgram.createGraph(), start, destination); 
+            
+            List<Intersection> nearestIntersections = findShortestPath(MainProgram.graph, start, destination); 
            
             paths.add(nearestIntersections);
         }
@@ -139,60 +140,59 @@ public void moveCarTo(List<List<Intersection>> packages) {
         return paths;
     }
 
-public static List<Intersection> findShortestPath(Map<Intersection, List<Intersection>> graph,Intersection start,Intersection destination) {
-    Map<Intersection, Double> distance = new HashMap<>();
-    Map<Intersection, Intersection> previous = new HashMap<>();
-    PriorityQueue<Intersection> pq = new PriorityQueue<>(Comparator.comparingDouble(distance::get));
-
-    // Initialize distances
-    for (Intersection intersection : graph.keySet()) {
-        distance.put(intersection, Double.MAX_VALUE);
-    }
-    distance.put(start, 0.0);
-    pq.offer(start);
-    while (!pq.isEmpty()) {
-        Intersection current = pq.poll();
-        if (current.equals(destination)) {
-            break; 
+    public static List<Intersection> findShortestPath(Map<Intersection, List<Intersection>> graph, Intersection start, Intersection destination) {
+        Map<Intersection, Double> distance = new HashMap<>();
+        Map<Intersection, Intersection> previous = new HashMap<>();
+        PriorityQueue<Intersection> pq = new PriorityQueue<>(Comparator.comparingDouble(distance::get));
+    
+        // Initialize distances
+        for (Intersection intersection : graph.keySet()) {
+            distance.put(intersection, Double.MAX_VALUE);
         }
-
-        double currentDistance = distance.get(current);
-        //  System.out.println("Grapha: " + graph.getOrDefault(current, new ArrayList<>()));
-        //  System.out.println("Neighbors: " + graph.get(current));
-        // System.out.println("current: " + current);
-        //  System.out.println("graph: " + graph);
-
-
-
-        for (Intersection neighbor : graph.getOrDefault(current, new ArrayList<>())) {
-            double newDistance = currentDistance + current.getDistanceTo(neighbor);
-
-            // Debugging print statements
-            System.out.println("Current: " + current);
-            System.out.println("Neighbor: " + neighbor);
-            
-            if (newDistance < distance.getOrDefault(neighbor, Double.MAX_VALUE)) {
-                distance.put(neighbor, newDistance);
-                previous.put(neighbor, current);
-                pq.offer(neighbor);
+        distance.put(start, 0.0);
+        pq.offer(start);
+    
+        while (!pq.isEmpty()) {
+            Intersection current = pq.poll();
+            if (current.equals(destination)) {
+                break;
             }
+    
+            double currentDistance = distance.get(current);
+    
+            // Debugging print statements
+            System.out.println("Current: " + current.getName()+" "+current);
+            List<Intersection> neighbors = graph.getOrDefault(current, new ArrayList<>());
+            System.out.println("Graph: " + graph.getOrDefault(current, new ArrayList<>()));
+
+            for (int i = 0; i < neighbors.size(); i++) {
+                Intersection neighbor = neighbors.get(i);
+                double newDistance = currentDistance + current.getDistanceTo(neighbor);
             
+                System.out.println("Neighbor: " + neighbor);
+            
+                if (newDistance < distance.getOrDefault(neighbor, Double.MAX_VALUE)) {
+                    distance.put(neighbor, newDistance);
+                    previous.put(neighbor, current);
+                    pq.offer(neighbor);
+                }
+            }
         }
+    
+        // Reconstruct the shortest path
+        List<Intersection> shortestPath = new ArrayList<>();
+        Intersection current = destination;
+        while (previous.containsKey(current)) {
+            shortestPath.add(current);
+            current = previous.get(current);
+        }
+        shortestPath.add(start);
+        Collections.reverse(shortestPath);
+    
+        return shortestPath;
     }
-
-    // Reconstruct the shortest path
-    List<Intersection> shortestPath = new ArrayList<>();
-    Intersection current = destination;
-    while (previous.containsKey(current)) {
-        shortestPath.add(current);
-        current = previous.get(current);
-    }
-    shortestPath.add(start);
-    Collections.reverse(shortestPath);
-
-    return shortestPath;
-}
-
+    
+    
 public void createPathForPackages(List<List<Intersection>> packages) {
     if (packages == null || packages.isEmpty()) {
         return;
@@ -349,11 +349,11 @@ private void deliverPackage(int currentX, int currentY) {
 }
 private void moveToNextPackage() {
     boolean nextPackageFound = false;
-    for (int i = 0; i < getPackages().size(); i++) {
-        Package currentPackage = getPackages().get(i);
+    for (int i = 0; i < MainProgram.packages.size(); i++) {
+        Package currentPackage = MainProgram.packages.get(i);
         if (currentPackage.isDelivered) {
-            for (int j = i + 1; j < getPackages().size(); j++) {
-                Package nextPackage = getPackages().get(j);
+            for (int j = i + 1; j < MainProgram.packages.size(); j++) {
+                Package nextPackage = MainProgram.packages.get(j);
                 if (!nextPackage.isDelivered) {
                     nextPackageFound = true;
                     break;

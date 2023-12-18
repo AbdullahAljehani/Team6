@@ -1,11 +1,14 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Random;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javafx.scene.shape.Rectangle;
@@ -13,17 +16,21 @@ import javafx.scene.shape.Rectangle;
 public class MainProgram {
     
     public static DeliveryDriver driver;
-    public static List<Customer> customers= generateRandomCustomers();
-    public static List<Package>  packages =  generateRandomPackages(customers);
+    public static List<Customer> customers;
+    public static List<Package>  packages  ;
+    public static List<Intersection> destetionBuilding;
+    public static List<List<Intersection>> intersections;
+      public static Map<Intersection, List<Intersection>> graph;
 
     public static void initializeObjects() {
-    
+
       driver = new DeliveryDriver();
-     customers= generateRandomCustomers();
-       generateRandomPackages(customers); 
-      destinationBuildings();
-      createGraph();
-      crcintersections();
+      destetionBuilding = destinationBuildings()  ;
+      intersections = crcintersections();
+      customers= generateRandomCustomers();
+      packages=generateRandomPackages(customers); 
+      graph = createGraph();
+      
     }
     public static List<Intersection> destinationBuildings() {
       List<Intersection> destinations = new ArrayList<>();
@@ -68,15 +75,19 @@ public class MainProgram {
   
       return destinations;
   }
+ 
+
+
+
   public static Map<Intersection, List<Intersection>> createGraph() {
     Map<Intersection, List<Intersection>> graph = new HashMap<>();
-    List<List<Intersection>> intersections = crcintersections();
-    List<Intersection> destinationBuildings = destinationBuildings();
+    
+    Set<String> connections = new HashSet<>();  // Set to track unique connections
 
-    // Connect adjacent intersections within each street except the first street
-    for (int j = 1; j < intersections.size(); j++) {
+    // Connect adjacent intersections within each street
+    for (int j = 0; j < intersections.size(); j++) {
         List<Intersection> street = intersections.get(j);
-        List<Intersection> prevStreet = intersections.get(j - 1);
+        List<Intersection> prevStreet = (j > 0) ? intersections.get(j - 1) : Collections.emptyList();
 
         for (int i = 0; i < street.size(); i++) {
             Intersection currentIntersection = street.get(i);
@@ -85,29 +96,61 @@ public class MainProgram {
             // Connect with the previous intersection of the same street
             if (i > 0) {
                 Intersection prevIntersection = street.get(i - 1);
-                neighbors.add(prevIntersection);
-                System.out.println("Connecting " + currentIntersection.getName() + " with " + prevIntersection.getName());
+                String connectionKey = getOrderedConnectionKey(currentIntersection, prevIntersection);
+                if (!connections.contains(connectionKey)) {
+                    neighbors.add(prevIntersection);
+                    System.out.println("Connecting " + currentIntersection.getName() + " with " + prevIntersection.getName());
+                    
+                    // Connect in the reverse direction as well
+                    graph.computeIfAbsent(prevIntersection, k -> new ArrayList<>()).add(currentIntersection);
+                    System.out.println("Connecting " + prevIntersection.getName() + " with " + currentIntersection.getName());
+                    connections.add(connectionKey);
+                }
             }
 
             // Connect with the next intersection of the same street if it exists
             if (i < street.size() - 1) {
                 Intersection nextIntersection = street.get(i + 1);
-                neighbors.add(nextIntersection);
-                System.out.println("Connecting " + currentIntersection.getName() + " with " + nextIntersection.getName());
+                String connectionKey = getOrderedConnectionKey(currentIntersection, nextIntersection);
+                if (!connections.contains(connectionKey)) {
+                    neighbors.add(nextIntersection);
+                    System.out.println("Connecting " + currentIntersection.getName() + " with " + nextIntersection.getName());
+                    
+                    // Connect in the reverse direction as well
+                    graph.computeIfAbsent(nextIntersection, k -> new ArrayList<>()).add(currentIntersection);
+                    System.out.println("Connecting " + nextIntersection.getName() + " with " + currentIntersection.getName());
+                    connections.add(connectionKey);
+                }
             }
 
             // Connect with the intersection in the previous street if it exists
             if (i < prevStreet.size()) {
                 Intersection prevStreetIntersection = prevStreet.get(i);
-                neighbors.add(prevStreetIntersection);
-                System.out.println("Connecting " + currentIntersection.getName() + " with " + prevStreetIntersection.getName());
+                String connectionKey = getOrderedConnectionKey(currentIntersection, prevStreetIntersection);
+                if (!connections.contains(connectionKey)) {
+                    neighbors.add(prevStreetIntersection);
+                    System.out.println("Connecting " + currentIntersection.getName() + " with " + prevStreetIntersection.getName());
+                    
+                    // Connect in the reverse direction as well
+                    graph.computeIfAbsent(prevStreetIntersection, k -> new ArrayList<>()).add(currentIntersection);
+                    System.out.println("Connecting " + prevStreetIntersection.getName() + " with " + currentIntersection.getName());
+                    connections.add(connectionKey);
+                }
             }
 
             // Connect with An+1 if it exists within the same street
             if (i == street.size() - 1 && j < intersections.size() - 1) {
                 Intersection nextStreetIntersection = intersections.get(j + 1).get(i);
-                neighbors.add(nextStreetIntersection);
-                System.out.println("Connecting " + currentIntersection.getName() + " with " + nextStreetIntersection.getName());
+                String connectionKey = getOrderedConnectionKey(currentIntersection, nextStreetIntersection);
+                if (!connections.contains(connectionKey)) {
+                    neighbors.add(nextStreetIntersection);
+                    System.out.println("Connecting " + currentIntersection.getName() + " with " + nextStreetIntersection.getName());
+                    
+                    // Connect in the reverse direction as well
+                    graph.computeIfAbsent(nextStreetIntersection, k -> new ArrayList<>()).add(currentIntersection);
+                    System.out.println("Connecting " + nextStreetIntersection.getName() + " with " + currentIntersection.getName());
+                    connections.add(connectionKey);
+                }
             }
 
             // Add connections for the current intersection without duplicates
@@ -116,10 +159,20 @@ public class MainProgram {
     }
 
     // Connect destination buildings to the closest intersections
-    connectDestinationBuildings(graph, intersections.stream().flatMap(List::stream).collect(Collectors.toList()), destinationBuildings);
+    connectDestinationBuildings(graph, intersections.stream().flatMap(List::stream).collect(Collectors.toList()), destetionBuilding);
 
     return graph;
 }
+
+private static String getOrderedConnectionKey(Intersection intersection1, Intersection intersection2) {
+    String name1 = intersection1.getName();
+    String name2 = intersection2.getName();
+    return (name1.compareTo(name2) < 0) ? name1 + "-" + name2 : name2 + "-" + name1;
+}
+
+
+
+
 
 
 
@@ -155,7 +208,7 @@ public static  List<List<Intersection>> crcintersections(){
     Intersection intersection3_2 = new Intersection(600, 197, "B3");
     Intersection intersection3_3 = new Intersection(860, 197, "C3");
 
-  intersection_3 = Arrays.asList(intersection3_1,intersection3_2,intersection3_3);
+intersection_3 = Arrays.asList(intersection3_1,intersection3_2,intersection3_3);
 
     // Street 4
     Intersection intersection4_1 = new Intersection(330, 265, "A4");
@@ -317,22 +370,76 @@ public static List<Customer> generateRandomCustomers() {
       return false;
   }
   private static void connectDestinationBuildings(Map<Intersection, List<Intersection>> graph, List<Intersection> intersections, List<Intersection> destinationBuildings) {
-    for (Intersection destination : destinationBuildings) {
-        // Find the closest intersection to the destination building
-        Intersection closestIntersection = findClosestIntersection(destination, intersections);
+    for (int i = 0; i < destinationBuildings.size(); i++) {
+        Intersection destination = destinationBuildings.get(i);
 
-        // Connect the destination building to the closest intersection
-        graph.putIfAbsent(closestIntersection, new ArrayList<>());
-        graph.get(closestIntersection).add(destination);
+        // Find the closest left and right intersections
+        Intersection closestLeftIntersection = findClosestLeftIntersection(destination, intersections);
+        Intersection closestRightIntersection = findClosestRightIntersection(destination, intersections);
 
-        System.out.println("Connecting " + closestIntersection.getName() + " with " + destination.getName());
+        // Connect the destination building to the closest left and right intersections
+        if (i == 0) {
+            // Special case for the first building (Warehouse)
+            Intersection a9Intersection = intersections.get(24);
+            graph.putIfAbsent(a9Intersection, new ArrayList<>());
+            graph.get(a9Intersection).add(destination);
+
+            // Connect the A9 intersection to the Warehouse in reverse
+            graph.computeIfAbsent(destination, k -> new ArrayList<>()).add(a9Intersection);
+
+            System.out.println("Connecting " + a9Intersection.getName() + " with " + destination.getName());
+            System.out.println("Connecting " + destination.getName() + " with " + a9Intersection.getName());
+        } else {
+            if (closestLeftIntersection != null) {
+                graph.putIfAbsent(closestLeftIntersection, new ArrayList<>());
+                graph.get(closestLeftIntersection).add(destination);
+
+                // Connect the left intersection to the destination building in reverse
+                graph.computeIfAbsent(destination, k -> new ArrayList<>()).add(closestLeftIntersection);
+
+                System.out.println("Connecting " + closestLeftIntersection.getName() + " with " + destination.getName());
+                System.out.println("Connecting " + destination.getName() + " with " + closestLeftIntersection.getName());
+            }
+
+            if (closestRightIntersection != null) {
+                graph.putIfAbsent(closestRightIntersection, new ArrayList<>());
+                graph.get(closestRightIntersection).add(destination);
+
+                // Connect the right intersection to the destination building in reverse
+                graph.computeIfAbsent(destination, k -> new ArrayList<>()).add(closestRightIntersection);
+
+                System.out.println("Connecting " + closestRightIntersection.getName() + " with " + destination.getName());
+                System.out.println("Connecting " + destination.getName() + " with " + closestRightIntersection.getName());
+            }
+        }
     }
 }
 
-private static Intersection findClosestIntersection(Intersection destination, List<Intersection> intersections) {
-    return intersections.stream().min(Comparator.comparingDouble(intersection -> intersection.getDistanceTo(destination))).orElseThrow(NoSuchElementException::new);
+
+
+private static Intersection findClosestLeftIntersection(Intersection destination, List<Intersection> intersections) {
+    double centerX = destination.getX();
+
+    return intersections.stream()
+            .filter(intersection -> intersection.getX() < centerX)
+            .min(Comparator.comparingDouble(intersection -> intersection.getDistanceTo(destination)))
+            .orElse(null);
 }
+
+private static Intersection findClosestRightIntersection(Intersection destination, List<Intersection> intersections) {
+    double centerX = destination.getX();
+
+    return intersections.stream()
+            .filter(intersection -> intersection.getX() > centerX)
+            .min(Comparator.comparingDouble(intersection -> intersection.getDistanceTo(destination)))
+            .orElse(null);
 }
+
+
+
+}
+
+
 
     
 

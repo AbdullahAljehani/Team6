@@ -2437,9 +2437,9 @@ public static List<Rectangle> buildings ;
         //     tooltipBuilding122.hide();
         // });
         Rectangle Building123 = new Rectangle(550, 605, 35, 35);
-        // Building123.setArcHeight(25);
-        // Building123.setArcWidth(25);
-        // Building123.setFill(Color.web("#C0392B"));
+         Building123.setArcHeight(25);
+         Building123.setArcWidth(25);
+         Building123.setFill(Color.web("#C0392B"));
         // Tooltip tooltipBuilding123 = new Tooltip(MainProgram.package1.getPackageInformation());
         // Tooltip.install(Building123, tooltipBuilding123);
         
@@ -2550,9 +2550,9 @@ public static List<Rectangle> buildings ;
         });
         
         Rectangle Building129 = new Rectangle(1010, 605, 35, 35);
-        // Building129.setArcHeight(25);
-        // Building129.setArcWidth(25);
-        // Building129.setFill(Color.web("#C0392B"));
+         Building129.setArcHeight(25);
+         Building129.setArcWidth(25);
+         Building129.setFill(Color.web("#C0392B"));
         // Tooltip tooltipBuilding129 = new Tooltip(MainProgram.package20.getPackageInformation());
         // Tooltip.install(Building129, tooltipBuilding129);
         
@@ -2916,7 +2916,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             CounterCostLabel.setText("$ 00,00");
             CounterDistanceLabel.setText("00.00 Km");
             percentLabelP2.setText("00.00%");
-            MainProgram.driver.createPathForPackages(MainProgram.driver.gg(MainProgram.destinationBuildings()));            
+            MainProgram.driver.createPathForPackages(MainProgram.driver.gg(MainProgram.destetionBuilding));            
             secondsPassed = 0;
             CounterTimeLabel.setText(formatTime(secondsPassed));
             // startSimulation();
