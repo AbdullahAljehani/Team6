@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javafx.scene.shape.Rectangle;
 
@@ -20,13 +20,13 @@ public class MainProgram {
     public static List<Package>  packages  ;
     public static List<Intersection> destetionBuilding;
     public static List<List<Intersection>> intersections;
-      public static Map<Intersection, List<Intersection>> graph;
+    public static Map<Intersection, List<Intersection>> graph;
 
     public static void initializeObjects() {
 
       driver = new DeliveryDriver();
       destetionBuilding = destinationBuildings()  ;
-      intersections = crcintersections();
+      intersections = createIntersectionsLayout();
       customers= generateRandomCustomers();
       packages=generateRandomPackages(customers); 
       graph = createGraph();
@@ -154,12 +154,26 @@ public class MainProgram {
             }
 
             // Add connections for the current intersection without duplicates
-            graph.put(currentIntersection, neighbors.stream().distinct().collect(Collectors.toList()));
+            Stream<Intersection> neighborStream = neighbors.stream();
+           // Remove duplicates from the stream
+            Stream<Intersection> distinctNeighbors = neighborStream.distinct();
+
+            // Collect the distinct neighbors into a list
+            List<Intersection> uniqueNeighbors = distinctNeighbors.collect(Collectors.toList());
+
+            // Associate the current intersection with its list of unique neighbors in the graph
+            graph.put(currentIntersection, uniqueNeighbors);
         }
     }
 
-    // Connect destination buildings to the closest intersections
-    connectDestinationBuildings(graph, intersections.stream().flatMap(List::stream).collect(Collectors.toList()), destetionBuilding);
+    // Flatten the list of lists into a single list of intersections
+    Stream<Intersection> intersectionStream = intersections.stream().flatMap(List::stream);
+
+    // Collect the intersections into a list
+    List<Intersection> allIntersections = intersectionStream.collect(Collectors.toList());
+
+    // Now you can use allIntersections as needed
+    connectDestinationBuildings(graph, allIntersections, destetionBuilding);
 
     return graph;
 }
@@ -176,7 +190,7 @@ private static String getOrderedConnectionKey(Intersection intersection1, Inters
 
 
 
-public static  List<List<Intersection>> crcintersections(){
+public static  List<List<Intersection>> createIntersectionsLayout(){
   List<List<Intersection>> intersections = new ArrayList<>();
   List<Intersection> intersection_1 = new ArrayList<>();
 
@@ -298,11 +312,7 @@ public static List<Building> Allbuildings() {
         // Get the MainGUISimulation.Building object using the buildingIndex
         Rectangle buildingInfo = MainGUISimulation.buildings.get(buildingIndex - 1);
 
-        buildings.add(new Building(
-                buildingIndex,
-                destination.get(i),
-                buildingInfo
-        ));
+        buildings.add(new Building(buildingIndex,destination.get(i),buildingInfo));
     }
     return buildings;
 }

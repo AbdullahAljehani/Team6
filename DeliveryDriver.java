@@ -240,21 +240,21 @@ private Path generatePath(List<Intersection> intersections) {
 
     return path;
 }
-// public int culclateTotalTime(){
-//     int totalDelay=0;
+public int calculateTotalTime(){
+    int totalDelay=0;
     
-//     List<Package> packages = getPackages();
-// for (Package singlePackage : packages) {
+    List<Package> packages = MainProgram.packages;
+for (Package singlePackage : packages) {
     
-//     totalDelay+=singlePackage.delay*60;
-// }
+    totalDelay+=singlePackage.delay*60;
+}
     
-//      double totalDistance = calculateTotalDistance(MainProgram.PackagesPaths(MainProgram.initializePackages()));
-//     double totalDourtion=35.896; // Scale factor used to predict the total time 
-//     double totalTime = totalDelay + totalDistance*1000/totalDourtion; // Multiplying by 1000 to convert totalDistance from kilometers to meters
-//     int totalTimrCast = (int) totalTime;
-//     return totalTimrCast;
-// }
+     double totalDistance = calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.destetionBuilding));
+    double totalDourtion=35.896; // Scale factor used to predict the total time 
+    double totalTime = totalDelay + totalDistance*1000/totalDourtion; // Multiplying by 1000 to convert totalDistance from kilometers to meters
+    int totalTimrCast = (int) totalTime;
+    return totalTimrCast;
+}
 
 public void moveDriver(Path path, Runnable onFinish,int delay) {
     if (!path.getElements().isEmpty() && MainGUISimulation.isStartClicked) {
@@ -324,7 +324,6 @@ private void deliverPackage(int currentX, int currentY) {
     for (Package aPackage : Packages) {
         if (!aPackage.isDelivered) {
             Building destinationBuilding = aPackage.getCustomer().getBuilding();
-            // System.out.println("Delivering Package - X: " + destinationBuilding.getLocation().getX() +"Current x"+currentX+", Y: " + destinationBuilding.getLocation().getY()+"Current y"+currentY);
             if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
                 aPackage.isDelivered = true;
                 deliveredPackageFound = true;

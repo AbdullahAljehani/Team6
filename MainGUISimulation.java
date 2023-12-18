@@ -2919,7 +2919,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             MainProgram.driver.createPathForPackages(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.destetionBuilding));            
             secondsPassed = 0;
             CounterTimeLabel.setText(formatTime(secondsPassed));
-            // startSimulation();
+             startSimulation();
             isPaused = false;
             
         });
@@ -3017,62 +3017,59 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         return percentImprovement;
     }
 
-    // public void calculateTotalTimeForAllPhases(){
-    //     if (FirstPage.isPhase1Selected) {
+    public void calculateTotalTimeForAllPhases(){
+        if (FirstPage.isPhase1Selected) {
 
-    //                 totalTimeP1 = MainProgram.driver.culclateTotalTime(); // Calculate total time separately
+                    totalTimeP1 = MainProgram.driver.calculateTotalTime(); // Calculate total time separately
                    
-    //             } else if (FirstPage.isPhase2Selected) {
-    //                 // Similarly, calculate total time separately for phase 2
-    //                 totalTimeP2 = MainProgram.driver.culclateTotalTime(); // Calculate total time separately
+                } else if (FirstPage.isPhase2Selected) {
+                    // Similarly, calculate total time separately for phase 2
+                    totalTimeP2 = MainProgram.driver.calculateTotalTime(); // Calculate total time separately
                    
-    //             } }
+                } }
 
-    public void startSimulation() {
-        // Cancel the existing timer if it's not null
-        if (timer != null) {
-            timer.cancel();
-        }
-    
-        // Reset the delivery status of packages
-         resetPackageDeliveryStatus();
-    
-        // Create a new timer
-        timer = new Timer();
-    
-        TimerTask simulationTask = new TimerTask() {
-            @Override
-            public void run() {
-                if (!isPaused) {
-                    secondsPassed += 10;
-                    Platform.runLater(() -> {
-                        CounterTimeLabel.setText(formatTime(secondsPassed));
-                    });
-                    if (allDelivered(MainProgram.driver)) {
-                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                         alert.setTitle("FINISH");
-                         alert.setHeaderText("THE SIMULATION IS DONE");
-                         alert.setContentText("Have a nice day!");
-                         alert.showAndWait();
-
-                        //  calculateTotalTimeForAllPhases();
-                         isStartClicked=false;
-                         Platform.runLater(() -> {
-                         CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
-                         percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
-
-                        });
-    
-
-    
+                public void startSimulation() {
+                    // Cancel the existing timer if it's not null
+                    if (timer != null) {
                         timer.cancel();
                     }
+            
+                    // Reset the delivery status of packages
+                    resetPackageDeliveryStatus();
+            
+                    // Create a new timer
+                    timer = new Timer();
+            
+                    TimerTask simulationTask = new TimerTask() {
+                        @Override
+                        public void run() {
+                            if (!isPaused) {
+                                secondsPassed += 10;
+                                Platform.runLater(() -> {
+                                    CounterTimeLabel.setText(formatTime(secondsPassed));
+                                });
+                                if (allDelivered(MainProgram.driver)) {
+                                    Platform.runLater(() -> {
+                                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                        alert.setTitle("FINISH");
+                                        alert.setHeaderText("THE SIMULATION IS DONE");
+                                        alert.setContentText("Have a nice day!");
+                                        alert.showAndWait();
+            
+                                        calculateTotalTimeForAllPhases();
+                                        isStartClicked = false;
+                                        CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
+                                        percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
+                                    });
+            
+                                    timer.cancel();
+                                }
+                            }
+                        }
+                    };
+            
+                    timer.schedule(simulationTask, 0, 103);
                 }
-            }
-        };
-    
-        timer.schedule(simulationTask, 0, 103);
-    }
     
     private static void resetPackageDeliveryStatus() {
                 List<Package> Packages = MainProgram.packages;
@@ -3174,14 +3171,14 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                 MainProgram.driver.pathTransition.stop();
                 MainProgram.driver.pathTransition.setPath(null);
                 MainProgram.driver.pathTransition.setCycleCount(1);
-                // double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.PackagesPaths(MainProgram.initializePackages()));
-                // CounterDistanceLabel.setText(formatDistance(totalDistance));
+                 double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.destetionBuilding));
+                 CounterDistanceLabel.setText(formatDistance(totalDistance));
     
-                // double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.PackagesPaths(MainProgram.initializePackages()));
-                // CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
-                // MainProgram.driver.moveCarTo(MainProgram.PackagesPaths(MainProgram.initializePackages()));
-                // CounterTimeLabel.setText(formatTime(MainProgram.driver.culclateTotalTime()));
-                // calculateTotalTimeForAllPhases(); 
+                 double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.destetionBuilding));
+                 CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
+                 MainProgram.driver.moveCarTo(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.destetionBuilding));
+                 CounterTimeLabel.setText(formatTime(MainProgram.driver.calculateTotalTime()));
+                 calculateTotalTimeForAllPhases(); 
                 percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
 
     
