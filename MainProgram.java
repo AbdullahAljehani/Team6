@@ -59,7 +59,7 @@ public class MainProgram {
         Intersection destinationBuilding67 = new Intersection(143, 395, "67");
         Intersection destinationBuilding80 = new Intersection(68, 395, "80");
         Intersection destinationBuilding116 = new Intersection(818, 527, "116");
-        Intersection destinationBuilding129 = new Intersection(1028, 594, "129");
+        Intersection destinationBuilding119 = new Intersection(1028, 527, "119");
         Intersection destinationBuilding2 = new Intersection(180, 66, "2"); //
         Intersection destinationBuilding10 = new Intersection(480, 130, "10");//
         Intersection destinationBuilding18 = new Intersection(900, 461, "18");//
@@ -78,8 +78,8 @@ public class MainProgram {
         Intersection destinationBuilding92 = new Intersection(68, 527, "92");//
         Intersection destinationBuilding106 = new Intersection(68, 594, "106");//
         Intersection destinationBuilding110 = new Intersection(373, 594, "110");//
-        Intersection destinationBuilding118 = new Intersection(973, 594, "118");//
-        Intersection destinationBuilding127 = new Intersection(900, 594, "127");//
+        Intersection destinationBuilding118 = new Intersection(973, 527, "118");//
+        Intersection destinationBuilding117 = new Intersection(900, 527, "117");//
         Intersection warehouse = new Intersection(330, 650, "Warehouse");
 
       
@@ -93,7 +93,7 @@ public class MainProgram {
        destinationBuilding74,destinationBuilding46,
        destinationBuilding42,destinationBuilding97,
        destinationBuilding67,destinationBuilding80,
-       destinationBuilding116,destinationBuilding129,
+        destinationBuilding116,destinationBuilding119,
        destinationBuilding2,destinationBuilding10,
        destinationBuilding18,destinationBuilding21,
        destinationBuilding26,destinationBuilding28,
@@ -103,7 +103,7 @@ public class MainProgram {
        destinationBuilding83,destinationBuilding88,
        destinationBuilding90,destinationBuilding92,
        destinationBuilding106,destinationBuilding110,
-       destinationBuilding118,destinationBuilding127
+       destinationBuilding118,destinationBuilding117
 ));   
 
   
