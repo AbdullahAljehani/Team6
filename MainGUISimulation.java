@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -41,12 +40,9 @@ public static  boolean isStartClicked=true;
 public static boolean isPaused = false;
 public static int numOfSumuolation = 0;
 public static Rectangle car ;
-
-// public static Rectangle car ;
 public StackPane root;
 public static int totalTimeP1;
 public static int totalTimeP2;
-public  Map<Rectangle, Color> originalBuildingColors = new HashMap<>();
 public static List<Rectangle> buildings ;
 
 
@@ -2860,7 +2856,7 @@ public static List<Rectangle> buildings ;
         percent_LabelP2.setLayoutY(175);
         percent_LabelP2.setStyle("-fx-text-fill: #F0F2F0;");
 
-        //bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+        
         
         Rectangle Ideal_rectangle = new Rectangle(1190, 150, 150, 35);
         Ideal_rectangle.setFill(Color.BLACK);
@@ -2874,7 +2870,6 @@ public static List<Rectangle> buildings ;
         Ideal_text.setY(Ideal_rectangle.getY() + Ideal_rectangle.getHeight() / 1.25 - Ideal_text.getLayoutBounds().getHeight() / 1.25);
         Group Ideal_group = new Group();
         Ideal_group.getChildren().addAll(Ideal_text , Ideal_rectangle);
-        //bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
          Group labelsGroup = new Group();
             labelsGroup.getChildren().addAll(timeLabel, distanceLabel,costLabel,No_SimulationLabel,timerRectangle,distanceRectangle,costRectangle,No_SimulationRectangle);
             Group counterLabelsGroup = new Group();
@@ -2907,7 +2902,9 @@ Start_button.setStyle( "-fx-background-color: #F0F2F0; " );
 Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
+            if (!MainProgram.driver.isTransitionPaused) {
             //  resetChosenBuildingColors();
+            MainProgram.initializeForStart();
             stopCurrentSimulation();
             isStartClicked = true;
 
@@ -2921,7 +2918,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             CounterTimeLabel.setText(formatTime(secondsPassed));
              startSimulation();
             isPaused = false;
-            
+            }  
         });
                 
         Button Pause_button = new Button();
@@ -2938,12 +2935,13 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         Pause_button.setContentDisplay(ContentDisplay.CENTER);
                 
         Pause_button.setOnAction(e -> {
-
+        if (!MainProgram.driver.isTransitionPaused) {
             if (isPaused) {
                 resumeSimulation();
             } else {
                 pauseSimulation();
             }
+        }
         });
         
         Button End_button = new Button();
@@ -2959,10 +2957,10 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         End_button.setContentDisplay(ContentDisplay.CENTER);
         
         End_button.setOnAction(e -> {
-
+         if (!MainProgram.driver.isTransitionPaused) {
             
                 endSimulation();
-            
+            }
         });
         
         Button Back_button = new Button();
@@ -2978,6 +2976,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         Back_button.setContentDisplay(ContentDisplay.CENTER);
         
         Back_button.setOnAction(e -> {
+                if (!MainProgram.driver.isTransitionPaused){
                 numOfSumuolation = 0;
                 FirstPage.isPhase1Selected = false;
                 FirstPage.isPhase2Selected = false;
@@ -2985,7 +2984,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                 openFirstPage();
                 restSumaltion();
                 primaryStage.close();
-            
+            }
         });
 
         Group buttonsGroup = new Group ();
@@ -3055,6 +3054,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                                         alert.setHeaderText("THE SIMULATION IS DONE");
                                         alert.setContentText("Have a nice day!");
                                         alert.showAndWait();
+                                        MainProgram.driver.isTransitionPaused = false;
             
                                         calculateTotalTimeForAllPhases();
                                         isStartClicked = false;
@@ -3180,10 +3180,10 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                  CounterTimeLabel.setText(formatTime(MainProgram.driver.calculateTotalTime()));
                  calculateTotalTimeForAllPhases(); 
                 percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
-
-    
+                highlightBuildingsWithPackages();
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
-                isStartClicked = false; 
+                isStartClicked = false;
+                MainProgram.driver.isTransitionPaused = false; 
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("FINISH");
@@ -3194,9 +3194,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                 
                
                 
-                // for (Rectangle chosenBuilding : ChosenBuilding) {
-                //     chosenBuilding.setFill(Color.GREEN);
-                // }
+                
             });
         }
     }
@@ -3215,9 +3213,8 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             MainProgram.driver.pathTransition.setCycleCount(1);
             CounterDistanceLabel.setText("00.00 Km");
             CounterCostLabel.setText("$ 00,00");
-            // MainProgram.driver.moveCarTo(MainProgram.PackagesPaths(MainProgram.initializePackages()));
-            car.setTranslateX(0);
-            car.setTranslateY(0);
+             MainProgram.driver.moveCarTo(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.destetionBuilding));
+           
 
              });
     
@@ -3225,37 +3222,6 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
 
 } 
 
-// public  void initializeOriginalColors() {
-//     originalBuildingColors.put(Building127, Color.web("#C0392B"));
-//     originalBuildingColors.put(Building103, Color.web("#C0392B"));
-//     originalBuildingColors.put(Building70, Color.BLUE);
-//     originalBuildingColors.put(Building44, Color.GREY);
-//     originalBuildingColors.put(Building13, Color.GREY);
-//     originalBuildingColors.put(Building32,Color.GREY);
-//     originalBuildingColors.put(Building7, Color.GREY);
-//     originalBuildingColors.put(Building52, Color.GREY);
-//     originalBuildingColors.put(Building12, Color.GREY);
-//     originalBuildingColors.put(Building101, Color.web("#C0392B"));
-//     originalBuildingColors.put(Building79, Color.BLUE);
-//     originalBuildingColors.put(Building74, Color.BLUE);
-//     originalBuildingColors.put(Building46, Color.GREY);
-//     originalBuildingColors.put(Building42, Color.GREY);
-//     originalBuildingColors.put(Building97, Color.web("#C0392B"));
-//     originalBuildingColors.put(Building67, Color.BLUE);
-//     originalBuildingColors.put(Building80, Color.BLUE);
-//     originalBuildingColors.put(Building116, Color.web("#C0392B"));
-//     originalBuildingColors.put(Building124, Color.web("#C0392B"));
-//     originalBuildingColors.put(Building133, Color.web("#C0392B"));
-// }
-    // public  void resetChosenBuildingColors() {
-    //     initializeOriginalColors();
-    //     for (Rectangle building : ChosenBuilding) {
-    //         Color originalColor = originalBuildingColors.get(building);
-    //         if (originalColor != null) {
-    //             building.setFill(originalColor);
-    //         }
-    //     }
-    // }
 public static void openPhase2() {
     Stage newStage = new Stage();
     MainGUISimulation phase2 = new MainGUISimulation();
@@ -3263,6 +3229,20 @@ public static void openPhase2() {
 
     
 }
+public void highlightBuildingsWithPackages()  {
+    List<Package> packages = MainProgram.packages;
+
+    for (Package aPackage : packages) {
+        Customer customer = aPackage.getCustomer();
+        Building destinationBuilding = customer.getBuilding();
+        String buildingName = destinationBuilding.getLocation().getName();
+
+        int buildingIndex = Integer.parseInt(buildingName);
+        MainGUISimulation.buildings.get(buildingIndex - 1).setFill(Color.GREEN);
+        
+    }
+}
+
 
 
 }

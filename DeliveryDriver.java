@@ -5,15 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
-import java.util.stream.Collectors;
-
 import javafx.animation.PathTransition;
 import javafx.animation.PauseTransition;
 import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.PathElement;
 import javafx.util.Duration;
@@ -27,6 +24,7 @@ public class DeliveryDriver {
     private double incrementGasoline;
     private double incrementDistance;
     private  double distance;
+    public  boolean isTransitionPaused = false;
 
     public void setGasolineCost(double gasolineCost){
         this.gasolineCost=gasolineCost;
@@ -273,8 +271,10 @@ public void moveDriver(Path path, Runnable onFinish,int delay) {
             pauseTransition.setOnFinished(event -> {
                 deliverPackage(currentX, currentY);
                 onFinish.run();
+                isTransitionPaused=false;
             });
             pauseTransition.play();
+            isTransitionPaused=true;
 
         });
 
@@ -332,7 +332,10 @@ private void deliverPackage(int currentX, int currentY) {
                 
 
 
-                        destinationBuilding.getGuiElement().setFill(Color.GREEN);
+                String buildingName = destinationBuilding.getLocation().getName();
+                int buildingIndex = Integer.parseInt(buildingName);
+                MainGUISimulation.buildings.get(buildingIndex - 1 ).setFill(Color.GREEN);
+              
                     }
                 }
 

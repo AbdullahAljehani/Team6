@@ -27,15 +27,24 @@ public class MainProgram {
 
     public static void initializeObjects() {
 
-      driver = new DeliveryDriver();
-         destetionBuilding =destinationBuildings(); 
+        driver = new DeliveryDriver();
+        destetionBuilding =destinationBuildings(); 
         choosenBulding = getShuffledBuildings();
-       intersections = createIntersectionsLayout();
-       customers= generateRandomCustomers();
-       packages=generateRandomPackages(customers); 
-       graph = createGraph();
+        intersections = createIntersectionsLayout();
+        customers= generateRandomCustomers();
+        packages=generateRandomPackages(customers); 
+        graph = createGraph();
       
     }
+     public static void initializeForStart() {
+
+         
+        choosenBulding = getShuffledBuildings();
+        customers= generateRandomCustomers();
+        packages=generateRandomPackages(customers); 
+      
+    }
+    
     public static List<Intersection> destinationBuildings() {
       List<Intersection> destinations = new ArrayList<>();
 
