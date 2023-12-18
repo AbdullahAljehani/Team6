@@ -15,21 +15,25 @@ import javafx.scene.shape.Rectangle;
 
 public class MainProgram {
     
-    public static DeliveryDriver driver;
-    public static List<Customer> customers;
+    public static DeliveryDriver driver;    
+  public static List<Intersection> destetionBuilding ;
+    public static List<Intersection> choosenBulding ;
+
+    public static List<Customer> customers  ;
+
     public static List<Package>  packages  ;
-    public static List<Intersection> destetionBuilding;
     public static List<List<Intersection>> intersections;
     public static Map<Intersection, List<Intersection>> graph;
 
     public static void initializeObjects() {
 
       driver = new DeliveryDriver();
-      destetionBuilding = destinationBuildings()  ;
-      intersections = createIntersectionsLayout();
-      customers= generateRandomCustomers();
-      packages=generateRandomPackages(customers); 
-      graph = createGraph();
+         destetionBuilding =destinationBuildings(); 
+        choosenBulding = getShuffledBuildings();
+       intersections = createIntersectionsLayout();
+       customers= generateRandomCustomers();
+       packages=generateRandomPackages(customers); 
+       graph = createGraph();
       
     }
     public static List<Intersection> destinationBuildings() {
@@ -107,6 +111,34 @@ public class MainProgram {
   }
  
 
+  public static List<Intersection> getShuffledBuildings() {
+    List<Intersection> allDestinations = destetionBuilding ; // Retrieve all destination buildings
+
+    // Separate warehouse from the list
+    Intersection warehouse = null;
+    List<Intersection> otherDestinations = new ArrayList<>();
+
+    for (Intersection destination : allDestinations) {
+        if (destination.getName().equals("Warehouse")) {
+            warehouse = destination;
+        } else {
+            otherDestinations.add(destination);
+        }
+    }
+
+    // Ensure warehouse is at the beginning
+    List<Intersection> shuffledOthers = new ArrayList<>(otherDestinations);
+    Collections.shuffle(shuffledOthers); // Shuffle the other buildings
+
+    List<Intersection> selectedBuildings = new ArrayList<>();
+    if (warehouse != null) {
+        selectedBuildings.add(warehouse); // Add warehouse as the first one
+        selectedBuildings.addAll(shuffledOthers.subList(0, Math.min(19, shuffledOthers.size())));
+        // Select 19 more buildings excluding the warehouse
+    }
+
+    return selectedBuildings;
+}
 
 
   public static Map<Intersection, List<Intersection>> createGraph() {
@@ -324,10 +356,11 @@ public static List<Building> Allbuildings() {
     List<Building> buildings = new ArrayList<>();
     MainGUISimulation.buildings(MainGUISimulation.AllGroups);
 
-    for (int i = 1; i < destetionBuilding.size(); i++) {
+    for (int i = 1; i < choosenBulding.size(); i++) {
         
         // Get the building name from destination.get(12)
-        String buildingName = destetionBuilding.get(i).getName();
+        String buildingName = choosenBulding.get(i).getName();
+        System.out.println(choosenBulding.get(i).getName());
 
         // Convert buildingName to an integer
         int buildingIndex = Integer.parseInt(buildingName);
@@ -337,7 +370,7 @@ public static List<Building> Allbuildings() {
 
         buildings.add(new Building(
                 buildingIndex,
-                destetionBuilding.get(i),
+                choosenBulding.get(i),
                 buildingInfo
         ));
     }
@@ -352,7 +385,7 @@ public static List<Customer> generateRandomCustomers() {
     int customerId = 1;
 
     // Iterate through destination buildings and assign each building to a customer
-    for (int i = 1; i < destetionBuilding.size(); i++) {
+    for (int i = 1; i < choosenBulding.size(); i++) {
         Building building = allBuildings.get(i - 1);
         Customer customer = new Customer(customerId, building);
         sequentialCustomers.add(customer);

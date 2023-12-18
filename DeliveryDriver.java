@@ -249,7 +249,7 @@ for (Package singlePackage : packages) {
     totalDelay+=singlePackage.delay*60;
 }
     
-     double totalDistance = calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.destetionBuilding));
+     double totalDistance = calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));
     double totalDourtion=35.896; // Scale factor used to predict the total time 
     double totalTime = totalDelay + totalDistance*1000/totalDourtion; // Multiplying by 1000 to convert totalDistance from kilometers to meters
     int totalTimrCast = (int) totalTime;
