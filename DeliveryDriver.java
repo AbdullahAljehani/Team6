@@ -323,7 +323,9 @@ private void deliverPackage(int currentX, int currentY) {
 
     for (Package aPackage : Packages) {
         if (!aPackage.isDelivered) {
-            Building destinationBuilding = aPackage.getCustomer().getBuilding();
+            Customer customer = aPackage.getCustomer();
+            Building destinationBuilding= customer.getBuilding();
+            System.out.println("z8e8"+destinationBuilding.getLocation().getName());
             if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
                 aPackage.isDelivered = true;
                 deliveredPackageFound = true;

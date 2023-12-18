@@ -56,21 +56,51 @@ public class MainProgram {
         Intersection destinationBuilding80 = new Intersection(68, 395, "80");
         Intersection destinationBuilding116 = new Intersection(818, 527, "116");
         Intersection destinationBuilding129 = new Intersection(1028, 594, "129");
+        Intersection destinationBuilding2 = new Intersection(180, 66, "2"); //
+        Intersection destinationBuilding10 = new Intersection(480, 130, "10");//
+        Intersection destinationBuilding18 = new Intersection(900, 461, "18");//
+        Intersection destinationBuilding21 = new Intersection(700, 130, "21");//
+        Intersection destinationBuilding26 = new Intersection(1040, 130, "26");//
+        Intersection destinationBuilding28 = new Intersection(180, 197, "28");//
+        Intersection destinationBuilding35 = new Intersection(728, 197, "35");//
+        Intersection destinationBuilding39 = new Intersection(990, 197, "39");//
+        Intersection destinationBuilding56 = new Intersection(290, 330, "56");//
+        Intersection destinationBuilding58 = new Intersection(480, 330, "58");//
+        Intersection destinationBuilding63 = new Intersection(830, 330, "63");//
+        Intersection destinationBuilding65 = new Intersection(1000, 330, "65");//
+        Intersection destinationBuilding83 = new Intersection(370, 461, "83");//
+        Intersection destinationBuilding88 = new Intersection(790, 461, "88");//
+        Intersection destinationBuilding90 = new Intersection(970, 461, "90");//
+        Intersection destinationBuilding92 = new Intersection(68, 527, "92");//
+        Intersection destinationBuilding106 = new Intersection(68, 594, "106");//
+        Intersection destinationBuilding110 = new Intersection(373, 594, "110");//
+        Intersection destinationBuilding118 = new Intersection(973, 594, "118");//
+        Intersection destinationBuilding127 = new Intersection(900, 594, "127");//
         Intersection warehouse = new Intersection(330, 650, "Warehouse");
 
       
        destinations.addAll(Arrays.asList(warehouse,
-       destinationBuilding120, destinationBuilding123,
-       destinationBuilding103, destinationBuilding70,
-       destinationBuilding44, destinationBuilding13,
-       destinationBuilding32, destinationBuilding7,
-       destinationBuilding52, destinationBuilding12,
-       destinationBuilding101, destinationBuilding79,
-       destinationBuilding74, destinationBuilding46,
-       destinationBuilding42, destinationBuilding97,
-       destinationBuilding67, destinationBuilding80,
-       destinationBuilding116, destinationBuilding129
-));
+       destinationBuilding120,destinationBuilding123,
+       destinationBuilding103,destinationBuilding70,
+       destinationBuilding44,destinationBuilding13,
+       destinationBuilding32,destinationBuilding7,
+       destinationBuilding52,destinationBuilding12,
+       destinationBuilding101,destinationBuilding79,
+       destinationBuilding74,destinationBuilding46,
+       destinationBuilding42,destinationBuilding97,
+       destinationBuilding67,destinationBuilding80,
+       destinationBuilding116,destinationBuilding129,
+       destinationBuilding2,destinationBuilding10,
+       destinationBuilding18,destinationBuilding21,
+       destinationBuilding26,destinationBuilding28,
+       destinationBuilding35,destinationBuilding39,
+       destinationBuilding56,destinationBuilding58,
+       destinationBuilding63,destinationBuilding65,
+       destinationBuilding83,destinationBuilding88,
+       destinationBuilding90,destinationBuilding92,
+       destinationBuilding106,destinationBuilding110,
+       destinationBuilding118,destinationBuilding127
+));   
 
   
       return destinations;
@@ -184,12 +214,6 @@ private static String getOrderedConnectionKey(Intersection intersection1, Inters
     return (name1.compareTo(name2) < 0) ? name1 + "-" + name2 : name2 + "-" + name1;
 }
 
-
-
-
-
-
-
 public static  List<List<Intersection>> createIntersectionsLayout(){
   List<List<Intersection>> intersections = new ArrayList<>();
   List<Intersection> intersection_1 = new ArrayList<>();
@@ -279,7 +303,7 @@ intersection_3 = Arrays.asList(intersection3_1,intersection3_2,intersection3_3);
 
          if (originalPackage instanceof Normal) {
              // If it's a Normal package, use the copy constructor with the new path
-             Normal originalNormal = (Normal) originalPackage;
+            Normal originalNormal = (Normal) originalPackage;
             Normal copiedNormal = new Normal(originalNormal);
             copiedPackages.add(copiedNormal);
 
@@ -295,16 +319,15 @@ intersection_3 = Arrays.asList(intersection3_1,intersection3_2,intersection3_3);
      return copiedPackages;
 }
   
-
 public static List<Building> Allbuildings() {
-    List<Intersection> destination = destinationBuildings();
+
     List<Building> buildings = new ArrayList<>();
     MainGUISimulation.buildings(MainGUISimulation.AllGroups);
 
-    for (int i = 1; i < destination.size(); i++) {
+    for (int i = 1; i < destetionBuilding.size(); i++) {
         
         // Get the building name from destination.get(12)
-        String buildingName = destination.get(i).getName();
+        String buildingName = destetionBuilding.get(i).getName();
 
         // Convert buildingName to an integer
         int buildingIndex = Integer.parseInt(buildingName);
@@ -312,64 +335,58 @@ public static List<Building> Allbuildings() {
         // Get the MainGUISimulation.Building object using the buildingIndex
         Rectangle buildingInfo = MainGUISimulation.buildings.get(buildingIndex - 1);
 
-        buildings.add(new Building(buildingIndex,destination.get(i),buildingInfo));
+        buildings.add(new Building(
+                buildingIndex,
+                destetionBuilding.get(i),
+                buildingInfo
+        ));
     }
     return buildings;
 }
 
-
 public static List<Customer> generateRandomCustomers() {
-  List<Customer> randomCustomers = new ArrayList<>();
-  List<Building> allBuildings = Allbuildings();
 
-  // Keep track of assigned buildings
-  List<Building> assignedBuildings = new ArrayList<>();
+    List<Customer> sequentialCustomers = new ArrayList<>();
+    List<Building> allBuildings = Allbuildings();
 
-  Random random = new Random();
-  int customerId = 1;
+    int customerId = 1;
 
-  // Generate 20 unique random customers
-  while (randomCustomers.size() < 20) {
-      int randomBuildingIndex = random.nextInt(allBuildings.size());
-      Building randomBuilding = allBuildings.get(randomBuildingIndex);
+    // Iterate through destination buildings and assign each building to a customer
+    for (int i = 1; i < destetionBuilding.size(); i++) {
+        Building building = allBuildings.get(i - 1);
+        Customer customer = new Customer(customerId, building);
+        sequentialCustomers.add(customer);
 
-      // Check if the building is not already assigned
-      if (!assignedBuildings.contains(randomBuilding)) {
-          Customer customer = new Customer(customerId, randomBuilding);
-          randomCustomers.add(customer);
-          assignedBuildings.add(randomBuilding);
-          customerId++;
-      }
-  }
+        customerId++;
+    }
 
-  return randomCustomers;
+    return sequentialCustomers;
 }
 
 
+public static List<Package>  generateRandomPackages(List<Customer> customers) {
+    List<Package> randomPackages = new ArrayList<>();
+    Random random = new Random();
 
-    public static List<Package>  generateRandomPackages(List<Customer> customers) {
-      List<Package> randomPackages = new ArrayList<>();
-      Random random = new Random();
-  
-      for (Customer customer : customers) {
-          int packageType = random.nextInt(2); // 0 for Normal, 1 for Official Paper
-          int delay = (packageType == 0) ? 2 : 5; // 2 for Normal, 5 for Official Paper
-  
-          int packageId;
-          do {
-              packageId = random.nextInt(20) + 1; // Random package ID from 1 to 20
-          } while (isPackageIdUsed(randomPackages, packageId));
-  
-          Package newPackage = (packageType == 0)
-                  ? new Normal(customer, packageId, delay)
-                  : new Offical_paper(customer, packageId, delay);
-  
-          customer.addAssignedPackage(newPackage);
-          randomPackages.add(newPackage);
-      }
+    for (Customer customer : customers) {
+        int packageType = random.nextInt(2); // 0 for Normal, 1 for Official Paper
+        int delay = (packageType == 0) ? 2 : 5; // 2 for Normal, 5 for Official Paper
 
-      return randomPackages;
-  }
+        int packageId;
+        do {
+            packageId = random.nextInt(20) + 1; // Random package ID from 1 to 20
+        } while (isPackageIdUsed(randomPackages, packageId));
+
+        Package newPackage = (packageType == 0)
+                ? new Normal(customer, packageId, delay)
+                : new Offical_paper(customer, packageId, delay);
+
+        customer.addAssignedPackage(newPackage);
+        randomPackages.add(newPackage);
+    }
+
+    return randomPackages;
+}
   
   private static boolean isPackageIdUsed(List<Package> packages, int packageId) {
       for (Package p : packages) {
@@ -424,8 +441,6 @@ public static List<Customer> generateRandomCustomers() {
         }
     }
 }
-
-
 
 private static Intersection findClosestLeftIntersection(Intersection destination, List<Intersection> intersections) {
     double centerX = destination.getX();
