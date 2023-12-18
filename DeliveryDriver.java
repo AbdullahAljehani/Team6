@@ -125,7 +125,7 @@ public void moveCarTo(List<List<Intersection>> packages) {
             MainGUISimulation.car.setTranslateY(finalPointY);
         }
     }
-    public List<List<Intersection>> gg(List<Intersection> destinations) {
+    public List<List<Intersection>> calculateShortestPathsBetweenDestinations(List<Intersection> destinations) {
         List<List<Intersection>> paths = new ArrayList<>();
     
         for (int i = 0; i < destinations.size() - 1; i++) {

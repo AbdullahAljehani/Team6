@@ -2916,7 +2916,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             CounterCostLabel.setText("$ 00,00");
             CounterDistanceLabel.setText("00.00 Km");
             percentLabelP2.setText("00.00%");
-            MainProgram.driver.createPathForPackages(MainProgram.driver.gg(MainProgram.destetionBuilding));            
+            MainProgram.driver.createPathForPackages(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.destetionBuilding));            
             secondsPassed = 0;
             CounterTimeLabel.setText(formatTime(secondsPassed));
             // startSimulation();
