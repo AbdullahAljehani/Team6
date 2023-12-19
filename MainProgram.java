@@ -37,6 +37,7 @@ public class MainProgram {
       
     }
  
+ 
     
     public static List<Intersection> destinationBuildings() {
       List<Intersection> destinations = new ArrayList<>();
@@ -523,8 +524,10 @@ public static List<Intersection> initializeChoosenIntersections() {
     List<Intersection> aIntersection;
 
     if (FirstPage.isPhase1Selected) {
+        choosenBulding=getShuffledBuildings();
         aIntersection = choosenBulding;
     } else if (FirstPage.isPhase2Selected) {
+      
         aIntersection =organizeBuilding;
     } else {
 
@@ -533,7 +536,7 @@ public static List<Intersection> initializeChoosenIntersections() {
 
 
     
-choosenBulding=aIntersection;
+
 
 customers= generateRandomCustomers();
 packages=generateRandomPackages(customers); 
