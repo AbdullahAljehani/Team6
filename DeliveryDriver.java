@@ -159,15 +159,15 @@ public void moveCarTo(List<List<Intersection>> packages) {
             double currentDistance = distance.get(current);
     
             // Debugging print statements
-            System.out.println("Current: " + current.getName()+" "+current);
+            // System.out.println("Current: " + current.getName()+" "+current);
             List<Intersection> neighbors = graph.getOrDefault(current, new ArrayList<>());
-            System.out.println("Graph: " + graph.getOrDefault(current, new ArrayList<>()));
+            // System.out.println("Graph: " + graph.getOrDefault(current, new ArrayList<>()));
 
             for (int i = 0; i < neighbors.size(); i++) {
                 Intersection neighbor = neighbors.get(i);
                 double newDistance = currentDistance + current.getDistanceTo(neighbor);
             
-                System.out.println("Neighbor: " + neighbor);
+                // System.out.println("Neighbor: " + neighbor);
             
                 if (newDistance < distance.getOrDefault(neighbor, Double.MAX_VALUE)) {
                     distance.put(neighbor, newDistance);
@@ -283,7 +283,6 @@ public void moveDriver(Path path, Runnable onFinish,int delay) {
 }
 
 
-// Add your calculateTotalDistance, formatDistance, and formatGasolineCost methods here
 
 
 
@@ -325,13 +324,9 @@ private void deliverPackage(int currentX, int currentY) {
         if (!aPackage.isDelivered) {
             Customer customer = aPackage.getCustomer();
             Building destinationBuilding= customer.getBuilding();
-            System.out.println("z8e8"+destinationBuilding.getLocation().getName());
             if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
                 aPackage.isDelivered = true;
                 deliveredPackageFound = true;
-                
-
-
                 String buildingName = destinationBuilding.getLocation().getName();
                 int buildingIndex = Integer.parseInt(buildingName);
                 MainGUISimulation.buildings.get(buildingIndex - 1 ).setFill(Color.GREEN);

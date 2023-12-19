@@ -36,13 +36,12 @@ titleLabel.setAlignment(Pos.CENTER);
             isPhase1Selected = true;
             openSimulationPage();
             primaryStage.close();
-
         });
         phase2Button.setOnAction(e -> {
             isPhase2Selected = true;  
             openSimulationPage();
             primaryStage.close();
-
+           
         });
         // Make buttons bigger
         phase1Button.setStyle(
@@ -114,8 +113,6 @@ phase2Button.setStyle(
     }
 
     public static void main(String[] args) {
-        // MainProgram.driver.setPackages(MainProgram.initializePackages());
-        MainProgram.initializeObjects();
         
         launch(args);
     }

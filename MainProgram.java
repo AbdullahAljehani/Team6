@@ -16,34 +16,27 @@ import javafx.scene.shape.Rectangle;
 public class MainProgram {
     
     public static DeliveryDriver driver;    
-  public static List<Intersection> destetionBuilding ;
-    public static List<Intersection> choosenBulding ;
-
-    public static List<Customer> customers  ;
-
-    public static List<Package>  packages  ;
+    public static List<Intersection>destetionBuilding;
+    public static List<Intersection>choosenBulding;
+    public static List<Customer>customers;
+    public static List<Package>packages;
     public static List<List<Intersection>> intersections;
-    public static Map<Intersection, List<Intersection>> graph;
+    public static Map<Intersection,List<Intersection>>graph;
+    public static List<Intersection> organizeBuilding;
 
     public static void initializeObjects() {
-
         driver = new DeliveryDriver();
-        destetionBuilding =destinationBuildings(); 
-        choosenBulding = getShuffledBuildings();
+        destetionBuilding =destinationBuildings();
+        choosenBulding=getShuffledBuildings();
+        organizeBuilding= getOrganizedBuildings(); 
         intersections = createIntersectionsLayout();
         customers= generateRandomCustomers();
         packages=generateRandomPackages(customers); 
         graph = createGraph();
+        
       
     }
-     public static void initializeForStart() {
-
-         
-        choosenBulding = getShuffledBuildings();
-        customers= generateRandomCustomers();
-        packages=generateRandomPackages(customers); 
-      
-    }
+ 
     
     public static List<Intersection> destinationBuildings() {
       List<Intersection> destinations = new ArrayList<>();
@@ -145,10 +138,34 @@ public class MainProgram {
         selectedBuildings.addAll(shuffledOthers.subList(0, Math.min(19, shuffledOthers.size())));
         // Select 19 more buildings excluding the warehouse
     }
+for (Intersection inter : selectedBuildings) {
+        System.out.println("rand" + inter.getName());
+    }
 
     return selectedBuildings;
 }
+public static List<Intersection> getOrganizedBuildings() {
 
+    // Create a copy of chosenBuilding to avoid modifying the original
+    List<Intersection> intersections = new ArrayList<>(choosenBulding);
+
+    // Extract the warehouse from the copy
+    Intersection warehouse = intersections.get(0);
+    intersections.remove(0); // Remove the warehouse from the copy
+
+    // Sort the non-warehouse intersections in descending order by building index
+    Collections.sort(intersections, Comparator.comparingInt((Intersection intersection) -> Integer.parseInt(intersection.getName())).reversed());
+
+    // Add the warehouse back to the beginning of the list
+    intersections.add(0, warehouse);
+
+    // Print the updated order for verification
+    for (Intersection inter : intersections) {
+        System.out.println("org" + inter.getName());
+    }
+
+    return intersections;
+}
 
   public static Map<Intersection, List<Intersection>> createGraph() {
     Map<Intersection, List<Intersection>> graph = new HashMap<>();
@@ -502,7 +519,28 @@ private static Intersection findClosestRightIntersection(Intersection destinatio
             .orElse(null);
 }
 
+public static List<Intersection> initializeChoosenIntersections() {
+    List<Intersection> aIntersection;
 
+    if (FirstPage.isPhase1Selected) {
+        aIntersection = choosenBulding;
+    } else if (FirstPage.isPhase2Selected) {
+        aIntersection =organizeBuilding;
+    } else {
+
+        aIntersection = new ArrayList<>();
+    }
+
+
+    
+choosenBulding=aIntersection;
+
+customers= generateRandomCustomers();
+packages=generateRandomPackages(customers); 
+
+
+    return aIntersection;
+}
 
 }
 
