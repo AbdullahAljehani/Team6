@@ -151,18 +151,36 @@ public static List<Intersection> getOrganizedBuildings() {
     Intersection warehouse = intersections.get(0);
     intersections.remove(0); // Remove the warehouse from the copy
 
-    // Sort the non-warehouse intersections in descending order by building index
-    Comparator<Intersection> comparator = Comparator.comparingInt(intersection -> Integer.parseInt(intersection.getName()));
-    comparator = comparator.reversed();
-    Collections.sort(intersections, comparator);
+    // Sort non-warehouse intersections based on Y coordinates and X directions
+    Collections.sort(intersections, (intersection1, intersection2) -> {
+        int y1 = intersection1.getY();
+        int y2 = intersection2.getY();
+
+        // Sort based on Y coordinates in descending order
+        if (y1 != y2) {
+            return Integer.compare(y2, y1);
+        }
+
+        // If Y coordinates are equal, apply specific sorting based on X direction and Y value
+        int x1 = intersection1.getX();
+        int x2 = intersection2.getX();
+        if (y1 == 594) {
+            // Sort X in ascending order for Y = 594
+            return Integer.compare(x1, x2);
+        } else if (y1 == 527) {
+            // Sort X in descending order for Y = 527
+            return Integer.compare(x2, x1);
+        } else {
+            // Sort X in ascending order for other Y values
+            return Integer.compare(x1, x2);
+        }
+    });
 
     // Add the warehouse back to the beginning of the list
     intersections.add(0, warehouse);
 
-   
     return intersections;
 }
-
   public static Map<Intersection, List<Intersection>> createGraph() {
     Map<Intersection, List<Intersection>> graph = new HashMap<>();
     
@@ -183,11 +201,9 @@ public static List<Intersection> getOrganizedBuildings() {
                 String connectionKey = getOrderedConnectionKey(currentIntersection, prevIntersection);
                 if (!connections.contains(connectionKey)) {
                     neighbors.add(prevIntersection);
-                    System.out.println("Connecting " + currentIntersection.getName() + " with " + prevIntersection.getName());
                     
                     // Connect in the reverse direction as well
                     graph.computeIfAbsent(prevIntersection, k -> new ArrayList<>()).add(currentIntersection);
-                    System.out.println("Connecting " + prevIntersection.getName() + " with " + currentIntersection.getName());
                     connections.add(connectionKey);
                 }
             }
@@ -198,11 +214,9 @@ public static List<Intersection> getOrganizedBuildings() {
                 String connectionKey = getOrderedConnectionKey(currentIntersection, nextIntersection);
                 if (!connections.contains(connectionKey)) {
                     neighbors.add(nextIntersection);
-                    System.out.println("Connecting " + currentIntersection.getName() + " with " + nextIntersection.getName());
                     
                     // Connect in the reverse direction as well
                     graph.computeIfAbsent(nextIntersection, k -> new ArrayList<>()).add(currentIntersection);
-                    System.out.println("Connecting " + nextIntersection.getName() + " with " + currentIntersection.getName());
                     connections.add(connectionKey);
                 }
             }
@@ -213,11 +227,9 @@ public static List<Intersection> getOrganizedBuildings() {
                 String connectionKey = getOrderedConnectionKey(currentIntersection, prevStreetIntersection);
                 if (!connections.contains(connectionKey)) {
                     neighbors.add(prevStreetIntersection);
-                    System.out.println("Connecting " + currentIntersection.getName() + " with " + prevStreetIntersection.getName());
                     
                     // Connect in the reverse direction as well
                     graph.computeIfAbsent(prevStreetIntersection, k -> new ArrayList<>()).add(currentIntersection);
-                    System.out.println("Connecting " + prevStreetIntersection.getName() + " with " + currentIntersection.getName());
                     connections.add(connectionKey);
                 }
             }
@@ -228,11 +240,9 @@ public static List<Intersection> getOrganizedBuildings() {
                 String connectionKey = getOrderedConnectionKey(currentIntersection, nextStreetIntersection);
                 if (!connections.contains(connectionKey)) {
                     neighbors.add(nextStreetIntersection);
-                    System.out.println("Connecting " + currentIntersection.getName() + " with " + nextStreetIntersection.getName());
                     
                     // Connect in the reverse direction as well
                     graph.computeIfAbsent(nextStreetIntersection, k -> new ArrayList<>()).add(currentIntersection);
-                    System.out.println("Connecting " + nextStreetIntersection.getName() + " with " + currentIntersection.getName());
                     connections.add(connectionKey);
                 }
             }
@@ -382,7 +392,6 @@ public static List<Building> Allbuildings() {
         
         // Get the building name from destination.get(12)
         String buildingName = choosenBulding.get(i).getName();
-        System.out.println(choosenBulding.get(i).getName());
 
         // Convert buildingName to an integer
         int buildingIndex = Integer.parseInt(buildingName);
@@ -469,8 +478,7 @@ public static List<Package>  generateRandomPackages(List<Customer> customers) {
             // Connect the A9 intersection to the Warehouse in reverse
             graph.computeIfAbsent(destination, k -> new ArrayList<>()).add(a9Intersection);
 
-            System.out.println("Connecting " + a9Intersection.getName() + " with " + destination.getName());
-            System.out.println("Connecting " + destination.getName() + " with " + a9Intersection.getName());
+            
         } else {
             if (closestLeftIntersection != null) {
                 graph.putIfAbsent(closestLeftIntersection, new ArrayList<>());
@@ -479,8 +487,7 @@ public static List<Package>  generateRandomPackages(List<Customer> customers) {
                 // Connect the left intersection to the destination building in reverse
                 graph.computeIfAbsent(destination, k -> new ArrayList<>()).add(closestLeftIntersection);
 
-                System.out.println("Connecting " + closestLeftIntersection.getName() + " with " + destination.getName());
-                System.out.println("Connecting " + destination.getName() + " with " + closestLeftIntersection.getName());
+                
             }
 
             if (closestRightIntersection != null) {
@@ -489,9 +496,6 @@ public static List<Package>  generateRandomPackages(List<Customer> customers) {
 
                 // Connect the right intersection to the destination building in reverse
                 graph.computeIfAbsent(destination, k -> new ArrayList<>()).add(closestRightIntersection);
-
-                System.out.println("Connecting " + closestRightIntersection.getName() + " with " + destination.getName());
-                System.out.println("Connecting " + destination.getName() + " with " + closestRightIntersection.getName());
             }
         }
     }
@@ -519,8 +523,8 @@ public static List<Intersection> initializeChoosenIntersections() {
     List<Intersection> aIntersection;
 
     if (FirstPage.isPhase1Selected) {
-        choosenBulding=getShuffledBuildings();
-        aIntersection = choosenBulding;
+         choosenBulding=getShuffledBuildings();
+         aIntersection = choosenBulding;
          customers= generateRandomCustomers();
          packages=generateRandomPackages(customers);
        
@@ -533,8 +537,6 @@ public static List<Intersection> initializeChoosenIntersections() {
 
         aIntersection = new ArrayList<>();
     }
- 
-
     return aIntersection;
 }
 

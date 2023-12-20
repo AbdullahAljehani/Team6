@@ -44,6 +44,7 @@ titleLabel.setAlignment(Pos.CENTER);
             openSimulationPage();
             primaryStage.close();
             MainProgram.organizeBuilding= MainProgram.getOrganizedBuildings();
+            MainProgram.choosenBulding=MainProgram.organizeBuilding;
             MainProgram.packages=MainProgram.copyPackages(MainProgram.packages);
 
            

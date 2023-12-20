@@ -70,7 +70,7 @@ private int delayByIndex(int index) {
     if (index >= 0 && index < Packages.size()) {
         return Packages.get(index).delay;
     } else {
-        System.out.println("Index is out of bounds.");
+      
         return 0; 
     }
 }
@@ -158,16 +158,15 @@ public void moveCarTo(List<List<Intersection>> packages) {
     
             double currentDistance = distance.get(current);
     
-            // Debugging print statements
-            // System.out.println("Current: " + current.getName()+" "+current);
+            
             List<Intersection> neighbors = graph.getOrDefault(current, new ArrayList<>());
-            // System.out.println("Graph: " + graph.getOrDefault(current, new ArrayList<>()));
+
 
             for (int i = 0; i < neighbors.size(); i++) {
                 Intersection neighbor = neighbors.get(i);
                 double newDistance = currentDistance + current.getDistanceTo(neighbor);
             
-                // System.out.println("Neighbor: " + neighbor);
+                
             
                 if (newDistance < distance.getOrDefault(neighbor, Double.MAX_VALUE)) {
                     distance.put(neighbor, newDistance);
@@ -247,8 +246,8 @@ for (Package singlePackage : packages) {
     totalDelay+=singlePackage.delay*60;
 }
     
-     double totalDistance = calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));
-    double totalDourtion=35.896; // Scale factor used to predict the total time 
+     double totalDistance = calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.initializeChoosenIntersections()));
+    double totalDourtion=40; // Scale factor used to predict the total time 
     double totalTime = totalDelay + totalDistance*1000/totalDourtion; // Multiplying by 1000 to convert totalDistance from kilometers to meters
     int totalTimrCast = (int) totalTime;
     return totalTimrCast;
@@ -324,9 +323,7 @@ private void deliverPackage(int currentX, int currentY) {
         if (!aPackage.isDelivered) {
             Customer customer = aPackage.getCustomer();
             Building destinationBuilding= customer.getBuilding();
-            System.out.println("Checking package for building " + destinationBuilding.getLocation().getName());
-            System.out.println("Current position: " + currentX + ", " + currentY);
-            System.out.println("Destination position: " + destinationBuilding.getLocation().getX() + ", " + destinationBuilding.getLocation().getY());
+
             if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
                 aPackage.isDelivered = true;
                 deliveredPackageFound = true;
@@ -345,7 +342,7 @@ private void deliverPackage(int currentX, int currentY) {
     
 
     if (!deliveredPackageFound) {
-        System.out.println("No more packages assigned to the driver at the current position.");
+      
     }
 
 }
@@ -370,7 +367,7 @@ private void moveToNextPackage() {
     }
 
     if (!nextPackageFound) {
-        System.out.println("No more packages assigned to the driver at the current position.");
+       
     }
 }
 
