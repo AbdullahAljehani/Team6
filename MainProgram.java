@@ -354,7 +354,7 @@ intersection_3 = Arrays.asList(intersection3_1,intersection3_2,intersection3_3);
   return intersections;
 }
     
-  public static List<Package> copyPackagesWithPaths(List<Package> originalPackages) {
+  public static List<Package> copyPackages(List<Package> originalPackages) {
     List<Package> copiedPackages = new ArrayList<>();
 
     for (int i = 0; i < originalPackages.size(); i++) {
@@ -526,20 +526,19 @@ public static List<Intersection> initializeChoosenIntersections() {
     if (FirstPage.isPhase1Selected) {
         choosenBulding=getShuffledBuildings();
         aIntersection = choosenBulding;
+         customers= generateRandomCustomers();
+         packages=generateRandomPackages(customers);
+       
     } else if (FirstPage.isPhase2Selected) {
-      
+        organizeBuilding= getOrganizedBuildings();
         aIntersection =organizeBuilding;
+        packages=copyPackages(packages);
+        
     } else {
 
         aIntersection = new ArrayList<>();
     }
-
-
-    
-
-
-customers= generateRandomCustomers();
-packages=generateRandomPackages(customers); 
+ 
 
 
     return aIntersection;
