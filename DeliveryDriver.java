@@ -13,9 +13,11 @@ import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.PathElement;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 public class DeliveryDriver {
+
     private List<Package> packages;
     private int currentX;
     private int currentY;
@@ -27,6 +29,7 @@ public class DeliveryDriver {
     public  boolean isTransitionPaused = false;
 
     public void setGasolineCost(double gasolineCost){
+
         this.gasolineCost=gasolineCost;
     }
    
@@ -47,13 +50,17 @@ public class DeliveryDriver {
     }
 
 public double calculateTotalDistance(List<List<Intersection>> packages) {
+
     double totalDistance = 0.0;
 
     for (List<Intersection> paths : packages) {
+
         if (!paths.isEmpty()) {
+
             Intersection currentPath = paths.get(0);
 
             for (int i = 1; i < paths.size(); i++) {
+
                 Intersection nextPath = paths.get(i);
                 totalDistance += currentPath.getDistanceTo(nextPath);
                 currentPath = nextPath;
@@ -65,6 +72,7 @@ public double calculateTotalDistance(List<List<Intersection>> packages) {
 }
 
 private int delayByIndex(int index) {
+
     List<Package> Packages = MainProgram.packages;
 
     if (index >= 0 && index < Packages.size()) {
@@ -93,21 +101,30 @@ public double calculateTotalGasolineCost(List<List<Intersection>> packages) {
 
     return totalGasolineCost;
 }
+
+
 public void moveCarTo(List<List<Intersection>> packages) {
+
     double firstX=0;
     double firstY=0;
     double lastX=0;
     double lastY=0;
+
     if (!packages.isEmpty()) {
+
         List<Intersection> firstPackage = packages.get(0);
+
         if (!firstPackage.isEmpty()) {
+
             Intersection firstPart = firstPackage.get(0);
              firstX = firstPart.getX();
              firstY = firstPart.getY();
         }
 
         List<Intersection> lastPackage = packages.get(packages.size() - 1);
+
         if (!lastPackage.isEmpty()) {
+
             Intersection lastPart = lastPackage.get(lastPackage.size() - 1);
              lastX = lastPart.getX();
              lastY = lastPart.getY();
@@ -123,8 +140,11 @@ public void moveCarTo(List<List<Intersection>> packages) {
             MainGUISimulation.car.setTranslateY(finalPointY);
         }
     }
-    public List<List<Intersection>> calculateShortestPathsBetweenDestinations(List<Intersection> destinations) {
-        List<List<Intersection>> paths = new ArrayList<>();
+
+
+public List<List<Intersection>> calculateShortestPathsBetweenDestinations(List<Intersection> destinations) {
+
+    List<List<Intersection>> paths = new ArrayList<>();
     
         for (int i = 0; i < destinations.size() - 1; i++) {
             Intersection start = destinations.get(i);
@@ -138,19 +158,23 @@ public void moveCarTo(List<List<Intersection>> packages) {
         return paths;
     }
 
-    public static List<Intersection> findShortestPath(Map<Intersection, List<Intersection>> graph, Intersection start, Intersection destination) {
+public static List<Intersection> findShortestPath(Map<Intersection, List<Intersection>> graph, Intersection start, Intersection destination) {
+
         Map<Intersection, Double> distance = new HashMap<>();
         Map<Intersection, Intersection> previous = new HashMap<>();
         PriorityQueue<Intersection> pq = new PriorityQueue<>(Comparator.comparingDouble(distance::get));
     
         // Initialize distances
         for (Intersection intersection : graph.keySet()) {
+
             distance.put(intersection, Double.MAX_VALUE);
         }
+
         distance.put(start, 0.0);
         pq.offer(start);
     
         while (!pq.isEmpty()) {
+
             Intersection current = pq.poll();
             if (current.equals(destination)) {
                 break;
@@ -163,15 +187,18 @@ public void moveCarTo(List<List<Intersection>> packages) {
 
 
             for (int i = 0; i < neighbors.size(); i++) {
+
                 Intersection neighbor = neighbors.get(i);
                 double newDistance = currentDistance + current.getDistanceTo(neighbor);
             
                 
             
                 if (newDistance < distance.getOrDefault(neighbor, Double.MAX_VALUE)) {
+
                     distance.put(neighbor, newDistance);
                     previous.put(neighbor, current);
                     pq.offer(neighbor);
+
                 }
             }
         }
@@ -179,10 +206,13 @@ public void moveCarTo(List<List<Intersection>> packages) {
         // Reconstruct the shortest path
         List<Intersection> shortestPath = new ArrayList<>();
         Intersection current = destination;
+
         while (previous.containsKey(current)) {
+
             shortestPath.add(current);
             current = previous.get(current);
         }
+
         shortestPath.add(start);
         Collections.reverse(shortestPath);
     
@@ -191,6 +221,7 @@ public void moveCarTo(List<List<Intersection>> packages) {
     
     
 public void createPathForPackages(List<List<Intersection>> packages) {
+
     if (packages == null || packages.isEmpty()) {
         return;
     }
@@ -199,9 +230,11 @@ public void createPathForPackages(List<List<Intersection>> packages) {
 }
 
 private void playPathTransitions(List<List<Intersection>> packages, int index) {
+
     if (index >= packages.size()) {
         return;
     }
+
     int delay = delayByIndex(index);
     Path path = generatePath(packages.get(index));
     
@@ -210,22 +243,25 @@ private void playPathTransitions(List<List<Intersection>> packages, int index) {
 }
 
 private Path generatePath(List<Intersection> intersections) {
+
     Path path = new Path();
     if (intersections.isEmpty()) {
         return path;
+
     }
 
     Intersection currentintersection = intersections.get(0);
     path.getElements().add(new MoveTo(currentintersection.getX(), currentintersection.getY()));
     
     for (int i = 1; i < intersections.size(); i++) {
+
         Intersection nextintersection = intersections.get(i);
         path.getElements().add(new LineTo(nextintersection.getX(), nextintersection.getY()));
 
-         incrementDistance = currentintersection.getDistanceTo(nextintersection);
-         incrementGasoline = currentintersection.calculateGasolineCost(nextintersection);
-         gasolineCost += incrementGasoline ;
-         distance+=incrementDistance;
+        incrementDistance = currentintersection.getDistanceTo(nextintersection);
+        incrementGasoline = currentintersection.calculateGasolineCost(nextintersection);
+        gasolineCost += incrementGasoline ;
+        distance+=incrementDistance;
         currentintersection = nextintersection;
         currentX = currentintersection.getX();
         currentY = currentintersection.getY();
@@ -237,24 +273,30 @@ private Path generatePath(List<Intersection> intersections) {
 
     return path;
 }
+
 public int calculateTotalTime(){
+
     int totalDelay=0;
     
     List<Package> packages = MainProgram.packages;
-for (Package singlePackage : packages) {
+
+    for (Package singlePackage : packages) {
+
+        totalDelay+=singlePackage.delay*60;
+    }
     
-    totalDelay+=singlePackage.delay*60;
-}
-    
-     double totalDistance = calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.initializeChoosenIntersections()));
+    double totalDistance = calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.initializeChoosenIntersections()));
     double totalDourtion=40; // Scale factor used to predict the total time 
     double totalTime = totalDelay + totalDistance*1000/totalDourtion; // Multiplying by 1000 to convert totalDistance from kilometers to meters
     int totalTimrCast = (int) totalTime;
+
     return totalTimrCast;
 }
 
 public void moveDriver(Path path, Runnable onFinish,int delay) {
+
     if (!path.getElements().isEmpty() && MainGUISimulation.isStartClicked) {
+
         double totalDistance = calculateTotalDistance(path.getElements());
         double duration = totalDistance / 250;
         pathTransition = new PathTransition();
@@ -263,15 +305,18 @@ public void moveDriver(Path path, Runnable onFinish,int delay) {
         pathTransition.setDuration(Duration.seconds(duration)); 
         pathTransition.setPath(path);
         pathTransition.setOnFinished(e -> {
-            MainGUISimulation.CounterDistanceLabel.setText(MainGUISimulation.formatDistance(distance));
-            MainGUISimulation.CounterCostLabel.setText(MainGUISimulation.formatGasolineCost(gasolineCost));
-            PauseTransition pauseTransition = new PauseTransition(Duration.seconds(delay/2));
+        MainGUISimulation.CounterDistanceLabel.setText(MainGUISimulation.formatDistance(distance));
+        MainGUISimulation.CounterCostLabel.setText(MainGUISimulation.formatGasolineCost(gasolineCost));
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(delay/2));
 
-            pauseTransition.setOnFinished(event -> {
+        pauseTransition.setOnFinished(event -> {
+
                 deliverPackage(currentX, currentY);
                 onFinish.run();
                 isTransitionPaused=false;
+
             });
+
             pauseTransition.play();
             isTransitionPaused=true;
 
@@ -286,14 +331,17 @@ public void moveDriver(Path path, Runnable onFinish,int delay) {
 
 
 private double calculateTotalDistance(ObservableList<PathElement> elements) {
+
     double totalDistance = 0.0;
 
     if (elements.size() >= 2) {
+
         MoveTo moveTo = (MoveTo) elements.get(0);
         double startX = moveTo.getX();
         double startY = moveTo.getY();
 
         for (int i = 1; i < elements.size(); i++) {
+
             if (elements.get(i) instanceof LineTo) {
                 LineTo lineTo = (LineTo) elements.get(i);
                 double endX = lineTo.getX();
@@ -315,23 +363,28 @@ private double calculateTotalDistance(ObservableList<PathElement> elements) {
 
 
 private void deliverPackage(int currentX, int currentY) {
+
     boolean deliveredPackageFound = false;
     List<Package> Packages = MainProgram.packages;
   
 
     for (Package aPackage : Packages) {
+
         if (!aPackage.isDelivered) {
+
             Customer customer = aPackage.getCustomer();
             Building destinationBuilding= customer.getBuilding();
 
             if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
+
                 aPackage.isDelivered = true;
                 deliveredPackageFound = true;
                 String buildingName = destinationBuilding.getLocation().getName();
                 int buildingIndex = Integer.parseInt(buildingName);
-                MainGUISimulation.buildings.get(buildingIndex - 1 ).setFill(Color.GREEN);
+                List<Rectangle> building = MainGUISimulation.buildings;
+                building.get(buildingIndex - 1 ).setFill(Color.GREEN);
               
-                    }
+                }
                 }
 
                 if (hasNextPackage(aPackage) && aPackage.isDelivered) {
@@ -348,13 +401,20 @@ private void deliverPackage(int currentX, int currentY) {
 }
 
 private void moveToNextPackage() {
+
     boolean nextPackageFound = false;
+
     for (int i = 0; i < MainProgram.packages.size(); i++) {
+
         Package currentPackage = MainProgram.packages.get(i);
+
         if (currentPackage.isDelivered) {
+
             for (int j = i + 1; j < MainProgram.packages.size(); j++) {
+
                 Package nextPackage = MainProgram.packages.get(j);
                 if (!nextPackage.isDelivered) {
+
                     nextPackageFound = true;
                     break;
                 }
@@ -372,9 +432,12 @@ private void moveToNextPackage() {
 }
 
 private boolean hasNextPackage(Package currentPackage) {
+
     List<Package> Packages = MainProgram.packages;
 
-        int currentIndex = Packages.indexOf(currentPackage);
-        return currentIndex < Packages.size() - 1;
+    int currentIndex = Packages.indexOf(currentPackage);
+
+    return currentIndex < Packages.size() - 1;
+    
     }
 }
