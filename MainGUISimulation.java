@@ -34,7 +34,7 @@ public static Label CounterDistanceLabel;
 public static Label CounterCostLabel;
 public static Label CounterNo_SimulationLabel ;
 public static Label percentLabelP2;
-public static Pane AllGroups= new Pane();
+public static Pane AllGroups;
 public Group carRoutesGroup;
 private  Timer timer;
 public  int secondsPassed = 0;
@@ -50,13 +50,15 @@ public static List<Rectangle> buildings ;
     public void start(Stage primaryStage) {
         primaryStage.setOnCloseRequest(windowEvent -> {Platform.exit();System.exit(0);});
         
+            AllGroups = new Pane();
+             MainProgram.initializeObjects();
 
             root = new StackPane();
             root.setStyle(
             "-fx-background-color: linear-gradient(to bottom, #000C40, #F0F2F0);" +
             "-fx-background-size: cover;"
         );
-        
+
 
             // Create a group for car routes
             carRoutesGroup = new Group();
@@ -67,7 +69,8 @@ public static List<Rectangle> buildings ;
             carRoutesGroup.getChildren().add(car);
 
             Scene scene = new Scene(root , 1400, 700);
-            
+
+
             buildings(AllGroups);
             streets(AllGroups);
             Labels(AllGroups,FirstPage.isPhase2Selected);       
@@ -1349,18 +1352,19 @@ public static List<Rectangle> buildings ;
 
 
          Group labelsGroup = new Group();
-            labelsGroup.getChildren().addAll(timeLabel, distanceLabel,costLabel,No_SimulationLabel,timerRectangle,distanceRectangle,costRectangle,No_SimulationRectangle,Nmae_INFORMATION_KEY , INFORMATION_KEY , NAME_OF_Alhamdaniya , rec_Alhamdaniya , NAME_OF_Almanar , rec_Almanar,NAME_OF_AlRabwah , rec_AlRabwah
+            labelsGroup.getChildren().addAll( Ideal_rectangle,Ideal_rectangle_lable , Ideal_rectangle_lableBox ,timeLabel, distanceLabel,costLabel,No_SimulationLabel,timerRectangle,distanceRectangle,costRectangle,No_SimulationRectangle,Nmae_INFORMATION_KEY , INFORMATION_KEY , NAME_OF_Alhamdaniya , rec_Alhamdaniya , NAME_OF_Almanar , rec_Almanar,NAME_OF_AlRabwah , rec_AlRabwah
             , Name_house_green , rec_house_green);
             Group counterLabelsGroup = new Group();
                 counterLabelsGroup.getChildren().addAll( CounterTimeLabel, CounterDistanceLabel,CounterCostLabel,CounterNo_SimulationLabel);
             Group percentLabelsGroup = new Group(); 
-            percentLabelsGroup.getChildren().addAll(percent_LabelP2,percentRectangle,percentLabelP2,Nmae_of_phase1In2 , Ideal_rectangle,Ideal_rectangle_lable , Ideal_rectangle_lableBox 
-            ,time_phase1_in2 ,time_phase1_in2_lable ,CountertimeLabe1_phase1_to_2, 
+            percentLabelsGroup.getChildren().addAll(percent_LabelP2,percentRectangle,percentLabelP2,Nmae_of_phase1In2 ,
+            time_phase1_in2 ,time_phase1_in2_lable ,CountertimeLabe1_phase1_to_2, 
               distance_phase1_in2_lable ,CounterDistanceLabe1_phase1_to_2, 
             gasolin_phase1_in2_lable ,CounterGasolinLabe1_phase1_to_2 , line_of_phase1In2 , line_of_phase1In22);
             if (FirstPage.isPhase2Selected) {
                 AllGroups.getChildren().addAll(labelsGroup,counterLabelsGroup,percentLabelsGroup);
 }       else{
+            AllGroups.getChildren().remove(percentLabelsGroup);
             AllGroups.getChildren().addAll(labelsGroup,counterLabelsGroup);
 
 } 
@@ -1386,8 +1390,10 @@ Start_button.setStyle( "-fx-background-color: #F0F2F0; " );
 Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
+            
             if (!MainProgram.driver.isTransitionPaused) {
-        Platform.runLater(() -> {
+                resetBuildingColors();
+            Platform.runLater(() -> {
             MainProgram.TooltipOfBuildings();
         });
             MainProgram.initializeChoosenIntersections();
@@ -1729,10 +1735,29 @@ public void highlightBuildingsWithPackages()  {
     }
 }
 
+public static void resetBuildingColors() {
+    for (int i = 0; i < buildings.size(); i++) {
+        Rectangle building = buildings.get(i);
+        Color color;
 
+        if (i >= 0 && i < 52) {
+            // Set GREY color for index 0 to 51
+            color = Color.GREY;
+        } else if (i >= 52 && i < 91) {
+            // Set BLUE color for index 52 to 90
+            color = Color.BLUE;
+        } else if (i >= 91 && i < 128) {
+            // Set "#C0392B" color for index 91 to 127
+            color = Color.web("#C0392B");
+        }else {
+            // Handle additional ranges or default color if needed
+            color = Color.LIGHTGRAY;
+        }
 
+        building.setFill(color);
+    }
 
-
+    }
 }
 
         // // Tooltip tooltipBuilding7 = new Tooltip(MainProgram.package7.getPackageInformation());

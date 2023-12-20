@@ -45,6 +45,7 @@ titleLabel.setAlignment(Pos.CENTER);
             primaryStage.close();
             MainProgram.organizeBuilding= MainProgram.getOrganizedBuildings();
             MainProgram.packages=MainProgram.copyPackages(MainProgram.packages);
+
            
         });
         // Make buttons bigger
@@ -117,7 +118,6 @@ phase2Button.setStyle(
     }
 
     public static void main(String[] args) {
-        MainProgram.initializeObjects();
         launch(args);
     }
    
