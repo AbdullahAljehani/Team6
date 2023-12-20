@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.scene.Group;
@@ -51,7 +53,8 @@ public static List<Rectangle> buildings ;
         primaryStage.setOnCloseRequest(windowEvent -> {Platform.exit();System.exit(0);});
         
             AllGroups = new Pane();
-             MainProgram.initializeObjects();
+            MainProgram.initializeObjects();
+
 
             root = new StackPane();
             root.setStyle(
@@ -83,9 +86,9 @@ public static List<Rectangle> buildings ;
             primaryStage.setMinHeight(720); 
             primaryStage.setScene(scene );
             primaryStage.show();
+            addToolTipsToAllBuildings();
+
     }
-
-
 
 
     public static void buildings(Pane AllGroups){
@@ -1394,7 +1397,10 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             if (!MainProgram.driver.isTransitionPaused) {
                 resetBuildingColors();
             Platform.runLater(() -> {
-            TooltipOfBuildings();
+                             addToolTipsToAllBuildings();
+
+             TooltipOfBuildings();
+
         });
             MainProgram.initializeChoosenIntersections();
             stopCurrentSimulation();
@@ -1672,7 +1678,9 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                  calculateTotalTimeForAllPhases(); 
                 percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
                 highlightBuildingsWithPackages();
+                addToolTipsToAllBuildings();
                 TooltipOfBuildings();
+
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                 isStartClicked = false;
                 MainProgram.driver.isTransitionPaused = false; 
@@ -1735,6 +1743,7 @@ public void TooltipOfBuildings() {
 
         // Ensure that the GUI element is not null before proceeding
         if (destinationBuilding != null && buildings.get(buildingIndex - 1) != null) {
+            AllGroups.getChildren().remove(buildings.get(buildingIndex-1));
             System.out.println("Package Information: " + aPackage.getPackageInformation());
             Tooltip tooltipBuilding = new Tooltip(aPackage.getPackageInformation());
             Tooltip.install(buildings.get(buildingIndex - 1), tooltipBuilding);
@@ -1745,7 +1754,7 @@ public void TooltipOfBuildings() {
                 if (buildings.get(buildingIndex - 1).contains(event.getX(), event.getY())) {
                     System.out.println("Showing Tooltip");
                     tooltipBuilding.show(buildings.get(buildingIndex - 1), event.getScreenX(), event.getScreenY() + 20);
-                }
+                }   
             });
 
             buildings.get(buildingIndex - 1).setOnMouseExited(event -> {
@@ -1757,10 +1766,29 @@ public void TooltipOfBuildings() {
         }
     }
 }
-
+public void addToolTipsToAllBuildings() {
+    
+        for (int i = 0; i < buildings.size(); i++) {
+            Rectangle building = buildings.get(i);
+            int buildingNumber = i + 1;
+    
+            String tooltipText = "Building Number: " + buildingNumber;
+            Tooltip tooltip = new Tooltip(tooltipText);
+            Tooltip.install(building, tooltip);
+    
+            building.setOnMouseEntered(event -> {
+                if (building.contains(event.getX(), event.getY())) {
+                    tooltip.show(building, event.getScreenX(), event.getScreenY() + 20);
+                }
+            });
+    
+            building.setOnMouseExited(event -> tooltip.hide());
+        }
+    }
+    
 public void highlightBuildingsWithPackages()  {
     List<Package> packages = MainProgram.packages;
-
+    packages.get(1);
     for (Package aPackage : packages) {
         Customer customer = aPackage.getCustomer();
         Building destinationBuilding = customer.getBuilding();
