@@ -1668,12 +1668,12 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                 MainProgram.driver.pathTransition.stop();
                 MainProgram.driver.pathTransition.setPath(null);
                 MainProgram.driver.pathTransition.setCycleCount(1);
-                 double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.initializeChoosenIntersections()));
+                 double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));
                  CounterDistanceLabel.setText(formatDistance(totalDistance));
     
-                 double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.initializeChoosenIntersections()));
+                 double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));
                  CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
-                 MainProgram.driver.moveCarTo(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.initializeChoosenIntersections()));
+                 MainProgram.driver.moveCarTo(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));
                  CounterTimeLabel.setText(formatTime(MainProgram.driver.calculateTotalTime()));
                  calculateTotalTimeForAllPhases(); 
                 percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
@@ -1811,7 +1811,7 @@ public static void resetBuildingColors() {
         } else if (i >= 52 && i < 91) {
             // Set BLUE color for index 52 to 90
             color = Color.BLUE;
-        } else if (i >= 91 && i < 128) {
+        } else if (i >= 91 && i < 129) {
             // Set "#C0392B" color for index 91 to 127
             color = Color.web("#C0392B");
         }else {
@@ -1825,20 +1825,6 @@ public static void resetBuildingColors() {
     }
 }
 
-        // // Tooltip tooltipBuilding7 = new Tooltip(MainProgram.package7.getPackageInformation());
-        // Tooltip.install(Building7, tooltipBuilding7);
-        
-        // Building7.setOnMouseEntered(event -> {
-        //     // Show the tooltip only if the mouse is within the building bounds
-        //     if (Building7.contains(event.getX(), event.getY())) {
-        //         tooltipBuilding7.show(Building7, event.getScreenX(), event.getScreenY() + 20);
-        //     }
-        // });
-        
-        // Building7.setOnMouseExited(event -> {
-        //     // Hide the tooltip
-        //     tooltipBuilding7.hide();
-        // });
     
     
 

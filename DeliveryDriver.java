@@ -205,7 +205,7 @@ private void playPathTransitions(List<List<Intersection>> packages, int index) {
     }
     int delay = delayByIndex(index);
     Path path = generatePath(packages.get(index));
-    System.out.println("ddd"+delay);
+    
     moveDriver(path, () -> playPathTransitions(packages, index + 1),delay);
 
 }
@@ -324,6 +324,9 @@ private void deliverPackage(int currentX, int currentY) {
         if (!aPackage.isDelivered) {
             Customer customer = aPackage.getCustomer();
             Building destinationBuilding= customer.getBuilding();
+            System.out.println("Checking package for building " + destinationBuilding.getLocation().getName());
+            System.out.println("Current position: " + currentX + ", " + currentY);
+            System.out.println("Destination position: " + destinationBuilding.getLocation().getX() + ", " + destinationBuilding.getLocation().getY());
             if (currentX == destinationBuilding.getLocation().getX() && currentY == destinationBuilding.getLocation().getY()) {
                 aPackage.isDelivered = true;
                 deliveredPackageFound = true;
@@ -346,6 +349,7 @@ private void deliverPackage(int currentX, int currentY) {
     }
 
 }
+
 private void moveToNextPackage() {
     boolean nextPackageFound = false;
     for (int i = 0; i < MainProgram.packages.size(); i++) {

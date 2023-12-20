@@ -10,8 +10,6 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import javafx.scene.control.Tooltip;
 import javafx.scene.shape.Rectangle;
 
 public class MainProgram {
@@ -64,26 +62,26 @@ public class MainProgram {
         Intersection destinationBuilding80 = new Intersection(68, 395, "80");
         Intersection destinationBuilding116 = new Intersection(818, 527, "116");
         Intersection destinationBuilding119 = new Intersection(1028, 527, "119");
-        Intersection destinationBuilding2 = new Intersection(180, 66, "2"); //
-        Intersection destinationBuilding10 = new Intersection(480, 130, "10");//
-        Intersection destinationBuilding18 = new Intersection(900, 461, "18");//
-        Intersection destinationBuilding21 = new Intersection(700, 130, "21");//
-        Intersection destinationBuilding26 = new Intersection(1040, 130, "26");//
-        Intersection destinationBuilding28 = new Intersection(180, 197, "28");//
-        Intersection destinationBuilding35 = new Intersection(728, 197, "35");//
-        Intersection destinationBuilding39 = new Intersection(990, 197, "39");//
-        Intersection destinationBuilding56 = new Intersection(290, 330, "56");//
-        Intersection destinationBuilding58 = new Intersection(480, 330, "58");//
-        Intersection destinationBuilding63 = new Intersection(830, 330, "63");//
-        Intersection destinationBuilding65 = new Intersection(1000, 330, "65");//
-        Intersection destinationBuilding83 = new Intersection(370, 461, "83");//
-        Intersection destinationBuilding88 = new Intersection(790, 461, "88");//
-        Intersection destinationBuilding90 = new Intersection(970, 461, "90");//
-        Intersection destinationBuilding92 = new Intersection(68, 527, "92");//
-        Intersection destinationBuilding106 = new Intersection(68, 594, "106");//
-        Intersection destinationBuilding110 = new Intersection(373, 594, "110");//
-        Intersection destinationBuilding118 = new Intersection(973, 527, "118");//
-        Intersection destinationBuilding117 = new Intersection(900, 527, "117");//
+        Intersection destinationBuilding2 = new Intersection(180, 66, "2"); 
+        Intersection destinationBuilding10 = new Intersection(810, 66, "10");
+        Intersection destinationBuilding18 = new Intersection(480, 130, "18");
+        Intersection destinationBuilding21 = new Intersection(700, 130, "21");
+        Intersection destinationBuilding26 = new Intersection(1040, 130, "26");
+        Intersection destinationBuilding28 = new Intersection(180, 197, "28");
+        Intersection destinationBuilding35 = new Intersection(728, 197, "35");
+        Intersection destinationBuilding39 = new Intersection(990, 197, "39");
+        Intersection destinationBuilding56 = new Intersection(290, 330, "56");
+        Intersection destinationBuilding58 = new Intersection(480, 330, "58");
+        Intersection destinationBuilding63 = new Intersection(830, 330, "63");
+        Intersection destinationBuilding65 = new Intersection(1020, 330, "65");
+        Intersection destinationBuilding83 = new Intersection(370, 461, "83");
+        Intersection destinationBuilding88 = new Intersection(790, 461, "88");
+        Intersection destinationBuilding90 = new Intersection(970, 461, "90");
+        Intersection destinationBuilding92 = new Intersection(68, 527, "92");
+        Intersection destinationBuilding106 = new Intersection(68, 594, "106");
+        Intersection destinationBuilding110 = new Intersection(373, 594, "110");
+        Intersection destinationBuilding118 = new Intersection(973, 527, "118");
+        Intersection destinationBuilding117 = new Intersection(900, 527, "117");
         Intersection warehouse = new Intersection(330, 650, "Warehouse");
 
       
@@ -137,12 +135,10 @@ public class MainProgram {
     List<Intersection> selectedBuildings = new ArrayList<>();
     if (warehouse != null) {
         selectedBuildings.add(warehouse); // Add warehouse as the first one
-        selectedBuildings.addAll(shuffledOthers.subList(0, Math.min(19, shuffledOthers.size())));
+        selectedBuildings.addAll(shuffledOthers.subList(0, Math.min(20, shuffledOthers.size())));
         // Select 19 more buildings excluding the warehouse
     }
-for (Intersection inter : selectedBuildings) {
-        System.out.println("rand" + inter.getName());
-    }
+
 
     return selectedBuildings;
 }
@@ -156,16 +152,14 @@ public static List<Intersection> getOrganizedBuildings() {
     intersections.remove(0); // Remove the warehouse from the copy
 
     // Sort the non-warehouse intersections in descending order by building index
-    Collections.sort(intersections, Comparator.comparingInt((Intersection intersection) -> Integer.parseInt(intersection.getName())).reversed());
+    Comparator<Intersection> comparator = Comparator.comparingInt(intersection -> Integer.parseInt(intersection.getName()));
+    comparator = comparator.reversed();
+    Collections.sort(intersections, comparator);
 
     // Add the warehouse back to the beginning of the list
     intersections.add(0, warehouse);
 
-    // Print the updated order for verification
-    for (Intersection inter : intersections) {
-        System.out.println("org" + inter.getName());
-    }
-
+   
     return intersections;
 }
 
