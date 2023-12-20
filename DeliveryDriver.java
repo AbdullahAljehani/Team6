@@ -205,7 +205,7 @@ private void playPathTransitions(List<List<Intersection>> packages, int index) {
     }
     int delay = delayByIndex(index);
     Path path = generatePath(packages.get(index));
-    System.out.println(path);
+    System.out.println("ddd"+delay);
     moveDriver(path, () -> playPathTransitions(packages, index + 1),delay);
 
 }

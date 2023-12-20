@@ -1,3 +1,5 @@
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ReadOnlyDoubleProperty;
@@ -41,6 +43,8 @@ titleLabel.setAlignment(Pos.CENTER);
             isPhase2Selected = true;  
             openSimulationPage();
             primaryStage.close();
+            MainProgram.organizeBuilding= MainProgram.getOrganizedBuildings();
+            MainProgram.packages=MainProgram.copyPackages(MainProgram.packages);
            
         });
         // Make buttons bigger
