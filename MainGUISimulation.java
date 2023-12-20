@@ -1394,7 +1394,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             if (!MainProgram.driver.isTransitionPaused) {
                 resetBuildingColors();
             Platform.runLater(() -> {
-            MainProgram.TooltipOfBuildings();
+            TooltipOfBuildings();
         });
             MainProgram.initializeChoosenIntersections();
             stopCurrentSimulation();
@@ -1672,6 +1672,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                  calculateTotalTimeForAllPhases(); 
                 percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
                 highlightBuildingsWithPackages();
+                TooltipOfBuildings();
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                 isStartClicked = false;
                 MainProgram.driver.isTransitionPaused = false; 
@@ -1696,8 +1697,6 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
         timer.cancel();
     }
 
-    
-
     if (MainProgram.driver.pathTransition != null) {
         Platform.runLater(() -> {
             MainProgram.driver.pathTransition.stop();
@@ -1721,6 +1720,44 @@ public static void openPhase2() {
 
     
 }
+
+
+public void TooltipOfBuildings() {
+    List<Package> packages = MainProgram.packages;
+    for (Package aPackage : packages) {
+        Customer customer = aPackage.getCustomer();
+        Building destinationBuilding = customer.getBuilding();
+        String buildingName = destinationBuilding.getLocation().getName();
+
+        int buildingIndex = Integer.parseInt(buildingName);
+
+        System.out.println("Destination Building: " + destinationBuilding); // Assuming Building has a toString method
+
+        // Ensure that the GUI element is not null before proceeding
+        if (destinationBuilding != null && buildings.get(buildingIndex - 1) != null) {
+            System.out.println("Package Information: " + aPackage.getPackageInformation());
+            Tooltip tooltipBuilding = new Tooltip(aPackage.getPackageInformation());
+            Tooltip.install(buildings.get(buildingIndex - 1), tooltipBuilding);
+
+            buildings.get(buildingIndex - 1).setOnMouseEntered(event -> {
+                System.out.println("Mouse Entered");
+                // Show the tooltip only if the mouse is within the building bounds
+                if (buildings.get(buildingIndex - 1).contains(event.getX(), event.getY())) {
+                    System.out.println("Showing Tooltip");
+                    tooltipBuilding.show(buildings.get(buildingIndex - 1), event.getScreenX(), event.getScreenY() + 20);
+                }
+            });
+
+            buildings.get(buildingIndex - 1).setOnMouseExited(event -> {
+                System.out.println("Mouse Exited");
+                tooltipBuilding.hide();
+            });
+        } else {
+            System.out.println("Destination Building or its GUI element is null");
+        }
+    }
+}
+
 public void highlightBuildingsWithPackages()  {
     List<Package> packages = MainProgram.packages;
 
