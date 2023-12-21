@@ -28,7 +28,7 @@ public class Offical_paper extends Package {
     }
 
     public void contactCustomer() {
-        this.delay = delay - 2;
+        this.delay = 3;
     }
 
     private String getTypeOfPackage() {

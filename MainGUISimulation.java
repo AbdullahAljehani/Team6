@@ -51,19 +51,19 @@ public static double total_GasolineCost;
 public static Label CounterDistanceLabe1_phase1_to_2 ;
 public static Label  CountertimeLabe1_phase1_to_2;
 
+
+public static boolean isPhase1comblete =false ; 
+
     public void start(Stage primaryStage) {
         primaryStage.setOnCloseRequest(windowEvent -> {Platform.exit();System.exit(0);});
-        
+    
             AllGroups = new Pane();
-            
-
 
             root = new StackPane();
             root.setStyle(
                 "-fx-background-color: linear-gradient(to bottom, #000C40, #F0F2F0);" +
                 "-fx-background-size: cover;"
             );
-
 
             // Create a group for car routes
             carRoutesGroup = new Group();
@@ -1444,7 +1444,7 @@ public static Label  CountertimeLabe1_phase1_to_2;
                 openFirstPage();
                 restSumaltion();
                 carRoutesGroup.getChildren().remove(car);
-                primaryStage.close();
+                primaryStage.hide();
             }
         });
 
@@ -1655,6 +1655,7 @@ public static Label  CountertimeLabe1_phase1_to_2;
                  TooltipOfBuildings();
 
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
+                isPhase1comblete =true;
                 isStartClicked = false;
                 MainProgram.driver.isTransitionPaused = false; 
                 Platform.runLater(() -> {
@@ -1807,11 +1808,7 @@ public static Label  CountertimeLabe1_phase1_to_2;
             total_GasolineCost = MainProgram.driver.calculateTotalGasolineCost(calculateShortestPaths);
             total_Time = MainProgram.driver.calculateTotalTime();
         }
-        else{
-            total_Distance =0;
-            total_Time=0;
-            total_GasolineCost=0;
-        }
+
     }
 }
 

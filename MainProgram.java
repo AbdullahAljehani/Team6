@@ -522,26 +522,20 @@ return closestIntersection;}
     Intersection closestIntersection = closestIntersectionOptional.orElse(null);
     return closestIntersection;}
 
-    public static List<Intersection> initializeChoosenIntersections() {
-    List<Intersection> aIntersection;
+    public static void initializeChoosenIntersections() {
 
     if (FirstPage.isPhase1Selected) {
-         choosenBulding=getShuffledBuildings();
-         aIntersection = choosenBulding;
-         customers= generateRandomCustomers();
-         packages=generateRandomPackages(customers);
+        choosenBulding=getShuffledBuildings();
+        customers= generateRandomCustomers();
+        packages=generateRandomPackages(customers);
        
     } else if (FirstPage.isPhase2Selected) {
          organizeBuilding= getOrganizedBuildings();
-        aIntersection =organizeBuilding;
         choosenBulding= organizeBuilding;
-        
-        
-    } else {
 
-        aIntersection = new ArrayList<>();
-    }
-    return aIntersection;
+        
+    } 
+
 }
 
 }
