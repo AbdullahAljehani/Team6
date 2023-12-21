@@ -59,9 +59,9 @@ public static Label  CountertimeLabe1_phase1_to_2;
 
             root = new StackPane();
             root.setStyle(
-            "-fx-background-color: linear-gradient(to bottom, #000C40, #F0F2F0);" +
-            "-fx-background-size: cover;"
-        );
+                "-fx-background-color: linear-gradient(to bottom, #000C40, #F0F2F0);" +
+                "-fx-background-size: cover;"
+            );
 
 
             // Create a group for car routes
@@ -136,20 +136,6 @@ public static Label  CountertimeLabe1_phase1_to_2;
          Building7.setArcHeight(25);
          Building7.setArcWidth(25);
          Building7.setFill(Color.GREY);
-        // // Tooltip tooltipBuilding7 = new Tooltip(MainProgram.package7.getPackageInformation());
-        // Tooltip.install(Building7, tooltipBuilding7);
-        
-        // Building7.setOnMouseEntered(event -> {
-        //     // Show the tooltip only if the mouse is within the building bounds
-        //     if (Building7.contains(event.getX(), event.getY())) {
-        //         tooltipBuilding7.show(Building7, event.getScreenX(), event.getScreenY() + 20);
-        //     }
-        // });
-        
-        // Building7.setOnMouseExited(event -> {
-        //     // Hide the tooltip
-        //     tooltipBuilding7.hide();
-        // });
         
         // Neighbourhood_1 : BLOCK 3
         Rectangle Building8 = new Rectangle(640, 20, 35, 35);
@@ -954,7 +940,7 @@ public static Label  CountertimeLabe1_phase1_to_2;
   
             Group warehousesGroup = new Group();
             warehousesGroup.getChildren().addAll(Warehouse, Warehouse_label);
-    buildings= Arrays.asList(Building1 ,Building2 , Building3 , Building4 ,Building5,Building6,Building7,Building8,Building9,Building10,Building11,Building12,Building13,Building14,Building15,Building16,Building17,Building18,Building19,Building20,Building21,Building22,Building23,Building24,Building25,Building26,Building27,Building28,Building29,Building30,Building31,Building32,Building33,Building34,Building35,Building36,Building37,Building38,Building39,Building40,Building41,Building42,Building43,Building44,Building45,Building46,Building47,Building48,Building49,Building50,Building51,Building52,Building53,Building54,Building55,Building56,Building57,Building58,Building59,Building60,Building61,Building62,Building63,Building64,Building65,Building66,Building67,Building68,Building69,Building70,Building71,Building72,Building73,Building74,Building75,Building76,Building77,Building78,Building79,Building80,Building81,Building82,Building83,Building84,Building85,Building86,Building87,Building88,Building89,Building90,Building91,Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Building120,Building121,Building122,Building123,Building124,Building125,Building126,Building127,Building128,Building129);
+            buildings= Arrays.asList(Building1 ,Building2 , Building3 , Building4 ,Building5,Building6,Building7,Building8,Building9,Building10,Building11,Building12,Building13,Building14,Building15,Building16,Building17,Building18,Building19,Building20,Building21,Building22,Building23,Building24,Building25,Building26,Building27,Building28,Building29,Building30,Building31,Building32,Building33,Building34,Building35,Building36,Building37,Building38,Building39,Building40,Building41,Building42,Building43,Building44,Building45,Building46,Building47,Building48,Building49,Building50,Building51,Building52,Building53,Building54,Building55,Building56,Building57,Building58,Building59,Building60,Building61,Building62,Building63,Building64,Building65,Building66,Building67,Building68,Building69,Building70,Building71,Building72,Building73,Building74,Building75,Building76,Building77,Building78,Building79,Building80,Building81,Building82,Building83,Building84,Building85,Building86,Building87,Building88,Building89,Building90,Building91,Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Building120,Building121,Building122,Building123,Building124,Building125,Building126,Building127,Building128,Building129);
             neighborhoodsGroup.getChildren().addAll(Street_CLable,Street_BLable,Street_ALable,Street_1Lable,Street_2Lable,Street_3Lable,Street_4Lable,Street_5Lable,Street_6Lable,Street_7Lable,Street_8Lable,Street_9Lable,neighborhood1Group,neighborhood2Group,neighborhood3Group,warehousesGroup);
             AllGroups.getChildren().add(neighborhoodsGroup);
     }
@@ -984,14 +970,14 @@ public static Label  CountertimeLabe1_phase1_to_2;
             
             //Streets for AlManar Neighourhood:
             
-             Line Street_4 = new Line(0, 0, 1000, 0);
+            Line Street_4 = new Line(0, 0, 1000, 0);
             Street_4.setStrokeWidth(12);
             Street_4.setTranslateX(50);
             Street_4.setTranslateY(264);
             
             
             
-             Line Street_5 = new Line(0, 0, 1000, 0);
+            Line Street_5 = new Line(0, 0, 1000, 0);
             Street_5.setStrokeWidth(12);
             Street_5.setTranslateX(50);
             Street_5.setTranslateY(330);
@@ -1024,7 +1010,7 @@ public static Label  CountertimeLabe1_phase1_to_2;
             
             //STREET A: 
             
-             Line Street_A = new Line(0, 0, 0, 650);
+            Line Street_A = new Line(0, 0, 0, 650);
             Street_A.setStrokeWidth(12);
             Street_A.setTranslateX(330);
             Street_A.setTranslateY(0);
@@ -1039,7 +1025,7 @@ public static Label  CountertimeLabe1_phase1_to_2;
             
            
             // STREET B :
-             Line Street_B = new Line(0, 0, 0, 650);
+            Line Street_B = new Line(0, 0, 0, 650);
             Street_B.setStrokeWidth(12);
             Street_B.setTranslateX(600);
             Street_B.setTranslateY(0);
@@ -1088,15 +1074,8 @@ public static Label  CountertimeLabe1_phase1_to_2;
         No_SimulationRectangle.setStroke(Color.web("#000C40"));
         No_SimulationRectangle.setStrokeWidth(5);
         No_SimulationRectangle.setFill(Color.web("#F0F2F0"));
-        
-        Rectangle xx = new Rectangle(1140,195,80, 40);
-        xx.setStroke(Color.web("#000C40"));
-        xx.setStrokeWidth(5);
-        xx.setFill(Color.web("#F0F2F0"));
-        // Time,distance,cost and No.Simulations Labels :
-        
+  
         // For Time : 
-        
         Font Labelfont = new Font(" Times New Roman",13);
         Label timeLabel = new Label("Time");
         timeLabel.setFont(Labelfont);
@@ -1147,6 +1126,7 @@ public static Label  CountertimeLabe1_phase1_to_2;
         CounterDistanceLabel.setLayoutY(75);
         
         // For Cost :
+
         Font CounterCostfont = new Font(" Times New Roman",13);
         MainGUISimulation.CounterCostLabel = new Label(" SAR 00,00");
         CounterCostLabel.setFont(CounterCostfont);
@@ -1229,8 +1209,6 @@ public static Label  CountertimeLabe1_phase1_to_2;
         
         //Rectangle DISTANCE PHASE 1 IN 2
        
-       
-        
         Label distance_phase1_in2_lable = new Label("Distance");
         distance_phase1_in2_lable.setFont(Labelfont_forphase2in1);
         distance_phase1_in2_lable.setLayoutX(1110);
@@ -1243,10 +1221,8 @@ public static Label  CountertimeLabe1_phase1_to_2;
         CounterDistanceLabe1_phase1_to_2.setLayoutX(1105);
         CounterDistanceLabe1_phase1_to_2.setLayoutY(350);
         
-        
         //Rectangle GASOLIN PHASE 1 IN 2
         
-         
         Label gasolin_phase1_in2_lable = new Label("GASOLIN");
         gasolin_phase1_in2_lable.setFont(Labelfont_forphase2in1);
         gasolin_phase1_in2_lable.setLayoutX(1185);
@@ -1259,8 +1235,6 @@ public static Label  CountertimeLabe1_phase1_to_2;
         CounterGasolinLabe1_phase1_to_2.setLayoutX(1180);
         CounterGasolinLabe1_phase1_to_2.setLayoutY(350);
         
-        
-        
         Line line_of_phase1In2 = new Line();
 
         line_of_phase1In2.setStartX(1170); 
@@ -1271,7 +1245,6 @@ public static Label  CountertimeLabe1_phase1_to_2;
 
         line_of_phase1In2.setStrokeWidth(4); 
         line_of_phase1In2.setStroke(Color.BLACK); 
-        
         
         Line line_of_phase1In22 = new Line();
 
@@ -1311,7 +1284,6 @@ public static Label  CountertimeLabe1_phase1_to_2;
         rec_Alhamdaniya.setWidth(60);
         rec_Alhamdaniya.setFill(Color.GREY);
         
-        
         Label NAME_OF_Almanar = new Label("AlMANAR");
         NAME_OF_Almanar.setFont(Labelfont_map);
         NAME_OF_Almanar.setLayoutX(1110);
@@ -1324,7 +1296,6 @@ public static Label  CountertimeLabe1_phase1_to_2;
         rec_Almanar.setHeight(25);
         rec_Almanar.setWidth(60);
         rec_Almanar.setFill(Color.BLUE);
-        
         
         Label NAME_OF_AlRabwah = new Label("AlRABWAH");
         NAME_OF_AlRabwah.setFont(Labelfont_map);
@@ -1339,8 +1310,7 @@ public static Label  CountertimeLabe1_phase1_to_2;
         rec_AlRabwah.setWidth(60);
         rec_AlRabwah.setFill(Color.web("#C0392B"));
         
-        
-       Label Name_house_green = new Label("HOUSE DELIVERED");
+        Label Name_house_green = new Label("HOUSE DELIVERED");
         Name_house_green.setFont(Labelfont_map);
         Name_house_green.setLayoutX(1110);
         Name_house_green.setLayoutY(555);
@@ -1353,9 +1323,6 @@ public static Label  CountertimeLabe1_phase1_to_2;
         rec_house_green.setWidth(60);
         rec_house_green.setFill(Color.web("GREEN"));
         
-
-
-
          Group labelsGroup = new Group();
             labelsGroup.getChildren().addAll( Ideal_rectangle,Ideal_rectangle_lable , Ideal_rectangle_lableBox ,timeLabel, distanceLabel,costLabel,No_SimulationLabel,timerRectangle,distanceRectangle,costRectangle,No_SimulationRectangle,Nmae_INFORMATION_KEY , INFORMATION_KEY , NAME_OF_Alhamdaniya , rec_Alhamdaniya , NAME_OF_Almanar , rec_Almanar,NAME_OF_AlRabwah , rec_AlRabwah
             , Name_house_green , rec_house_green);
@@ -1372,37 +1339,33 @@ public static Label  CountertimeLabe1_phase1_to_2;
             AllGroups.getChildren().remove(percentLabelsGroup);
             AllGroups.getChildren().addAll(labelsGroup,counterLabelsGroup);
 
-} 
-
-
-            
+}          
     }
 
     public void Buttons (Pane AllGroups,Stage primaryStage) {
         Button Start_button = new Button();
-Start_button.setPrefSize(60, 20);
-Start_button.setLayoutX(1050);
-Start_button.setLayoutY(15);
+        Start_button.setPrefSize(60, 20);
+        Start_button.setLayoutX(1050);
+        Start_button.setLayoutY(15);
 
+        Image Starticon = new Image(getClass().getResourceAsStream("StartButton.png"));
+        ImageView iconView = new ImageView(Starticon);
+        iconView.setFitWidth(30);
+        iconView.setFitHeight(15);
 
-Image Starticon = new Image(getClass().getResourceAsStream("StartButton.png"));
-ImageView iconView = new ImageView(Starticon);
-iconView.setFitWidth(30);
-iconView.setFitHeight(15);
-
-Start_button.setGraphic(iconView);
-Start_button.setStyle( "-fx-background-color: #F0F2F0; " );
-Start_button.setContentDisplay(ContentDisplay.CENTER);
+        Start_button.setGraphic(iconView);
+        Start_button.setStyle( "-fx-background-color: #F0F2F0; " );
+        Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
 
             
             if (!MainProgram.driver.isTransitionPaused) {
                 resetBuildingColors();
-            Platform.runLater(() -> {
-             addToolTipsToAllBuildings();
-             TooltipOfBuildings();
-});
+                    Platform.runLater(() -> {
+                    addToolTipsToAllBuildings();
+                    TooltipOfBuildings();
+        });
             stopCurrentSimulation();
             isStartClicked = true;
             MainProgram.driver.setGasolineCost(0);
