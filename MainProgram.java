@@ -27,11 +27,7 @@ public class MainProgram {
     public static void initializeObjects() {
         driver=new DeliveryDriver();
         destetionBuilding=destinationBuildings();
-        choosenBulding=getShuffledBuildings();
-        organizeBuilding=getOrganizedBuildings(); 
         intersections=createIntersectionsLayout();
-        customers=generateRandomCustomers();
-        packages=generateRandomPackages(customers); 
         graph =createGraph();
         
       
@@ -150,7 +146,7 @@ public class MainProgram {
     intersections.remove(0); // Remove the warehouse from the copy
 
     // Sort non-warehouse intersections based on Y coordinates and X directions
-    Collections.sort(intersections, (intersection1, intersection2) -> {
+        Collections.sort(intersections, (intersection1, intersection2) -> {
         int y1 = intersection1.getY();
         int y2 = intersection2.getY();
 
@@ -536,8 +532,9 @@ return closestIntersection;}
          packages=generateRandomPackages(customers);
        
     } else if (FirstPage.isPhase2Selected) {
-        
+         organizeBuilding= getOrganizedBuildings();
         aIntersection =organizeBuilding;
+        choosenBulding= organizeBuilding;
         
         
     } else {

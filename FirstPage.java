@@ -41,8 +41,8 @@ public class FirstPage extends Application {
             isPhase2Selected = true;  
             openSimulationPage();
             primaryStage.close();
-            MainProgram.organizeBuilding= MainProgram.getOrganizedBuildings();
-            MainProgram.choosenBulding=MainProgram.organizeBuilding;
+            // MainProgram.organizeBuilding= MainProgram.getOrganizedBuildings();
+            // // MainProgram.choosenBulding=MainProgram.organizeBuilding;
             MainProgram.packages=MainProgram.clonePackages(MainProgram.packages);
             MainGUISimulation.CounterGasolinLabe1_phase1_to_2.setText(MainGUISimulation.formatGasolineCost(MainGUISimulation.total_GasolineCost));
             MainGUISimulation.CounterDistanceLabe1_phase1_to_2.setText(MainGUISimulation.formatDistance(MainGUISimulation.total_Distance));
@@ -120,6 +120,7 @@ public class FirstPage extends Application {
     }
 
     public static void main(String[] args) {
+        MainProgram.initializeObjects();
         launch(args);
     }
    

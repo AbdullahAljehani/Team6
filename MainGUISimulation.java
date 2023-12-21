@@ -55,7 +55,7 @@ public static Label  CountertimeLabe1_phase1_to_2;
         primaryStage.setOnCloseRequest(windowEvent -> {Platform.exit();System.exit(0);});
         
             AllGroups = new Pane();
-            MainProgram.initializeObjects();
+            
 
 
             root = new StackPane();
@@ -1367,13 +1367,14 @@ public static Label  CountertimeLabe1_phase1_to_2;
                     TooltipOfBuildings();
         });
             stopCurrentSimulation();
+            MainProgram.initializeChoosenIntersections();
             isStartClicked = true;
             MainProgram.driver.setGasolineCost(0);
             MainProgram.driver.setDistance(0);
             CounterCostLabel.setText(" SAR 00,00");
             CounterDistanceLabel.setText("00.00 Km");
             percentLabelP2.setText("00.00%");
-            MainProgram.driver.createPathForPackages(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.initializeChoosenIntersections()));            
+            MainProgram.driver.createPathForPackages(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));            
             secondsPassed = 0;
             CounterTimeLabel.setText(formatTime(secondsPassed));
             startSimulation();
