@@ -4,12 +4,24 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Test",
+            "request": "launch",
+            "mainClass": "Test",
+            "projectName": "Team6_893f1bfd"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "Team6_893f1bfd"
+        },
+        {
+            "type": "java",
             "name": "Launch JavaFX App - FirstPage",
             "request": "launch",
             "mainClass": "FirstPage",
-            "vmArgs": "--module-path \"C:/Users/Hisoka/Desktop/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path \"C:/Users/Eyad/Desktop/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
         }
-
-
     ]
 }

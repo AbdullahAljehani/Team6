@@ -13,6 +13,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.*;
 import javafx.scene.layout.Pane;
 import javafx.animation.Animation;
+import javafx.animation.PathTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -837,9 +838,9 @@ public static Label  CountertimeLabe1_phase1_to_2;
         Building122.setFill(Color.web("#C0392B"));
 
         Rectangle Building123 = new Rectangle(550, 605, 35, 35);
-         Building123.setArcHeight(25);
-         Building123.setArcWidth(25);
-         Building123.setFill(Color.web("#C0392B"));
+        Building123.setArcHeight(25);
+        Building123.setArcWidth(25);
+        Building123.setFill(Color.web("#C0392B"));
 
         // Neighbourhood_3 : BLOCK 11
         Rectangle Building124 = new Rectangle(635, 605, 35, 35);
@@ -869,9 +870,9 @@ public static Label  CountertimeLabe1_phase1_to_2;
         Building128.setFill(Color.web("#C0392B"));
         
         Rectangle Building129 = new Rectangle(1010, 605, 35, 35);
-         Building129.setArcHeight(25);
-         Building129.setArcWidth(25);
-         Building129.setFill(Color.web("#C0392B"));
+        Building129.setArcHeight(25);
+        Building129.setArcWidth(25);
+        Building129.setFill(Color.web("#C0392B"));
         
 
         Text Street_1Lable = new Text(25, 73, "1");
@@ -923,131 +924,129 @@ public static Label  CountertimeLabe1_phase1_to_2;
         Text Street_CLable = new Text(851, 678, "C");
         Street_CLable.setFont(font );
         Street_CLable.setFill(Color.BLACK);
-            Group neighborhoodsGroup = new Group();
-            // Add homes to Neighborhood 1 group
-            
-            Group neighborhood1Group = new Group();
-            neighborhood1Group.getChildren().addAll( Building1 ,Building2 , Building3 , Building4 ,Building5,Building6,Building7,Building8,Building9,Building10,Building11,Building12,Building13,Building14,Building15,Building16,Building17,Building18,Building19,Building20,Building21,Building22,Building23,Building24,Building25,Building26,Building27,Building28,Building29,Building30,Building31,Building32,Building33,Building34,Building35,Building36,Building37,Building38,Building39,Building40,Building41,Building42,Building43,Building44,Building45,Building46,Building47,Building48,Building49,Building50,Building51,Building52);
-            
-            // Add homes to Neighborhood 2 group
-            Group neighborhood2Group = new Group();
-            neighborhood2Group.getChildren().addAll(Building53,Building54,Building55,Building56,Building57,Building58,Building59,Building60,Building61,Building62,Building63,Building64,Building65,Building66,Building67,Building68,Building69,Building70,Building71,Building72,Building73,Building74,Building75,Building76,Building77,Building78,Building79,Building80,Building81,Building82,Building83,Building84,Building85,Building86,Building87,Building88,Building89,Building90,Building91);
-            
-            // Add homes to Neighborhood 3 group
-            
-            Group neighborhood3Group = new Group();
-            neighborhood3Group.getChildren().addAll(Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Warehouse,Warehouse_label,Building120,Building121,Building122,Building123,Building124,Building125,Building126,Building127,Building128,Building129);
-  
-            Group warehousesGroup = new Group();
-            warehousesGroup.getChildren().addAll(Warehouse, Warehouse_label);
-            buildings= Arrays.asList(Building1 ,Building2 , Building3 , Building4 ,Building5,Building6,Building7,Building8,Building9,Building10,Building11,Building12,Building13,Building14,Building15,Building16,Building17,Building18,Building19,Building20,Building21,Building22,Building23,Building24,Building25,Building26,Building27,Building28,Building29,Building30,Building31,Building32,Building33,Building34,Building35,Building36,Building37,Building38,Building39,Building40,Building41,Building42,Building43,Building44,Building45,Building46,Building47,Building48,Building49,Building50,Building51,Building52,Building53,Building54,Building55,Building56,Building57,Building58,Building59,Building60,Building61,Building62,Building63,Building64,Building65,Building66,Building67,Building68,Building69,Building70,Building71,Building72,Building73,Building74,Building75,Building76,Building77,Building78,Building79,Building80,Building81,Building82,Building83,Building84,Building85,Building86,Building87,Building88,Building89,Building90,Building91,Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Building120,Building121,Building122,Building123,Building124,Building125,Building126,Building127,Building128,Building129);
-            neighborhoodsGroup.getChildren().addAll(Street_CLable,Street_BLable,Street_ALable,Street_1Lable,Street_2Lable,Street_3Lable,Street_4Lable,Street_5Lable,Street_6Lable,Street_7Lable,Street_8Lable,Street_9Lable,neighborhood1Group,neighborhood2Group,neighborhood3Group,warehousesGroup);
-            AllGroups.getChildren().add(neighborhoodsGroup);
+        Group neighborhoodsGroup = new Group();
+        // Add homes to Neighborhood 1 group
+        
+        Group neighborhood1Group = new Group();
+        neighborhood1Group.getChildren().addAll( Building1 ,Building2 , Building3 , Building4 ,Building5,Building6,Building7,Building8,Building9,Building10,Building11,Building12,Building13,Building14,Building15,Building16,Building17,Building18,Building19,Building20,Building21,Building22,Building23,Building24,Building25,Building26,Building27,Building28,Building29,Building30,Building31,Building32,Building33,Building34,Building35,Building36,Building37,Building38,Building39,Building40,Building41,Building42,Building43,Building44,Building45,Building46,Building47,Building48,Building49,Building50,Building51,Building52);
+        
+        // Add homes to Neighborhood 2 group
+        Group neighborhood2Group = new Group();
+        neighborhood2Group.getChildren().addAll(Building53,Building54,Building55,Building56,Building57,Building58,Building59,Building60,Building61,Building62,Building63,Building64,Building65,Building66,Building67,Building68,Building69,Building70,Building71,Building72,Building73,Building74,Building75,Building76,Building77,Building78,Building79,Building80,Building81,Building82,Building83,Building84,Building85,Building86,Building87,Building88,Building89,Building90,Building91);
+        
+        // Add homes to Neighborhood 3 group
+        
+        Group neighborhood3Group = new Group();
+        neighborhood3Group.getChildren().addAll(Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Warehouse,Warehouse_label,Building120,Building121,Building122,Building123,Building124,Building125,Building126,Building127,Building128,Building129);
+
+        Group warehousesGroup = new Group();
+        warehousesGroup.getChildren().addAll(Warehouse, Warehouse_label);
+        buildings= Arrays.asList(Building1 ,Building2 , Building3 , Building4 ,Building5,Building6,Building7,Building8,Building9,Building10,Building11,Building12,Building13,Building14,Building15,Building16,Building17,Building18,Building19,Building20,Building21,Building22,Building23,Building24,Building25,Building26,Building27,Building28,Building29,Building30,Building31,Building32,Building33,Building34,Building35,Building36,Building37,Building38,Building39,Building40,Building41,Building42,Building43,Building44,Building45,Building46,Building47,Building48,Building49,Building50,Building51,Building52,Building53,Building54,Building55,Building56,Building57,Building58,Building59,Building60,Building61,Building62,Building63,Building64,Building65,Building66,Building67,Building68,Building69,Building70,Building71,Building72,Building73,Building74,Building75,Building76,Building77,Building78,Building79,Building80,Building81,Building82,Building83,Building84,Building85,Building86,Building87,Building88,Building89,Building90,Building91,Building92,Building93,Building94,Building95,Building96,Building97,Building98,Building99,Building100,Building101,Building102,Building103,Building104,Building105,Building106,Building107,Building108,Building109,Building110,Building111,Building112,Building113,Building114,Building115,Building116,Building117,Building118,Building119,Building120,Building121,Building122,Building123,Building124,Building125,Building126,Building127,Building128,Building129);
+        neighborhoodsGroup.getChildren().addAll(Street_CLable,Street_BLable,Street_ALable,Street_1Lable,Street_2Lable,Street_3Lable,Street_4Lable,Street_5Lable,Street_6Lable,Street_7Lable,Street_8Lable,Street_9Lable,neighborhood1Group,neighborhood2Group,neighborhood3Group,warehousesGroup);
+        AllGroups.getChildren().add(neighborhoodsGroup);
     }
 
     public void streets(Pane AllGroups) {
     
-        // ------------------STREETS-----------------------
-            
-            
+        // ------------------STREETS-----------------------    
             // Streets for Alhamdaniyah Neighourhood: 
             
-            Line Street_1 = new Line(0, 0, 1000, 0);
-            Street_1.setStrokeWidth(12);
-            Street_1.setTranslateX(50);
-            Street_1.setTranslateY(66);
-            
-             Line Street_2 = new Line(0, 0, 1000, 0);
-            Street_2.setStrokeWidth(12);
-            Street_2.setTranslateX(50);
-            Street_2.setTranslateY(132);
-            
-            
-            Line Street_3 = new Line(0, 0, 1000, 0);
-            Street_3.setStrokeWidth(12);
-            Street_3.setTranslateX(50);
-            Street_3.setTranslateY(198);
-            
-            //Streets for AlManar Neighourhood:
-            
-            Line Street_4 = new Line(0, 0, 1000, 0);
-            Street_4.setStrokeWidth(12);
-            Street_4.setTranslateX(50);
-            Street_4.setTranslateY(264);
-            
-            
-            
-            Line Street_5 = new Line(0, 0, 1000, 0);
-            Street_5.setStrokeWidth(12);
-            Street_5.setTranslateX(50);
-            Street_5.setTranslateY(330);
-            
-            
-            Line Street_6 = new Line(0, 0, 1000, 0);
-            Street_6.setStrokeWidth(12);
-            Street_6.setTranslateX(50);
-            Street_6.setTranslateY(396);
-            
-            //Streets for AlRabwah Neighourhood: 
-            
-            Line Street_7 = new Line(0, 0, 1000, 0);
-            Street_7.setStrokeWidth(12);
-            Street_7.setTranslateX(50);
-            Street_7.setTranslateY(462);
-            
-            
-            Line Street_8 = new Line(0, 0, 1000, 0);
-            Street_8.setStrokeWidth(12);
-            Street_8.setTranslateX(50);
-            Street_8.setTranslateY(528);
-            
-            
-            Line Street_9 = new Line(0, 0, 1000, 0);
-            Street_9.setStrokeWidth(12);
-            Street_9.setTranslateX(50);
-            Street_9.setTranslateY(594);
-            
-            
-            //STREET A: 
-            
-            Line Street_A = new Line(0, 0, 0, 650);
-            Street_A.setStrokeWidth(12);
-            Street_A.setTranslateX(330);
-            Street_A.setTranslateY(0);
-            
-            // White line inside street A
+        Line Street_1 = new Line(0, 0, 1000, 0);
+        Street_1.setStrokeWidth(12);
+        Street_1.setTranslateX(50);
+        Street_1.setTranslateY(66);
+        
+            Line Street_2 = new Line(0, 0, 1000, 0);
+        Street_2.setStrokeWidth(12);
+        Street_2.setTranslateX(50);
+        Street_2.setTranslateY(132);
+        
+        
+        Line Street_3 = new Line(0, 0, 1000, 0);
+        Street_3.setStrokeWidth(12);
+        Street_3.setTranslateX(50);
+        Street_3.setTranslateY(198);
+        
+        //Streets for AlManar Neighourhood:
+        
+        Line Street_4 = new Line(0, 0, 1000, 0);
+        Street_4.setStrokeWidth(12);
+        Street_4.setTranslateX(50);
+        Street_4.setTranslateY(264);
+        
+        
+        
+        Line Street_5 = new Line(0, 0, 1000, 0);
+        Street_5.setStrokeWidth(12);
+        Street_5.setTranslateX(50);
+        Street_5.setTranslateY(330);
+        
+        
+        Line Street_6 = new Line(0, 0, 1000, 0);
+        Street_6.setStrokeWidth(12);
+        Street_6.setTranslateX(50);
+        Street_6.setTranslateY(396);
+        
+        //Streets for AlRabwah Neighourhood: 
+        
+        Line Street_7 = new Line(0, 0, 1000, 0);
+        Street_7.setStrokeWidth(12);
+        Street_7.setTranslateX(50);
+        Street_7.setTranslateY(462);
+        
+        
+        Line Street_8 = new Line(0, 0, 1000, 0);
+        Street_8.setStrokeWidth(12);
+        Street_8.setTranslateX(50);
+        Street_8.setTranslateY(528);
+        
+        
+        Line Street_9 = new Line(0, 0, 1000, 0);
+        Street_9.setStrokeWidth(12);
+        Street_9.setTranslateX(50);
+        Street_9.setTranslateY(594);
+        
+        
+        //STREET A: 
+        
+        Line Street_A = new Line(0, 0, 0, 650);
+        Street_A.setStrokeWidth(12);
+        Street_A.setTranslateX(330);
+        Street_A.setTranslateY(0);
+        
+        // White line inside street A
+
+        Line line_street_white1 = new Line(0, 0, 0, 650);
+        line_street_white1.setStrokeWidth(12);
+        line_street_white1.setStroke(Color.BLUE);
+        line_street_white1.setTranslateX(330);
+        line_street_white1.setTranslateY(0); 
+        
+        
+        // STREET B :
+        Line Street_B = new Line(0, 0, 0, 650);
+        Street_B.setStrokeWidth(12);
+        Street_B.setTranslateX(600);
+        Street_B.setTranslateY(0);
+        
+        
+        // STREET C: 
+        Line Street_C = new Line(0, 0, 0, 650);
+        Street_C.setStrokeWidth(12);
+        Street_C.setTranslateX(860);
+        Street_C.setTranslateY(0);
+        
+        
+            // Create a group for streets
+        Group streetsGroup = new Group();
+        streetsGroup.getChildren().addAll(Street_1, Street_2, Street_3, Street_4, Street_5,
+                        Street_6,Street_7,line_street_white1,Street_8,Street_9,Street_A , 
+                        Street_B,Street_C);
+        
+        AllGroups.getChildren().add(streetsGroup);
     
-            Line line_street_white1 = new Line(0, 0, 0, 650);
-            line_street_white1.setStrokeWidth(12);
-            line_street_white1.setStroke(Color.BLUE);
-            line_street_white1.setTranslateX(330);
-            line_street_white1.setTranslateY(0); 
-            
-           
-            // STREET B :
-            Line Street_B = new Line(0, 0, 0, 650);
-            Street_B.setStrokeWidth(12);
-            Street_B.setTranslateX(600);
-            Street_B.setTranslateY(0);
-            
-            
-            // STREET C: 
-            Line Street_C = new Line(0, 0, 0, 650);
-            Street_C.setStrokeWidth(12);
-            Street_C.setTranslateX(860);
-            Street_C.setTranslateY(0);
-            
-            
-               // Create a group for streets
-                Group streetsGroup = new Group();
-                streetsGroup.getChildren().addAll(Street_1, Street_2, Street_3, Street_4, Street_5,
-                                Street_6,Street_7,line_street_white1,Street_8,Street_9,Street_A , 
-                                Street_B,Street_C);
-                
-                AllGroups.getChildren().add(streetsGroup);
-        
-        
-        }
+    
+    }
 
     public void Labels (Pane AllGroups, Boolean isPhase1Selected) {
         // For Time : 
@@ -1111,7 +1110,7 @@ public static Label  CountertimeLabe1_phase1_to_2;
         // For Time : 
         
         Font CounterLabelfont = new Font(" Times New Roman",15);
-        MainGUISimulation .CounterTimeLabel = new Label("00:00:00");
+        CounterTimeLabel = new Label("00:00:00");
         CounterTimeLabel.setFont(CounterLabelfont);
         CounterTimeLabel.setTextFill(Color.web("#000C40"));
         CounterTimeLabel.setLayoutX(1090);
@@ -1119,7 +1118,7 @@ public static Label  CountertimeLabe1_phase1_to_2;
         
         // For Distance :
         
-        MainGUISimulation.CounterDistanceLabel = new Label("00.00 Km");
+        CounterDistanceLabel = new Label("00.00 Km");
         CounterDistanceLabel.setFont(CounterLabelfont);
         CounterDistanceLabel.setTextFill(Color.web("#000C40"));        
         CounterDistanceLabel.setLayoutX(1200);
@@ -1128,7 +1127,7 @@ public static Label  CountertimeLabe1_phase1_to_2;
         // For Cost :
 
         Font CounterCostfont = new Font(" Times New Roman",13);
-        MainGUISimulation.CounterCostLabel = new Label(" SAR 00,00");
+        CounterCostLabel = new Label(" SAR 00,00");
         CounterCostLabel.setFont(CounterCostfont);
         CounterCostLabel.setTextFill(Color.web("#000C40"));
         CounterCostLabel.setLayoutX(1082);
@@ -1136,7 +1135,7 @@ public static Label  CountertimeLabe1_phase1_to_2;
         
         // For No_Simulations:
         
-        MainGUISimulation .CounterNo_SimulationLabel = new Label("0");
+        CounterNo_SimulationLabel = new Label("0");
         CounterNo_SimulationLabel.setFont(CounterLabelfont);
         CounterNo_SimulationLabel.setTextFill(Color.web("#000C40"));
         CounterNo_SimulationLabel.setLayoutX(1225);
@@ -1335,11 +1334,12 @@ public static Label  CountertimeLabe1_phase1_to_2;
             gasolin_phase1_in2_lable ,CounterGasolinLabe1_phase1_to_2 , line_of_phase1In2 , line_of_phase1In22);
             if (FirstPage.isPhase2Selected) {
                 AllGroups.getChildren().addAll(labelsGroup,counterLabelsGroup,percentLabelsGroup);
-}       else{
-            AllGroups.getChildren().remove(percentLabelsGroup);
-            AllGroups.getChildren().addAll(labelsGroup,counterLabelsGroup);
+            }       
+            else{
+                AllGroups.getChildren().remove(percentLabelsGroup);
+                AllGroups.getChildren().addAll(labelsGroup,counterLabelsGroup);
 
-}          
+            }          
     }
 
     public void Buttons (Pane AllGroups,Stage primaryStage) {
@@ -1481,56 +1481,58 @@ public static Label  CountertimeLabe1_phase1_to_2;
 
                     totalTimeP1 = MainProgram.driver.calculateTotalTime(); // Calculate total time separately
                    
-                } else if (FirstPage.isPhase2Selected) {
+        } 
+        else if (FirstPage.isPhase2Selected) {
                     // Similarly, calculate total time separately for phase 2
                     totalTimeP2 = MainProgram.driver.calculateTotalTime(); // Calculate total time separately
                    
-                } }
+        } 
+    }
 
-                public void startSimulation() {
-                    // Cancel the existing timer if it's not null
-                    if (timer != null) {
+    public void startSimulation() {
+        // Cancel the existing timer if it's not null
+        if (timer != null) {
+            timer.cancel();
+        }
+
+        // Reset the delivery status of packages
+        resetPackageDeliveryStatus();
+
+        // Create a new timer
+        timer = new Timer();
+
+        TimerTask simulationTask = new TimerTask() {
+            @Override
+            public void run() {
+                if (!isPaused) {
+                    secondsPassed += 10;
+                    Platform.runLater(() -> {
+                        CounterTimeLabel.setText(formatTime(secondsPassed));
+                    });
+                    if (allDelivered(MainProgram.driver)) {
+                        Platform.runLater(() -> {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("FINISH");
+                            alert.setHeaderText("THE SIMULATION IS DONE");
+                            alert.setContentText("Have a nice day!");
+                            alert.showAndWait();
+                            MainProgram.driver.isTransitionPaused = false;
+
+                            calculateTotalTimeForAllPhases();
+                            isStartClicked = false;
+                            CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
+                            percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
+                            updatePhase1Metrics();  
+                        });
+
                         timer.cancel();
                     }
-            
-                    // Reset the delivery status of packages
-                    resetPackageDeliveryStatus();
-            
-                    // Create a new timer
-                    timer = new Timer();
-            
-                    TimerTask simulationTask = new TimerTask() {
-                        @Override
-                        public void run() {
-                            if (!isPaused) {
-                                secondsPassed += 10;
-                                Platform.runLater(() -> {
-                                    CounterTimeLabel.setText(formatTime(secondsPassed));
-                                });
-                                if (allDelivered(MainProgram.driver)) {
-                                    Platform.runLater(() -> {
-                                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                                        alert.setTitle("FINISH");
-                                        alert.setHeaderText("THE SIMULATION IS DONE");
-                                        alert.setContentText("Have a nice day!");
-                                        alert.showAndWait();
-                                        MainProgram.driver.isTransitionPaused = false;
-            
-                                        calculateTotalTimeForAllPhases();
-                                        isStartClicked = false;
-                                        CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
-                                        percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
-                                        updatePhase1Metrics();  
-                                    });
-            
-                                    timer.cancel();
-                                }
-                            }
-                        }
-                    };
-            
-                    timer.schedule(simulationTask, 0, 103);
                 }
+            }
+        };
+
+        timer.schedule(simulationTask, 0, 103);
+    }
     
     private static void resetPackageDeliveryStatus() {
                 List<Package> Packages = MainProgram.packages;
@@ -1543,23 +1545,27 @@ public static Label  CountertimeLabe1_phase1_to_2;
     private void stopCurrentSimulation() {
         if (MainProgram.driver.pathTransition != null) {
             MainProgram.driver.pathTransition.stop() ; // Stop the PathTransition animation
-        }}
+        }
+    }
     public static void pauseSimulation() {
         isPaused = !isPaused; // Toggle pause state
 
         if (MainProgram.driver.pathTransition != null) {
-            if (isPaused && MainProgram.driver.pathTransition.getStatus() == Animation.Status.RUNNING) {
-                MainProgram.driver.pathTransition.pause();
+            PathTransition path = MainProgram.driver.pathTransition;
+            if (isPaused && path.getStatus() == Animation.Status.RUNNING) {
+                path.pause();
             }
         }
     }
 
     public static void resumeSimulation() {
         isPaused = false; // Resume the simulation
+            PathTransition path = MainProgram.driver.pathTransition;
 
-        if (MainProgram.driver.pathTransition != null) {
-            if (MainProgram.driver.pathTransition.getStatus() == Animation.Status.PAUSED) {
-                MainProgram.driver.pathTransition.play();
+        if (path != null) {
+
+            if (path.getStatus() == Animation.Status.PAUSED) {
+                path.play();
             }
         }
     }
@@ -1631,10 +1637,11 @@ public static Label  CountertimeLabe1_phase1_to_2;
                 MainProgram.driver.pathTransition.stop();
                 MainProgram.driver.pathTransition.setPath(null);
                 MainProgram.driver.pathTransition.setCycleCount(1);
-                 double totalDistance = MainProgram.driver.calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));
+                List<List<Intersection>> calculateShortestPaths = MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding) ; 
+                 double totalDistance = MainProgram.driver.calculateTotalDistance(calculateShortestPaths);
                  CounterDistanceLabel.setText(formatDistance(totalDistance));
     
-                 double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));
+                 double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(calculateShortestPaths);
                  CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
                  MainProgram.driver.moveCarTo(MainProgram.choosenBulding);
                  int totalTime = MainProgram.driver.calculateTotalTime();
@@ -1666,134 +1673,145 @@ public static Label  CountertimeLabe1_phase1_to_2;
     }
     
     public  void restSumaltion(){
-     if (timer != null) {
+        if (timer != null) {
         timer.cancel();
+        }
+        PathTransition path = MainProgram.driver.pathTransition;
+        if (MainProgram.driver.pathTransition != null) {
+            Platform.runLater(() -> {
+                path.stop();
+                path.setPath(null);
+                path.setCycleCount(1);
+                CounterDistanceLabel.setText("00.00 Km");
+                CounterCostLabel.setText("SAR 00,00");
+                MainProgram.driver.moveCarTo(MainProgram.choosenBulding);
+            
+
+                });
+    
+        }
+
+    } 
+
+    public static void openPhase2() {
+        Stage newStage = new Stage();
+        MainGUISimulation phase2 = new MainGUISimulation();
+        phase2.start(newStage);
+
+        
     }
 
-    if (MainProgram.driver.pathTransition != null) {
-        Platform.runLater(() -> {
-            MainProgram.driver.pathTransition.stop();
-            MainProgram.driver.pathTransition.setPath(null);
-            MainProgram.driver.pathTransition.setCycleCount(1);
-            CounterDistanceLabel.setText("00.00 Km");
-            CounterCostLabel.setText("SAR 00,00");
-             MainProgram.driver.moveCarTo(MainProgram.choosenBulding);
-           
+    public void TooltipOfBuildings() {
+        List<Package> packages = MainProgram.packages;
+        for (Package aPackage : packages) {
+            Customer customer = aPackage.getCustomer();
+            Building destinationBuilding = customer.getBuilding();
+            String buildingName = destinationBuilding.getLocation().getName();
+            int buildingIndex = Integer.parseInt(buildingName);
 
-             });
-    
-}
+            // Ensure that the GUI element is not null before proceeding
+            if (destinationBuilding != null && buildings.get(buildingIndex - 1) != null) {
+                // Create the tooltip
+                Tooltip tooltipBuilding = new Tooltip(aPackage.getPackageInformation());
 
-} 
+                // Install the tooltip on the building element
+                Tooltip.install(buildings.get(buildingIndex - 1), tooltipBuilding);
 
-public static void openPhase2() {
-    Stage newStage = new Stage();
-    MainGUISimulation phase2 = new MainGUISimulation();
-    phase2.start(newStage);
+                // Set up mouse entered event handler
+                buildings.get(buildingIndex - 1).setOnMouseEntered(event -> {
+                    
+                    if (buildings.get(buildingIndex - 1).contains(event.getX(), event.getY())) {
+                        // Show the tooltip only if the mouse is within the building bounds
+                        tooltipBuilding.show(buildings.get(buildingIndex - 1), event.getScreenX(), event.getScreenY() + 20);
+                    }
+                });
 
-    
-}
-
-
-public void TooltipOfBuildings() {
-    List<Package> packages = MainProgram.packages;
-    for (Package aPackage : packages) {
-        Customer customer = aPackage.getCustomer();
-        Building destinationBuilding = customer.getBuilding();
-        String buildingName = destinationBuilding.getLocation().getName();
-
-        int buildingIndex = Integer.parseInt(buildingName);
-
-
-        // Ensure that the GUI element is not null before proceeding
-        if (destinationBuilding != null && buildings.get(buildingIndex - 1) != null) {
-            AllGroups.getChildren().remove(buildings.get(buildingIndex-1));
-            Tooltip tooltipBuilding = new Tooltip(aPackage.getPackageInformation());
-            Tooltip.install(buildings.get(buildingIndex - 1), tooltipBuilding);
-
-            buildings.get(buildingIndex - 1).setOnMouseEntered(event -> {
-                // Show the tooltip only if the mouse is within the building bounds
-                if (buildings.get(buildingIndex - 1).contains(event.getX(), event.getY())) {
-                    tooltipBuilding.show(buildings.get(buildingIndex - 1), event.getScreenX(), event.getScreenY() + 20);
-                }   
-            });
-
-            buildings.get(buildingIndex - 1).setOnMouseExited(event -> {
-                tooltipBuilding.hide();
-            });
-        } else {
+                // Set up mouse exited event handler
+                buildings.get(buildingIndex - 1).setOnMouseExited(event -> {
+                    tooltipBuilding.hide();
+                });
+            }
         }
     }
-}
-public void addToolTipsToAllBuildings() {
-    
+    public void addToolTipsToAllBuildings() {
+
         for (int i = 0; i < buildings.size(); i++) {
             Rectangle building = buildings.get(i);
             int buildingNumber = i + 1;
     
-            String tooltipText = "Building Number: " + buildingNumber;
-            Tooltip tooltip = new Tooltip(tooltipText);
+            // Create the tooltip with the building number
+            Tooltip tooltip = new Tooltip("Building Number: " + buildingNumber);
+    
+            // Install the tooltip on the building
             Tooltip.install(building, tooltip);
     
+            // Set up mouse entered event handler
             building.setOnMouseEntered(event -> {
+                // Check if the mouse is within the building bounds
                 if (building.contains(event.getX(), event.getY())) {
+                    // Show the tooltip
                     tooltip.show(building, event.getScreenX(), event.getScreenY() + 20);
                 }
             });
     
-            building.setOnMouseExited(event -> tooltip.hide());
+            // Set up mouse exited event handler
+            building.setOnMouseExited(event -> {
+                // Hide the tooltip
+                tooltip.hide();
+            });
         }
     }
     
-public void highlightBuildingsWithPackages()  {
-    List<Package> packages = MainProgram.packages;
-    packages.get(1);
-    for (Package aPackage : packages) {
-        Customer customer = aPackage.getCustomer();
-        Building destinationBuilding = customer.getBuilding();
-        String buildingName = destinationBuilding.getLocation().getName();
+    public void highlightBuildingsWithPackages()  {
+        List<Package> packages = MainProgram.packages;
+        packages.get(1);
+        for (Package aPackage : packages) {
+            Customer customer = aPackage.getCustomer();
+            Building destinationBuilding = customer.getBuilding();
+            String buildingName = destinationBuilding.getLocation().getName();
 
-        int buildingIndex = Integer.parseInt(buildingName);
-        MainGUISimulation.buildings.get(buildingIndex - 1).setFill(Color.GREEN);
-        
-    }
-}
-
-public static void resetBuildingColors() {
-    for (int i = 0; i < buildings.size(); i++) {
-        Rectangle building = buildings.get(i);
-        Color color;
-
-        if (i >= 0 && i < 52) {
-            // Set GREY color for index 0 to 51
-            color = Color.GREY;
-        } else if (i >= 52 && i < 91) {
-            // Set BLUE color for index 52 to 90
-            color = Color.BLUE;
-        } else if (i >= 91 && i < 129) {
-            // Set "#C0392B" color for index 91 to 127
-            color = Color.web("#C0392B");
-        }else {
-            // Handle additional ranges or default color if needed
-            color = Color.LIGHTGRAY;
+            int buildingIndex = Integer.parseInt(buildingName);
+            buildings.get(buildingIndex - 1).setFill(Color.GREEN);
+            
         }
-
-        building.setFill(color);
     }
+
+    public static void resetBuildingColors() {
+        for (int i = 0; i < buildings.size(); i++) {
+            Rectangle building = buildings.get(i);
+            Color color;
+
+            if (i >= 0 && i < 52) {
+                // Set GREY color for index 0 to 51
+                color = Color.GREY;
+            } else if (i >= 52 && i < 91) {
+                // Set BLUE color for index 52 to 90
+                color = Color.BLUE;
+            } else if (i >= 91 && i < 129) {
+                // Set "#C0392B" color for index 91 to 127
+                color = Color.web("#C0392B");
+            }else {
+                // Handle additional ranges or default color if needed
+                color = Color.LIGHTGRAY;
+            }
+
+            building.setFill(color);
+        }
 
     }
     public void updatePhase1Metrics() {
-    if (FirstPage.isPhase1Selected) {
-         total_Distance = MainProgram.driver.calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));
-         total_GasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));
-         total_Time = MainProgram.driver.calculateTotalTime();
+        if (FirstPage.isPhase1Selected) {
+            List<List<Intersection>> calculateShortestPaths = MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding) ; 
+            total_Distance = MainProgram.driver.calculateTotalDistance(calculateShortestPaths);
+            total_GasolineCost = MainProgram.driver.calculateTotalGasolineCost(calculateShortestPaths);
+            total_Time = MainProgram.driver.calculateTotalTime();
         }
-    else{
-        total_Distance =0;
-        total_Time=0;
-        total_GasolineCost=0;
+        else{
+            total_Distance =0;
+            total_Time=0;
+            total_GasolineCost=0;
+        }
     }
-}
 }
 
     
