@@ -27,7 +27,7 @@ public class FirstPage extends Application {
             "-fx-text-fill: #F0F2F0; " +   // Blue text color
             "-fx-font-weight: bold;"       // Bold font
         );
-titleLabel.setAlignment(Pos.CENTER);
+        titleLabel.setAlignment(Pos.CENTER);
 
         // Create buttons
         Button phase1Button = new Button("Phase 1");     
@@ -51,18 +51,18 @@ titleLabel.setAlignment(Pos.CENTER);
            
         });
         // Make buttons bigger
-        phase1Button.setStyle(
-    "-fx-background-color: #000C40; " +
-    "-fx-text-fill: white; " +
-    "-fx-font-size: 20px; " + // Increase font size
-    "-fx-background-radius: 100 100 100 100;" // Set larger background radii (top-left, top-right, bottom-right, bottom-left)
-);
+    phase1Button.setStyle(
+            "-fx-background-color: #000C40; " +
+            "-fx-text-fill: white; " +
+            "-fx-font-size: 20px; " + // Increase font size
+            "-fx-background-radius: 100 100 100 100;" // Set larger background radii (top-left, top-right, bottom-right, bottom-left)
+        );
 
-phase2Button.setStyle(
-    "-fx-background-color: #000C40; " +
-    "-fx-text-fill: white; " +
-    "-fx-font-size: 20px; " + // Increase font size
-    "-fx-background-radius: 100 100 100 100;"
+    phase2Button.setStyle(
+            "-fx-background-color: #000C40; " +
+            "-fx-text-fill: white; " +
+            "-fx-font-size: 20px; " + // Increase font size
+            "-fx-background-radius: 100 100 100 100;"
 );
 
         // Create GridPane for buttons
