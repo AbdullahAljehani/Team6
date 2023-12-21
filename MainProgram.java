@@ -36,8 +36,6 @@ public class MainProgram {
         
       
     }
- 
- 
     
     public static List<Intersection> destinationBuildings() {
         List<Intersection> destinations = new ArrayList<>();
