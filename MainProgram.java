@@ -111,8 +111,7 @@ public class MainProgram {
       return destinations;
   }
  
-
-  public static List<Intersection> getShuffledBuildings() {
+    public static List<Intersection> getShuffledBuildings() {
     List<Intersection> allDestinations = destetionBuilding ; // Retrieve all destination buildings
 
     // Separate warehouse from the list
@@ -140,7 +139,8 @@ public class MainProgram {
 
     return selectedBuildings;
 }
-public static List<Intersection> getOrganizedBuildings() {
+    
+    public static List<Intersection> getOrganizedBuildings() {
 
     // Create a copy of chosenBuilding to avoid modifying the original
     List<Intersection> intersections = new ArrayList<>(choosenBulding);
@@ -180,7 +180,7 @@ public static List<Intersection> getOrganizedBuildings() {
     return intersections;
 }
   
-public static Map<Intersection, List<Intersection>> createGraph() {
+    public static Map<Intersection, List<Intersection>> createGraph() {
     Map<Intersection, List<Intersection>> graph = new HashMap<>();
     Set<String> connections = new HashSet<>();  // Set to track unique connections
 
@@ -270,13 +270,13 @@ public static Map<Intersection, List<Intersection>> createGraph() {
     return graph;
 }
 
-private static String getOrderedConnectionKey(Intersection intersection1, Intersection intersection2) {
+    private static String getOrderedConnectionKey(Intersection intersection1, Intersection intersection2) {
     String name1 = intersection1.getName();
     String name2 = intersection2.getName();
     return (name1.compareTo(name2) < 0) ? name1 + "-" + name2 : name2 + "-" + name1;
 }
 
-public static  List<List<Intersection>> createIntersectionsLayout(){
+    public static  List<List<Intersection>> createIntersectionsLayout(){
   
   List<List<Intersection>> intersections = new ArrayList<>();
   List<Intersection> intersection_1 = new ArrayList<>();
@@ -355,7 +355,7 @@ intersection_3 = Arrays.asList(intersection3_1,intersection3_2,intersection3_3);
   return intersections;
 }
     
-  public static List<Package> clonePackages(List<Package> originalPackages) {
+    public static List<Package> clonePackages(List<Package> originalPackages) {
     List<Package> copiedPackages = new ArrayList<>();
 
     for (int i = 0; i < originalPackages.size(); i++) {
@@ -379,7 +379,7 @@ intersection_3 = Arrays.asList(intersection3_1,intersection3_2,intersection3_3);
 return copiedPackages;
 }
 
-public static List<Building> Allbuildings() {
+    public static List<Building> Allbuildings() {
 
     List<Building> buildings = new ArrayList<>();
     MainGUISimulation.buildings(MainGUISimulation.AllGroups);
@@ -404,7 +404,7 @@ public static List<Building> Allbuildings() {
     return buildings;
 }
 
-public static List<Customer> generateRandomCustomers() {
+    public static List<Customer> generateRandomCustomers() {
 
     List<Customer> sequentialCustomers = new ArrayList<>();
     List<Building> allBuildings = Allbuildings();
@@ -422,8 +422,7 @@ public static List<Customer> generateRandomCustomers() {
     return sequentialCustomers;
 }
 
-
-public static List<Package>  generateRandomPackages(List<Customer> customers) {
+    public static List<Package>  generateRandomPackages(List<Customer> customers) {
     List<Package> randomPackages = new ArrayList<>();
     Random random = new Random();
 
@@ -447,7 +446,7 @@ public static List<Package>  generateRandomPackages(List<Customer> customers) {
     return randomPackages;
 }
   
-  private static boolean isPackageIdUsed(List<Package> packages, int packageId) {
+    private static boolean isPackageIdUsed(List<Package> packages, int packageId) {
       for (Package p : packages) {
           if (p.getPackageId() == packageId) {
               return true;
@@ -455,7 +454,8 @@ public static List<Package>  generateRandomPackages(List<Customer> customers) {
       }
       return false;
   }
-  private static void connectDestinationBuildings(Map<Intersection, List<Intersection>> graph, List<Intersection> intersections, List<Intersection> destinationBuildings) {
+    
+    private static void connectDestinationBuildings(Map<Intersection, List<Intersection>> graph, List<Intersection> intersections, List<Intersection> destinationBuildings) {
     for (int i = 0; i < destinationBuildings.size(); i++) {
         Intersection destination = destinationBuildings.get(i);
 
@@ -496,7 +496,7 @@ public static List<Package>  generateRandomPackages(List<Customer> customers) {
     }
 }
 
-private static Intersection findClosestLeftIntersection(Intersection destination, List<Intersection> intersections) {
+    private static Intersection findClosestLeftIntersection(Intersection destination, List<Intersection> intersections) {
     double centerX = destination.getX();
 
 Stream<Intersection> intersectionStream = intersections.stream();
@@ -511,7 +511,7 @@ Optional<Intersection> closestIntersectionOptional = filteredStream.min(Comparat
 Intersection closestIntersection = closestIntersectionOptional.orElse(null);
 return closestIntersection;}
 
-private static Intersection findClosestRightIntersection(Intersection destination, List<Intersection> intersections) {
+    private static Intersection findClosestRightIntersection(Intersection destination, List<Intersection> intersections) {
     double centerX = destination.getX();
 
     Stream<Intersection> intersectionStream = intersections.stream();
@@ -526,7 +526,7 @@ private static Intersection findClosestRightIntersection(Intersection destinatio
     Intersection closestIntersection = closestIntersectionOptional.orElse(null);
     return closestIntersection;}
 
-public static List<Intersection> initializeChoosenIntersections() {
+    public static List<Intersection> initializeChoosenIntersections() {
     List<Intersection> aIntersection;
 
     if (FirstPage.isPhase1Selected) {
