@@ -103,38 +103,22 @@ public double calculateTotalGasolineCost(List<List<Intersection>> packages) {
 }
 
 
-public void moveCarTo(List<List<Intersection>> packages) {
-
+public void moveCarTo(List<Intersection> packages) {
     double firstX=0;
     double firstY=0;
     double lastX=0;
     double lastY=0;
-
     if (!packages.isEmpty()) {
+        Intersection firstPackage = packages.get(0);
+             firstX = firstPackage.getX();
+             firstY = firstPackage.getY();
+        Intersection lastPackage = packages.get(packages.size() - 1);
+             lastX = lastPackage.getX();
+             lastY = lastPackage.getY();
 
-        List<Intersection> firstPackage = packages.get(0);
-
-        if (!firstPackage.isEmpty()) {
-
-            Intersection firstPart = firstPackage.get(0);
-             firstX = firstPart.getX();
-             firstY = firstPart.getY();
-        }
-
-        List<Intersection> lastPackage = packages.get(packages.size() - 1);
-
-        if (!lastPackage.isEmpty()) {
-
-            Intersection lastPart = lastPackage.get(lastPackage.size() - 1);
-             lastX = lastPart.getX();
-             lastY = lastPart.getY();
-
-            
-        }
-    
             double finalPointX  = lastX-  firstX;
             double finalPointY  = lastY-  firstY;
-            
+
 
             MainGUISimulation.car.setTranslateX(finalPointX);
             MainGUISimulation.car.setTranslateY(finalPointY);
@@ -285,7 +269,7 @@ public int calculateTotalTime(){
         totalDelay+=singlePackage.delay*60;
     }
     
-    double totalDistance = calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.initializeChoosenIntersections()));
+    double totalDistance = calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));
     double totalDourtion=40; // Scale factor used to predict the total time 
     double totalTime = totalDelay + totalDistance*1000/totalDourtion; // Multiplying by 1000 to convert totalDistance from kilometers to meters
     int totalTimrCast = (int) totalTime;

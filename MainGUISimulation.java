@@ -1,10 +1,5 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.scene.Group;
@@ -48,6 +43,12 @@ public StackPane root;
 public static int totalTimeP1;
 public static int totalTimeP2;
 public static List<Rectangle> buildings ;
+public static Label CounterGasolinLabe1_phase1_to_2 ;
+public static double total_Distance;
+public static int total_Time;
+public static double total_GasolineCost;
+public static Label CounterDistanceLabe1_phase1_to_2 ;
+public static Label  CountertimeLabe1_phase1_to_2;
 
     public void start(Stage primaryStage) {
         primaryStage.setOnCloseRequest(windowEvent -> {Platform.exit();System.exit(0);});
@@ -1150,7 +1151,7 @@ public static List<Rectangle> buildings ;
         MainGUISimulation.CounterCostLabel = new Label(" SAR 00,00");
         CounterCostLabel.setFont(CounterCostfont);
         CounterCostLabel.setTextFill(Color.web("#000C40"));
-        CounterCostLabel.setLayoutX(1085);
+        CounterCostLabel.setLayoutX(1082);
         CounterCostLabel.setLayoutY(140);
         
         // For No_Simulations:
@@ -1194,10 +1195,11 @@ public static List<Rectangle> buildings ;
         Ideal_rectangle_lable.setStyle("-fx-text-fill: #F0F2F0;");
         
         Label Ideal_rectangle_lableBox = new Label("1:30:00");
-        Ideal_rectangle_lableBox.setFont(Labelfont_forphase2in1);
+        Ideal_rectangle_lableBox.setFont(CounterLabelfont);
         Ideal_rectangle_lableBox.setTextFill(Color.web("#000C40"));        
         Ideal_rectangle_lableBox.setLayoutX(1210);
         Ideal_rectangle_lableBox.setLayoutY(205);
+    
         
         //Rectangle TIME PHASE 1 IN 2
         
@@ -1218,10 +1220,10 @@ public static List<Rectangle> buildings ;
         time_phase1_in2_lable.setLayoutY(310);
         time_phase1_in2_lable.setStyle("-fx-text-fill: #000C40;");
         
-        Label CountertimeLabe1_phase1_to_2 = new Label("00:00");
+        CountertimeLabe1_phase1_to_2 = new Label("00:00");
         CountertimeLabe1_phase1_to_2.setFont(Labelfont_forphase2in1);
         CountertimeLabe1_phase1_to_2.setTextFill(Color.web("#000C40"));        
-        CountertimeLabe1_phase1_to_2.setLayoutX(1275);
+        CountertimeLabe1_phase1_to_2.setLayoutX(1265);
         CountertimeLabe1_phase1_to_2.setLayoutY(350);
         
         
@@ -1235,10 +1237,10 @@ public static List<Rectangle> buildings ;
         distance_phase1_in2_lable.setLayoutY(310);
         distance_phase1_in2_lable.setStyle("-fx-text-fill: #000C40;");
         
-        Label CounterDistanceLabe1_phase1_to_2 = new Label("00:00 KM");
+        CounterDistanceLabe1_phase1_to_2 = new Label("00:00 KM");
         CounterDistanceLabe1_phase1_to_2.setFont(Labelfont_forphase2in1);
         CounterDistanceLabe1_phase1_to_2.setTextFill(Color.web("#000C40"));        
-        CounterDistanceLabe1_phase1_to_2.setLayoutX(1110);
+        CounterDistanceLabe1_phase1_to_2.setLayoutX(1105);
         CounterDistanceLabe1_phase1_to_2.setLayoutY(350);
         
         
@@ -1251,10 +1253,10 @@ public static List<Rectangle> buildings ;
         gasolin_phase1_in2_lable.setLayoutY(310);
         gasolin_phase1_in2_lable.setStyle("-fx-text-fill: #000C40;");
         
-        Label CounterGasolinLabe1_phase1_to_2 = new Label("00:00 SAR");
+        CounterGasolinLabe1_phase1_to_2 = new Label("00:00 SAR");
         CounterGasolinLabe1_phase1_to_2.setFont(Labelfont_forphase2in1);
         CounterGasolinLabe1_phase1_to_2.setTextFill(Color.web("#000C40"));        
-        CounterGasolinLabe1_phase1_to_2.setLayoutX(1185);
+        CounterGasolinLabe1_phase1_to_2.setLayoutX(1180);
         CounterGasolinLabe1_phase1_to_2.setLayoutY(350);
         
         
@@ -1393,16 +1395,14 @@ Start_button.setStyle( "-fx-background-color: #F0F2F0; " );
 Start_button.setContentDisplay(ContentDisplay.CENTER);
         
         Start_button.setOnAction((event) -> {
+
             
             if (!MainProgram.driver.isTransitionPaused) {
                 resetBuildingColors();
             Platform.runLater(() -> {
-                             addToolTipsToAllBuildings();
-
+             addToolTipsToAllBuildings();
              TooltipOfBuildings();
-
-        });
-            MainProgram.initializeChoosenIntersections();
+});
             stopCurrentSimulation();
             isStartClicked = true;
             MainProgram.driver.setGasolineCost(0);
@@ -1557,6 +1557,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
                                         isStartClicked = false;
                                         CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                                         percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
+                                        updatePhase1Metrics();  
                                     });
             
                                     timer.cancel();
@@ -1615,7 +1616,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     }
     
 
-    private static String formatTime(int seconds) {
+    public static String formatTime(int seconds) {
         long hours = seconds / 3600;
         long minutes = (seconds % 3600) / 60;
         long remainingSeconds = seconds % 60;
@@ -1672,13 +1673,15 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
     
                  double totalGasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));
                  CounterCostLabel.setText(formatGasolineCost(totalGasolineCost));
-                 MainProgram.driver.moveCarTo(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));
-                 CounterTimeLabel.setText(formatTime(MainProgram.driver.calculateTotalTime()));
+                 MainProgram.driver.moveCarTo(MainProgram.choosenBulding);
+                 int totalTime = MainProgram.driver.calculateTotalTime();
+                 CounterTimeLabel.setText(formatTime(totalTime));
+                 updatePhase1Metrics();                 
                  calculateTotalTimeForAllPhases(); 
-                percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
-                highlightBuildingsWithPackages();
-                addToolTipsToAllBuildings();
-                TooltipOfBuildings();
+                 percentLabelP2.setText(formatPercent(calculatePercentImprovement()));
+                 highlightBuildingsWithPackages();
+                 addToolTipsToAllBuildings();
+                 TooltipOfBuildings();
 
                 CounterNo_SimulationLabel.setText(formatCounterNo_Simulation(++numOfSumuolation));
                 isStartClicked = false;
@@ -1711,7 +1714,7 @@ Start_button.setContentDisplay(ContentDisplay.CENTER);
             MainProgram.driver.pathTransition.setCycleCount(1);
             CounterDistanceLabel.setText("00.00 Km");
             CounterCostLabel.setText("SAR 00,00");
-             MainProgram.driver.moveCarTo(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.destetionBuilding));
+             MainProgram.driver.moveCarTo(MainProgram.choosenBulding);
            
 
              });
@@ -1816,6 +1819,18 @@ public static void resetBuildingColors() {
     }
 
     }
+    public void updatePhase1Metrics() {
+    if (FirstPage.isPhase1Selected) {
+         total_Distance = MainProgram.driver.calculateTotalDistance(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));
+         total_GasolineCost = MainProgram.driver.calculateTotalGasolineCost(MainProgram.driver.calculateShortestPathsBetweenDestinations(MainProgram.choosenBulding));
+         total_Time = MainProgram.driver.calculateTotalTime();
+        }
+    else{
+        total_Distance =0;
+        total_Time=0;
+        total_GasolineCost=0;
+    }
+}
 }
 
     

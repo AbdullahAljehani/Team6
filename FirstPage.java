@@ -1,5 +1,3 @@
-import java.util.List;
-
 import javafx.application.Application;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ReadOnlyDoubleProperty;
@@ -45,7 +43,10 @@ titleLabel.setAlignment(Pos.CENTER);
             primaryStage.close();
             MainProgram.organizeBuilding= MainProgram.getOrganizedBuildings();
             MainProgram.choosenBulding=MainProgram.organizeBuilding;
-            MainProgram.packages=MainProgram.copyPackages(MainProgram.packages);
+            MainProgram.packages=MainProgram.clonePackages(MainProgram.packages);
+            MainGUISimulation.CounterGasolinLabe1_phase1_to_2.setText(MainGUISimulation.formatGasolineCost(MainGUISimulation.total_GasolineCost));
+            MainGUISimulation.CounterDistanceLabe1_phase1_to_2.setText(MainGUISimulation.formatDistance(MainGUISimulation.total_Distance));
+            MainGUISimulation.CountertimeLabe1_phase1_to_2.setText(MainGUISimulation.formatTime(MainGUISimulation.total_Time));
 
            
         });

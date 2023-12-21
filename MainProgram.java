@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -24,14 +25,14 @@ public class MainProgram {
     public static List<Intersection> organizeBuilding;
 
     public static void initializeObjects() {
-        driver = new DeliveryDriver();
-        destetionBuilding =destinationBuildings();
+        driver=new DeliveryDriver();
+        destetionBuilding=destinationBuildings();
         choosenBulding=getShuffledBuildings();
-        organizeBuilding= getOrganizedBuildings(); 
-        intersections = createIntersectionsLayout();
-        customers= generateRandomCustomers();
+        organizeBuilding=getOrganizedBuildings(); 
+        intersections=createIntersectionsLayout();
+        customers=generateRandomCustomers();
         packages=generateRandomPackages(customers); 
-        graph = createGraph();
+        graph =createGraph();
         
       
     }
@@ -39,8 +40,8 @@ public class MainProgram {
  
     
     public static List<Intersection> destinationBuildings() {
-      List<Intersection> destinations = new ArrayList<>();
-
+        List<Intersection> destinations = new ArrayList<>();
+       
         // Destination Buildings with names
         Intersection destinationBuilding123 = new Intersection(568, 594, "123");
         Intersection destinationBuilding120 = new Intersection(368, 594, "120");
@@ -95,7 +96,7 @@ public class MainProgram {
        destinationBuilding74,destinationBuilding46,
        destinationBuilding42,destinationBuilding97,
        destinationBuilding67,destinationBuilding80,
-        destinationBuilding116,destinationBuilding119,
+       destinationBuilding116,destinationBuilding119,
        destinationBuilding2,destinationBuilding10,
        destinationBuilding18,destinationBuilding21,
        destinationBuilding26,destinationBuilding28,
@@ -122,9 +123,9 @@ public class MainProgram {
 
     for (Intersection destination : allDestinations) {
         if (destination.getName().equals("Warehouse")) {
-            warehouse = destination;
+             warehouse = destination;
         } else {
-            otherDestinations.add(destination);
+             otherDestinations.add(destination);
         }
     }
 
@@ -138,7 +139,6 @@ public class MainProgram {
         selectedBuildings.addAll(shuffledOthers.subList(0, Math.min(20, shuffledOthers.size())));
         // Select 19 more buildings excluding the warehouse
     }
-
 
     return selectedBuildings;
 }
@@ -181,9 +181,9 @@ public static List<Intersection> getOrganizedBuildings() {
 
     return intersections;
 }
-  public static Map<Intersection, List<Intersection>> createGraph() {
+  
+public static Map<Intersection, List<Intersection>> createGraph() {
     Map<Intersection, List<Intersection>> graph = new HashMap<>();
-    
     Set<String> connections = new HashSet<>();  // Set to track unique connections
 
     // Connect adjacent intersections within each street
@@ -279,9 +279,9 @@ private static String getOrderedConnectionKey(Intersection intersection1, Inters
 }
 
 public static  List<List<Intersection>> createIntersectionsLayout(){
+  
   List<List<Intersection>> intersections = new ArrayList<>();
   List<Intersection> intersection_1 = new ArrayList<>();
-
   List<Intersection> intersection_2 = new ArrayList<>();
   List<Intersection> intersection_3 = new ArrayList<>();
   List<Intersection> intersection_4 = new ArrayList<>();
@@ -291,13 +291,13 @@ public static  List<List<Intersection>> createIntersectionsLayout(){
   List<Intersection> intersection_8 = new ArrayList<>();
   List<Intersection> intersection_9 = new ArrayList<>();
 
+    // Street 1
     Intersection intersection1_1 = new Intersection(330, 66, "A1");
     Intersection intersection1_2 = new Intersection(600, 66, "B1");
     Intersection intersection1_3 = new Intersection(860, 66, "C1");
 
    intersection_1 = Arrays.asList(intersection1_1,intersection1_2,intersection1_3);
   
-
     // Street 2
     Intersection intersection2_1 = new Intersection(330, 130, "A2");
     Intersection intersection2_2 = new Intersection(600, 130, "B2");
@@ -323,7 +323,6 @@ intersection_3 = Arrays.asList(intersection3_1,intersection3_2,intersection3_3);
     Intersection intersection5_1 = new Intersection(330, 330, "A5");
     Intersection intersection5_2 = new Intersection(600, 330, "B5");
     Intersection intersection5_3 = new Intersection(860, 330, "C5");
-
 
   intersection_5 = Arrays.asList(intersection5_1,intersection5_2,intersection5_3);
 
@@ -353,13 +352,12 @@ intersection_3 = Arrays.asList(intersection3_1,intersection3_2,intersection3_3);
 
   intersection_9 = Arrays.asList(intersection9_1,intersection9_2,intersection9_3);
 
-
   intersections= Arrays.asList(intersection_1,intersection_2,intersection_3,intersection_4,intersection_5,intersection_6,intersection_7,intersection_8,intersection_9);
   
   return intersections;
 }
     
-  public static List<Package> copyPackages(List<Package> originalPackages) {
+  public static List<Package> clonePackages(List<Package> originalPackages) {
     List<Package> copiedPackages = new ArrayList<>();
 
     for (int i = 0; i < originalPackages.size(); i++) {
@@ -412,9 +410,8 @@ public static List<Customer> generateRandomCustomers() {
 
     List<Customer> sequentialCustomers = new ArrayList<>();
     List<Building> allBuildings = Allbuildings();
-
     int customerId = 1;
-
+    
     // Iterate through destination buildings and assign each building to a customer
     for (int i = 1; i < choosenBulding.size(); i++) {
         Building building = allBuildings.get(i - 1);
@@ -504,20 +501,32 @@ public static List<Package>  generateRandomPackages(List<Customer> customers) {
 private static Intersection findClosestLeftIntersection(Intersection destination, List<Intersection> intersections) {
     double centerX = destination.getX();
 
-    return intersections.stream()
-            .filter(intersection -> intersection.getX() < centerX)
-            .min(Comparator.comparingDouble(intersection -> intersection.getDistanceTo(destination)))
-            .orElse(null);
-}
+Stream<Intersection> intersectionStream = intersections.stream();
+
+// 2. Filter intersections based on X coordinate
+Stream<Intersection> filteredStream = intersectionStream.filter(intersection -> intersection.getX() < centerX);
+
+// 3. Find the intersection with the minimum distance to destination
+Optional<Intersection> closestIntersectionOptional = filteredStream.min(Comparator.comparingDouble(intersection -> intersection.getDistanceTo(destination)));
+
+// 4. Return the closest intersection or null if none found
+Intersection closestIntersection = closestIntersectionOptional.orElse(null);
+return closestIntersection;}
 
 private static Intersection findClosestRightIntersection(Intersection destination, List<Intersection> intersections) {
     double centerX = destination.getX();
 
-    return intersections.stream()
-            .filter(intersection -> intersection.getX() > centerX)
-            .min(Comparator.comparingDouble(intersection -> intersection.getDistanceTo(destination)))
-            .orElse(null);
-}
+    Stream<Intersection> intersectionStream = intersections.stream();
+
+    // 2. Filter intersections based on X coordinate (keeping those greater than centerX)
+    Stream<Intersection> filteredStream = intersectionStream.filter(intersection -> intersection.getX() > centerX);
+    
+    // 3. Find the intersection with the minimum distance to destination
+    Optional<Intersection> closestIntersectionOptional = filteredStream.min(Comparator.comparingDouble(intersection -> intersection.getDistanceTo(destination)));
+    
+    // 4. Return the closest intersection or null if none found
+    Intersection closestIntersection = closestIntersectionOptional.orElse(null);
+    return closestIntersection;}
 
 public static List<Intersection> initializeChoosenIntersections() {
     List<Intersection> aIntersection;
