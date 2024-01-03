@@ -1517,6 +1517,7 @@ public static boolean isPhase1comblete =false ;
                             alert.setHeaderText("THE SIMULATION IS DONE");
                             alert.setContentText("Have a nice day!");
                             alert.showAndWait();
+                            isPhase1comblete =true;
                             MainProgram.driver.isTransitionPaused = false;
 
                             calculateTotalTimeForAllPhases();
