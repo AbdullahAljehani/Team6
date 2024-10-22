@@ -30,4 +30,5 @@ public class Customer {
     public void addAssignedPackage(Package newPackage) {
         assignedPackages.add(newPackage);
     }
-}
+    
+} 
